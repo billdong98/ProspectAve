@@ -10,10 +10,11 @@
     margin-left: 15em !important;
 }
 
-@media screen and (max-width: 1680px) {
+#main-title {
+    margin-bottom: 30px !important;
+    font-size: 90px;
+}
 
-    .wrapper > .inner {
-        padding: 0em 4em 2em 4em ;
-    }
-
+#sidebar nav > ul > li {
+    margin-top: 1em;
 }
