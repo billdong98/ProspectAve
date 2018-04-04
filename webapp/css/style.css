@@ -1,0 +1,19 @@
+#sidebar {
+    width: 15em !important;
+}
+
+#footer {
+    margin-left: 15em !important;
+}
+
+#wrapper {
+    margin-left: 15em !important;
+}
+
+@media screen and (max-width: 1680px) {
+
+    .wrapper > .inner {
+        padding: 0em 4em 2em 4em ;
+    }
+
+}
