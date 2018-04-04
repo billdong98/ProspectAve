@@ -22,3 +22,24 @@
 #sidebar nav > ul > li {
     margin-top: 1em;
 }
+
+.spotlights > section > .content {
+	width: 80em;
+}
+
+#teammembers {
+  display: table;
+  width: 90%;
+  margin: 20px;
+}
+
+#teammembers a {
+  display: table-cell;
+  text-align: center;
+  width: 20%;
+}
+
+#teammembers img {
+  width: 150px;
+  height: 200px;
+}
