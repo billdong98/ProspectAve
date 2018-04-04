@@ -1,15 +1,3 @@
-#sidebar {
-    width: 15em !important;
-}
-
-#footer {
-    margin-left: 15em !important;
-}
-
-#wrapper {
-    margin-left: 15em !important;
-}
-
 #main-title {
     margin-bottom: 30px !important;
     font-size: 90px;
@@ -24,7 +12,7 @@
 }
 
 .spotlights > section > .content {
-	width: 80em;
+	width: 100%;
 }
 
 #teammembers {
@@ -40,6 +28,6 @@
 }
 
 #teammembers img {
-  width: 150px;
-  height: 200px;
+  width: 80%;
+  height: auto;
 }
