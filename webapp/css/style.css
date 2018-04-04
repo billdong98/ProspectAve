@@ -15,6 +15,10 @@
     font-size: 90px;
 }
 
+#top-inner {
+    padding-top: 3em;
+}
+
 #sidebar nav > ul > li {
     margin-top: 1em;
 }
