@@ -7,8 +7,10 @@
     padding-top: 1em;
 }
 
-#sidebar nav > ul > li {
-    margin-top: 1em;
+@media screen and (min-width: 1280px) {
+    #sidebar nav > ul > li {
+        margin-top: 1em;
+    }
 }
 
 .spotlights > section > .content {
@@ -30,4 +32,19 @@
 #teammembers img {
   width: 80%;
   height: auto;
+}
+
+
+@media screen and (min-width: 1280px) {
+	#sidebar + #wrapper {
+		margin-left: 15em;
+	}
+
+	#sidebar + #wrapper + #footer {
+		margin-left: 15em;
+	}
+
+	#sidebar {
+		width: 15em;
+	}
 }
