@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Prospect11 &mdash; Street Guide</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<body>
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro">Welcome</a></li>
+							<li><a href="#one">Register</a></li>
+							<li><a href="#two">Why nomen?</a></li>
+							<li><a href="#three">Our Team</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1 class="major"><img src="images/nomen.png" width="15%" height="15%" align="middle">nomen</h1>
+							<p><b>nomen</b> is your passport to Web 3.0. The events of the past few weeks have all but confirmed our long-held suspicions that Big Tech does not respect our privacy. As the first Decentralized Authentication Service (DAS), <b>nomen</b> allows you to login to all your favorite websites with a click of a button both privately and securely. Using Ethereum smart contracts, <b>nomen</b> establishes and maintains a decentralized ledger of accounts using blockchain technology, thereby providing a myriad of benefits over conventional username/password systems.</p>
+						</div>
+					</section>
+				
+				<!-- One -->
+				<section id="one" class="wrapper style3 fade-up">
+						<div class="inner">
+							<h2 id="title">Register Today!</h2>
+							<p id="welcome">Register your name on the blockchain. You'll need to have MetaMask installed.</p>
+							<div class="split style1">
+								<section>
+									<form id="registerForm" action='javascript: submit(); return false;'>
+										<div class="field" id="reg_field">
+											<input type="text" name="name" id="name" placeholder="Insert your name here"/>
+										</div>
+										<br>
+                                        <p id="need_metamask" style="display:none;">In order to use <b>nomen</b>, you will need to have the MetaMask plugin installed in your browser. Connect to Web 3.0 today at <a href="metamask.io">metamask.io.</a></p>
+										<button type=button id="registerButton" style="font-size:14px;">Register</button>
+										<!--<ul class="actions">
+											<li><a href="" class="button">Submit</a></li>
+										</ul>
+										</div>
+                                        -->
+									</form>
+                                    <p id="loading" style="display: none;">Registering you on the Ethereum blockchain. You may need to approve this transaction in MetaMask.</p>
+                                    <div class="loader"></div>
+                                    <p id="confirm_registered" style="display:none;"></p>
+                                    <p id="need_metamask" style="display:none;">In order to use nomen, you will need to have the MetaMask plugin installed in your browser. Connect to Web 3.0 today at <a href="metamask.io">metamask.io.</a></p>
+
+								</section>
+                                <img src="images/metamask.png" id="metamast_img" style="display:none; margin-top:-100px;" width="25%" height="25%" alt="" align="right">
+							</div>
+						</div>
+					</section>
+
+				<!-- Two -->
+				<section id="two" class="wrapper style2 fade-up">
+						<div class="inner">
+							<h2>Why <b>nomen</b>?</h2>
+							<p></p>
+							<div class="features">
+								<section>
+									<span class="icon major fa-lock"></span>
+									<h3>Private</h3>
+									<p>No more 3rd party tracking. No more Cambridge Analytica. No more Big Brother. Through <b>nomen</b>, logging-in is a transaction between you, the website you are accessing, and no one else.</p>
+								</section>
+								<section>
+									<span class="icon major fa-user"></span>
+									<h3>Authenticated</h3>
+									<p>All users are securely authenticated via the Ethereum blockchain. The only way for an attacker to spoof your account is to hijack your protected Ethereum wallet.</p>
+								</section>
+								<section>
+									<span class="icon major fa-chrome"></span>
+									<h3>Universal</h3>
+									<p>One <b>nomen</b>, all of Web 3.0. Gone are the days of struggling to remember your passwords for dozens of different sites. With a click of a button, <b>nomen</b> grants you access to all of your favorite (supported) websites. </p>
+								</section>
+								<section>
+									<span class="icon major fa-desktop"></span>
+									<h3>Accessible</h3>
+									<p><b>nomen</b> was designed to be as easy to use as possible. Despite the behind-the-scenes complexity of blockchain authentication and integration, <b>nomen</b>'s simple, streamlined interface makes the powerful technology accessible to everyone.</p>
+								</section>
+							</div>
+						</div>
+					</section>
+
+				<!-- Three -->
+					<section id="three" class="wrapper style1 spotlights">
+						<section>
+                            <img src="images/portraits.png" width="40%" height="40%" align="middle">
+							<div class="content">
+								<div class="inner">
+									<h2>Our Team</h2>
+									<p><b>nomen</b> was conceptualized and developed by Michael Man '21, Reilly Bova '20, June Ho Park '20, & Sten Sjoberg '21 during the Spring 2018 Hack Princeton conference.</p>
+								</div>
+							</div>
+						</section>
+					</section>
+
+				
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li><b>nomen</b>, by Reilly Bova, June Ho Park, Michael Man, Sten Sjöberg</li>
+                        <li>HackPrinceton 2018 Spring</li>
+					</ul>
+				</div>
+			</footer>
+        
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/jquery.scrollex.min.js"></script>
+			<script src="js/jquery.scrolly.min.js"></script>
+			<script src="js/skel.min.js"></script>
+			<script src="js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="js/main.js"></script>
+        
+        
+        
+                <script>
+                $(window).load(function() {
+                    init("main");
+                    //SUBMIT FORM
+                    $("#registerButton").click(function(event){ 
+                        var name = $("#name")[0].value;
+                        if(name != ""){
+                            console.log("Name: " + name);
+                            register(name);
+                        }
+                    }); 
+                });
+            </script>
+        
+        <style>
+            .loader {
+                  border: 16px solid #f3f3f3;
+                  border-radius: 50%;
+                  border-top: 16px solid #3498db;
+                  width: 120px;
+                  height: 120px;
+                  -webkit-animation: spin 2s linear infinite; /* Safari */
+                  animation: spin 2s linear infinite;
+                  margin-top: 20px;
+                  margin-bottom: 10px;
+                  display: none;
+                }
+
+                /* Safari */
+                @-webkit-keyframes spin {
+                  0% { -webkit-transform: rotate(0deg); }
+                  100% { -webkit-transform: rotate(360deg); }
+                }
+
+                @keyframes spin {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+                }
+        </style>
+	</body>
+</html>
