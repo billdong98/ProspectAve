@@ -1,0 +1,17 @@
+{
+  "name": "prospective",
+  "version": "0.0.1",
+  "description": "A back-end server for the Prospective COS333 project.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"No test here\";",
+    "start": "node server.js"
+  },
+  "author": "Michael Man",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "http": "0.0.0"
+  }
+}
