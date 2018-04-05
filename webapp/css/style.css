@@ -31,3 +31,14 @@
   width: 80%;
   height: auto;
 }
+
+#map {
+  position: relative;
+}
+
+a.Clubs{
+}
+
+a.Clubs:hover img{
+  opacity: 0.5;
+}
