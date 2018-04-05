@@ -36,9 +36,9 @@
   position: relative;
 }
 
-a.Clubs{
+#map a.Clubs{
 }
 
-a.Clubs:hover img{
+#map a.Clubs:hover img{
   opacity: 0.5;
 }
