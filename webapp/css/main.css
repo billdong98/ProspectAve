@@ -2424,7 +2424,7 @@
 		body.is-ie textarea {
 			min-height: 10em;
 		}
-
+/*
 	input[type="checkbox"],
 	input[type="radio"] {
 		-moz-appearance: none;
@@ -2438,7 +2438,7 @@
 		width: 1em;
 		z-index: -1;
 	}
-
+*/
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			text-decoration: none;
