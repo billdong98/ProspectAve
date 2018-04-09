@@ -1711,7 +1711,7 @@
 		}
 
 	h1 {
-		font-size: 6em;
+		font-size: 2.75em;
 	}
 
 		h1.major {
@@ -1721,10 +1721,10 @@
 		}
 
 			h1.major:after {
-				background-image: -moz-linear-gradient(to right, #295EA6, #77AAE3);
-				background-image: -webkit-linear-gradient(to right, #295EA6, #77AAE3);
-				background-image: -ms-linear-gradient(to right, #295EA6, #77AAE3);
-				background-image: linear-gradient(to right, #295EA6, #77AAE3);
+				background-image: -moz-linear-gradient(to right, #5e42a6, #b74e91);
+				background-image: -webkit-linear-gradient(to right, #5e42a6, #b74e91);
+				background-image: -ms-linear-gradient(to right, #5e42a6, #b74e91);
+				background-image: linear-gradient(to right, #5e42a6, #b74e91);
 				-moz-transition: max-width 0.2s ease;
 				-webkit-transition: max-width 0.2s ease;
 				-ms-transition: max-width 0.2s ease;
@@ -3253,11 +3253,11 @@
 		}
 
 		.wrapper.style1 {
-			background-color: #295DA5;
+			background-color: #5e42a6;
 		}
 
 		.wrapper.style1-alt {
-			background-color: #272838;
+			background-color: #493382;
 		}
 
 		.wrapper.style2 {
@@ -3269,7 +3269,7 @@
 		}
 
 		.wrapper.style3 {
-			background-color: #92AFD7;
+			background-color: #b74e91;
 		}
 
 		.wrapper.style3-alt {
@@ -3534,7 +3534,7 @@
 
 	#sidebar {
 		padding: 2.5em 2.5em 0.5em 2.5em ;
-		background: #272838;
+		background: #312450;
 		cursor: default;
 		height: 100vh;
 		left: 0;
@@ -3772,15 +3772,13 @@
 
 			#sidebar nav a:before {
 				background: #3c2c62;
-                
-                background-image: linear-gradient(to right, #272838, #1F487E);
 			}
 
 			#sidebar nav a:after {
-				background-image: -moz-linear-gradient(to right, #272838, #1F487E);
-				background-image: -webkit-linear-gradient(to right, #272838, #1F487E);
-				background-image: -ms-linear-gradient(to right, #272838, #1F487E);
-				background-image: linear-gradient(to right, #272838, #1F487E);
+				background-image: -moz-linear-gradient(to right, #5e42a6, #b74e91);
+				background-image: -webkit-linear-gradient(to right, #5e42a6, #b74e91);
+				background-image: -ms-linear-gradient(to right, #5e42a6, #b74e91);
+				background-image: linear-gradient(to right, #5e42a6, #b74e91);
 				-moz-transition: max-width 0.2s ease;
 				-webkit-transition: max-width 0.2s ease;
 				-ms-transition: max-width 0.2s ease;
@@ -3882,16 +3880,6 @@
 
 		}
 
-/* Progress Bar */
-	#myProgress {
-		width: 100%;
-		background-color: grey;
-	}
-	#myBar {
-		width: 1%;
-		height: 30px;
-		background-color: green;
-	}
 /* Intro */
 
 	#intro {
