@@ -124,33 +124,42 @@
 							<h2>Event Information Form</b></h2>
 							<p>Have an event at your eating club you would like added to ProspectAve? Fill out the form below:</p>
 							<form>
-							  Club name:<br>
-							  <input type="radio" name="clubname" value="cannon"> Cannon<br>
-							  <input type="radio" name="clubname" value="cap"> Cap<br>
-							  <input type="radio" name="clubname" value="charter"> Charter<br>
-							  <input type="radio" name="clubname" value="cloister"> Cloister<br>
-							  <input type="radio" name="clubname" value="colonial"> Colonial<br>
-							  <input type="radio" name="clubname" value="cottage"> Cottage<br>
-							  <input type="radio" name="clubname" value="ivy"> Ivy<br>
-							  <input type="radio" name="clubname" value="quad"> Quad<br>
-							  <input type="radio" name="clubname" value="terrace"> Terrace<br>
-							  <input type="radio" name="clubname" value="ti"> TI<br>
-							  <input type="radio" name="clubname" value="tower"> Tower <br> <br>
-							  Event date: <br>
+							  	<b>Club name:</b><br>
+							  	<div class="12u$">
+									<div class="select-wrapper">
+										<select name="demo-category" id="demo-category">
+											<option value="">- Eating Club -</option>
+											<option value="1">Cannon</option>
+											<option value="1">Cap</option>
+											<option value="1">Charter</option>
+											<option value="1">Cloister</option>
+											<option value="1">Colonial</option>
+											<option value="1">Cottage</option>
+											<option value="1">Ivy</option>
+											<option value="1">Quad</option>
+											<option value="1">Terrace</option>
+											<option value="1">TI</option>
+											<option value="1">Tower</option>
+										</select>
+									</div>
+								</div>
+							  	Event date: <br>
   								<input type="date" name="eventdate" value="2018-04-09" style="color: black;"> <br> <br>
-  							  Start time: <br>
- 							  <input type="time" name="start" value="23:00" style="color: black;"> <br> <br>
- 							  End time: <br>
- 							  <input type="time" name="end" value="02:00" style="color: black;"> <br> <br>
-  							  What is needed to get in?<br>
-							  <input type="radio" name="entry" value="puid"> PUID<br>
-							  <input type="radio" name="entry" value="pass"> Pass<br>
-							  <input type="radio" name="entry" value="list"> List<br> <br>
-							  Description of event:<br>
-							  <input type="text" name="description" value="Insert description of event">
-							  <br>
-							  <input type="submit" value="Submit">
-							  <input type="reset">
+  							  	Start time: <br>
+ 							  	<input type="time" name="start" value="23:00" style="color: black;"> <br> <br>
+ 							  	End time: <br>
+ 							  	<input type="time" name="end" value="02:00" style="color: black;"> <br> <br>
+  							  	What is needed to get in?<br>
+							  	<input type="radio" name="entry" value="puid"> PUID<br>
+							  	<input type="radio" name="entry" value="pass"> Pass<br>
+							  	<input type="radio" name="entry" value="list"> List<br> <br>
+								<div class="field">
+									<label for="message">Description of event (Optional):</label>
+									<textarea name="message" id="message" placeholder="Enter Description" rows="3"></textarea>
+								</div>
+							  	<ul class="actions">
+									<li><a href="" class="button submit">Submit</a></li>
+								</ul>
 							</form> 
 						</div>
 					</section>
