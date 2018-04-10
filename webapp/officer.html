@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>ProspectAve &mdash; Officer</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+        
+        <!-- REMOVE ON PRODUCTION, TESTING ONLY -->
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	</head>
+	<body>
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#events">Home</a></li>
+							<li><a href="#create">Create Event</a></li>
+							<li><a href="#remove">Remove Event</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Events -->
+					<section id="events" class="wrapper style1 fullscreen fade-up">
+						<div class="inner" id="top-inner"> 
+							<h2>Here are events registered for "Club Name"</h2>
+						</div> 
+					</section>
+
+				<!-- Create -->
+				<section id="create" class="wrapper style2 fade-up">
+					<div class="inner">
+                        <h2>Have an event at your eating club you want to add?</h2>
+                        <ul class="actions">
+                            <li><a onclick="getForm()" class="button">Create</a></li>
+                        </ul>
+                        <div id ="myForm"  style="display:none;">
+							<h2>Event Information Form</b></h2>
+							<p>Fill out the form below:</p>
+							<form method="post" action="#">
+							  	<h3>Club name: </h3>
+							  	<div class="12u$">
+									<div class="select-wrapper">
+										<select name="demo-category" id="demo-category">
+											<option value="">- Eating Club -</option>
+											<option value="1">Cannon</option>
+											<option value="1">Cap</option>
+											<option value="1">Charter</option>
+											<option value="1">Cloister</option>
+											<option value="1">Colonial</option>
+											<option value="1">Cottage</option>
+											<option value="1">Ivy</option>
+											<option value="1">Quad</option>
+											<option value="1">Terrace</option>
+											<option value="1">TI</option>
+											<option value="1">Tower</option>
+										</select>
+									</div>
+								</div>
+								<br>
+							  	<h3>Event date: </h3>
+  									<!--<input type="date" name="eventdate" value="2018-04-09" style="color: black;"> <br> <br> -->
+								  	<input type="datepicker" id="datepicker" /><br>
+								<h3>Start Time:</h3> 
+ 							  		<input type="time" name="start" value="23:00"> <br> 
+ 							  	<h3>End Time:</h3>
+								   <input type="time" name="end" value="02:00"> <br> 
+								<h3>What do you need to get in?</h3>
+									<div class="4u 12u$(small)">
+										<input type="radio" id="demo-priority-low" name="demo-priority">
+										<label for="demo-priority-low">PUID</label>
+									</div>
+									<div class="4u 12u$(small)">
+										<input type="radio" id="demo-priority-normal" name="demo-priority">
+										<label for="demo-priority-normal">Pass</label>
+									</div>
+									<div class="4u$ 12u$(small)">
+										<input type="radio" id="demo-priority-high" name="demo-priority">
+										<label for="demo-priority-high">List</label>
+									</div> <br>
+								<div class="field">
+									<label for="message">Description of event (Optional):</label>
+									<textarea name="message" id="message" placeholder="Enter Description" rows="3"></textarea>
+								</div>
+							  	<ul class="actions">
+									<li><input type="submit" value="Submit" class="special" /></li>
+									<li><input type="reset" value="Reset" /></li>
+								</ul>
+                            </form> 
+                        </div>    
+					</div>
+				</section>
+				
+				<!-- Delete -->
+					<section id="remove" class="wrapper style1 spotlights">
+						<section>
+							
+						</section>
+					</section>
+
+				
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li><b>ProspectAve</b>, by Bill Dong, Ben Liang,  Michael Man, June Ho Park, Yang Tu</li>
+                        <li>COS 333 Spring 2018</li>
+					</ul>
+				</div>
+			</footer>
+        
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/jquery.scrollex.min.js"></script>
+			<script src="js/jquery.scrolly.min.js"></script>
+			<script src="js/skel.min.js"></script>
+			<script src="js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="js/main.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        
+        
+        
+            <script>
+				$(document).ready(function() {
+    				$("#datepicker").datepicker();
+  				});	
+            </script>
+            <script>
+                function getForm() {
+                    var x = document.getElementById("myForm");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    }
+                    else
+                        x.style.display = "none";
+                }
+            </script>
+        
+        <style>
+            .loader {
+                  border: 16px solid #f3f3f3;
+                  border-radius: 50%;
+                  border-top: 16px solid #3498db;
+                  width: 120px;
+                  height: 120px;
+                  -webkit-animation: spin 2s linear infinite; /* Safari */
+                  animation: spin 2s linear infinite;
+                  margin-top: 20px;
+                  margin-bottom: 10px;
+                  display: none;
+                }
+
+                /* Safari */
+                @-webkit-keyframes spin {
+                  0% { -webkit-transform: rotate(0deg); }
+                  100% { -webkit-transform: rotate(360deg); }
+                }
+
+                @keyframes spin {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+                }
+        </style>
+	</body>
+</html>
