@@ -99,3 +99,17 @@
     text-decoration: none;
     width: auto;
   }
+
+#member {
+  text-align: center;
+}
+
+#emailicon {
+  top: -2vw; 
+  right: 0.5vw;
+}
+
+#linkedinicon {
+  top: -2vw; 
+  left: 0.5vw;
+}
