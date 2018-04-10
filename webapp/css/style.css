@@ -1,65 +1,82 @@
-#main-title {
-    margin-bottom: 30px !important;
-    font-size: 6.5vw;
+  #main-title {
+      margin-bottom: 30px !important;
+      font-size: 6.5vw;
+  }
+
+  #top-inner {
+      padding-top: 1em;
+  }
+
+  @media screen and (min-width: 1280px) {
+      #sidebar nav > ul > li {
+          margin-top: 1em;
+      }
+  }
+
+  .spotlights > section > .content {
+  	width: 100%;
+  }
+
+/* Three columns side by side */
+.column {
+    float: left;
+    width: 20%;
+    margin-bottom: 16px;
+    padding: 0 8px;
 }
 
-#top-inner {
-    padding-top: 1em;
-}
-
-@media screen and (min-width: 1280px) {
-    #sidebar nav > ul > li {
-        margin-top: 1em;
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
     }
 }
 
-.spotlights > section > .content {
-	width: 100%;
+/* Add some shadows to create a card effect */
+.card {
+    background-color: #493382;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-#teammembers {
-  display: table;
-  width: 90%;
-  margin: 20px;
+/* Some left and right padding inside the container */
+.container {
+    padding: 0 16px;
 }
 
-#teammembers a {
-  display: table-cell;
-  text-align: center;
-  width: 20%;
+/* Clear floats */
+.container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
-#teammembers img {
-  width: 80%;
-  height: auto;
-}
+  @media screen and (min-width: 1280px) {
+  	#sidebar + #wrapper {
+  		margin-left: 12em;
+  	}
 
-@media screen and (min-width: 1280px) {
-	#sidebar + #wrapper {
-		margin-left: 12em;
-	}
+  	#sidebar + #wrapper + #footer {
+  		margin-left: 12em;
+  	}
 
-	#sidebar + #wrapper + #footer {
-		margin-left: 12em;
-	}
+  	#sidebar {
+  		width: 12em;
+  	}
+  }
 
-	#sidebar {
-		width: 12em;
-	}
-}
+  #map {
+    position: relative;
+  }
 
-#map {
-  position: relative;
-}
+  #map a.Green{
+    filter: sepia(10%) saturate(1500%) hue-rotate(80deg);
+  }
 
-#map a.Green{
-  filter: sepia(10%) saturate(1500%) hue-rotate(80deg);
-}
+  #map a.Red{
+    filter: sepia(30%) saturate(2500%) hue-rotate(315deg);
+  }
 
-#map a.Red{
-  filter: sepia(30%) saturate(2500%) hue-rotate(315deg);
-}
-
-#map a.Yellow{
-  filter: sepia(100%) saturate(250%) hue-rotate(10deg) brightness(125%);
-}
+  #map a.Yellow{
+    filter: sepia(100%) saturate(250%) hue-rotate(10deg) brightness(125%);
+  }
