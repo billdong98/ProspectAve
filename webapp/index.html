@@ -11,7 +11,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="css/main.css" />
-        <link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
@@ -145,9 +146,10 @@
 								</div>
 								<br>
 							  	<h3>Event date: </h3>
-  								<input type="date" name="eventdate" value="2018-04-09" style="color: black;"> <br> <br>
-  							  	<h3>Start Time:</h3> 
- 							  	<input type="time" name="start" value="23:00" style="color: black;"> <br> <br>
+  									<!--<input type="date" name="eventdate" value="2018-04-09" style="color: black;"> <br> <br> -->
+								  	<input id="datepicker" />	
+								<h3>Start Time:</h3> 
+ 							  		<input type="time" name="start" value="23:00" style="color: black;"> <br> <br>
  							  	<h3>End Time:</h3>
 								   <input type="time" name="end" value="02:00" style="color: black;"> <br> <br>
 								<h3>What do you need to get in?</h3>
@@ -219,10 +221,15 @@
 			<script src="js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="js/main.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         
         
         
-                <script>
+            <script>
+				$(document).ready(function() {
+    				$("#datepicker").datepicker();
+  				});	
             </script>
         
         <style>
