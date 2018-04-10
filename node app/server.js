@@ -5,6 +5,13 @@ const http = require("http");
 const cors = require('cors');
 // require the sqlite module
 const sqlite3 = require('sqlite3').verbose();
+// to read POST request bodies
+const bodyParser = require('body-parser');
+
+
+// setup Express server
+app.use(bodyParser.json());
+app.use(cors());
 
 // connect to the db file
 let db = new sqlite3.Database('./clubs.db', (err) => {
@@ -14,9 +21,14 @@ let db = new sqlite3.Database('./clubs.db', (err) => {
   console.log('Connected to the SQLite DB.');
 });
 
-let selectAll = 'SELECT * FROM club_status ORDER BY date';
 
-app.use(cors());
+/* QUERIES */
+// gets all records from club_status
+let selectAll = 'SELECT * FROM club_status ORDER BY date';
+// [(club_name, date, poster, post_date, status, info)]
+let post = 'INSERT INTO club_status VALUES (?,?,?,?,?,?)';
+
+
 
 app.get('/status', (request, response) => { 
     console.log('Hello getter!');
@@ -26,21 +38,34 @@ app.get('/status', (request, response) => {
             throw err;
         }
         
-        rows.forEach((row)=> {
-            console.log(row);
-            response.send(row);
-        });
+        console.log(rows);
+        response.send(rows);
     });
 })
 
 app.post('/officer_post', (request, response) => {
+    var obj = request.body;
+    // IMPLEMENT THIS FOR JSON ARRAY LATER
+    console.log(obj);
+    var club = obj.c;
+    var date = obj.d;
+    var netID = obj.p;
+    var status = obj.s;
+    var post_date = "Testing";
+    var info = obj.i;
     
+    var data = [club, date, netID, post_date, status, info];
     
-    
+    db.run(post, data, (err)=>{
+       if(err){ 
+           response.status(500);
+           response.send("ERROR");
+           throw err;
+       }
+        console.log("CHANGED: " + this.changes);
+        response.send("Ok.");
+    });
 })
-
-
-
 
 app.listen(1738, (err) => {  
     if (err) {
