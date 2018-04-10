@@ -1,3 +1,4 @@
+  /* Main title */
   #main-title {
       margin-bottom: 30px !important;
       font-size: 6.5vw;
@@ -35,7 +36,7 @@
 
 /* Add some shadows to create a card effect */
 .card {
-    background-color: #493382;
+    background-color: #7d9fcf;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -65,22 +66,27 @@
   	}
   }
 
+/* Map */
   #map {
     position: relative;
   }
 
+/* Pass */
   #map a.Green{
     filter: sepia(10%) saturate(1500%) hue-rotate(80deg);
   }
 
+/* Closed */
   #map a.Red{
     filter: sepia(30%) saturate(2500%) hue-rotate(315deg);
   }
 
+/* Pass/List */
   #map a.Yellow{
     filter: sepia(100%) saturate(250%) hue-rotate(10deg) brightness(125%);
   }
 
+/* Datepicker */
   input[type="datepicker"],
   input[type="time"]
   {
@@ -100,15 +106,18 @@
     width: auto;
   }
 
+/* Member */
 #member {
   text-align: center;
 }
 
+/* Email icon */
 #emailicon {
   top: -2vw; 
   right: 0.5vw;
 }
 
+/* Linked-in icon */
 #linkedinicon {
   top: -2vw; 
   left: 0.5vw;
