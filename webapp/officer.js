@@ -85,10 +85,11 @@ function upload(){
         }
     });
     
+    alert("Form submitted!");   
     return false;
 }
 
-// deletes
-function delete() {
+function remove() {
     
+    return false;
 }
