@@ -87,3 +87,8 @@ function upload(){
     
     return false;
 }
+
+// deletes
+function delete() {
+    
+}

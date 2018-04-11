@@ -62,7 +62,7 @@
                         <div id ="myForm"  style="display:none;">
 							<h2>Event Information Form</b></h2>
 							<p>Fill out the form below:</p>
-							<form method="post" action="#">
+							<form>
 							  	<h3>Club name: </h3>
 							  	<div class="12u$">
 									<div class="select-wrapper">
@@ -105,10 +105,11 @@
 									<label for="message">Description of event (Optional):</label>
 									<textarea name="message" id="i" placeholder="Enter Description" rows="3"></textarea>
 								</div>
-							  	<ul class="actions">
+							  	<!--<ul class="actions">
 									<li><input type="submit" value="Submit" onclick="return upload();" class="special" /></li>
 									<li><input type="reset" value="Reset" /></li>
-								</ul>
+								</ul> -->
+								<button onclick="return upload();">Submit</button>
                             </form> 
                         </div>    
 					</div>
