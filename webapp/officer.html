@@ -82,7 +82,7 @@
 								<br>
 							  	<h3>Event date: </h3>
   									<!--<input type="date" name="eventdate" value="2018-04-09" style="color: black;"> <br> <br> -->
-								  	<input type="datepicker" id="datepicker" /><br>
+                                <div type="datepicker" id="datepicker"></div><br>
 								<h3>Start Time:</h3> 
  							  		<input type="time" name="start" value="23:00"> <br> 
  							  	<h3>End Time:</h3>
@@ -159,7 +159,10 @@
         
             <script>
 				$(document).ready(function() {
-    				$("#datepicker").multiDatesPicker();
+    				$("#datepicker").multiDatesPicker({
+                        maxPicks: 50 // no troll 
+                        // addDates: [today, tomorrow] PUT IN CURRENT CHOICES
+                    });
   				});	
             </script>
         <style>
