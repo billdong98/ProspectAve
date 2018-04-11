@@ -64,7 +64,7 @@ function upload(){
     var club = $("#c").val();
     var date = $("#datepicker").val();
     var poster = $("#n").val();
-    var status = $("#s").val();
+    var status = $('input[name=status]:checked', '#myForm').val();
     var info = $("#i").val();
     
     var obj = {"c": club, "d": date, "p": poster, "s": status, "i": info};
@@ -90,6 +90,6 @@ function upload(){
 }
 
 function remove() {
-    
+
     return false;
 }

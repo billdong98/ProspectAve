@@ -88,19 +88,23 @@
 									  <input type="datepicker" id="datepicker" /><br>
 								<h3>netid</h3>
 									<input type="text" id="n"> <br>
+								
 								<h3>What do you need to get in?</h3>
+								<div class="row uniform">
 									<div class="4u 12u$(small)">
-										<input type="radio" id="s" name="PUID" value="PUID"checked>
-										<label for="PUID">PUID</label>
+										<input type="radio" id="puid" name="status" value="PUID">
+										<label for="puid">PUID</label>
 									</div>
 									<div class="4u 12u$(small)">
-										<input type="radio" id="s" name="Pass" value="List">
-										<label for="Pass">Pass</label>
+										<input type="radio" id="pass" name="status" value="Pass">
+										<label for="pass">Pass</label>
 									</div>
 									<div class="4u$ 12u$(small)">
-										<input type="radio" id="s" name="List" value="Pass">
-										<label for="List">List</label>
+										<input type="radio" id="list" name="status" value="List">
+										<label for="list">List</label>
 									</div> <br>
+								</div>
+								<br>
 								<div class="field">
 									<label for="message">Description of event (Optional):</label>
 									<textarea name="message" id="i" placeholder="Enter Description" rows="3"></textarea>
