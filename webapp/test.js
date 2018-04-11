@@ -45,7 +45,7 @@ function downloadSuccess(rows){
         var status = data["status"];
         var info = data["info"];
         
-        out += "<tr><td>" + club + "</td><td>" + date + "</td><td>" + poster + "</td><td>" + status + "</td><td>" + post_date + "</td><td>" + info + "</td>";
+        out += "<tr><td>" + club + "</td><td>" + date + "</td><td>" + status + "</td><td>" + poster + "</td><td>" + post_date + "</td><td>" + info + "</td>";
         
         console.log(club);
         console.log(date);

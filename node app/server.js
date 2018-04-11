@@ -7,7 +7,7 @@ const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 // to read POST request bodies
 const bodyParser = require('body-parser');
-
+const dateTime = require('node-datetime');
 
 // setup Express server
 app.use(bodyParser.json());
@@ -31,8 +31,8 @@ let post = 'INSERT INTO club_status VALUES (?,?,?,?,?,?)';
 
 
 app.get('/status', (request, response) => { 
-    console.log('Hello getter!');
-    
+    console.log('Hello getter! Current date: ' + currentDate());
+        
     db.all(selectAll, [], (err, rows) => {
         if(err){
             throw err;
@@ -43,6 +43,22 @@ app.get('/status', (request, response) => {
     });
 })
 
+
+app.get('/clear', (request, response) => { 
+    console.log('CLEARING DB');
+    
+    db.run("DELETE from club_status", [], (err, result) => {
+        if(err){
+            throw err;
+        }
+        
+        console.log(result);
+        response.send(result);
+    });
+})
+
+
+
 app.post('/officer_post', (request, response) => {
     var obj = request.body;
     // IMPLEMENT THIS FOR JSON ARRAY LATER
@@ -51,7 +67,7 @@ app.post('/officer_post', (request, response) => {
     var date = obj.d;
     var netID = obj.p;
     var status = obj.s;
-    var post_date = "Testing";
+    var post_date = currentDate();
     var info = obj.i;
     
     var data = [club, date, netID, post_date, status, info];
@@ -74,3 +90,10 @@ app.listen(1738, (err) => {
 
     console.log('server is listening on port: 1738');
 })
+
+// returns the current time in 
+function currentDate(){
+    var dt = dateTime.create();
+    var formatted = dt.format('m-d-Y');
+    return formatted;
+}
