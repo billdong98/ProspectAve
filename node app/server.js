@@ -51,7 +51,7 @@ app.post('/officer_post', (request, response) => {
     var date = obj.d;
     var netID = obj.p;
     var status = obj.s;
-    var post_date = "Testing";
+    var post_date = Date.now();
     var info = obj.i;
     
     var data = [club, date, netID, post_date, status, info];

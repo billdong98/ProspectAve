@@ -48,17 +48,20 @@
 											</thead>
 										</table>
 									</div>
-								</section>
+							</section>
+							
 						</div> 
 					</section>
 
 				<!-- Create -->
 				<section id="create" class="wrapper style2 fade-up">
 					<div class="inner">
-                        <h2>Add An Event</h2>
-                        <ul class="actions">
-                            <li><a onclick="getForm()" class="button">Create</a></li>
-                        </ul>
+						<div id = "addEvent">
+							<h2>Add An Event</h2>
+								<ul class="actions">
+									<li><a onclick="getForm();" class="button">Create</a></li>
+								</ul>
+						</div>
                         <div id ="myForm"  style="display:none;">
 							<h2>Event Information Form</b></h2>
 							<p>Fill out the form below:</p>
@@ -213,12 +216,17 @@
     
             <script>
                 function getForm() {
-                    var x = document.getElementById("myForm");
+					var x = document.getElementById("myForm");
+					var y = document.getElementById("addEvent");
                     if (x.style.display === "none") {
                         x.style.display = "block";
                     }
                     else
-                        x.style.display = "none";
+						x.style.display = "none";
+					if (y.style.display==="none")
+						y.style.display = "block";
+					else
+						y.style.display ="none";
 				}
 				function getForm2() {
                     var x = document.getElementById("myForm2");
