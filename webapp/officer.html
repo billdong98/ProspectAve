@@ -32,69 +32,91 @@
 				<!-- Events -->
 					<section id="events" class="wrapper style1 fullscreen fade-up">
 						<div class="inner" id="top-inner"> 
-							<h2>Registered Events</h2>
+							<section>
+								<h2>Registered Events</h2>
+									<div class="table-wrapper">
+										<table id="table">
+											<thead>
+												<tr>
+													<th>Club</th>
+													<th>Date</th>
+													<th>Status</th>
+													<th>Poster</th>
+													<th>Post Date</th>
+													<th>Description</th>
+												</tr>
+											</thead>
+										</table>
+									</div>
+							</section>
+							
 						</div> 
 					</section>
 
 				<!-- Create -->
 				<section id="create" class="wrapper style2 fade-up">
 					<div class="inner">
-                        <h2>Add An Event</h2>
-                        <ul class="actions">
-                            <li><a onclick="getForm()" class="button">Create</a></li>
-                        </ul>
+						<div id = "addEvent">
+							<h2>Add An Event</h2>
+								<ul class="actions">
+									<li><a onclick="getForm();" class="button">Create</a></li>
+								</ul>
+						</div>
                         <div id ="myForm"  style="display:none;">
 							<h2>Event Information Form</b></h2>
 							<p>Fill out the form below:</p>
-							<form method="post" action="#">
+							<form>
 							  	<h3>Club name: </h3>
 							  	<div class="12u$">
 									<div class="select-wrapper">
-										<select name="demo-category" id="demo-category">
+										<select name="club" id="c">
 											<option value="">- Eating Club -</option>
-											<option value="1">Cannon</option>
-											<option value="2">Cap</option>
-											<option value="3">Charter</option>
-											<option value="4">Cloister</option>
-											<option value="5">Colonial</option>
-											<option value="6">Cottage</option>
-											<option value="7">Ivy</option>
-											<option value="8">Quad</option>
-											<option value="9">Terrace</option>
-											<option value="10">TI</option>
-											<option value="11">Tower</option>
+											<option value="Cannon">Cannon</option>
+											<option value="Cap">Cap</option>
+											<option value="Charter">Charter</option>
+											<option value="Cloister">Cloister</option>
+											<option value="Colonial">Colonial</option>
+											<option value="Cottage">Cottage</option>
+											<option value="Ivy">Ivy</option>
+											<option value="Quad">Quad</option>
+											<option value="Terrace">Terrace</option>
+											<option value="TI">TI</option>
+											<option value="Tower">Tower</option>
 										</select>
 									</div>
 								</div>
 								<br>
 							  	<h3>Event date: </h3>
   									<!--<input type="date" name="eventdate" value="2018-04-09" style="color: black;"> <br> <br> -->
-                                <div type="datepicker" id="datepicker"></div><br>
-								<h3>Start Time:</h3> 
- 							  		<input type="time" name="start" value="23:00"> <br> 
- 							  	<h3>End Time:</h3>
-								   <input type="time" name="end" value="02:00"> <br> 
+									  <input type="datepicker" id="datepicker" /><br>
+								<h3>netid</h3>
+									<input type="text" id="n"> <br>
+								
 								<h3>What do you need to get in?</h3>
+								<div class="row uniform">
 									<div class="4u 12u$(small)">
-										<input type="radio" id="demo-priority-low" name="demo-priority">
-										<label for="demo-priority-low">PUID</label>
+										<input type="radio" id="puid" name="status" value="PUID">
+										<label for="puid">PUID</label>
 									</div>
 									<div class="4u 12u$(small)">
-										<input type="radio" id="demo-priority-normal" name="demo-priority">
-										<label for="demo-priority-normal">Pass</label>
+										<input type="radio" id="pass" name="status" value="Pass">
+										<label for="pass">Pass</label>
 									</div>
 									<div class="4u$ 12u$(small)">
-										<input type="radio" id="demo-priority-high" name="demo-priority">
-										<label for="demo-priority-high">List</label>
+										<input type="radio" id="list" name="status" value="List">
+										<label for="list">List</label>
 									</div> <br>
+								</div>
+								<br>
 								<div class="field">
 									<label for="message">Description of event (Optional):</label>
-									<textarea name="message" id="message" placeholder="Enter Description" rows="3"></textarea>
+									<textarea name="message" id="i" placeholder="Enter Description" rows="3"></textarea>
 								</div>
 							  	<ul class="actions">
-									<li><input type="submit" value="Submit" onclick="return upload();" class="special" /></li>
+									<li><input type="submit" value="Submit" onclick="getForm(); return upload();" class="special" /></li>
 									<li><input type="reset" value="Reset" /></li>
-								</ul>
+								</ul> 
+								<!--<button onclick="return upload();">Submit</button> -->
                             </form> 
                         </div>    
 					</div>
@@ -187,19 +209,24 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="js/main.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-			<script src="test.js"></script>
+			<script src="officer.js"></script>
         
         
             <script src="js/jquery-ui.multidatespicker.js"></script>
     
             <script>
                 function getForm() {
-                    var x = document.getElementById("myForm");
+					var x = document.getElementById("myForm");
+					var y = document.getElementById("addEvent");
                     if (x.style.display === "none") {
                         x.style.display = "block";
                     }
                     else
-                        x.style.display = "none";
+						x.style.display = "none";
+					if (y.style.display==="none")
+						y.style.display = "block";
+					else
+						y.style.display ="none";
 				}
 				function getForm2() {
                     var x = document.getElementById("myForm2");

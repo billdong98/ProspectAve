@@ -43,7 +43,7 @@ function downloadSuccess(rows){
         var status = data["status"];
         var info = data["info"];
         
-        out += "<tr><td>" + club + "</td><td>" + date + "</td><td>" + poster + "</td><td>" + post_date + "</td><td>" + status + "</td><td>" + info + "</td>";
+        out += "<tr><td>" + club + "</td><td>" + date + "</td><td>" + status + "</td><td>" + poster + "</td><td>" + post_date + "</td><td>" + info + "</td>";
         
         console.log(club);
         console.log(date);
@@ -62,9 +62,9 @@ function upload(){
     console.log("Uploading");
     
     var club = $("#c").val();
-    var date = $("#d").val();
+    var date = $("#datepicker").val();
     var poster = $("#n").val();
-    var status = $("#s").val();
+    var status = $('input[name=status]:checked', '#myForm').val();
     var info = $("#i").val();
     
     var obj = {"c": club, "d": date, "p": poster, "s": status, "i": info};
@@ -85,5 +85,11 @@ function upload(){
         }
     });
     
+    alert("Form submitted!");   
+    return false;
+}
+
+function remove() {
+
     return false;
 }
