@@ -69,7 +69,15 @@
 								<br>
 							  	<h3>Event date: </h3>
   									<!--<input type="date" name="eventdate" value="2018-04-09" style="color: black;"> <br> <br> -->
+<<<<<<< HEAD
 								  	<input type="datepicker" id="datepicker" /><br>
+=======
+                                <div type="datepicker" id="datepicker"></div><br>
+								<h3>Start Time:</h3> 
+ 							  		<input type="time" name="start" value="23:00"> <br> 
+ 							  	<h3>End Time:</h3>
+								   <input type="time" name="end" value="02:00"> <br> 
+>>>>>>> master
 								<h3>What do you need to get in?</h3>
 									<div class="4u 12u$(small)">
 										<input type="radio" id="s" name="PUID" value="PUID"checked>
@@ -182,16 +190,12 @@
 			<script src="js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="js/main.js"></script>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 			<script src="test.js"></script>
         
         
-            <script>
-				$(document).ready(function() {
-    				$("#datepicker").datepicker();
-  				});	
-            </script>
+            <script src="js/jquery-ui.multidatespicker.js"></script>
+    
             <script>
                 function getForm() {
                     var x = document.getElementById("myForm");
@@ -211,6 +215,15 @@
                 }
             </script>
         
+        
+            <script>
+				$(document).ready(function() {
+    				$("#datepicker").multiDatesPicker({
+                        maxPicks: 50 // no troll 
+                        // addDates: [today, tomorrow] PUT IN CURRENT CHOICES
+                    });
+  				});	
+            </script>
         <style>
             .loader {
                   border: 16px solid #f3f3f3;
