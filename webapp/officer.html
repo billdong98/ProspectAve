@@ -142,16 +142,9 @@
 			<script src="js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="js/main.js"></script>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-        
-        
-        
-            <script>
-				$(document).ready(function() {
-    				$("#datepicker").datepicker();
-  				});	
-            </script>
+            <script src="js/jquery-ui.multidatespicker.js"></script>
+    
             <script>
                 function getForm() {
                     var x = document.getElementById("myForm");
@@ -163,6 +156,12 @@
                 }
             </script>
         
+        
+            <script>
+				$(document).ready(function() {
+    				$("#datepicker").multiDatesPicker();
+  				});	
+            </script>
         <style>
             .loader {
                   border: 16px solid #f3f3f3;
