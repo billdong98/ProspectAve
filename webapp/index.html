@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet"  href="css/vanillacalendar.css">
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
@@ -65,10 +66,33 @@
 					</section>
 				
 				<section id="one" class="wrapper style2 fade-up">
-						<div class="inner">
-							<h2>Calendar</h2>
+					<div class="inner">
+						<h2>Calendar</h2>
+							<div id="v-cal">
+							  <div class="vcal-header">
+							    <button class="vcal-btn" data-calendar-toggle="previous">
+							      <svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+							        <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+							      </svg>
+							    </button>
 
-						</div>
+							    <div class="vcal-header__label" data-calendar-label="month">
+							      March 2017
+							    </div>
+
+							    <button class="vcal-btn" data-calendar-toggle="next">
+							      <svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+							        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+							      </svg>
+							    </button>
+							  </div>
+
+							  <div class="vcal-week">
+							    <span>Mon</span> <span>Tue</span><span>Wed</span> <span>Thu</span> <span>Fri</span> <span>Sat</span> <span>Sun</span>
+							  </div>
+							  <div class="vcal-body" data-calendar-area="month"></div>
+							</div>
+					</div>
 				</section>
 
 				<!-- Two -->
@@ -214,6 +238,8 @@
 			<script src="js/main.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+			<script src="js/vanillacalendar.js"></script>
+
         
         
         
