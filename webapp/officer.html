@@ -50,19 +50,19 @@
 							  	<h3>Club name: </h3>
 							  	<div class="12u$">
 									<div class="select-wrapper">
-										<select name="demo-category" id="demo-category">
+										<select name="club" id="c">
 											<option value="">- Eating Club -</option>
-											<option value="1">Cannon</option>
-											<option value="2">Cap</option>
-											<option value="3">Charter</option>
-											<option value="4">Cloister</option>
-											<option value="5">Colonial</option>
-											<option value="6">Cottage</option>
-											<option value="7">Ivy</option>
-											<option value="8">Quad</option>
-											<option value="9">Terrace</option>
-											<option value="10">TI</option>
-											<option value="11">Tower</option>
+											<option value="Cannon">Cannon</option>
+											<option value="Cap">Cap</option>
+											<option value="Charter">Charter</option>
+											<option value="Cloister">Cloister</option>
+											<option value="Colonial">Colonial</option>
+											<option value="Cottage">Cottage</option>
+											<option value="Ivy">Ivy</option>
+											<option value="Quad">Quad</option>
+											<option value="Terrace">Terrace</option>
+											<option value="TI">TI</option>
+											<option value="Tower">Tower</option>
 										</select>
 									</div>
 								</div>
@@ -70,26 +70,22 @@
 							  	<h3>Event date: </h3>
   									<!--<input type="date" name="eventdate" value="2018-04-09" style="color: black;"> <br> <br> -->
 								  	<input type="datepicker" id="datepicker" /><br>
-								<h3>Start Time:</h3> 
- 							  		<input type="time" name="start" value="23:00"> <br> 
- 							  	<h3>End Time:</h3>
-								   <input type="time" name="end" value="02:00"> <br> 
 								<h3>What do you need to get in?</h3>
 									<div class="4u 12u$(small)">
-										<input type="radio" id="demo-priority-low" name="demo-priority">
-										<label for="demo-priority-low">PUID</label>
+										<input type="radio" id="s" name="PUID" value="PUID"checked>
+										<label for="PUID">PUID</label>
 									</div>
 									<div class="4u 12u$(small)">
-										<input type="radio" id="demo-priority-normal" name="demo-priority">
-										<label for="demo-priority-normal">Pass</label>
+										<input type="radio" id="s" name="Pass" value="List">
+										<label for="Pass">Pass</label>
 									</div>
 									<div class="4u$ 12u$(small)">
-										<input type="radio" id="demo-priority-high" name="demo-priority">
-										<label for="demo-priority-high">List</label>
+										<input type="radio" id="s" name="List" value="Pass">
+										<label for="List">List</label>
 									</div> <br>
 								<div class="field">
 									<label for="message">Description of event (Optional):</label>
-									<textarea name="message" id="message" placeholder="Enter Description" rows="3"></textarea>
+									<textarea name="message" id="i" placeholder="Enter Description" rows="3"></textarea>
 								</div>
 							  	<ul class="actions">
 									<li><input type="submit" value="Submit" onclick="return upload();" class="special" /></li>

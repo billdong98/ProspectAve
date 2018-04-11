@@ -62,7 +62,7 @@ function upload(){
     console.log("Uploading");
     
     var club = $("#c").val();
-    var date = $("#d").val();
+    var date = $("#datepicker").val();
     var poster = $("#n").val();
     var status = $("#s").val();
     var info = $("#i").val();
