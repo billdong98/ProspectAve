@@ -43,9 +43,9 @@ function downloadSuccess(rows){
         var post_date = row["post_date"];
         var status = row["status"];
         var info = row["info"];
-        
+
         if(date == "" || club == "" || status == "") continue; 
-        
+
         if(!(date in window.data)){
             window.data[date] = [];
         }
@@ -58,25 +58,25 @@ function downloadSuccess(rows){
 /* Uses the mapping in window.data and applies it to each of the clubs */
 function update(date){
     var status = window.data[date];
-    
+
     for(var i=0; i<clubs.length;i++){
         var c = clubs[i];
         $("#" + c + "_overlay").removeClass();
         $("#" + c + "_overlay").addClass("closed");
     }
-    
+
     if(status == undefined){
         console.log("No values for: " + date);
         return;
     }
-    
+
     for(var j=0; j< status.length; j++){
         var row = status[j];
         var club = row["club_name"];
         var date = row["date"]; //should always be the same
         var s = row["status"];
         var info = row["info"];
-        
+
         var overlay;
         if(club == "Tiger Inn"){
             overlay = $("#ti_overlay");
@@ -84,7 +84,7 @@ function update(date){
             overlay = $("#" + club.toLowerCase() + "_overlay");
         }
         console.log(overlay);
-        
+
         if(s== "PUID"){
             overlay.removeClass();
             overlay.addClass("puid");
@@ -103,7 +103,7 @@ function changeDate(d){
     window.date = dateString;
     dateDisplay.html("Date: " + window.date);
     update(window.date);
-    
+
     $('html, body').animate({
         scrollTop: $("#wrapper").offset().top
     }, 700);
