@@ -55,6 +55,7 @@
 
 #v-cal .vcal-header__label {
   font-weight: bold;
+  font-size: 16.5pt;
   text-align: center;
   width: 100%;
 }
