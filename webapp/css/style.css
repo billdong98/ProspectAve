@@ -72,6 +72,10 @@
     background: #19273F; 
 } 
 
+#sidebar nav a:after {
+    linear-gradient(to right, white, white)
+}
+
 /* Main title */
   #main-title {
       margin-bottom: 30px !important;
@@ -396,14 +400,14 @@
 
 #infobar {
   padding: 1.5em 1.5em 0.5em 1.5em ;
-  background: #ff8f00;
+  background: #ffd347;
   cursor: default;
   height: 100vh;
   left: 0;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   position: fixed;
-  text-align: left;
+  text-align: center;
   top: 0;
   width: 12em;
   word-wrap: break-word;
@@ -419,10 +423,6 @@
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    -moz-justify-content: center;
-    -webkit-justify-content: center;
-    -ms-justify-content: center;
-    justify-content: center;
     -moz-transform: translateY(0);
     -webkit-transform: translateY(0);
     -ms-transform: translateY(0);
@@ -443,6 +443,7 @@
   #infobar nav > ul {
     list-style: none;
     padding: 0;
+    text-align: left;
   }
 
     #infobar nav > ul > li {
@@ -501,12 +502,12 @@
     border: 0;
     color: black;
     display: block;
-    font-size: 0.7em;
+    font-size: 0.75em;
     font-weight: 400;
-    letter-spacing: 0.15em;
-    line-height: 1.75;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
     outline: 0;
-    padding: 1.5em 0;
+    padding: 0.1em 0;
     position: relative;
     text-decoration: none;
   }
@@ -556,7 +557,7 @@
       top: 0;
       width: 100%;
       overflow-x: hidden;
-      overflow-y: auto;
+      overflow-y: hidden;
       position: fixed;
       word-wrap: break-word;
       z-index: 10001;
