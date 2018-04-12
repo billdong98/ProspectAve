@@ -27,6 +27,10 @@
 	</head>
 	<body>
 
+		<!-- Info bar -->
+		<section id="infobar">
+		</section>
+
 		<!-- Sidebar -->
 		<section id="sidebar">
 			<div class="inner">
@@ -55,7 +59,7 @@
 						<a href="http://terracefuture.org/" target="_blank"><img class="terrace" id="Terrace" src="images/terrace2.png"/>
 							<div class="terracetext"> Terrace </div></a>
 						<!-- Tower -->
-				        <a href="http://www.princetontowerclub.com/" target="_blank" class="Yellow"><img class="tower" id="Tower" src="images/tower.png"/>
+				        <a href="http://www.princetontowerclub.com/" target="_blank" class="Yellow"><img class="tower" style="filter: sepia(10%) saturate(1500%) hue-rotate(80deg);" id="Tower" src="images/tower.png"/>
 				        	<div class="towertext"> Tower </div> </a>
 				        <!-- Cannon -->
 				        <a href="https://cannonclub.com/" target="_blank" class="Yellow"><img class="cannon" id="Cannon" src="images/cannon.png"/>
@@ -76,7 +80,7 @@
 				        <a href="http://cloisterinn.com/" target="_blank"><img class="cloister" id="Cloister" src="images/cloister.png"/>
 				        	<div class="cloistertext"> Cloister </div></a>
 				        <!-- Charter -->
-				        <a href="http://alumni.charterclub.org/" target="_blank"><img class="charter" id="Charter" src="images/charter.png"/>
+				        <a onmouseover="showInfo()" onmouseout="hideInfo()" href="http://alumni.charterclub.org/" target="_blank"><img class="charter" id="Charter" src="images/charter.png"/>
 				        	<div class="chartertext"> Charter </div></a>
 				        <!-- Colonial -->
 				        <a href="http://colonialclub.com/" target="_blank"><img class="colonial" id="Colonial" src="images/colonial.png"/>
@@ -238,36 +242,7 @@
 		<!-- Color changing functions -->
 
        	<!-- PUID -->
-       	
-       	<!-- <svg> <defs><filter id="green">
-   		<feColorMatrix
- 		type="matrix"
-		values="0 0 0 0 0
-	            0 1.6 0 0 0
-	            0 0 0 0 0
-	            0 0 0 1 0 "/>
-  		</filter> </defs> </svg> -->
-  		
-  		<!-- Pass/List --> <!--
-       	<svg> <defs><filter id="yellow">
-    	<feColorMatrix
-	    type="matrix"
-	    values="2.8 0 0 0 0
-		        0 2.7 0 0 0
-	            0 0 0 0 0
-	            0 0 0 1 0 "/>  	
-		</filter> </defs> </svg>
-  			-->
-    	<!-- Closed --> <!--
-       	<svg> <defs><filter id="red">
-   		<feColorMatrix
-	    type="matrix"		 
-		values="3 0 0 0 0
-				0 0.2 0 0 0
-			    0 0 0.2 0 0
-		        0 0 0 1 0 "/>
-  		</filter> </defs> </svg>
-        -->
+
 		<!-- Scripts -->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.scrollex.min.js"></script>
@@ -293,6 +268,25 @@
     	$("#datepicker").datepicker();
   		});
   		</script>
+
+  		<script>
+  			$(document).ready(function() {
+    			var infobar = document.getElementById("infobar");
+    			infobar.style.display="none";
+  			});
+        	function showInfo() { 
+			    var infobar = document.getElementById("infobar"); 
+			    var out = "<div class='inner'> <nav> <ul> <li><a href='#intro'>Club: Charter</a></li> <li><a href='#three'>Information: Come to Charter Friday </a></li> </ul> </nav> </div>";
+			    infobar.innerHTML = out;
+			    infobar.style.display="";
+			    sidebar.style.display="none";
+			}
+
+			function hideInfo() { 
+				infobar.style.display="none";
+			    sidebar.style.display="";
+			}
+		</script>
         
         <style>
             .loader {
