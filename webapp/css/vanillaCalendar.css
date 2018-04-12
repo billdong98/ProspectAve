@@ -2,12 +2,15 @@
   --vcal-bg-color: #fff;
   --vcal-border-radius: 0;
   --vcal-border-color: #e7e9ed;
-  --vcal-today-bg-color: #10989E;
-  --vcal-today-color: #fff;
-  --vcal-selected-bg-color: #E7E9ED;
+  --vcal-today-bg-color: #E7E9ED;
+  --vcal-today-color: #000;
+  --vcal-selected-bg-color: #FF9E2D;
   --vcal-selected-color: #333;
+  --vcal-title-bg-color: #E7E9ED;
+   --vcal-title-color: #333;
 }
 
+/* #E4923C*/
 #v-cal *, #v-cal *:before, #v-cal *:after {
   box-sizing: border-box;
 }
@@ -55,13 +58,13 @@
 
 #v-cal .vcal-header__label {
   font-weight: bold;
-  font-size: 16.5pt;
+  font-size: 18pt;
   text-align: center;
   width: 100%;
 }
 
 #v-cal .vcal-week {
-  background-color: var(--vcal-selected-bg-color);
+  background-color: var(--vcal-title-bg-color);
   display: flex;
   flex-wrap: wrap;
 }

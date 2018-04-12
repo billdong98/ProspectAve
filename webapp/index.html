@@ -52,6 +52,7 @@
 			<section id="intro" class="wrapper style1 fullscreen fade-up">
 				<div class="inner" id="top-inner">
 					<h1 class="major" id="main-title">P<span style="font-size:4.5vw">ROSPECT</span>A<span style="font-size:4.5vw">VE</span></h1>
+                    <p id="date_display">Date: </p>
 					<!-- Map -->
 					<div class="containerdiv">
 						<img class="map" src="images/map2.png" width="100%" height="100%" align="middle">
@@ -80,7 +81,7 @@
 				        <a href="http://cloisterinn.com/" target="_blank" id="cloister_overlay"><img class="cloister" id="Cloister" src="images/cloister.png"/>
 				        	<div class="cloistertext"> Cloister </div></a>
 				        <!-- Charter -->
-				        <a onmouseover="showInfo()" onmouseout="hideInfo()" href="http://alumni.charterclub.org/" target="_blank"><img class="charter" id="Charter" src="images/charter.png"/>
+				        <a onmouseover="showInfo()" onmouseout="hideInfo()" href="http://alumni.charterclub.org/" id="charter_overlay" target="_blank"><img class="charter" id="Charter" src="images/charter.png"/>
 				        	<div class="chartertext"> Charter </div></a>
 				        <!-- Colonial -->
 				        <a href="http://colonialclub.com/" target="_blank" id="colonial_overlay"><img class="colonial" id="Colonial" src="images/colonial.png"/>
@@ -88,7 +89,7 @@
 				        <!-- TI -->
 				        <a href="http://www.tigerinn.net/" target="_blank" id="ti_overlay"><img class="ti" id="TI" src="images/ti.png"/>
 				        	<div class="titext"> TI </div></a> 
-				    <div>
+                    </div>
 				</div>
 			</section>
 			
@@ -245,21 +246,22 @@
        	<!-- PUID -->
 
 		<!-- Scripts -->
-		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
 		<script src="js/jquery.scrollex.min.js"></script>
 		<script src="js/jquery.scrolly.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/util.js"></script>
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 		<script src="js/main.js"></script>
+        <script src="js/moment.js"></script>
         <script src="js/map.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        
 		<!--for Calendar section-->
 		<script>
 		window.addEventListener('load', function () {
 			vanillaCalendar.init({
-				disablePastDays: false
+				disablePastDays: true
 			});
 		})
 		</script>

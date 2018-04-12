@@ -1,9 +1,13 @@
 /* GLOBAL date->array store */
 window.data = {};
+window.date = moment(Date.now()).format('MM/DD/YYYY');
+var dateDisplay;
 
 let clubs = ["terrace", "tower", "colonial", "cannon", "quadrangle", "ti", "ivy","cottage", "cap", "cloister", "charter"];
 
 $(document).ready(function(){
+    dateDisplay = $("#date_display");
+    dateDisplay.html("Date: " + window.date);
     download(); // Download THIS week's data
 });
 
@@ -30,7 +34,6 @@ function download(){
 function downloadSuccess(rows){
 
     console.log(rows);
-    
     // iterate over each JSON object
     for (i = 0; i < rows.length; i++) {
         var row = rows[i];
@@ -48,21 +51,23 @@ function downloadSuccess(rows){
         }
         window.data[date].push(row);
     }
+    // update map on successful download
+    update(window.date);
 }
 
 /* Uses the mapping in window.data and applies it to each of the clubs */
 function update(date){
     var status = window.data[date];
     
-    if(status == undefined){
-        console.log("No values for: " + date);
-        return;
-    }
-    
     for(var i=0; i<clubs.length;i++){
         var c = clubs[i];
         $("#" + c + "_overlay").removeClass();
         $("#" + c + "_overlay").addClass("closed");
+    }
+    
+    if(status == undefined){
+        console.log("No values for: " + date);
+        return;
     }
     
     for(var j=0; j< status.length; j++){
@@ -88,4 +93,18 @@ function update(date){
             overlay.addClass("list");
         }
     }
+}
+
+// triggered by selecting a new date on the calendar
+function changeDate(d){
+    var date = $(d).attr("data-calendar-date");
+    var dateString = moment(Date.parse(date)).format('MM/DD/YYYY');;
+    console.log(dateString);
+    window.date = dateString;
+    dateDisplay.html("Date: " + window.date);
+    update(window.date);
+    
+    $('html, body').animate({
+        scrollTop: $("#wrapper").offset().top
+    }, 700);
 }
