@@ -1638,13 +1638,17 @@ body.is-loading *, body.is-loading *:before, body.is-loading *:after {
 
 /* Type */
 
-body, input, select, textarea {
-    color: rgba(255, 255, 255, 0.55);
-    font-family: 'Brandon Grotesque'; 
-    font-size: 16.5pt;
-    font-weight: normal;
-    line-height: 1.75;
-}
+	body, input, select, textarea {
+		color: rgba(255, 255, 255, 0.55);
+		font-family: 'Brandon Grotesque'; 
+		font-size: 16.5pt;
+		font-weight: normal;
+		line-height: 1.75;
+	}
+	/* for Calendar */
+	body section .inner .container #v-cal{
+		color: #333;
+	}
 
 @media screen and (max-width: 1680px) {
 

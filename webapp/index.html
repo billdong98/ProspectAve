@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-		<link rel="stylesheet"  href="css/vanillacalendar.css">
+		<link rel="stylesheet"  href="css/vanillaCalendar.css">
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
@@ -26,6 +26,10 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	</head>
 	<body>
+
+		<!-- Info bar -->
+		<section id="infobar">
+		</section>
 
 		<!-- Sidebar -->
 		<section id="sidebar">
@@ -76,7 +80,7 @@
 				        <a href="http://cloisterinn.com/" target="_blank" id="cloister_overlay"><img class="cloister" id="Cloister" src="images/cloister.png"/>
 				        	<div class="cloistertext"> Cloister </div></a>
 				        <!-- Charter -->
-				        <a href="http://alumni.charterclub.org/" target="_blank" id="charter_overlay"><img class="charter" id="Charter" src="images/charter.png"/>
+				        <a onmouseover="showInfo()" onmouseout="hideInfo()" href="http://alumni.charterclub.org/" target="_blank"><img class="charter" id="Charter" src="images/charter.png"/>
 				        	<div class="chartertext"> Charter </div></a>
 				        <!-- Colonial -->
 				        <a href="http://colonialclub.com/" target="_blank" id="colonial_overlay"><img class="colonial" id="Colonial" src="images/colonial.png"/>
@@ -87,34 +91,47 @@
 				    <div>
 				</div>
 			</section>
-				
+			
+			<!-- One -->
 			<section id="one" class="wrapper style3-alt fade-up">
 				<div class="inner">
 					<h2>CALENDAR</h2>		
-					<div id="v-cal">
-						<div class="vcal-header">
-						    <button class="vcal-btn" data-calendar-toggle="previous">
-								<svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-					        		<path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
-								</svg>
-						    </button>
+					<div class="container">
+						<div id = "v-cal">
+							<!--HEADER-->
+							<div class="vcal-header">
+								<button class="vcal-btn" data-calendar-toggle="previous">
+									<svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+										<path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+									</svg>
+								</button>
 
-						    <div class="vcal-header__label" data-calendar-label="month">
-							      March 2017
-						    </div>
+								<div class="vcal-header__label" data-calendar-label="month">
+									March 2017
+								</div>
 
-						    <button class="vcal-btn" data-calendar-toggle="next">
-								<svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-					        		<path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
-								</svg>
-						    </button>
+
+								<button class="vcal-btn" data-calendar-toggle="next">
+									<svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+										<path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+									</svg>
+								</button>
+							</div>
+
+							<!--WEEKS-->
+							<div class="vcal-week">
+								<span>Mon</span>
+								<span>Tue</span>
+								<span>Wed</span>
+								<span>Thu</span>
+								<span>Fri</span>
+								<span>Sat</span>
+								<span>Sun</span>
+							</div>
+							<div class="vcal-body" data-calendar-area="month"></div>
 						</div>
-
-						<div class="vcal-week">
-						    <span>Mon</span> <span>Tue</span><span>Wed</span> <span>Thu</span> <span>Fri</span> <span>Sat</span> <span>Sun</span>
-						</div>
-						<div class="vcal-body" data-calendar-area="month"></div>
 					</div>
+
 				</div>
 			</section>
 
@@ -226,36 +243,7 @@
 		<!-- Color changing functions -->
 
        	<!-- PUID -->
-       	
-       	<!-- <svg> <defs><filter id="green">
-   		<feColorMatrix
- 		type="matrix"
-		values="0 0 0 0 0
-	            0 1.6 0 0 0
-	            0 0 0 0 0
-	            0 0 0 1 0 "/>
-  		</filter> </defs> </svg> -->
-  		
-  		<!-- Pass/List --> <!--
-       	<svg> <defs><filter id="yellow">
-    	<feColorMatrix
-	    type="matrix"
-	    values="2.8 0 0 0 0
-		        0 2.7 0 0 0
-	            0 0 0 0 0
-	            0 0 0 1 0 "/>  	
-		</filter> </defs> </svg>
-  			-->
-    	<!-- Closed --> <!--
-       	<svg> <defs><filter id="red">
-   		<feColorMatrix
-	    type="matrix"		 
-		values="3 0 0 0 0
-				0 0.2 0 0 0
-			    0 0 0.2 0 0
-		        0 0 0 1 0 "/>
-  		</filter> </defs> </svg>
-        -->
+
 		<!-- Scripts -->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.scrollex.min.js"></script>
@@ -267,13 +255,43 @@
         <script src="js/map.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-		<script src="js/vanillacalendar.js"></script>        
+		<!--for Calendar section-->
+		<script>
+		window.addEventListener('load', function () {
+			vanillaCalendar.init({
+				disablePastDays: false
+			});
+		})
+		</script>
+		<script src="js/vanillaCalendar.js"></script>        
         
         <script>
 		$(document).ready(function() {
     	$("#datepicker").datepicker();
   		});
   		</script>
+
+  		<script>
+  			$(document).ready(function() {
+    			var infobar = document.getElementById("infobar");
+    			infobar.style.display="none";
+  			});
+        	function showInfo() { 
+			    var infobar = document.getElementById("infobar"); 
+            	var src = "images/Logos/cannon.png";
+            	var out1 = '<img src="images/Logos/charter.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>'; 
+
+			    var out2 = out1 + "<div class='inner'> <nav> <ul> <li><a href='#intro'>Club: Charter</a></li> <li><a href='#intro'>Date: 4/11</a></li><li><a href='#three'>Information: Come to Charter Friday </a></li> </ul> </nav> </div>";
+			    infobar.innerHTML = out2;
+			    infobar.style.display="";
+			    sidebar.style.display="none";
+			}
+
+			function hideInfo() { 
+				infobar.style.display="none";
+			    sidebar.style.display="";
+			}
+		</script>
         
         <style>
             .loader {
