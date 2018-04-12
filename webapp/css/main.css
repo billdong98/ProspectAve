@@ -1645,6 +1645,10 @@
 		font-weight: normal;
 		line-height: 1.75;
 	}
+	/* for Calendar */
+	body section .inner .container{
+		color: #333;
+	}
 
 		@media screen and (max-width: 1680px) {
 
