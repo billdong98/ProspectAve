@@ -1646,7 +1646,7 @@
 		line-height: 1.75;
 	}
 	/* for Calendar */
-	body section .inner .container{
+	body section .inner .container #v-cal{
 		color: #333;
 	}
 
