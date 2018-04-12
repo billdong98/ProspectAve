@@ -277,8 +277,11 @@
   			});
         	function showInfo() { 
 			    var infobar = document.getElementById("infobar"); 
-			    var out = "<div class='inner'> <nav> <ul> <li><a href='#intro'>Club: Charter</a></li> <li><a href='#three'>Information: Come to Charter Friday </a></li> </ul> </nav> </div>";
-			    infobar.innerHTML = out;
+            	var src = "images/Logos/cannon.png";
+            	var out1 = '<img src="images/Logos/charter.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>'; 
+
+			    var out2 = out1 + "<div class='inner'> <nav> <ul> <li><a href='#intro'>Club: Charter</a></li> <li><a href='#intro'>Date: 4/11</a></li><li><a href='#three'>Information: Come to Charter Friday </a></li> </ul> </nav> </div>";
+			    infobar.innerHTML = out2;
 			    infobar.style.display="";
 			    sidebar.style.display="none";
 			}
