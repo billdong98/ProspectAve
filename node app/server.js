@@ -26,10 +26,11 @@ let db = new sqlite3.Database('./clubs.db', (err) => {
 // gets all records from club_status
 let selectAll = 'SELECT * FROM club_status ORDER BY date';
 // [(club_name, date, poster, post_date, status, info)]
-let post = 'INSERT INTO club_status VALUES (?,?,?,?,?,?)';
+let post = 'INSERT INTO club_status VALUES ';
+let placeholders = '(?,?,?,?,?,?)';
 
 
-
+/* gets the current clubs from the DB */
 app.get('/status', (request, response) => { 
     console.log('Hello getter! Current date: ' + currentDate());
         
@@ -38,12 +39,13 @@ app.get('/status', (request, response) => {
             throw err;
         }
         
-        console.log(rows);
+        console.log("GET: sent " + rows.length + " rows.");
         response.send(rows);
     });
 })
 
 
+/* clears the DB */
 app.get('/clear', (request, response) => { 
     console.log('CLEARING DB');
     
@@ -58,28 +60,43 @@ app.get('/clear', (request, response) => {
 })
 
 
-
+/* handles a post request */
 app.post('/officer_post', (request, response) => {
     var obj = request.body;
     // IMPLEMENT THIS FOR JSON ARRAY LATER
     console.log(obj);
     var club = obj.c;
-    var date = obj.d;
+    var dates = obj.d;
     var netID = obj.p;
     var status = obj.s;
     var post_date = currentDate();
     var info = obj.i;
     
-    var data = [club, date, netID, post_date, status, info];
+    var data = [];
+    var query = post;
     
-    db.run(post, data, (err)=>{
+    // construct query and input for each element in dates
+    for(var i=0; i<dates.length;i++){
+        if(i != 0){
+            query += ", ";
+        }
+        query += placeholders;
+        var date = dates[i];
+        data.push(club, date, netID, post_date, status, info);
+    }
+    
+    console.log(query);
+    console.log(data);
+    
+    db.run(query, data, (err)=>{
        if(err){ 
            response.status(500);
            response.send("ERROR");
-           throw err;
+           console.log(err);
+       } else {
+           console.log("CHANGED: " + this.changes);
+           response.send("Ok.");
        }
-        console.log("CHANGED: " + this.changes);
-        response.send("Ok.");
     });
 })
 
@@ -94,6 +111,6 @@ app.listen(1738, (err) => {
 // returns the current time in 
 function currentDate(){
     var dt = dateTime.create();
-    var formatted = dt.format('m-d-Y');
+    var formatted = dt.format('m/d/Y');
     return formatted;
 }

@@ -3,7 +3,69 @@ var headers;
 $(document).ready(function(){
     headers = $("#table").html();
     download();
+    
+    // initializing the date picker
+    $("#schedule_date_picker").multiDatesPicker({
+        maxPicks: 50 // no troll 
+        // addDates: [today, tomorrow] PUT IN CURRENT CHOICES
+    });
+    
 });
+
+function getForm() {
+    var x = document.getElementById("myForm");
+    var y = document.getElementById("addEvent");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        }
+    else
+        x.style.display = "none";
+    if (y.style.display==="none")
+        y.style.display = "block";
+    else
+        y.style.display ="none";
+}
+function getForm2() {
+    var x = document.getElementById("myForm2");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    }
+    else
+        x.style.display = "none";
+}
+
+var radio_status = 0;
+$("input:radio[name=radio-get-in]").click(function() {
+    radio_status = $(this).val();
+});
+
+function getForm() {
+    var x = document.getElementById("myForm");
+    var y = document.getElementById("addEvent");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    }
+    else
+        x.style.display = "none";
+    if (y.style.display==="none")
+        y.style.display = "block";
+    else
+        y.style.display ="none";
+}
+function getForm2() {
+    var x = document.getElementById("myForm2");
+    var button = document.getElementById("show_form2");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        button.text = "Hide";
+    }
+    else {
+        x.style.display = "none";
+        button.text = "Create";
+    }
+}
+
+
 
 //downloads ALL data from the Node server
 function download(){
@@ -44,13 +106,6 @@ function downloadSuccess(rows){
         var info = data["info"];
         
         out += "<tr><td>" + club + "</td><td>" + date + "</td><td>" + status + "</td><td>" + poster + "</td><td>" + post_date + "</td><td>" + info + "</td>";
-        
-        console.log(club);
-        console.log(date);
-        console.log(poster);
-        console.log(post_date);
-        console.log(status);
-        console.log(info);
     }
     
     // SET THE VALUES INSIDE TABLE
@@ -60,14 +115,18 @@ function downloadSuccess(rows){
 // uploads 
 function upload(){
     console.log("Uploading");
+    //http://dubrox.github.io/Multiple-Dates-Picker-for-jQuery-UI/
+    var dates = $("#schedule_date_picker").val().split(", ");
+
+    console.log(dates);
     
-    var club = $("#c").val();
-    var date = $("#datepicker").val();
-    var poster = $("#n").val();
-    var status = $('input[name=status]:checked', '#myForm').val();
-    var info = $("#i").val();
     
-    var obj = {"c": club, "d": date, "p": poster, "s": status, "i": info};
+    var club = $("#club_selector").val();
+    var poster = "Officer page";
+    var status = radio_status;
+    var info = $("#schedule_message").val();
+
+    var obj = {"c": club, "d": dates, "p": poster, "s": status, "i": info};
     console.log(obj);
     console.log(JSON.stringify(obj));
     
@@ -78,6 +137,8 @@ function upload(){
         data: JSON.stringify(obj), //stringify is important
         error: function (xhr, status, error) {
             console.log(xhr);
+            console.log(error);
+            console.log(status);
         },
         success: function(res) {
             console.log("SUCCESS: res");

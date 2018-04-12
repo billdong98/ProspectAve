@@ -131,11 +131,6 @@
   	}
   }
 
-/* Map */
-  #map {
-    position: relative;
-  }
-
 /* Datepicker */
   input[type="datepicker"],
   input[type="time"]
@@ -172,3 +167,128 @@
   top: -2vw; 
   left: 0.5vw;
 }
+
+/* Map */
+  .map {
+    position: relative;
+    z-index: -1;
+  }
+
+.containerdiv {float: left; position: relative;}
+
+/* Terrace */
+  .terrace {
+    position: absolute;
+    left: 13%;
+    top: 67%;
+    z-index: 20;
+    width: 8%;
+    height: auto;
+  }
+  .terracetext {
+    position: absolute; 
+    left: 14.5%; top: 73%; 
+    z-index: 20; 
+    color: black; 
+    font-size:1.1vw;
+  }
+
+  /* Tower */
+  .tower {
+    position: absolute;
+    left: 18%; 
+    top: 47%; 
+    z-index: 20; 
+    width: 8%; 
+    height: auto;
+  }
+  .towertext {
+    position: absolute; left: 20%; top: 52.5%; z-index: 20; color: black; font-size:1.1vw;
+  }
+
+  /* Cannon */
+  .cannon {
+    position: absolute; left: 28%; top: 47%; z-index: 20; width: 8.5%; height: auto;
+  }
+  .cannontext {
+    position: absolute; left: 29.7%; top: 51.1%; z-index: 20; color: black; font-size:1.1vw;
+  }
+
+  /* Quad */
+  .quad{
+    position: absolute; left: 39%; top: 47%; z-index: 20; width: 8%; height: auto;
+  }
+  .quadtext{
+    position: absolute; left: 41%; top: 52.3%; z-index: 20; color: black; font-size:1.1vw;
+  }
+
+  /* Ivy */
+  .ivy{
+    position: absolute; left: 48%; top: 49%; z-index: 20; width: 8%; height: auto;
+  }
+  .ivytext{
+    position: absolute; left: 51%; top: 52.3%; z-index: 20; color: black; font-size:1.1vw;
+  }
+
+  /* Cottage */
+  .cottage{
+    position: absolute; left: 57%; top: 49%; z-index: 20; width: 8.5%; height: auto;
+  }
+  .cottagetext{
+    position: absolute; left: 58.8%; top: 51.5%; z-index: 20; color: black; font-size:1.1vw;
+  }
+
+  /* Cap */
+  .cap{
+    position: absolute; left: 69%; top: 50%; z-index: 20; width: 8%; height: auto;
+  }
+  .captext{
+    position: absolute; left: 71.7%; top: 54.5%; z-index: 20; color: black; font-size:1.1vw;
+  }
+
+  /* Cloister */
+  .cloister{
+    position: absolute; left: 80%; top: 51%; z-index: 20; width: 7.8%; height: auto;
+  }
+  .cloistertext{
+    position: absolute; left: 81.4%; top: 55%; z-index: 20; color: black; font-size:1.1vw;
+  }
+
+  /* Charter */
+  .charter{
+    position: absolute; left: 90%; top: 52%; z-index: 20; width: 8.5%; height: auto;
+  }
+  .chartertext{
+    position: absolute; left: 91.3%; top: 55%; z-index: 20; color: black; font-size:1.1vw;
+  }
+
+  /* Colonial */
+  .colonial{
+    position: absolute; left: 45%; top: 13%; z-index: 20; width: 7.8%; height: auto;
+  }
+  .colonialtext{
+    position: absolute; left: 46.3%; top: 18.5%; z-index: 20; color: black; font-size:1.1vw;
+  }
+
+  /* TI */
+  .ti{
+    position: absolute; left: 55%; top: 13%; z-index: 20; width: 8%; height: auto;
+  }
+  .titext{
+    position: absolute; left: 58.5%; top: 18%; z-index: 20; color: black; font-size:1.1vw;
+  }
+
+/* PUID */ 
+  .puid{
+    filter: sepia(10%) saturate(1500%) hue-rotate(80deg); 
+  } 
+ 
+/* Closed */ 
+  .closed{ 
+    filter: sepia(30%) saturate(2500%) hue-rotate(315deg); 
+  } 
+ 
+/* Pass/List */ 
+  .list{ 
+    filter: sepia(100%) saturate(250%) hue-rotate(10deg) brightness(125%); 
+  } 
