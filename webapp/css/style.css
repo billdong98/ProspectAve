@@ -198,7 +198,11 @@ input[type="time"]
     z-index: -1;
 }
 
-.containerdiv {float: left; position: relative;}
+/* Map Container */
+.containerdiv {
+    float: left; 
+    position: relative;
+}
 
 /* Terrace */
 .terrace {
@@ -423,6 +427,7 @@ input[type="time"]
     width: 12em;
     word-wrap: break-word;
     z-index: 10001;
+    color: black;
 }
 
 #infobar > .inner {
@@ -557,28 +562,22 @@ body.is-loading #infobar nav ul li {
     opacity: 0;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1281px) {
 
     #infobar {
         height: 3.5em;
         left: 0;
         line-height: 1em;
         padding: 0;
-        text-align: left;
         top: 0;
         width: 100%;
-        overflow-x: hidden;
-        overflow-y: hidden;
-        position: fixed;
-        word-wrap: break-word;
-        z-index: 10001;
     }
 
     #infobar > .inner {
-        -moz-flex-direction: column;
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: column;
+        -moz-flex-direction: row;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
         -moz-align-items: stretch;
         -webkit-align-items: stretch;
         -ms-align-items: stretch;
@@ -594,22 +593,20 @@ body.is-loading #infobar nav ul li {
     }
 
     #infobar nav > ul {
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
         height: inherit;
         line-height: inherit;
+        margin: 0;
     }
     #infobar nav > ul > li {
-        -moz-transform: translateY(0);
-        -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-        transform: translateY(0);
-        -moz-transition: opacity 0.15s ease, -moz-transform 0.75s ease;
-        -webkit-transition: opacity 0.15s ease, -webkit-transform 0.75s ease;
-        -ms-transition: opacity 0.15s ease, -ms-transform 0.75s ease;
-        transition: opacity 0.15s ease, transform 0.75s ease;
-        margin: 0.8em 0 0 0;
-        opacity: 1;
+        display: block;
+        height: inherit;
+        line-height: inherit;
+        margin: 0 0 0 2em;
         padding: 0;
-        position: relative;
     }
 
     #infobar nav a {
