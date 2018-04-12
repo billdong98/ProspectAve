@@ -105,6 +105,6 @@ function changeDate(d){
     update(window.date);
 
     $('html, body').animate({
-        scrollTop: $("#wrapper").offset().top
+        scrollTop: $("#date_display").offset().top
     }, 700);
 }
