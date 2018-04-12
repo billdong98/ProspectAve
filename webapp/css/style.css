@@ -72,6 +72,10 @@
     background: #19273F; 
 } 
 
+#sidebar nav a:after {
+    linear-gradient(to right, white, white)
+}
+
 /* Main title */
   #main-title {
       margin-bottom: 30px !important;
