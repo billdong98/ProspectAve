@@ -57,12 +57,10 @@
 				<!-- Create -->
 			<section id="create" class="wrapper style2 fade-up">
 				<div class="inner">
-					<div id = "addEvent">
-						<h2>Add An Event</h2>
-							<ul class="actions">
-								<li><a onclick="getForm();" class="button">Create</a></li>
-							</ul>
-					</div>
+					<h2>Add An Event</h2>
+						<ul class="actions">
+							<li><a onclick="getForm();" class="button" id="addEvent">Create</a></li>
+						</ul>
             	 	<div id ="myForm"  style="display:none;">
 						<h2>Event Information Form</h2>
 						<p>Fill out the form below:</p>
@@ -123,7 +121,7 @@
 				</div>
 			</section>
 				
-					<section id="remove" style="background: #295DA5" class="wrapper style1 spotlights fade-up">
+					<section id="add_schedule" style="background: #295DA5" class="wrapper style1 spotlights fade-up">
 							<div class="inner">
 									<h2>Uploading [Your Eating Club's] Schedule</h2>
 									<ul class="actions">
@@ -133,8 +131,8 @@
 										<h2>Event Information Form</h2>
 										<p>Fill out the form below:</p>
 										<form method="post" action="#" id="hi">
-											  <h3>Club name: </h3>
-											  <div class="12u$">
+											<h3>Club name: </h3>
+											<div class="12u$">
 												<div class="select-wrapper">
 													<select name="demo-category" id="club_selector">
 														<option value="">- Eating Club -</option>
@@ -179,8 +177,8 @@
 												<textarea name="message" id="schedule_message" placeholder="Enter Description" rows="3"></textarea>
 											</div>
 											  <ul class="actions">
-												<li><input type="submit" onclick="return upload();" class="special" /></li>
-												<li><input type="reset" value="Reset" onclick="resetSchedule()" /></li>
+												<li><input type="submit" onclick="getForm2(); return upload();" class="special" /></li>
+												<li><input type="reset" value="Reset"/></li>
 											</ul>
 										</form> 
 									</div>    
