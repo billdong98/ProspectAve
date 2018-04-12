@@ -282,6 +282,7 @@
   /* TI */
   .ti{
     position: absolute; left: 55%; top: 13%; z-index: 20; width: 8%; height: auto;
+    filter: sepia(10%) saturate(1500%) hue-rotate(80deg); 
   }
   .titext{
     position: absolute; left: 58.5%; top: 18%; z-index: 20; color: black; font-size:1.1vw;
