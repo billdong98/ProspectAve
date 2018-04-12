@@ -88,10 +88,10 @@ function update(date){
         if(s === "PUID"){
             overlay.removeClass();
             overlay.addClass("puid");
-        } else if (s === "List"){
+        } else if (s === "Pass"){
             overlay.removeClass();
             overlay.addClass("pass");
-        } else if(s === "Pass"){
+        } else if(s === "List"){
             overlay.removeClass();
             overlay.addClass("list");
         } else {
@@ -104,7 +104,7 @@ function update(date){
 // triggered by selecting a new date on the calendar
 function changeDate(d){
     var date = $(d).attr("data-calendar-date");
-    var dateString = moment(Date.parse(date)).format('MM/DD/YYYY');;
+    var dateString = moment(Date.parse(date)).format('MM/DD/YYYY');
     console.log(dateString);
     window.date = dateString;
     dateDisplay.html("Date: " + window.date);
@@ -112,5 +112,14 @@ function changeDate(d){
 
     $('html, body').animate({
         scrollTop: $("#date_display").offset().top
-    }, 700);
+    }, 500);
+}
+
+// triggered by the two buttons on either side of the date display
+function changeDate(val){
+    var dateString = moment(Date.parse(window.date)).add(val, 'd').format('MM/DD/YYYY');
+    window.date = dateString;
+    console.log("New date: " + dateString);
+    dateDisplay.html("Date: " + window.date);
+    update(window.date);
 }
