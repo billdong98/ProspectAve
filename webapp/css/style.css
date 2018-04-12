@@ -63,17 +63,6 @@
 }
 
 
-/* SET COLORS HERE */
-
-.wrapper.style1{
-    background-color: #9AB7E4;
-}
-
-#sidebar {
-    background: #19273F;
-}
-
-
 /* Main title */
   #main-title {
       margin-bottom: 30px !important;
@@ -84,7 +73,7 @@
       padding-top: 1em;
   }
 
-  @media screen and (min-width: 1281px) {
+  @media screen and (min-width: 1280px) {
       #sidebar nav > ul > li {
           margin-top: 1em;
       }
@@ -128,7 +117,7 @@
     display: table;
 }
 
-  @media screen and (min-width: 1281px) {
+  @media screen and (min-width: 1280px) {
   	#sidebar + #wrapper {
   		margin-left: 12em;
   	}

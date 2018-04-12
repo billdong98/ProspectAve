@@ -12,6 +12,28 @@ $(document).ready(function(){
     
 });
 
+function getForm() {
+    var x = document.getElementById("myForm");
+    var y = document.getElementById("addEvent");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        }
+    else
+        x.style.display = "none";
+    if (y.style.display==="none")
+        y.style.display = "block";
+    else
+        y.style.display ="none";
+}
+function getForm2() {
+    var x = document.getElementById("myForm2");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    }
+    else
+        x.style.display = "none";
+}
+
 var radio_status = 0;
 $("input:radio[name=radio-get-in]").click(function() {
     radio_status = $(this).val();
