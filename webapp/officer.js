@@ -29,6 +29,7 @@ function getForm() {
         y.text="Create";
     }
 }
+
 function getForm2() {
     var x = document.getElementById("myForm2");
     var button = document.getElementById("show_form2");
