@@ -1,16 +1,16 @@
 /* GLOBAL date->array store */
 window.data = {};
-window.date = moment(Date.now()).format('MM/DD/YYYY');
+window.date;
 var dateDisplay;
 
 let clubs = ["terrace", "tower", "colonial", "cannon", "quadrangle", "ti", "ivy","cottage", "cap", "cloister", "charter"];
 
 $(document).ready(function(){
     dateDisplay = $("#date_display");
+    window.date = moment(Date.now()).format('MM/DD/YYYY'); // set date to today's date
     dateDisplay.html("Date: " + window.date);
     download(); // Download THIS week's data
 });
-
 
 //downloads ALL data from the Node server
 function download(){
