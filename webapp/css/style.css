@@ -402,13 +402,18 @@ input[type="time"]
 } 
 
 /* Closed */ 
-.closed{ 
-    filter: sepia(30%) saturate(2500%) hue-rotate(315deg); 
+.closed { 
+    /*filter: sepia(30%) saturate(2500%) hue-rotate(315deg); */
 } 
+
+.pass {
+    filter: sepia(51%) saturate(1050%) hue-rotate(14deg) brightness(127%);
+}
 
 /* Pass/List */ 
 .list{ 
-    filter: sepia(100%) saturate(250%) hue-rotate(10deg) brightness(125%); 
+    /*filter: sepia(100%) saturate(250%) hue-rotate(10deg) brightness(125%); */
+    filter: sepia(51%) saturate(1070%) hue-rotate(-18deg) brightness(115%);
 } 
 
 /* infobar */
