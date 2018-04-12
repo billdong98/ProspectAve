@@ -85,12 +85,18 @@ function update(date){
         }
         console.log(overlay);
 
-        if(s== "PUID"){
+        if(s === "PUID"){
             overlay.removeClass();
             overlay.addClass("puid");
-        } else if (s == "List" || s == "Pass"){
+        } else if (s === "List"){
+            overlay.removeClass();
+            overlay.addClass("pass");
+        } else if(s === "Pass"){
             overlay.removeClass();
             overlay.addClass("list");
+        } else {
+            console.log("Update error:");
+            console.log(row);
         }
     }
 }
