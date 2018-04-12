@@ -12,28 +12,6 @@ $(document).ready(function(){
     
 });
 
-function getForm() {
-    var x = document.getElementById("myForm");
-    var y = document.getElementById("addEvent");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        }
-    else
-        x.style.display = "none";
-    if (y.style.display==="none")
-        y.style.display = "block";
-    else
-        y.style.display ="none";
-}
-function getForm2() {
-    var x = document.getElementById("myForm2");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    }
-    else
-        x.style.display = "none";
-}
-
 var radio_status = 0;
 $("input:radio[name=radio-get-in]").click(function() {
     radio_status = $(this).val();
@@ -44,13 +22,12 @@ function getForm() {
     var y = document.getElementById("addEvent");
     if (x.style.display === "none") {
         x.style.display = "block";
+        y.text = "Hide";
     }
-    else
+    else {
         x.style.display = "none";
-    if (y.style.display==="none")
-        y.style.display = "block";
-    else
-        y.style.display ="none";
+        y.text="Create";
+    }
 }
 function getForm2() {
     var x = document.getElementById("myForm2");
@@ -125,7 +102,10 @@ function upload(){
     var poster = "Officer page";
     var status = radio_status;
     var info = $("#schedule_message").val();
-
+    if (club == "" || status == 0 || dates == "") {
+        alert("Form is incomplete!");
+        return false;
+    }
     var obj = {"c": club, "d": dates, "p": poster, "s": status, "i": info};
     console.log(obj);
     console.log(JSON.stringify(obj));
