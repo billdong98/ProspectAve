@@ -1,7 +1,9 @@
 var headers;
+var count;
 
 $(document).ready(function(){
     headers = $("#boxes").html();
+    count = 10;
     download();
     
     // initializing the date picker
@@ -48,7 +50,7 @@ function download(){
     console.log("Downloading");
 
     $.ajax({
-        url: "http://www.prospectave.io:1738/status",
+        url: "https://www.prospectave.io:1738/status",
         type: 'GET',   
         contentType: 'json',    
         success: function(res) {
@@ -72,7 +74,7 @@ function downloadSuccess(rows){
     
     // iterate over each JSON object
     var i = 0;
-    while (i < rows.length && i < 10) {
+    while (i < rows.length && i < count) {
         var data = rows[i++];
         console.log(data);
         var club = data["club_name"];
@@ -81,7 +83,7 @@ function downloadSuccess(rows){
         var post_date = data["post_date"];
         var status = data["status"];
         var info = data["info"];
-        out += '<div class = "3u"><div class="boxed"><h3>' + club + '</h3> Date: ' + date + "<br> Status: " + status + "<br>Poster: " + poster + "<br>Post Date: " + post_date + "<br>Description: " + info + "</div></div>";
+        out += '<div class = "3u"><div class="boxed"><h3>' + club + '</h3>' + date + "<br> Status: " + status + "<br>Poster: " + poster + "<br>Post Date: " + post_date + "<br>Description: " + info + "</div></div>";
     }
     
     // SET THE VALUES INSIDE TABLE
@@ -110,7 +112,7 @@ function upload(){
     console.log(JSON.stringify(obj));
     
     $.ajax({
-        url: "http://www.prospectave.io:1738/officer_post",
+        url: "https://www.prospectave.io:1738/officer_post",
         type: 'POST',   
         contentType: 'application/json',  
         data: JSON.stringify(obj), //stringify is important

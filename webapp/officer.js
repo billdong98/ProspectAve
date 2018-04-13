@@ -50,7 +50,7 @@ function download(){
     console.log("Downloading");
 
     $.ajax({
-        url: "http://www.prospectave.io:1738/status",
+        url: "https://www.prospectave.io:1738/status",
         type: 'GET',   
         contentType: 'json',    
         success: function(res) {
@@ -112,7 +112,7 @@ function upload(){
     console.log(JSON.stringify(obj));
     
     $.ajax({
-        url: "http://www.prospectave.io:1738/officer_post",
+        url: "https://www.prospectave.io:1738/officer_post",
         type: 'POST',   
         contentType: 'application/json',  
         data: JSON.stringify(obj), //stringify is important
