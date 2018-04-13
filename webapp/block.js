@@ -71,7 +71,7 @@ function downloadSuccess(rows){
     // test.html output
     var boxes = $("#boxes");
     var out = "";
-    
+    var clr = "blue";
     // iterate over each JSON object
     var i = 0;
     while (i < rows.length && i < count) {
@@ -83,11 +83,15 @@ function downloadSuccess(rows){
         var post_date = data["post_date"];
         var status = data["status"];
         var info = data["info"];
-        out += '<div class = "3u"><div class="boxed"><h3>' + club + '</h3>' + date + "<br> Status: " + status + "<br>Poster: " + poster + "<br>Post Date: " + post_date + "<br>Description: " + info + "</div></div>";
+        out += '<div class = "3u"><div class="boxed ' + clr + '"><h3>' + club + '</h3>' + date + "<br> Status: " + status + "<br>Poster: " + poster + "<br>Post Date: " + post_date + "<br>Description: " + info + "</div></div>";
+        if (clr == "blue")
+            clr = "orange";
+        else   
+            clr = "blue";
     }
     
     // SET THE VALUES INSIDE TABLE
-    boxes.html(out);
+    boxes.html(out + headers);
 }
 
 // uploads 

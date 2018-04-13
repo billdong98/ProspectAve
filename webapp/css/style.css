@@ -547,8 +547,16 @@ body.is-loading #infobar nav ul li {
 
 .boxed {
     border: solid 1px rgba(255, 255, 255, 0.15);
-    background: #295DA5;
     padding: 10px;
     border-radius:2em;
+    height:auto;
+}
+
+.blue {
+    background: #295DA5;
+}
+
+.orange {
+    background: #d4a26d;
 }
 }
