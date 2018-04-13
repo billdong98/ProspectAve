@@ -1,7 +1,9 @@
 var headers;
+var count;
 
 $(document).ready(function(){
-    headers = $("#table").html();
+    headers = $("#boxes").html();
+    count = 10;
     download();
     
     // initializing the date picker
@@ -43,14 +45,12 @@ function getForm2() {
     }
 }
 
-
-
 //downloads ALL data from the Node server
 function download(){
     console.log("Downloading");
 
     $.ajax({
-        url: "http://www.prospectave.io:1738/status",
+        url: "https://www.prospectave.io:1738/status",
         type: 'GET',   
         contentType: 'json',    
         success: function(res) {
@@ -69,12 +69,13 @@ function downloadSuccess(rows){
     console.log(rows);
     
     // test.html output
-    var table = $("#table");
+    var boxes = $("#boxes");
     var out = "";
-    
+    var clr = "blue";
     // iterate over each JSON object
-    for (i = 0; i < rows.length; i++) {
-        var data = rows[i];
+    var i = 0;
+    while (i < rows.length && i < count) {
+        var data = rows[i++];
         console.log(data);
         var club = data["club_name"];
         var date = data["date"];
@@ -82,12 +83,15 @@ function downloadSuccess(rows){
         var post_date = data["post_date"];
         var status = data["status"];
         var info = data["info"];
-        
-        out += "<tr><td>" + club + "</td><td>" + date + "</td><td>" + status + "</td><td>" + poster + "</td><td>" + post_date + "</td><td>" + info + "</td>";
+        out += '<div class = "3u"><div class="boxed ' + clr + '"><h3>' + club + '</h3>' + date + "<br> Status: " + status + "<br>Poster: " + poster + "<br>Post Date: " + post_date + "<br>Description: " + info + "</div></div>";
+        if (clr == "blue")
+            clr = "orange";
+        else   
+            clr = "blue";
     }
     
     // SET THE VALUES INSIDE TABLE
-    table.html(headers + out);
+    boxes.html(out + headers);
 }
 
 // uploads 
@@ -112,7 +116,7 @@ function upload(){
     console.log(JSON.stringify(obj));
     
     $.ajax({
-        url: "http://www.prospectave.io:1738/officer_post",
+        url: "https://www.prospectave.io:1738/officer_post",
         type: 'POST',   
         contentType: 'application/json',  
         data: JSON.stringify(obj), //stringify is important
