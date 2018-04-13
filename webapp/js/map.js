@@ -135,12 +135,12 @@ function changeDate(d){
     update(window.date);
 
     $('html, body').animate({
-        scrollTop: $("#date_display").offset().top
+        scrollTop: $("#intro").height() - $( window ).height()
     }, 500);
 }
 
 // triggered by the two buttons on either side of the date display
-function changeDate(val){
+function shiftDate(val){
     var dateString = moment(Date.parse(window.date)).add(val, 'd').format('MM/DD/YYYY');
     window.date = dateString;
     console.log("New date: " + dateString);
