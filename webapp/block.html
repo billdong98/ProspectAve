@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>ProspectAve &mdash; Officer</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="css/jquery-ui.multidatespicker.css">
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+        
+        <!-- REMOVE ON PRODUCTION, TESTING ONLY -->
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	</head>
+	<body>
+
+		<!-- Sidebar -->
+		<section id="sidebar">
+			<div class="inner">
+				<nav>
+					<ul>
+						<li><a href="#events">Registered Events</a></li>
+						<li><a href="#create">Create Event</a></li>
+						<li><a href="#add_schedule">Add Schedule</a></li>
+						<li><a href="index.html">Back</a></li>
+					</ul>
+				</nav>
+			</div>	
+		</section>
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+		<!-- Events -->
+			<section id="events" class="wrapper style1 fullscreen fade-up">
+				<div class="inner" id="top-inner"> 						
+					<section>
+						<h2>Registered Events</h2>
+						<div class="table-wrapper">
+							<table id="table">		
+								<thead>
+									<tr>									
+										<th>Club</th>
+										<th>Date</th>
+										<th>Status</th>
+										<th>Poster</th>
+										<th>Post Date</th>
+										<th>Description</th>
+									</tr>
+								</thead>
+							</table>							
+						</div>
+					</section>
+							
+				</div> 
+			</section>
+
+				<!-- Create -->
+			<section id="create" class="wrapper style2 fade-up">
+				<div class="inner">
+					<h2>Create Event</h2>
+						<ul class="actions">
+							<li><a onclick="getForm();" class="button" id="addEvent">Create</a></li>
+						</ul>
+            	 	<div id ="myForm"  style="display:none;">
+						<h2>Event Information Form</h2>
+						<p>Fill out the form below:</p>
+						<form>
+						  	<h3>Club name: </h3>
+						  	<div class="12u$">
+								<div class="select-wrapper">
+									<select name="club" id="c">
+										<option value="">- Eating Club -</option>
+										<option value="Cannon">Cannon</option>
+										<option value="Cap">Cap</option>
+										<option value="Charter">Charter</option>
+										<option value="Cloister">Cloister</option>											
+										<option value="Colonial">Colonial</option>
+										<option value="Cottage">Cottage</option>
+										<option value="Ivy">Ivy</option>
+										<option value="Quad">Quad</option>
+										<option value="Terrace">Terrace</option>
+										<option value="TI">TI</option>
+										<option value="Tower">Tower</option>
+									</select>
+								</div>
+							</div>
+							<br>
+						  	<h3>Event date: </h3>
+  							<!--<input type="date" name="eventdate" value="2018-04-09" style="color: black;"> <br> <br> -->
+							<input type="datepicker" id="datepicker" /><br>
+							<h3>netid</h3>
+							<input type="text" id="n"> <br>
+								
+							<h3>What do you need to get in?</h3>
+							<div class="row uniform">
+								<div class="4u 12u$(small)">
+									<input type="radio" id="puid" name="status" value="PUID">
+									<label for="puid">PUID</label>
+								</div>
+								<div class="4u 12u$(small)">
+									<input type="radio" id="pass" name="status" value="Pass">
+									<label for="pass">Pass</label>
+								</div>
+								<div class="4u$ 12u$(small)">
+									<input type="radio" id="list" name="status" value="List">
+									<label for="list">List</label>
+								</div> <br>
+							</div>
+							<br>
+							<div class="field">
+								<label for="message">Description of event (Optional):</label>
+								<textarea name="message" id="i" placeholder="Enter Description" rows="3"></textarea>
+							</div>
+							  	<ul class="actions">
+									<li><input type="submit" value="Submit" onclick="getForm(); return upload();" class="special" /></li>
+									<li><input type="reset" value="Reset" /></li>
+								</ul> 
+							<!--<button onclick="return upload();">Submit</button> -->
+                        </form> 
+    				</div>    
+				</div>
+			</section>
+				
+					<section id="add_schedule" style="background: #295DA5" class="wrapper style1 spotlights fade-up">
+							<div class="inner">
+									<h2>Uploading [Your Eating Club's] Schedule</h2>
+									<ul class="actions">
+										<li><a onclick="getForm2()" class="button" id="show_form2">Create</a></li>
+									</ul>
+									<div id ="myForm2"  style="display:none;">
+										<h2>Event Information Form</h2>
+										<p>Fill out the form below:</p>
+										<form method="post" action="#" id="hi">
+											<h3>Club name: </h3>
+											<div class="12u$">
+												<div class="select-wrapper">
+													<select name="demo-category" id="club_selector">
+														<option value="">- Eating Club -</option>
+														<option value="Cannon">Cannon</option>
+														<option value="Cap">Cap &amp; Gown</option>
+														<option value="Charter">Charter</option>
+														<option value="Cloister">Cloister</option>
+														<option value="Colonial">Colonial</option>
+														<option value="Cottage">Cottage</option>
+														<option value="Ivy">Ivy</option>
+														<option value="Quadrangle">Quadrange</option>
+														<option value="Terrace">Terrace</option>
+														<option value="Tiger Inn">Tiger Inn</option>
+														<option value="Tower">Tower</option>
+													</select>
+												</div>
+											</div>
+											<br>
+											  <h3>Event date: </h3>
+												  <!--<input type="date" name="eventdate" value="2018-04-09" style="color: black;"> <br> <br> -->
+												  <div type="datepicker" id="schedule_date_picker"></div><br>
+											<!--<h3>Start Time:</h3> 
+												   <input type="time" name="start" value="23:00"> <br> 
+											   <h3>End Time:</h3>
+											   <input type="time" name="end" value="02:00"> <br> -->
+											<h3>What do you need to get in?</h3>
+
+												<div class="4u 12u$(small)">
+													<input type="radio" id="radio-puid" name="radio-get-in" value="PUID">
+													<label for="radio-puid" value="PUID">PUID</label>
+												</div>
+												<div class="4u 12u$(small)">
+													<input type="radio" id="radio-pass" name="radio-get-in" value="Pass">
+													<label for="radio-pass" value="Pass">Pass</label>
+												</div>
+												<div class="4u$ 12u$(small)">
+													<input type="radio" id="radio-list" name="radio-get-in" value="List">
+													<label for="radio-list" value="List">List</label>
+												</div> <br>
+											<div class="field">
+												<h3>Description (optional):</h3>
+												<textarea name="message" id="schedule_message" placeholder="Enter Description" rows="3"></textarea>
+											</div>
+											  <ul class="actions">
+												<li><input type="submit" onclick="getForm2(); return upload();" class="special" /></li>
+												<li><input type="reset" value="Reset"/></li>
+											</ul>
+										</form> 
+									</div>    
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer" class="wrapper style1-alt">
+			<div class="inner">
+				<ul class="menu">
+					<li><b>ProspectAve</b>, by Bill Dong, Ben Liang,  Michael Man, June Ho Park, Yang Tu</li>
+    	            <li>COS 333 Spring 2018</li>
+				</ul>
+			</div>
+		</footer>
+        
+		<!-- Scripts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>            
+		<script src="js/jquery.scrollex.min.js"></script>
+		<script src="js/jquery.scrolly.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/util.js"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script src="js/main.js"></script>
+		<script src="officer.js"></script>
+        <script src="js/jquery-ui.multidatespicker.js"></script>
+    
+        <script>
+
+        </script>
+        
+        <style>
+            .loader {
+                border: 16px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 16px solid #3498db;
+                width: 120px;
+                height: 120px;
+                -webkit-animation: spin 2s linear infinite; /* Safari */
+                animation: spin 2s linear infinite;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                display: none;
+            }
+
+            /* Safari */
+            @-webkit-keyframes spin {
+              0% { -webkit-transform: rotate(0deg); }
+              100% { -webkit-transform: rotate(360deg); }
+            }
+
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+        </style>
+	</body>
+</html>
