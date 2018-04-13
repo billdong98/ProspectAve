@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+const fs = require('fs');
 const http = require("http");
 const cors = require('cors');
 // require the sqlite module
@@ -9,9 +9,24 @@ const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const dateTime = require('node-datetime');
 
+
+
 // setup Express server
 app.use(bodyParser.json());
 app.use(cors());
+
+var https = require('https');
+//https.createServer(options, app).listen(1234);
+
+
+/* handling HTTPS */
+const options = {
+  key: fs.readFileSync('./../../ssl/keys/9f016_d0a13_46664a744423c921776ce2dde252b120.key').toString(),
+  cert: fs.readFileSync('./../../ssl/certs/prospectave_io_9f016_d0a13_1530835199_f77b28e7908bb77ad4e6cbe0ea03205e.crt').toString()
+};
+
+https.createServer(options, app).listen(1738);
+console.log("Server listening on port: " + 1738);
 
 // connect to the db file
 let db = new sqlite3.Database('./clubs.db', (err) => {
@@ -100,13 +115,6 @@ app.post('/officer_post', (request, response) => {
     });
 })
 
-app.listen(1738, (err) => {  
-    if (err) {
-        return console.log('something bad happened', err)
-    }
-
-    console.log('server is listening on port: 1738');
-})
 
 // returns the current time in 
 function currentDate(){

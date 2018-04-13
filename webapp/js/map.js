@@ -42,7 +42,7 @@ $(document).ready(function(){
 function download(){
     console.log("Downloading");
     $.ajax({
-        url: "http://www.prospectave.io:1738/status",
+        url: "https://www.prospectave.io:1738/status",
         type: 'GET',   
         contentType: 'json',    
         success: function(res) {
