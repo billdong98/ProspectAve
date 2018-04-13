@@ -1,7 +1,7 @@
 var headers;
 
 $(document).ready(function(){
-    headers = $("#table").html();
+    headers = $("#boxes").html();
     download();
     
     // initializing the date picker
@@ -43,8 +43,6 @@ function getForm2() {
     }
 }
 
-
-
 //downloads ALL data from the Node server
 function download(){
     console.log("Downloading");
@@ -69,12 +67,13 @@ function downloadSuccess(rows){
     console.log(rows);
     
     // test.html output
-    var table = $("#table");
+    var boxes = $("#boxes");
     var out = "";
     
     // iterate over each JSON object
-    for (i = 0; i < rows.length; i++) {
-        var data = rows[i];
+    var i = 0;
+    while (i < rows.length && i < 10) {
+        var data = rows[i++];
         console.log(data);
         var club = data["club_name"];
         var date = data["date"];
@@ -82,12 +81,11 @@ function downloadSuccess(rows){
         var post_date = data["post_date"];
         var status = data["status"];
         var info = data["info"];
-        
-        out += "<tr><td>" + club + "</td><td>" + date + "</td><td>" + status + "</td><td>" + poster + "</td><td>" + post_date + "</td><td>" + info + "</td>";
+        out += '<div class = "3u"><div class="boxed"><h3>' + club + '</h3> Date: ' + date + "<br> Status: " + status + "<br>Poster: " + poster + "<br>Post Date: " + post_date + "<br>Description: " + info + "</div></div>";
     }
     
     // SET THE VALUES INSIDE TABLE
-    table.html(headers + out);
+    boxes.html(out);
 }
 
 // uploads 
