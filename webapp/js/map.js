@@ -5,11 +5,36 @@ var dateDisplay;
 
 let clubs = ["terrace", "tower", "colonial", "cannon", "quadrangle", "ti", "ivy","cottage", "cap", "cloister", "charter"];
 
+
+
 $(document).ready(function(){
     dateDisplay = $("#date_display");
     window.date = moment(Date.now()).format('MM/DD/YYYY'); // set date to today's date
     dateDisplay.html("Date: " + window.date);
     download(); // Download THIS week's data
+
+    
+    vanillaCalendar.init({
+            disablePastDays: true
+    });
+    
+    
+    var infobar = document.getElementById("infobar");
+    //infobar.style.display="none";
+    
+    /* set up the listeners for each club */
+    for(var i=0; i<clubs.length;i++){
+        !function set(c){
+            $("#" + c + "_overlay").mouseover(function() {
+                console.log(c);
+                showInfo(c);
+            });
+            
+            $("#" + c + "_overlay").mouseout(function() {
+                hideInfo();
+            });
+        }(clubs[i]);
+    }
 });
 
 //downloads ALL data from the Node server
@@ -83,7 +108,6 @@ function update(date){
         } else {
             overlay = $("#" + club.toLowerCase() + "_overlay");
         }
-        console.log(overlay);
 
         if(s === "PUID"){
             overlay.removeClass();
@@ -122,4 +146,42 @@ function changeDate(val){
     console.log("New date: " + dateString);
     dateDisplay.html("Date: " + window.date);
     update(window.date);
+}
+
+// changes the sidebar to display info about this club
+function showInfo(club) { 
+    out1 = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>'; 
+
+    out2 = out1 + "<div class='inner'> <nav> <ul> <li><a href='#intro'>No events on this date!</a></li> </ul> </nav> </div>";
+
+    var infobar = document.getElementById("infobar");
+    
+    // data for TODAY
+    var rows = window.data[window.date];
+    
+    for(var i=0; i<rows.length; i++){
+        var row = rows[i];
+        var name = row["club_name"].toLowerCase();
+        if(name === club || (club === "ti" && name === "tiger inn")){
+            var status = row["status"];
+            var info = row["info"];
+            var date = row["date"]; //redundant
+            
+            out2 = out1 + "<div class='inner'> <nav> <ul> <li>Club: " + row["club_name"] + "</li> <li>Date: " + date + "</li> <li>Status: " + status + "</li> <li>Information: " + info + "</li> </ul> </nav> </div>";
+            infobar.innerHTML = out2;
+            infobar.style.background="#ffd347";
+            sidebar.style.display="none";
+            infobar.style.display="";
+            infobar.style.top = "0";
+            
+            break;
+        }
+    }
+}
+
+// brings back the default sidebar
+function hideInfo() { 
+    infobar.style.top="100vh";
+    sidebar.style.display="";
+    infobar.style.background="#19273F";
 }

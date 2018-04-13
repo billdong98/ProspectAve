@@ -81,7 +81,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <a href="http://cloisterinn.com/" target="_blank" id="cloister_overlay"><img class="cloister" id="Cloister" src="images/cloister.png"/>
                             <div class="cloistertext"> Cloister </div></a>
                         <!-- Charter -->
-                        <a onmouseover="showInfo('charter')" onmouseout="hideInfo()" href="http://alumni.charterclub.org/" id="charter_overlay" target="_blank"><img class="charter" id="Charter" src="images/charter.png"/>
+                        <a href="http://alumni.charterclub.org/" id="charter_overlay" target="_blank"><img class="charter" id="Charter" src="images/charter.png"/>
                             <div class="chartertext"> Charter </div></a>
                         <!-- Colonial -->
                         <a href="http://colonialclub.com/" target="_blank" id="colonial_overlay"><img class="colonial" id="Colonial" src="images/colonial.png"/>
@@ -259,91 +259,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <script src="js/map.js"></script>
         <script src="js/vanillaCalendar.js"></script>       
 
-        <!--for Calendar section-->
-        <script>
-            window.addEventListener('load', function () {
-                vanillaCalendar.init({
-                    disablePastDays: true
-                });
-            })
-        </script>
-
-        <script>
-            $(document).ready(function() {
-                $("#datepicker").datepicker();
-            });
-        </script>
-
-        <script>
-        	var currentDate = moment(Date.now()).format('MM/DD/YYYY');
-            var infobar = document.getElementById("infobar"); 
-            var out1;
-            var out2;
-
-            $(document).ready(function() {
-                var infobar = document.getElementById("infobar");
-                infobar.style.display="none";
-            });
-            /*
-            function download(club){
-			    console.log("Downloading");
-			    $.ajax({
-			        url: "http://www.prospectave.io:1738/status",
-			        type: 'GET',   
-			        contentType: 'json',    
-			        success: function(res) {
-			            downloadSuccess(res, club);
-			        },
-			        error: function (xhr, status, error) {
-			            console.log(xhr);
-			        }
-			    }); 
-			}
-			function downloadSuccess(rows, currentClub){
-			    console.log(rows);
-			    // iterate over each JSON object
-			    for (i = 0; i < rows.length; i++) {
-			        var row = rows[i];
-			        var club = row["club_name"];
-			        var date = row["date"];
-			        var poster = row["poster"];
-			        var post_date = row["post_date"];
-			        var status = row["status"];
-			        var info = row["info"];
-			        if(date == "" || club == "" || status == "") continue; 
-
-			        if (date == currentDate && club == currentClub) {
-			        	out2 = out1 + "<div class='inner'> <nav> <ul> <li>Club: " + club + "</li> <li>Date: " + date + "</li> <li>Status: " + status + "</li> <li>Information: " + info + "</li> </ul> </nav> </div>";
-			        	return;
-			        }
-			    }
-			}*/
-
-            function showInfo(club) { 
-                out1 = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>'; 
-
-                out2 = out1 + "<div class='inner'> <nav> <ul> <li><a href='#intro'>No events on this date!</a></li> </ul> </nav> </div>";
-
-                // download(club);
-                
-                var date = "04/12/2018";
-		        var currentClub = "Charter";
-		        var info = "Charter Friday";
-		        var status = "PUID";
-
-		        if (date == currentDate && club == currentClub.toLowerCase()) {
-		        	out2 = out1 + "<div class='inner'> <nav> <ul> <li>Club: " + currentClub + "</li> <li>Date: " + date + "</li> <li>Status: " + status + "</li> <li>Information: " + info + "</li> </ul> </nav> </div>";
-		        }
-                infobar.innerHTML = out2;
-                infobar.style.display="";
-                sidebar.style.display="none";
-            }
-
-            function hideInfo() { 
-                infobar.style.display="none";
-                sidebar.style.display="";
-            }
-        </script>
 
         <style>
             .loader {

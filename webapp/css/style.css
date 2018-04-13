@@ -123,6 +123,10 @@
     }
 }
 
+body {
+    background-color: #19273F;
+}
+
 /* Add some shadows to create a card effect */
 .card {
     background-color: #1f457a;
@@ -215,7 +219,7 @@ input[type="time"]
 }
 .terracetext {
     position: absolute; 
-    left: 14.5%; top: 73%; 
+    left: 14.7%; top: 71.7%; 
     z-index: 20; 
     color: black; 
     font-size:1.1vw;
@@ -400,23 +404,23 @@ input[type="time"]
 .puid{
     filter: sepia(10%) saturate(1575%) hue-rotate(82deg) brightness(85%);
     /*filter: sepia(10%) saturate(1500%) hue-rotate(80deg); */
-    transition: filter 1s;
+    transition: filter .5s;
 } 
 
 /* Closed */ 
 .closed { 
     /*filter: sepia(30%) saturate(2500%) hue-rotate(315deg); */
-    transition: filter 1s;
+    transition: filter .5s;
     } 
 
 .pass {
-    filter: sepia(40%) saturate(973%) hue-rotate(-29deg) brightness(108%);
-    transition: filter 1s;
+    filter: sepia(40%) saturate(917%) hue-rotate(-26deg) brightness(106%);
+    transition: filter .5s;
 }
 
 /* Pass/List */ 
 .list{ 
-    filter: sepia(30%) saturate(1070%) hue-rotate(10deg) brightness(115%);
+    filter: sepia(30%) saturate(1016%) hue-rotate(10deg) brightness(115%);
     transition: filter 0.5s;
     /*filter: sepia(100%) saturate(250%) hue-rotate(10deg) brightness(125%); */
     /* with old photo filter: sepia(51%) saturate(1070%) hue-rotate(-18deg) brightness(115%); */
@@ -434,13 +438,15 @@ input[type="time"]
     overflow-y: hidden;
     position: fixed;
     text-align: center;
-    top: 0;
     width: 12em;
     word-wrap: break-word;
     z-index: 10001;
     color: black;
+    top: 100vh;
+    transition: .6s ease;
 }
 
+/* unknown if needed */
 #infobar > .inner {
     display: -moz-flex;
     display: -webkit-flex;
@@ -473,94 +479,6 @@ body.is-ie #infobar > .inner {
     text-align: left;
 }
 
-#infobar nav > ul > li {
-    -moz-transform: translateY(0);
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
-    -moz-transition: opacity 0.15s ease, -moz-transform 0.75s ease;
-    -webkit-transition: opacity 0.15s ease, -webkit-transform 0.75s ease;
-    -ms-transition: opacity 0.15s ease, -ms-transform 0.75s ease;
-    transition: opacity 0.15s ease, transform 0.75s ease;
-    margin: 1.5em 0 0 0;
-    opacity: 1;
-    padding: 0;
-    position: relative;
-}
-
-#infobar nav > ul > li:first-child {
-    margin: 0;
-}
-
-#infobar nav > ul > li:nth-child(1) {
-    -moz-transition-delay: 0.45s;
-    -webkit-transition-delay: 0.45s;
-    -ms-transition-delay: 0.45s;
-    transition-delay: 0.45s;
-}
-
-#infobar nav > ul > li:nth-child(2) {
-    -moz-transition-delay: 0.65s;
-    -webkit-transition-delay: 0.65s;
-    -ms-transition-delay: 0.65s;
-    transition-delay: 0.65s;
-}
-
-#infobar nav > ul > li:nth-child(3) {
-    -moz-transition-delay: 0.85s;
-    -webkit-transition-delay: 0.85s;
-    -ms-transition-delay: 0.85s;
-    transition-delay: 0.85s;
-}
-
-#infobar nav > ul > li:nth-child(4) {
-    -moz-transition-delay: 1.05s;
-    -webkit-transition-delay: 1.05s;
-    -ms-transition-delay: 1.05s;
-    transition-delay: 1.05s;
-}
-
-
-#infobar nav a {
-    -moz-transition: color 0.2s ease;
-    -webkit-transition: color 0.2s ease;
-    -ms-transition: color 0.2s ease;
-    transition: color 0.2s ease;
-    border: 0;
-    color: black;
-    display: block;
-    font-size: 0.75em;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    line-height: 1.5;
-    outline: 0;
-    padding: 0.1em 0;
-    position: relative;
-    text-decoration: none;
-}
-
-#infobar nav a:before, #infobar nav a:after {
-    border-radius: 0.2em;
-    bottom: 0;
-    content: '';
-    height: 0.2em;
-    position: absolute;
-    right: 0;
-    width: 100%;
-}
-
-#infobar nav a:hover {
-    color: rgba(255, 255, 255, 0.55);
-}
-
-#infobar nav a.active {
-    color: #ffffff;
-}
-
-#infobar nav a.active:after {
-    max-width: 100%;
-}
-
 body.is-loading #infobar > .inner {
     opacity: 0;
 }
@@ -573,7 +491,7 @@ body.is-loading #infobar nav ul li {
     opacity: 0;
 }
 
-@media screen and (max-width: 1281px) {
+@media screen and (max-width: 1280px) {
 
     #infobar {
         height: 3.5em;
