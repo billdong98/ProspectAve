@@ -442,8 +442,14 @@ input[type="time"]
     word-wrap: break-word;
     z-index: 10001;
     color: black;
-    top: 100vh;
+    
     transition: .6s ease;
+}
+
+@media screen and (min-width: 1281px) {
+    #infobar {
+        top: 100vh;
+    }
 }
 
 /* unknown if needed */
@@ -495,7 +501,7 @@ body.is-loading #infobar nav ul li {
 
     #infobar {
         height: 3.5em;
-        left: 0;
+        left: -100vw; /* move in from left to right */
         line-height: 1em;
         padding: 0;
         top: 0;

@@ -21,6 +21,7 @@ $(document).ready(function(){
     
     var infobar = document.getElementById("infobar");
     //infobar.style.display="none";
+    hideInfo();
     
     /* set up the listeners for each club */
     for(var i=0; i<clubs.length;i++){
@@ -172,8 +173,13 @@ function showInfo(club) {
             infobar.style.background="#ffd347";
             sidebar.style.display="none";
             infobar.style.display="";
-            infobar.style.top = "0";
             
+            var w = $(window).width();
+            if(w > 1280){
+                infobar.style.top = "0";
+            } else {
+                infobar.style.left = "0";
+            }
             break;
         }
     }
@@ -181,7 +187,15 @@ function showInfo(club) {
 
 // brings back the default sidebar
 function hideInfo() { 
-    infobar.style.top="100vh";
+    var w = $(window).width();
+    if(w > 1280){
+        infobar.style.left = "0";
+        infobar.style.top="100vh";
+    } else {
+        infobar.style.top = "0";
+        infobar.style.left="-100vw";
+    }
+    
     sidebar.style.display="";
     infobar.style.background="#19273F";
 }
