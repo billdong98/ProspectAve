@@ -73,7 +73,7 @@
 }
 
 .wrapper.style2 {
-    background-color: #E1AC74;
+    background-color: #9AB7E4;
 }
 
 
@@ -129,7 +129,8 @@ body {
 
 /* Add some shadows to create a card effect */
 .card {
-    background-color: #d68f43;
+    /*background-color: #d68f43;*/
+    background-color: #9AB7E4;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
