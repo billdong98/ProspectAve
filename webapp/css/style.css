@@ -89,8 +89,14 @@
 
 /* Main title */
 #main-title {
-    margin-bottom: 30px !important;
+    margin-bottom: 30px !important; 
     font-size: 6.5vw;
+}
+
+/* Date Button */
+.datebutton {
+    top: 0vw;
+    left: 90%;
 }
 
 #top-inner {
