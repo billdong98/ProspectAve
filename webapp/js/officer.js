@@ -45,16 +45,20 @@ function getForm2() {
 
 
 
-//downloads ALL data from the Node server
+//downloads the data for THIS club as json
 function download(){
     console.log("Downloading");
 
     $.ajax({
-        url: "https://www.prospectave.io:1738/status",
-        type: 'GET',   
+        url: "https://www.prospectave.io:1738/officer_download/",
+        xhrFields: {
+          withCredentials: true
+       },
+        type: 'GET', 
+        crossDomain: true,
         contentType: 'json',    
         success: function(res) {
-            downloadSuccess(res);
+            officerDownloaded(res);
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -62,11 +66,23 @@ function download(){
     }); 
 }
 
-// handles the results from the node server
-// Parameter: rows is a JSON object array
-function downloadSuccess(rows){
-
-    console.log(rows);
+// callback function for officer data (netID, club, rows)
+function officerDownloaded(json){
+    console.log(json);
+    
+    var identity = json["identity"];
+    if(identity == null){
+        alert("You are NOT logged in! Bye!");
+        window.location("https://prospectave.io:1738/login");
+        return;
+    }
+    
+    var name = json["identity"]["netID"];
+    var club = json["identity"]["club"];
+    
+    var rows = json["rows"];
+    
+    $("#title").html(club + " Control Panel (" + name + ")");
     
     // test.html output
     var table = $("#table");
@@ -89,6 +105,7 @@ function downloadSuccess(rows){
     // SET THE VALUES INSIDE TABLE
     table.html(headers + out);
 }
+
 
 // uploads 
 function upload(){
