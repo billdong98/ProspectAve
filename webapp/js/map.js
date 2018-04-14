@@ -11,16 +11,16 @@ $(document).ready(function(){
     dateDisplay.html("Date: " + window.date);
     download(); // Download THIS week's data
 
-    
+
     vanillaCalendar.init({
-            disablePastDays: true
+        disablePastDays: true
     });
-    
-    
+
+
     var infobar = document.getElementById("infobar");
     //infobar.style.display="none";
     hideInfo();
-    
+
     /* set up the listeners for each club */
     for(var i=0; i<clubs.length;i++){
         !function set(c){
@@ -28,7 +28,7 @@ $(document).ready(function(){
                 console.log(c);
                 showInfo(c);
             });
-            
+
             $("#" + c + "_overlay").mouseout(function() {
                 hideInfo();
             });
@@ -154,10 +154,10 @@ function showInfo(club) {
     out2 = out1 + "<div class='inner'> <nav> <ul> <li><a href='#intro'>No events on this date!</a></li> </ul> </nav> </div>";
 
     var infobar = document.getElementById("infobar");
-    
+
     // data for TODAY
     var rows = window.data[window.date];
-    
+
     for(var i=0; i<rows.length; i++){
         var row = rows[i];
         var name = row["club_name"].toLowerCase();
@@ -167,7 +167,7 @@ function showInfo(club) {
             var status = row["status"];
             var info = row["info"];
             var date = row["date"]; //redundant
-            
+
             out2 = out1 + "<div class='inner'> <nav> <ul> <li>Club: " + row["club_name"] + "</li> <li>Date: " + date + "</li> <li>Status: " + status + "</li> <li>Information: " + info + "</li> </ul> </nav> </div>";
             infobar.innerHTML = out2;
             if (club == "colonial" || club == "quadrangle") {
@@ -176,7 +176,17 @@ function showInfo(club) {
             }
             sidebar.style.display="none";
             infobar.style.display="";
-            
+
+            var w = $(window).width();
+            if(w > 1280){
+                infobar.style.top = "0";
+            } else {
+                infobar.style.left = "0";
+            }
+            infobar.innerHTML = out2;
+            sidebar.style.display="none";
+            infobar.style.display="";
+
             var w = $(window).width();
             if(w > 1280){
                 infobar.style.top = "0";
@@ -184,16 +194,6 @@ function showInfo(club) {
                 infobar.style.left = "0";
             }
             break;
-        }
-        infobar.innerHTML = out2;
-        sidebar.style.display="none";
-        infobar.style.display="";
-        
-        var w = $(window).width();
-        if(w > 1280){
-            infobar.style.top = "0";
-        } else {
-            infobar.style.left = "0";
         }
     }
 }
@@ -208,7 +208,7 @@ function hideInfo() {
         infobar.style.top = "0";
         infobar.style.left="-100vw";
     }
-    
+
     sidebar.style.display="";
     infobar.style.background="#19273F";
 }
