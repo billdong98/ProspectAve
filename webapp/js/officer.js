@@ -71,9 +71,9 @@ function officerDownloaded(json){
     console.log(json);
     
     var identity = json["identity"];
-    console.log(json);
     if(identity == null){
         alert("You are NOT logged in! Bye!");
+        window.location("https://prospectave.io:1738/login");
         return;
     }
     
@@ -82,7 +82,7 @@ function officerDownloaded(json){
     
     var rows = json["rows"];
     
-    $("#title").html(club + " Control Panel");
+    $("#title").html(club + " Control Panel (" + name + ")");
     
     // test.html output
     var table = $("#table");

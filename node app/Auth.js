@@ -34,7 +34,8 @@ function redirect(response){
 
 
 function redirectOfficer(response){
-        response.writeHead(301,
+    console.log("Redirecting to officer page.");
+    response.writeHead(301,
                        {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/officer.html`}
                       );
     response.end();
@@ -43,7 +44,11 @@ function redirectOfficer(response){
 
 const mapping = {
     "mman" : "Cap",
-    "ssjoberg" : "Lame"    
+    "ssjoberg" : "Lame",
+    "wzdong" : "Tower",
+    "junep" : "Ivy",
+    "yangt" : "Cap",
+    "bliang" : "Cannon",
 }
 
 function getClub(netID){

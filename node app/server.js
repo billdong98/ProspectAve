@@ -32,6 +32,11 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Credentials", true);
+    next();
+});
+
 
 let corsCred = cors({credentials:true, origin: 'https://prospectave.io'});
  
@@ -40,6 +45,9 @@ app.options('/officer_download', corsCred);
 app.use(cookieSession({
     name: 'prospectave_session',
     secret: 'verysecurekey',
+    domain: 'prospectave.io',
+    httpOnly: false,
+    sameSite: 'lax',
     // Cookie Options
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
@@ -111,7 +119,8 @@ app.get('/login', (request, response) => {
             if(result != false){
                 request.session.id = result;
                 console.log("Created cookie for: " + request.session.id);
-                response.send("Sup " + result);
+                auth.redirectOfficer(response);
+                return;
             } else {
                 response.status(500);
                 response.send("Bad auth token.");
