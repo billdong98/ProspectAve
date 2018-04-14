@@ -90,8 +90,18 @@ function downloadSuccess(rows){
             clr = "blue";
     }
     
+    if (count >= rows.length) {
+        var expand = document.getElementById("expand");
+        expand.style.display = "none";
+    }
     // SET THE VALUES INSIDE TABLE
     boxes.html(out + headers);
+}
+
+//increases number of boxes shown at once
+function increase() {
+    count += 10;
+    download();
 }
 
 // uploads 
