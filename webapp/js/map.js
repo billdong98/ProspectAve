@@ -5,8 +5,6 @@ var dateDisplay;
 
 let clubs = ["terrace", "tower", "colonial", "cannon", "quadrangle", "ti", "ivy","cottage", "cap", "cloister", "charter"];
 
-
-
 $(document).ready(function(){
     dateDisplay = $("#date_display");
     window.date = moment(Date.now()).format('MM/DD/YYYY'); // set date to today's date
@@ -163,6 +161,8 @@ function showInfo(club) {
     for(var i=0; i<rows.length; i++){
         var row = rows[i];
         var name = row["club_name"].toLowerCase();
+        infobar.style.background="#ffd347";
+        infobar.style.color="black";
         if(name === club || (club === "ti" && name === "tiger inn")){
             var status = row["status"];
             var info = row["info"];
@@ -170,7 +170,10 @@ function showInfo(club) {
             
             out2 = out1 + "<div class='inner'> <nav> <ul> <li>Club: " + row["club_name"] + "</li> <li>Date: " + date + "</li> <li>Status: " + status + "</li> <li>Information: " + info + "</li> </ul> </nav> </div>";
             infobar.innerHTML = out2;
-            infobar.style.background="#ffd347";
+            if (club == "colonial" || club == "quadrangle") {
+                infobar.style.background="#000080";
+                infobar.style.color="white";
+            }
             sidebar.style.display="none";
             infobar.style.display="";
             
@@ -181,6 +184,16 @@ function showInfo(club) {
                 infobar.style.left = "0";
             }
             break;
+        }
+        infobar.innerHTML = out2;
+        sidebar.style.display="none";
+        infobar.style.display="";
+        
+        var w = $(window).width();
+        if(w > 1280){
+            infobar.style.top = "0";
+        } else {
+            infobar.style.left = "0";
         }
     }
 }
