@@ -41,10 +41,21 @@ function redirectOfficer(response){
 }
 
 
+const mapping = {
+    "mman" : "Cap",
+    "ssjoberg" : "Lame"    
+}
+
+function getClub(netID){
+    return mapping[netID];
+}
+
+
 module.exports = {
     redirect : function(res){ redirect(res)},
     verify: function(ticketID, callback){verify(ticketID, callback)},
-    redirectOfficer: function(res){ redirectOfficer(res)}
+    redirectOfficer: function(res){ redirectOfficer(res)},
+    getClub: function(netID){return getClub(netID)}
 }
 
 

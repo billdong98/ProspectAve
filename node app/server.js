@@ -16,7 +16,27 @@ var cookieSession = require('cookie-session');
 
 // setup Express server
 app.use(bodyParser.json());
-app.use(cors());
+
+var whitelist = ['https://prospectave.io', 'http://localhost', 'https://prospectave.io:1738', 'http://127.0.0.1', 'null']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true)
+    } else {
+        console.log('Not allowed by CORS: ' + origin);
+        callback(null, false);
+    }
+  },
+  credentials: true
+}
+
+app.use(cors(corsOptions));
+
+
+let corsCred = cors({credentials:true, origin: 'https://prospectave.io'});
+ 
+app.options('/officer_download', corsCred);
+
 app.use(cookieSession({
     name: 'prospectave_session',
     secret: 'verysecurekey',
@@ -25,8 +45,6 @@ app.use(cookieSession({
 }))
 
 var https = require('https');
-//https.createServer(options, app).listen(1234);
-
 
 /* handling HTTPS */
 const options = {
@@ -53,10 +71,12 @@ let selectAll = 'SELECT * FROM club_status ORDER BY date';
 // [(club_name, date, poster, post_date, status, info)]
 let post = 'INSERT INTO club_status VALUES ';
 let placeholders = '(?,?,?,?,?,?)';
+let selectByClub = 'SELECT * FROM club_status WHERE club_name = ?  ORDER BY date';
 
 
 /* gets the current clubs from the DB */
-app.get('/status', (request, response) => { 
+/* allow ALL domains */
+app.get('/status', cors(), (request, response) => { 
     console.log('Hello getter! Current date: ' + currentDate());
 
     db.all(selectAll, [], (err, rows) => {
@@ -121,28 +141,49 @@ app.get('/login', (request, response) => {
 app.get('/userinfo', (request, response) => { 
     response.setHeader('Content-Type', 'application/json');
         
-    var data = {netID: null, club: "TestClub"};
+    var data = {netID: null, club: null};
     if(!request.session.isPopulated) {
         data.club(null);
         console.log("Not logged in.");
     } else {
         console.log("Welcoming, " + request.session.id);
         data.netID = request.session.id;
+        // get club from auth
+        data.club = auth.getClub(data.netID); 
     }
-    
     response.json(data);
 });
 
 
-
-app.get('/testlogin', (request, response) => { 
-    console.log('Testing login');
-
-    if(!request.session.isPopulated){
-        response.end("Not logged in");
+// sends netID and club events as JSON to officer.html
+app.get('/officer_download', corsCred, (request, response) => { 
+    response.setHeader('Content-Type', 'application/json');
+        
+    var identity = {netID: null, club: null};
+    
+    if(!request.session.isPopulated) {
+        console.log("Failed attempt to get club data");
+        response.json({"identity": null, "rows": null});
+        return;
     } else {
-        response.end(`Welcome, ${request.session.id}`);
-    }
+        // return club data
+        identity.netID = request.session.id;
+        identity.club = auth.getClub(identity.netID);
+        
+        var data = {"identity": identity, "rows" : null};
+        
+        console.log("Sending data for (" + identity.netID + ", club: " + identity.club);
+        
+        // get row for this club
+        db.all(selectByClub, [identity.club], (err, rows) => {
+        if(err){
+            throw err;
+        }
+            console.log("For: " + identity.club + " found " + rows.length + " rows.");
+            data.rows = rows;
+            response.json(data);
+        });
+    }  
 });
 
 
