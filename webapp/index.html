@@ -56,7 +56,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <!-- Date Button -->
                     <div class="datebutton">
                         <a class="icon fa-chevron-circle-left fa-2x" style="float:left; top: -0.35em; padding-right:0.3em" onclick="shiftDate(-1);"></a>
-                        <p id="date_display" style="float:left"> Date: </p>
+                        <p id="date_display" style="float:left;"> Date: </p>
                         <a class="icon fa-chevron-circle-right fa-2x" style="float:left; top: -0.35em; padding-left:0.3em" onclick="shiftDate(1);"></a>
                     </div>
                     <!-- Map -->
@@ -163,14 +163,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <p><b>ProspectAve</b> was designed as a centralized platform for students to efficiently find information on eating clubs. Navigate to a certain date and use the map to view which clubs are open and what is needed for entry.</p>
                             <!-- Feedback -->
                             <h3 id="feedback">Feedback</h3>
-                            <div class="field">
-                                <textarea name="message" id="i" placeholder="Have any feedback? Let us know!" rows="3"></textarea>
-                            </div>
-                            <ul class="actions">
-                                <br>
-                                <li><a href="#" class="button">Submit</a></li>
-                            </ul> 
-                           <br> 
+                            <form method="post" action="send_mail.php">
+                                <div class="field">
+                                    <textarea name="feedback" placeholder="Have any feedback? Let us know!" rows="3"></textarea>
+                                </div>
+                                <ul class="actions">
+                                    <li><button>Submit</button></li>
+                                </ul>  
+                            </form>
                         </div>
                     </div>
                 </section>
