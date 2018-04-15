@@ -95,8 +95,9 @@
 
 /* Date Button */
 .datebutton {
-    top: 0vw;
-    left: 90%;
+    position:absolute;
+    top: 5.5vw;
+    left: 60vw;
 }
 
 #top-inner {
@@ -135,8 +136,7 @@ body {
 
 /* Add some shadows to create a card effect */
 .card {
-    /*background-color: #d68f43;*/
-    background-color: #9AB7E4;
+    background-color: #729bda;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
