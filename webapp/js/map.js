@@ -2,13 +2,22 @@
 window.data = {};
 window.date;
 var dateDisplay;
+var weekdays = new Array(7);
+weekdays[0] = "Sunday";
+weekdays[1] = "Monday";
+weekdays[2] = "Tuesday";
+weekdays[3] = "Wednesday";
+weekdays[4] = "Thursday";
+weekdays[5] = "Friday";
+weekdays[6] = "Saturday";
 
 let clubs = ["terrace", "tower", "colonial", "cannon", "quadrangle", "ti", "ivy","cottage", "cap", "cloister", "charter"];
 
 $(document).ready(function(){
     dateDisplay = $("#date_display");
     window.date = moment(Date.now()).format('MM/DD/YYYY'); // set date to today's date
-    dateDisplay.html("Date: " + window.date);
+    var tempdate = new Date(window.date);
+    dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
     download(); // Download THIS week's data
 
 
@@ -130,7 +139,8 @@ function changeDate(d){
     var dateString = moment(Date.parse(date)).format('MM/DD/YYYY');
     console.log(dateString);
     window.date = dateString;
-    dateDisplay.html("Date: " + window.date);
+    var tempdate = new Date(window.date);
+    dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
     update(window.date);
 
     $('html, body').animate({
@@ -143,7 +153,8 @@ function shiftDate(val){
     var dateString = moment(Date.parse(window.date)).add(val, 'd').format('MM/DD/YYYY');
     window.date = dateString;
     console.log("New date: " + dateString);
-    dateDisplay.html("Date: " + window.date);
+    var tempdate = new Date(window.date);
+    dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
     update(window.date);
 }
 
