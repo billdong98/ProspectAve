@@ -44,6 +44,13 @@ $(document).ready(function(){
     }
 });
 
+function showDatesWithEvents() {
+    for (var date in window.data) {
+        var currentDay = document.getElementById(date);
+        currentDay.classList.add('vcal-date--hasEvent');
+    }
+}
+
 //downloads ALL data from the Node server
 function download(){
     console.log("Downloading");
@@ -83,6 +90,7 @@ function downloadSuccess(rows){
         }
         window.data[date].push(row);
     }
+    showDatesWithEvents();
     // update map on successful download
     update(window.date);
 }
@@ -221,10 +229,5 @@ function hideInfo() {
 
     sidebar.style.display="";
     infobar.style.background="#19273F";
-}
-
-
-function hasEvent(date) {
-    return window.data[date].length > 0;
 }
 

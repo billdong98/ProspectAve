@@ -108,6 +108,11 @@
   color: var(--vcal-today-color);
 }
 
+#v-cal .vcal-date--hasEvent {
+  background-color: rgba(54, 165, 70, 0.5);
+  color: var(--vcal-hasEvent-color);
+}
+
 #v-cal .vcal-date--selected {
   background-color: var(--vcal-selected-bg-color);
   color: var(--vcal-selected-color);
@@ -119,7 +124,3 @@
   opacity: 0.5;
 }
 
-#v-cal .vcal-date--hasEvent {
-  background-color: var(--vcal-hasEvent-bg-color);
-  color: var(--vcal-hasEvent-color);
-}

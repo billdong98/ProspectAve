@@ -66,10 +66,8 @@ var vanillaCalendar = {
     var d = this.date.getDate().toString()
     d = d.length > 1 ? d : '0' + d
     
-    var temp =  m + '/' + d + '/' + y
-    //if (hasEvent(temp)) {
-      //newDay.classLlist.add('vcal-date--hasEvent')
-    //}
+    var currentDate =  m + '/' + d + '/' + y
+    newDay.id = currentDate
 
     newDay.appendChild(dateEl)
     this.month.appendChild(newDay)
