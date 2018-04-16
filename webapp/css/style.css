@@ -100,6 +100,20 @@
     left: 57vw;
 }
 
+/* left date arrow  */
+#leftdate{
+    float:left; 
+    top: -0.35em;
+    padding-right:0.3em
+}
+
+/* right date arrow */
+#rightdate{
+    float:left; 
+    top: -0.35em; 
+    padding-left:0.3em
+}
+
 #top-inner {
     padding-top: 1em;
 }
@@ -226,7 +240,7 @@ input[type="time"]
 }
 .terracetext {
     position: absolute; 
-    left: 14.7%; top: 71.7%; 
+    left: 14.8%; top: 71.7%; 
     z-index: 20; 
     color: black; 
     font-size:1.1vw;
@@ -243,7 +257,7 @@ input[type="time"]
 }
 .towertext {
     position: absolute; 
-    left: 20%; 
+    left: 20.1%; 
     top: 52.5%; 
     z-index: 20; 
     color: black; 
@@ -254,14 +268,14 @@ input[type="time"]
 .cannon {
     position: absolute; 
     left: 28%; 
-    top: 47%; 
+    top: 47.3%; 
     z-index: 20; 
     width: 8.5%; 
     height: auto;
 }
 .cannontext {
     position: absolute; 
-    left: 29.7%; 
+    left: 30%; 
     top: 51.1%; 
     z-index: 20; 
     color: black; 
@@ -315,7 +329,7 @@ input[type="time"]
 }
 .cottagetext{
     position: absolute; 
-    left: 58.8%; 
+    left: 59%; 
     top: 51%; 
     z-index: 20; 
     color: black; 
@@ -351,8 +365,8 @@ input[type="time"]
 }
 .cloistertext{
     position: absolute; 
-    left: 81.4%; 
-    top: 55%; 
+    left: 81.8%; 
+    top: 55.5%; 
     z-index: 20; 
     color: black; 
     font-size:1.1vw;
@@ -387,7 +401,7 @@ input[type="time"]
 }
 .colonialtext{
     position: absolute; 
-    left: 46.3%; 
+    left: 46.5%; 
     top: 18.5%; 
     z-index: 20; 
     color: black; 
@@ -404,7 +418,12 @@ input[type="time"]
     height: auto; 
 }
 .titext{
-    position: absolute; left: 58.5%; top: 18%; z-index: 20; color: black; font-size:1.1vw;
+    position: absolute; 
+    left: 58.5%; 
+    top: 18%; 
+    z-index: 20; 
+    color: black; 
+    font-size:1.1vw;
 }
 
 /* PUID */ 
