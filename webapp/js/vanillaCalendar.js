@@ -58,6 +58,19 @@ var vanillaCalendar = {
       newDay.classList.add('vcal-date--today')
     }
 
+    var y = this.date.getFullYear()
+
+    var m = (1 + this.date.getMonth()).toString()
+    m = m.length > 1 ? m : '0' + m
+
+    var d = this.date.getDate().toString()
+    d = d.length > 1 ? d : '0' + d
+    
+    var temp =  m + '/' + d + '/' + y
+    //if (hasEvent(temp)) {
+      //newDay.classLlist.add('vcal-date--hasEvent')
+    //}
+
     newDay.appendChild(dateEl)
     this.month.appendChild(newDay)
   },

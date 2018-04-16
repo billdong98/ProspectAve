@@ -20,7 +20,6 @@ $(document).ready(function(){
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
     download(); // Download THIS week's data
 
-
     vanillaCalendar.init({
         disablePastDays: true
     });
@@ -223,3 +222,9 @@ function hideInfo() {
     sidebar.style.display="";
     infobar.style.background="#19273F";
 }
+
+
+function hasEvent(date) {
+    return window.data[date].length > 0;
+}
+
