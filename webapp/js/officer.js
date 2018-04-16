@@ -83,6 +83,8 @@ function officerDownloaded(json){
     var rows = json["rows"];
     
     $("#title").html(club + " Control Panel (" + name + ")");
+
+    $("#form2").html("Upload " + club + "'s Schedule");
     
     // test.html output
     var table = $("#table");
