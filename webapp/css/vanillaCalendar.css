@@ -6,7 +6,7 @@
   --vcal-today-color: #000;
   --vcal-selected-bg-color: #FF9E2D;
   --vcal-selected-color: #333;
-  --vcal-hasEvent-bg-color: #36A546;
+  --vcal-hasEvent-bg-color: #9AD2E4;
   --vcal-hasEvent-color: #333;
   --vcal-title-bg-color: #E7E9ED;
    --vcal-title-color: #333;
@@ -109,7 +109,7 @@
 }
 
 #v-cal .vcal-date--hasEvent {
-  background-color: rgba(54, 165, 70, 0.5);
+  background-color: rgba(154, 210, 228, 0.5);
   color: var(--vcal-hasEvent-color);
 }
 
