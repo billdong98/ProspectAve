@@ -17,11 +17,12 @@ var cookieSession = require('cookie-session');
 // setup Express server
 app.use(bodyParser.json());
 
-var whitelist = ['https://prospectave.io', 'http://localhost', 'https://prospectave.io:1738', 'http://127.0.0.1', 'null']
+var whitelist = ['https://prospectave.io', 'http://localhost', 'https://prospectave.io:1738', 'http://127.0.0.1', 'null', 'https://www.prospectave.io'];
+
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
-        callback(null, true)
+        callback(null, true);
     } else {
         console.log('Not allowed by CORS: ' + origin);
         callback(null, false);
@@ -38,9 +39,9 @@ app.use(function(req, res, next) {
 });
 
 
-let corsCred = cors({credentials:true, origin: 'https://prospectave.io'});
+//let corsCred = cors({credentials:true, origin: 'https://prospectave.io'});
  
-app.options('/officer_download', corsCred);
+//app.options('/officer_download', corsCred);
 
 app.use(cookieSession({
     name: 'prospectave_session',
@@ -165,7 +166,7 @@ app.get('/userinfo', (request, response) => {
 
 
 // sends netID and club events as JSON to officer.html
-app.get('/officer_download', corsCred, (request, response) => { 
+app.get('/officer_download', (request, response) => { 
     response.setHeader('Content-Type', 'application/json');
         
     var identity = {netID: null, club: null};
@@ -181,7 +182,7 @@ app.get('/officer_download', corsCred, (request, response) => {
         
         var data = {"identity": identity, "rows" : null};
         
-        console.log("Sending data for (" + identity.netID + ", club: " + identity.club);
+        console.log("Sending data for (" + identity.netID + ", club: " + identity.club) + ")";
         
         // get row for this club
         db.all(selectByClub, [identity.club], (err, rows) => {
