@@ -21,6 +21,20 @@ var whitelist = ['https://prospectave.io', 'http://localhost', 'https://prospect
 
 var corsOptions = {
   origin: function (origin, callback) {
+      
+      //TESTING CORS OVERRIDES ONLY.
+    if(origin == null){
+        console.log("override for null");
+        callback(null, true);
+        return;
+    }
+      
+    if(origin.includes("http://127.0.0.1:")){
+        console.log("override for testing");
+        callback(null, true);
+        return;
+    }
+      
     if (whitelist.indexOf(origin) !== -1) {
         callback(null, true);
     } else {
