@@ -44,6 +44,7 @@ $(document).ready(function(){
     }
 });
 
+// Colors calendar if date has an event 
 function showDatesWithEvents() {
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
@@ -102,7 +103,7 @@ function update(date){
     for(var i=0; i<clubs.length;i++){
         var c = clubs[i];
         $("#" + c + "_overlay").removeClass();
-        $("#" + c + "_overlay").addClass("closed");
+        $("#" + c + "_overlay").addClass(c + " closed");
     }
 
     if(status == undefined){
@@ -118,21 +119,19 @@ function update(date){
         var info = row["info"];
 
         var overlay;
-        if(club == "Tiger Inn"){
-            overlay = $("#ti_overlay");
-        } else {
-            overlay = $("#" + club.toLowerCase() + "_overlay");
-        }
+        if(club == "Tiger Inn")
+            club = "ti";
+        overlay = $("#" + club.toLowerCase() + "_overlay");
 
         if(s === "PUID"){
             overlay.removeClass();
-            overlay.addClass("puid");
+            overlay.addClass(club.toLowerCase() + " puid");
         } else if (s === "Pass"){
             overlay.removeClass();
-            overlay.addClass("pass");
+            overlay.addClass(club.toLowerCase() + " pass");
         } else if(s === "List"){
             overlay.removeClass();
-            overlay.addClass("list");
+            overlay.addClass(club.toLowerCase() + " list");
         } else {
             console.log("Update error:");
             console.log(row);

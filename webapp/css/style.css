@@ -104,14 +104,20 @@
 #leftdate{
     float:left; 
     top: -0.35em;
-    padding-right:0.3em
+    padding-right:0.3em;
+}
+
+/* Date text */
+.datetext{
+    float: left;
+    text-align: left;
+    width: 8em;
 }
 
 /* right date arrow */
 #rightdate{
-    float:left; 
+    float:right; 
     top: -0.35em; 
-    padding-left:0.3em
 }
 
 #top-inner {
@@ -283,7 +289,7 @@ input[type="time"]
 }
 
 /* Quad */
-.quad{
+.quadrangle{
     position: absolute; 
     left: 39%; 
     top: 47%; 
@@ -291,7 +297,7 @@ input[type="time"]
     width: 8%; 
     height: auto;
 }
-.quadtext{
+.quadrangletext{
     position: absolute; 
     left: 41%; 
     top: 52.3%; 
@@ -430,24 +436,24 @@ input[type="time"]
 .puid{
     filter: sepia(10%) saturate(1575%) hue-rotate(82deg) brightness(85%);
     /*filter: sepia(10%) saturate(1500%) hue-rotate(80deg); */
-    transition: filter .5s;
+     transition: filter .5s; 
 } 
 
 /* Closed */ 
 .closed { 
     /*filter: sepia(30%) saturate(2500%) hue-rotate(315deg); */
-    transition: filter .5s;
+     transition: filter .5s; 
     } 
 
 .pass {
     filter: sepia(40%) saturate(917%) hue-rotate(-26deg) brightness(106%);
-    transition: filter .5s;
+     transition: filter .5s; 
 }
 
 /* Pass/List */ 
 .list{ 
     filter: sepia(30%) saturate(1016%) hue-rotate(10deg) brightness(115%);
-    transition: filter 0.5s;
+    transition: filter 0.5s; 
     /*filter: sepia(100%) saturate(250%) hue-rotate(10deg) brightness(125%); */
     /* with old photo filter: sepia(51%) saturate(1070%) hue-rotate(-18deg) brightness(115%); */
 } 
