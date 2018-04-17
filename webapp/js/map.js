@@ -32,12 +32,13 @@ $(document).ready(function(){
     /* set up the listeners for each club */
     for(var i=0; i<clubs.length;i++){
         !function set(c){
-            $("#" + c + "_overlay").mouseover(function() {
+            $("#" + c + "_wrap").mouseover(function() {
                 console.log(c);
                 showInfo(c);
             });
 
-            $("#" + c + "_overlay").mouseout(function() {
+            
+            $("#" + c + "_wrap").mouseout(function() {
                 hideInfo();
             });
         }(clubs[i]);

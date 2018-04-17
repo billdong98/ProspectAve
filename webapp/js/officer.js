@@ -72,8 +72,8 @@ function officerDownloaded(json){
     
     var identity = json["identity"];
     if(identity == null){
-        alert("You are NOT logged in! Bye!");
-        window.location("https://prospectave.io:1738/login");
+        alert("You need to be logged in to access this page.");
+        $(location).attr('href', "https://prospectave.io:1738/login");
         return;
     }
     
