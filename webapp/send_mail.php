@@ -37,6 +37,5 @@ function isInjected($str) {
 if (!isInjected($comments)) {
 
 	mail( "$webmaster_email", "Feedback Form Results", $comments );
-	header( "Location: $feedback_page" );
 }
 ?>
