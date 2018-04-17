@@ -55,45 +55,45 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <h1 class="major" id="main-title">P<span style="font-size:4.5vw">ROSPECT</span>A<span style="font-size:4.5vw">VE</span></h1>
                     <!-- Date Button -->
                     <div class="datebutton">
-                        <a class="icon fa-chevron-circle-left fa-2x" style="float:left; top: -0.35em; padding-right:0.3em" onclick="shiftDate(-1);"></a>
-                        <p id="date_display" style="float:left; width: 16vw; text-align: center;"> Date: </p>
-                        <a class="icon fa-chevron-circle-right fa-2x" style="float:left; top: -0.35em; padding-left:0.3em" onclick="shiftDate(1);"></a>
+                        <a class="icon fa-chevron-circle-left fa-2x" onclick="shiftDate(-1);" id="leftdate"></a>
+                        <p class="datetext" id="date_display"> Date: </p>
+                        <a class="icon fa-chevron-circle-right fa-2x" onclick="shiftDate(1);" id="rightdate"></a>
                     </div>
                     <!-- Map -->
                     <div class="containerdiv">
                         <img class="map" src="images/map2.png" width="100%" height="100%" align="middle">
                         <!-- Terrace -->
-                        <a href="http://terracefuture.org/" target="_blank" id="terrace_overlay"><img class="terrace" id="Terrace" src="images/terrace.png"/>
+                        <a href="http://terracefuture.org/" target="_blank"><img class="terrace" id="terrace_overlay" src="images/terrace.png"/>
                             <div class="terracetext"> Terrace </div></a>
                         <!-- Tower -->
-                        <a href="http://www.princetontowerclub.com/" target="_blank" id="tower_overlay"><img class="tower" id="Tower" src="images/tower.png"/>
+                        <a href="http://www.princetontowerclub.com/" target="_blank"><img class="tower" id="tower_overlay" src="images/tower.png"/>
                             <div class="towertext"> Tower </div> </a>
                         <!-- Cannon -->
-                        <a href="https://cannonclub.com/" target="_blank" id="cannon_overlay"><img class="cannon" id="Cannon" src="images/cannon.png"/>
+                        <a href="https://cannonclub.com/" target="_blank"><img class="cannon" id="cannon_overlay" src="images/cannon.png"/>
                             <div class="cannontext"> Cannon </div></a>
                         <!-- Quad -->
-                        <a href="http://quadrangleclub.org/" target="_blank" id="quadrangle_overlay"><img class="quad" id="Quad" src="images/quad.png"/>
-                            <div class="quadtext"> Quad </div></a>
+                        <a href="http://quadrangleclub.org/" target="_blank"><img class="quadrangle" id="quadrangle_overlay" src="images/quad.png"/>
+                            <div class="quadrangletext"> Quad </div></a>
                         <!-- Ivy -->
-                        <a href="http://theivyclub.net/" target="_blank" id="ivy_overlay"><img class="ivy" id="Ivy" src="images/ivy.png"/>
+                        <a href="http://theivyclub.net/" target="_blank"><img class="ivy" id="ivy_overlay" src="images/ivy.png"/>
                             <div class="ivytext"> Ivy </div></a>
                         <!-- Cottage -->
-                        <a href="http://www.cottageclub.net/" target="_blank" id="cottage_overlay"><img class="cottage" id="Cottage" src="images/cottage.png" width="70" />
+                        <a href="http://www.cottageclub.net/" target="_blank"><img class="cottage" id="cottage_overlay" src="images/cottage.png" width="70" />
                             <div class="cottagetext"> Cottage </div></a>
                         <!-- Cap -->
-                        <a href="https://www.capandgownclub.org/" target="_blank" id="cap_overlay"><img class="cap" id="Cap" src="images/cap.png"/>
+                        <a href="https://www.capandgownclub.org/" target="_blank"><img class="cap" id="cap_overlay" src="images/cap.png"/>
                             <div class="captext"> Cap </div></a>
                         <!-- Cloister -->
-                        <a href="http://cloisterinn.com/" target="_blank" id="cloister_overlay"><img class="cloister" id="Cloister" src="images/cloister.png"/>
+                        <a href="http://cloisterinn.com/" target="_blank"><img class="cloister" id="cloister_overlay" src="images/cloister.png"/>
                             <div class="cloistertext"> Cloister </div></a>
                         <!-- Charter -->
-                        <a href="http://alumni.charterclub.org/" id="charter_overlay" target="_blank"><img class="charter" id="Charter" src="images/charter.png"/>
+                        <a href="http://alumni.charterclub.org/" target="_blank"><img class="charter" id="charter_overlay" src="images/charter.png"/>
                             <div class="chartertext"> Charter </div></a>
                         <!-- Colonial -->
-                        <a href="http://colonialclub.com/" target="_blank" id="colonial_overlay"><img class="colonial" id="Colonial" src="images/colonial.png"/>
+                        <a href="http://colonialclub.com/" target="_blank"><img class="colonial" id="colonial_overlay" src="images/colonial.png"/>
                             <div class="colonialtext"> Colonial </div></a>
                         <!-- TI -->
-                        <a href="http://www.tigerinn.net/" target="_blank" id="ti_overlay"><img class="ti" id="TI" src="images/ti.png"/>
+                        <a href="http://www.tigerinn.net/" target="_blank"><img class="ti" id="ti_overlay" src="images/ti.png"/>
                             <div class="titext"> TI </div></a> 
                     </div>
                 </div>
@@ -282,6 +282,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <script src="js/skel.min.js"></script>
         <script src="js/util.js"></script>
         <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="js/test.js"> </script>
         <script src="js/main.js"></script>
         <script src="js/moment.js"></script>
         <script src="js/map.js"></script>

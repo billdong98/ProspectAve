@@ -3,13 +3,13 @@ window.data = {};
 window.date;
 var dateDisplay;
 var weekdays = new Array(7);
-weekdays[0] = "Sunday";
-weekdays[1] = "Monday";
-weekdays[2] = "Tuesday";
-weekdays[3] = "Wednesday";
-weekdays[4] = "Thursday";
-weekdays[5] = "Friday";
-weekdays[6] = "Saturday";
+weekdays[0] = "Sun";
+weekdays[1] = "Mon";
+weekdays[2] = "Tue";
+weekdays[3] = "Wed";
+weekdays[4] = "Thu";
+weekdays[5] = "Fri";
+weekdays[6] = "Sat";
 
 let clubs = ["terrace", "tower", "colonial", "cannon", "quadrangle", "ti", "ivy","cottage", "cap", "cloister", "charter"];
 
@@ -19,7 +19,6 @@ $(document).ready(function(){
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
     download(); // Download THIS week's data
-
 
     vanillaCalendar.init({
         disablePastDays: true
@@ -44,6 +43,14 @@ $(document).ready(function(){
         }(clubs[i]);
     }
 });
+
+// Colors calendar if date has an event 
+function showDatesWithEvents() {
+    for (var date in window.data) {
+        var currentDay = document.getElementById(date);
+        currentDay.classList.add('vcal-date--hasEvent');
+    }
+}
 
 //downloads ALL data from the Node server
 function download(){
@@ -84,6 +91,7 @@ function downloadSuccess(rows){
         }
         window.data[date].push(row);
     }
+    showDatesWithEvents();
     // update map on successful download
     update(window.date);
 }
@@ -95,7 +103,7 @@ function update(date){
     for(var i=0; i<clubs.length;i++){
         var c = clubs[i];
         $("#" + c + "_overlay").removeClass();
-        $("#" + c + "_overlay").addClass("closed");
+        $("#" + c + "_overlay").addClass(c + " closed");
     }
 
     if(status == undefined){
@@ -111,21 +119,19 @@ function update(date){
         var info = row["info"];
 
         var overlay;
-        if(club == "Tiger Inn"){
-            overlay = $("#ti_overlay");
-        } else {
-            overlay = $("#" + club.toLowerCase() + "_overlay");
-        }
+        if(club == "Tiger Inn")
+            club = "ti";
+        overlay = $("#" + club.toLowerCase() + "_overlay");
 
         if(s === "PUID"){
             overlay.removeClass();
-            overlay.addClass("puid");
+            overlay.addClass(club.toLowerCase() + " puid");
         } else if (s === "Pass"){
             overlay.removeClass();
-            overlay.addClass("pass");
+            overlay.addClass(club.toLowerCase() + " pass");
         } else if(s === "List"){
             overlay.removeClass();
-            overlay.addClass("list");
+            overlay.addClass(club.toLowerCase() + " list");
         } else {
             console.log("Update error:");
             console.log(row);
@@ -223,3 +229,4 @@ function hideInfo() {
     sidebar.style.display="";
     infobar.style.background="#19273F";
 }
+

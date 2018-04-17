@@ -6,6 +6,8 @@
   --vcal-today-color: #000;
   --vcal-selected-bg-color: #FF9E2D;
   --vcal-selected-color: #333;
+  --vcal-hasEvent-bg-color: #36A546;
+  --vcal-hasEvent-color: #333;
   --vcal-title-bg-color: #E7E9ED;
    --vcal-title-color: #333;
 }
@@ -106,6 +108,11 @@
   color: var(--vcal-today-color);
 }
 
+#v-cal .vcal-date--hasEvent {
+  background-color: rgba(54, 165, 70, 0.5);
+  color: var(--vcal-hasEvent-color);
+}
+
 #v-cal .vcal-date--selected {
   background-color: var(--vcal-selected-bg-color);
   color: var(--vcal-selected-color);
@@ -116,3 +123,4 @@
   cursor: not-allowed;
   opacity: 0.5;
 }
+

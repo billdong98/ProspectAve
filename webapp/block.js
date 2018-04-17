@@ -50,8 +50,12 @@ function download(){
     console.log("Downloading");
 
     $.ajax({
-        url: "https://www.prospectave.io:1738/status",
+        url: "https://www.prospectave.io:1738/officer_download",
+        xhrFields: {
+          withCredentials: true
+       },
         type: 'GET',   
+        crossDomain: true,
         contentType: 'json',    
         success: function(res) {
             downloadSuccess(res);
@@ -64,10 +68,26 @@ function download(){
 
 // handles the results from the node server
 // Parameter: rows is a JSON object array
-function downloadSuccess(rows){
+function downloadSuccess(json){
 
-    console.log(rows);
+    console.log(json);
     
+    var identity = json["identity"];
+    if(identity == null){
+        alert("You are NOT logged in! Bye!");
+        window.location("https://prospectave.io:1738/login");
+        return;
+    }
+    
+    var name = json["identity"]["netID"];
+    var club = json["identity"]["club"];
+    
+    var rows = json["rows"];
+    
+    $("#title").html(club + " Control Panel (" + name + ")");
+
+    $("#form2").html("Upload " + club + "'s Schedule");
+
     // test.html output
     var boxes = $("#boxes");
     var out = "";
