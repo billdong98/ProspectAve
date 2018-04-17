@@ -457,6 +457,14 @@ input[type="time"]
     #infobar {
         top: 100vh;
     }
+    
+    #intro {
+        height: 100vh;
+    } 
+    
+    #one {
+        height: 100vh;
+    }
 }
 
 /* unknown if needed */
@@ -571,5 +579,4 @@ body.is-loading #infobar nav ul li {
 
 .orange {
     background: #d4a26d;
-}
 }
