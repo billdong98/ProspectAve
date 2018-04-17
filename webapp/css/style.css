@@ -484,11 +484,11 @@ input[type="time"]
     }
     
     #intro {
-        height: 100vh;
+        height: auto;
     } 
     
     #one {
-        height: 100vh;
+        height: auto;
     }
 }
 
