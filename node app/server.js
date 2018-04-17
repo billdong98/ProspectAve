@@ -88,13 +88,19 @@ let db = new sqlite3.Database('./clubs.db', (err) => {
 });
 
 
-/* QUERIES */
-// gets all records from club_status
-let selectAll = 'SELECT * FROM club_status ORDER BY date';
+/* SQLITE QUERIES */
+
+// insert a new row into the database
 // [(club_name, date, poster, post_date, status, info)]
 let post = 'INSERT INTO club_status VALUES ';
 let placeholders = '(?,?,?,?,?,?)';
-let selectByClub = 'SELECT * FROM club_status WHERE club_name = ?  ORDER BY date';
+// part of a query
+let afterToday = "DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) >= date('now')";
+// gets all records from club_status after today
+let selectAll = 'SELECT * FROM club_status WHERE ' + afterToday + ' ORDER BY date';
+// get records from club_status for a particular club (after today)
+let selectByClub = 'SELECT * FROM club_status WHERE club_name = ? and ' + afterToday + ' ORDER BY date';
+
 
 
 /* gets the current clubs from the DB */

@@ -24,7 +24,6 @@ $(document).ready(function(){
         disablePastDays: true
     });
 
-
     var infobar = document.getElementById("infobar");
     //infobar.style.display="none";
     hideInfo();
@@ -49,10 +48,9 @@ $(document).ready(function(){
 function showDatesWithEvents() {
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
-        var currentDayTemp = new Date(date);
-        var currentDayTemp2 = new Date();
-        if (currentDayTemp > currentDayTemp2)
+        if (new Date(date) >= new Date() && currentDay != null){
             currentDay.classList.add('vcal-date--hasEvent');
+        }
     }
 }
 
