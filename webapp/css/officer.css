@@ -1,7 +1,19 @@
-#club_info #date_info {
-    font-size: 30px;
+#date_info {
+    font-size: 45px;
+}
+
+#reg_date_info {
+    font-size: 45px;
 }
 
 #club_info #status_info {
     font-size: 30px;
+}
+
+#v-cal .vcal-date--selected {
+    background-color: #B4D7FF;
+}
+
+#register_panel {
+    display: none;
 }

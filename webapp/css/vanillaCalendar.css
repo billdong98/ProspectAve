@@ -9,7 +9,11 @@
   --vcal-hasEvent-bg-color: #9AD2E4;
   --vcal-hasEvent-color: #333;
   --vcal-title-bg-color: #E7E9ED;
-   --vcal-title-color: #333;
+  --vcal-title-color: #333;
+  
+  --vcal-hasEvent-PUID: #87E49C; 
+  --vcal-hasEvent-pass: #FF9E2D; 
+  --vcal-hasEvent-list: #FBF63F; 
 }
 
 /* #E4923C*/
@@ -110,6 +114,21 @@
 
 #v-cal .vcal-date--hasEvent {
   background-color: rgba(154, 210, 228, 0.5);
+  color: var(--vcal-hasEvent-color);
+}
+
+#v-cal .vcal-date--pass {
+  background-color: var(--vcal-hasEvent-pass);
+  color: var(--vcal-hasEvent-color);
+}
+
+#v-cal .vcal-date--list {
+  background-color: var(--vcal-hasEvent-list);
+  color: var(--vcal-hasEvent-color);
+}
+
+#v-cal .vcal-date--PUID {
+  background-color: var(--vcal-hasEvent-PUID);
   color: var(--vcal-hasEvent-color);
 }
 
