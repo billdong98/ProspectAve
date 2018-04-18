@@ -32,25 +32,26 @@ function updateDisp(date){
     // format the date in two different ways
     var dateString = moment(date).format('MM/DD/YYYY');
     var formattedDate = moment(date).format("ddd, MMM Do");
+
     
     var row = window.data[dateString];
     if(row === undefined){ 
         // if there's no event, display the "no data" text
+        $("#event_panel").css('display','none');
 
-        $("#reg_date_info").html(formattedDate);
-        $("#date_var").html(dateString);
-        $("#club_info").css('display', 'none');
-        $("#register_panel").css('display', 'block');
-        // show the button that populates the field with the picked date
-        $('#add_button').unbind('click');
-        $('#add_button').click(function() {
-            populateForm({}, date);
-        });
+        $("#register_panel").animate({'opacity': 0}, 300, function () {  
+            $("#register_panel").css('display', 'block');    
+            $("#reg_date_info").html(formattedDate);
+            $("#date_var").html(dateString);
+            // show the button that populates the field with the picked date
+            $('#add_button').unbind('click');
+            $('#add_button').click(function() {
+                populateForm({}, date);
+            });
+        }).animate({'opacity': 1}, 300);
     } else {
-        // update each field of the display
-        $("#date_info").html(formattedDate);
-        $("#club_info").css('display', 'block');
-        $("#register_panel").css('display', 'none');
+
+        $("#register_panel").css('display','none');
 
         var club = row["club_name"];
         var date = row["date"];
@@ -59,10 +60,16 @@ function updateDisp(date){
         var status = row["status"];
         var info = row["info"];
 
-        $("#status_info").html("Status: " + status);
-        $("#description_info").html(info);
-        $("#poster_info").html(poster);
-        $("#postdate_info").html(post_date);   
+        $("#event_panel").animate({'opacity': 0}, 300, function () {  
+            $("#club_info").css('display', 'block'); 
+            $("#event_panel").css('display', 'block');
+            // update each field of the display
+            $("#date_info").html(formattedDate);
+            $("#status_info").html("Status: " + status);
+            $("#description_info").html(info);
+            $("#poster_info").html(poster);
+            $("#postdate_info").html(post_date);  
+        }).animate({'opacity': 1}, 300); 
         
         // set event listeners for these buttons
         $('#edit_info').click(function() {
@@ -116,7 +123,7 @@ function downloadSuccess(){
     }*/
 
     $("#title").html(club + " Control Panel — " + name + "");
-    $("#form2").html("Upload " + club + "'s Schedule");
+    $("#post_form_title").html("Upload " + club + "'s Schedule");
 
     // add logo to sidebar
     var logo = document.getElementById(club.toLowerCase() + "logo");
