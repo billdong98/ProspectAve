@@ -484,11 +484,24 @@ input[type="time"]
     }
     
     #intro {
-        height: 100vh;
+        min-height: 100vh;
     } 
     
     #one {
-        height: 100vh;
+        min-height: 100vh;
+    }
+    #three {
+        min-height: 100vh;
+    }
+    
+    #infobar .club_name {
+        font-size: 2.5em;
+        text-align: center;
+        padding-left: 0;
+    }
+    
+     .inner .info {
+        font-size: 18px;
     }
 }
 

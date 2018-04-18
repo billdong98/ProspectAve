@@ -25,6 +25,7 @@ $(document).ready(function(){
     });
 
     var infobar = document.getElementById("infobar");
+    var sidebar = document.getElementById("sidebar");
     //infobar.style.display="none";
     hideInfo();
 
@@ -176,11 +177,9 @@ function shiftDate(val){
 
 // changes the sidebar to display info about this club
 function showInfo(club) { 
-    out1 = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>'; 
-
-    out2 = out1 + "<div class='inner'> <nav> <ul> <li><a href='#intro'>No events on this date!</a></li> </ul> </nav> </div>";
 
     var infobar = document.getElementById("infobar");
+    var sidebar = document.getElementById("sidebar");
 
     // data for TODAY
     var rows = window.data[window.date];
@@ -195,12 +194,15 @@ function showInfo(club) {
             var info = row["info"];
             var date = row["date"]; //redundant
 
-            out2 = out1 + "<div class='inner'> <nav> <ul> <li>Club: " + row["club_name"] + "</li> <li>Date: " + date + "</li> <li>Status: " + status + "</li> <li>Information: " + info + "</li> </ul> </nav> </div>";
+            out2 = out1 + "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
             infobar.innerHTML = out2;
             if (club == "colonial" || club == "quadrangle") {
                 infobar.style.background="#000080";
                 infobar.style.color="white";
             }
+            
+            
+            
             sidebar.style.display="none";
             infobar.style.display="";
 
@@ -227,6 +229,9 @@ function showInfo(club) {
 
 // brings back the default sidebar
 function hideInfo() { 
+    var infobar = document.getElementById("infobar");
+    var sidebar = document.getElementById("sidebar");
+
     var w = $(window).width();
     if(w > 1280){
         infobar.style.left = "0";
