@@ -195,12 +195,15 @@ function showInfo(club) {
             var info = row["info"];
             var date = row["date"]; //redundant
 
-            out2 = out1 + "<div class='inner'> <nav> <ul> <li>Club: " + row["club_name"] + "</li> <li>Date: " + date + "</li> <li>Status: " + status + "</li> <li>Information: " + info + "</li> </ul> </nav> </div>";
+            out2 = out1 + "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
             infobar.innerHTML = out2;
             if (club == "colonial" || club == "quadrangle") {
                 infobar.style.background="#000080";
                 infobar.style.color="white";
             }
+            
+            
+            
             sidebar.style.display="none";
             infobar.style.display="";
 
