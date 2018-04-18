@@ -25,6 +25,7 @@ $(document).ready(function(){
     });
 
     var infobar = document.getElementById("infobar");
+    var sidebar = document.getElementById("sidebar");
     //infobar.style.display="none";
     hideInfo();
 
@@ -181,6 +182,7 @@ function showInfo(club) {
     out2 = out1 + "<div class='inner'> <nav> <ul> <li><a href='#intro'>No events on this date!</a></li> </ul> </nav> </div>";
 
     var infobar = document.getElementById("infobar");
+    var sidebar = document.getElementById("sidebar");
 
     // data for TODAY
     var rows = window.data[window.date];
@@ -227,6 +229,9 @@ function showInfo(club) {
 
 // brings back the default sidebar
 function hideInfo() { 
+    var infobar = document.getElementById("infobar");
+    var sidebar = document.getElementById("sidebar");
+
     var w = $(window).width();
     if(w > 1280){
         infobar.style.left = "0";
