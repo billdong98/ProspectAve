@@ -158,11 +158,19 @@ function changeDate(d){
 
 // triggered by the two buttons on either side of the date display
 function shiftDate(val){
+    // change colored date on calendar
+    var currentDay = document.getElementById(window.date);
+    currentDay.classList.remove('vcal-date--selected');
+
     var dateString = moment(Date.parse(window.date)).add(val, 'd').format('MM/DD/YYYY');
     window.date = dateString;
     console.log("New date: " + dateString);
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
+
+    currentDay = document.getElementById(window.date);
+    currentDay.classList.add('vcal-date--selected');
+
     update(window.date);
 }
 
