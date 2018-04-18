@@ -484,11 +484,11 @@ input[type="time"]
     }
     
     #intro {
-        height: auto;
+        height: 100vh;
     } 
     
     #one {
-        height: auto;
+        height: 100vh;
     }
 }
 
@@ -598,7 +598,7 @@ body.is-loading #infobar nav ul li {
 .boxed {
     border: solid 1px rgba(255, 255, 255, 0.15);
     padding: 10px;
-    border-radius:2em;
+    border-radius:0em;
     height:auto;
 }
 

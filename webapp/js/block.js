@@ -3,8 +3,7 @@ var count;
 
 $(document).ready(function(){
     headers = $("#boxes").html();
-    count = 10;
-    download();
+    count = 9;
     
     // initializing the date picker
     $("#schedule_date_picker").multiDatesPicker({
@@ -45,39 +44,28 @@ function getForm2() {
     }
 }
 
-//downloads ALL data from the Node server
-function download(){
-    console.log("Downloading");
 
-    $.ajax({
-        url: "https://www.prospectave.io:1738/officer_download",
-        xhrFields: {
-          withCredentials: true
-       },
-        type: 'GET',   
-        crossDomain: true,
-        contentType: 'json',    
-        success: function(res) {
-            downloadSuccess(res);
-        },
-        error: function (xhr, status, error) {
-            console.log(xhr);
-        }
-    }); 
-}
 
 // handles the results from the node server
 // Parameter: rows is a JSON object array
-function downloadSuccess(json){
-
-    console.log(json);
+function downloadSuccess(){
     
+    // dummy data
+    var json = {"identity":{"netID":"mman","club":"Cap"},
+                "rows":[{"club_name":"Cap","date":"04/21/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""},{"club_name":"Cap","date":"04/28/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""}
+                       
+                       
+                       ]}
+    
+    
+    /*
     var identity = json["identity"];
     if(identity == null){
         alert("You are NOT logged in! Bye!");
         window.location("https://prospectave.io:1738/login");
         return;
-    }
+    }*/
+    
     
     var name = json["identity"]["netID"];
     var club = json["identity"]["club"];
@@ -103,19 +91,23 @@ function downloadSuccess(json){
         var post_date = data["post_date"];
         var status = data["status"];
         var info = data["info"];
-        out += '<div class = "3u"><div class="boxed ' + clr + '"><h3>' + club + '</h3>' + date + "<br> Status: " + status + "<br>Poster: " + poster + "<br>Post Date: " + post_date + "<br>Description: " + info + "</div></div>";
+        // format them into blocks
+        out += '<div class = "4u"><div class="boxed ' + clr + '"><h3>' + club + '</h3>' + date + "<br> Status: " + status + "<br>Poster: " + poster + "<br>Post Date: " + post_date + "<br>Description: " + info + "</div></div>";
+        // alternating colors
         if (clr == "blue")
             clr = "orange";
         else   
             clr = "blue";
     }
     
+    // SET THE VALUES INSIDE TABLE
+    boxes.html(out + headers);
+    
+    // if all stuff are shown don't show expand button
     if (count >= rows.length) {
         var expand = document.getElementById("expand");
         expand.style.display = "none";
     }
-    // SET THE VALUES INSIDE TABLE
-    boxes.html(out + headers);
 }
 
 //increases number of boxes shown at once
