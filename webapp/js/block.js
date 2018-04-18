@@ -110,12 +110,12 @@ function downloadSuccess(json){
             clr = "blue";
     }
     
+    // SET THE VALUES INSIDE TABLE
+    boxes.html(out + headers);
     if (count >= rows.length) {
         var expand = document.getElementById("expand");
         expand.style.display = "none";
     }
-    // SET THE VALUES INSIDE TABLE
-    boxes.html(out + headers);
 }
 
 //increases number of boxes shown at once
