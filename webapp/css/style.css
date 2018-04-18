@@ -562,8 +562,17 @@ body.is-loading #infobar nav ul li {
         width: 100%;
     }
 
-    #infobar img {
-        display: none;
+    #infobar #clublogo {
+        float: left;
+        top: 20%;
+    }
+
+    #infobar .club_name {
+        font-size: 1.5em;
+    }
+
+    .inner .info {
+        font-size: 15px;
     }
 
     #infobar > .inner {
@@ -577,6 +586,7 @@ body.is-loading #infobar nav ul li {
         align-items: stretch;
         height: inherit;
         line-height: inherit;
+        display: inline;
     }
 
 
@@ -610,10 +620,10 @@ body.is-loading #infobar nav ul li {
 }
 
 .boxed {
-    border: solid 1px rgba(255, 255, 255, 0.15);
+    border: solid 3px rgba(255, 255, 255, 0.15);
     padding: 10px;
-    border-radius:0em;
-    height:auto;
+    border-radius:0.5em;
+    box-sizing: border-box;
 }
 
 .blue {

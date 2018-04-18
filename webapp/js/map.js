@@ -177,13 +177,10 @@ function shiftDate(val){
 
 // changes the sidebar to display info about this club
 function showInfo(club) { 
-    out1 = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>'; 
-
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
 
     var out = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>';  
-
     
     // data for TODAY
     var rows = window.data[window.date];
@@ -200,10 +197,6 @@ function showInfo(club) {
 
             out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
             infobar.innerHTML = out;
-            if (club == "colonial" || club == "quadrangle") {
-                infobar.style.background="#000080";
-                infobar.style.color="white";
-            }
             var w = $(window).width();
 
             sidebar.style.display="none";
@@ -213,8 +206,10 @@ function showInfo(club) {
                 infobar.style.top = "0";
             } else {
                 infobar.style.left = "0";
+                out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png" style="height: 80%; width: auto;"/>'; 
+                out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
             }
-            infobar.innerHTML = out2;
+            infobar.innerHTML = out;
             sidebar.style.display="none";
             infobar.style.display="";
 
