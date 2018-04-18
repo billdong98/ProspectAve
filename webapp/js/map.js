@@ -177,9 +177,6 @@ function shiftDate(val){
 
 // changes the sidebar to display info about this club
 function showInfo(club) { 
-    out1 = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>'; 
-
-    out2 = out1 + "<div class='inner'> <nav> <ul> <li><a href='#intro'>No events on this date!</a></li> </ul> </nav> </div>";
 
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
