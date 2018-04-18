@@ -121,7 +121,6 @@ function upload(){
 
     console.log(dates);
     
-    
     var club = $("#club_selector").val();
     var poster = "Officer page";
     var status = radio_status;
