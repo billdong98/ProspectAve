@@ -202,8 +202,6 @@ function showInfo(club) {
             sidebar.style.display="none";
             infobar.style.display="";
 
-             w = $(window).width();
-
             if(w > 1280){
                 infobar.style.top = "0";
             } else {
