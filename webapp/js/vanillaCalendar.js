@@ -57,7 +57,7 @@ var vanillaCalendar = {
     if (this.date.toString() === this.todaysDate.toString()) {
       newDay.classList.add('vcal-date--today')
     }
-
+    // convert date to MM/DD/YYYY format
     var y = this.date.getFullYear()
 
     var m = (1 + this.date.getMonth()).toString()
