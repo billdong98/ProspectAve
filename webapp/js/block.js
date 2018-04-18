@@ -3,8 +3,7 @@ var count;
 
 $(document).ready(function(){
     headers = $("#boxes").html();
-    count = 10;
-    download();
+    count = 9;
     
     // initializing the date picker
     $("#schedule_date_picker").multiDatesPicker({
@@ -45,39 +44,28 @@ function getForm2() {
     }
 }
 
-//downloads ALL data from the Node server
-function download(){
-    console.log("Downloading");
 
-    $.ajax({
-        url: "https://www.prospectave.io:1738/officer_download",
-        xhrFields: {
-          withCredentials: true
-       },
-        type: 'GET',   
-        crossDomain: true,
-        contentType: 'json',    
-        success: function(res) {
-            downloadSuccess(res);
-        },
-        error: function (xhr, status, error) {
-            console.log(xhr);
-        }
-    }); 
-}
 
 // handles the results from the node server
 // Parameter: rows is a JSON object array
-function downloadSuccess(json){
-
-    console.log(json);
+function downloadSuccess(){
     
+    // dummy data
+    var json = {"identity":{"netID":"mman","club":"Cap"},
+                "rows":[{"club_name":"Cap","date":"04/21/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""},{"club_name":"Cap","date":"04/28/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""}
+                       
+                       
+                       ]}
+    
+    
+    /*
     var identity = json["identity"];
     if(identity == null){
         alert("You are NOT logged in! Bye!");
         window.location("https://prospectave.io:1738/login");
         return;
-    }
+    }*/
+    
     
     var name = json["identity"]["netID"];
     var club = json["identity"]["club"];

@@ -3,7 +3,6 @@ var headers;
 $(document).ready(function(){
     headers = $("#table").html();
     download();
-    
     // initializing the date picker
     $("#schedule_date_picker").multiDatesPicker({
         maxPicks: 50 // no troll 
