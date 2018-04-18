@@ -177,6 +177,7 @@ function shiftDate(val){
 
 // changes the sidebar to display info about this club
 function showInfo(club) { 
+    out1 = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>'; 
 
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
@@ -194,19 +195,17 @@ function showInfo(club) {
             var info = row["info"];
             var date = row["date"]; //redundant
 
-            out2 = out1 + "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
+            out2 = out1 + "<div class='inner'> <nav> <ul> <li>Club: " + row["club_name"] + "</li> <li>Date: " + date + "</li> <li>Status: " + status + "</li> <li>Information: " + info + "</li> </ul> </nav> </div>";
             infobar.innerHTML = out2;
             if (club == "colonial" || club == "quadrangle") {
                 infobar.style.background="#000080";
                 infobar.style.color="white";
             }
-            
-            
-            
+            var w = $(window).width();
+
             sidebar.style.display="none";
             infobar.style.display="";
 
-            var w = $(window).width();
             if(w > 1280){
                 infobar.style.top = "0";
             } else {
