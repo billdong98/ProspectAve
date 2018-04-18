@@ -14,6 +14,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="css/jquery-ui.multidatespicker.css">
+        <link rel="stylesheet"  href="css/vanillaCalendar.css">
+        <link rel="stylesheet"  href="css/officer.css">
+
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
@@ -45,26 +48,73 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
             <!-- Events -->
             <section id="events" class="wrapper style1 fullscreen fade-up">
-                <div class="inner" id="top-inner"> 						
-                    <section>
-                        <h2 id="title">Registered Events</h2>
-                        <div class="table-wrapper">
-                            <table id="table">		
-                                <thead>
-                                    <tr>									
-                                        <th>Club</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Poster</th>
-                                        <th>Post Date</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                            </table>							
-                        </div>
-                    </section>
+                <div class="inner">
+                    <h2>_CLUB_'s Schedule</h2>
+                    <p>Click on the calendar to edit shit</p>
+                    <div class="split style1">
+                        <section>
+                            <div class="container">
+                                <div id = "v-cal">
+                                    <!--HEADER-->
+                                    <div class="vcal-header">
+                                        <button class="vcal-btn" data-calendar-toggle="previous">
+                                            <svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+                                            </svg>
+                                        </button>
 
-                </div> 
+                                        <div class="vcal-header__label" data-calendar-label="month">
+                                            March 2017
+                                        </div>
+
+
+                                        <button class="vcal-btn" data-calendar-toggle="next">
+                                            <svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <!--WEEKS-->
+                                    <div class="vcal-week">
+                                        <span>Mon</span>
+                                        <span>Tue</span>
+                                        <span>Wed</span>
+                                        <span>Thu</span>
+                                        <span>Fri</span>
+                                        <span>Sat</span>
+                                        <span>Sun</span>
+                                    </div>
+                                    <div class="vcal-body" data-calendar-area="month"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            
+                            <!-- TODO: ADD ANIMATIONS -->
+                            <ul class="contact" id="club_info">
+                                <li>
+                                    <h3 class="date_info">Date: Sat, May 5th</h3>
+                                </li>
+                                <li>
+                                    <h3 class="status_info">Status: Pass</h3>
+                                </li>
+                                <li>
+                                    <h3>Description:</h3>
+                                    <span>Nude night at CLUB!</span>
+                                </li>
+                                <li>
+                                    <h3>Poster</h3>
+                                    <span>mman</span>
+                                </li>
+                                <li>
+                                    <h3>Post date</h3>
+                                    <span>04/04/18</span>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
             </section>
 
             <section id="add_schedule" style="background: #295DA5" class="wrapper style1 spotlights fade-up">
@@ -155,8 +205,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <script src="js/util.js"></script>
             <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
             <script src="js/main.js"></script>
-            <script src="js/officer.js"></script>
+            <script src="js/officer_new.js"></script>
             <script src="js/jquery-ui.multidatespicker.js"></script>
+            <script src="js/vanillaCalendar.js"></script>   
+            <script src="js/moment.js"></script>
 
             <style>
                 .loader {
