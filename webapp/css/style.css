@@ -191,6 +191,7 @@ body {
         left: 12%; 
         height: 20%;
         width: auto;
+        display: none;
     }
 }
 
@@ -201,6 +202,7 @@ body {
         top: 5%;
         height: 80%;
         width: auto;
+        display: none;
     }
 }
 
