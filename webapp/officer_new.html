@@ -49,7 +49,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <!-- Events -->
             <section id="events" class="wrapper style1 fullscreen fade-up">
                 <div class="inner">
-                    <h2>_CLUB_'s Schedule</h2>
+                    <h2 id="title">Club Control Panel — netID</h2>
                     <p>Click on the calendar to edit shit</p>
                     <div class="split style1">
                         <section>
@@ -91,25 +91,33 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         </section>
                         <section>
                             
+                            <div id="register_panel">
+                                <h2 id="reg_date_info">Sat, May 5th</h2>
+                                <h3>There's no event registered for this date. <br><br>Would you like to add one?</h3>
+                                <button id="add_button">Add</button>
+                            </div>
                             <!-- TODO: ADD ANIMATIONS -->
                             <ul class="contact" id="club_info">
                                 <li>
-                                    <h3 class="date_info">Date: Sat, May 5th</h3>
+                                    <h2 id="date_info">Sat, May 5th</h2>
                                 </li>
-                                <li>
-                                    <h3 class="status_info">Status: Pass</h3>
+                                <li style="margin-top: -.7em">
+                                    <h3 id="status_info" >Status: Pass</h3>
                                 </li>
                                 <li>
                                     <h3>Description:</h3>
-                                    <span>Nude night at CLUB!</span>
+                                    <span id="description_info">Nude night at CLUB!</span>
                                 </li>
                                 <li>
                                     <h3>Poster</h3>
-                                    <span>mman</span>
+                                    <span id="poster_info">mman</span>
                                 </li>
                                 <li>
                                     <h3>Post date</h3>
-                                    <span>04/04/18</span>
+                                    <span id="postdate_info">04/04/18</span>
+                                </li>
+                                <li>
+                                    <a>EDIT</a><br><a>DELETE</a>
                                 </li>
                             </ul>
                         </section>

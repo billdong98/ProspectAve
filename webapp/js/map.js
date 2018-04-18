@@ -226,7 +226,6 @@ function showInfo(club) {
 
 // brings back the default sidebar
 function hideInfo() { 
-    return;
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
 
