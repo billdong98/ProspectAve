@@ -1,7 +1,7 @@
-#club_info .date_info {
+#club_info #date_info {
     font-size: 30px;
 }
 
-#club_info .status_info {
+#club_info #status_info {
     font-size: 30px;
 }
