@@ -103,19 +103,23 @@ function downloadSuccess(json){
         var post_date = data["post_date"];
         var status = data["status"];
         var info = data["info"];
-        out += '<div class = "3u"><div class="boxed ' + clr + '"><h3>' + club + '</h3>' + date + "<br> Status: " + status + "<br>Poster: " + poster + "<br>Post Date: " + post_date + "<br>Description: " + info + "</div></div>";
+        // format them into blocks
+        out += '<div class = "4u"><div class="boxed ' + clr + '"><h3>' + club + '</h3>' + date + "<br> Status: " + status + "<br>Poster: " + poster + "<br>Post Date: " + post_date + "<br>Description: " + info + "</div></div>";
+        // alternating colors
         if (clr == "blue")
             clr = "orange";
         else   
             clr = "blue";
     }
     
+    // SET THE VALUES INSIDE TABLE
+    boxes.html(out + headers);
+    
+    // if all stuff are shown don't show expand button
     if (count >= rows.length) {
         var expand = document.getElementById("expand");
         expand.style.display = "none";
     }
-    // SET THE VALUES INSIDE TABLE
-    boxes.html(out + headers);
 }
 
 //increases number of boxes shown at once
