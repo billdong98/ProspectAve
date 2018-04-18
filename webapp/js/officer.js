@@ -106,6 +106,7 @@ function officerDownloaded(json){
     // SET THE VALUES INSIDE TABLE
     table.html(headers + out);
 
+    // add logo to sidebar
     var logo = document.getElementById(club.toLowerCase() + "logo");
     logo.style.display = "initial";
 }

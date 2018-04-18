@@ -118,6 +118,10 @@ function downloadSuccess(){
     $("#title").html(club + " Control Panel — " + name + "");
     $("#form2").html("Upload " + club + "'s Schedule");
 
+    // add logo to sidebar
+    var logo = document.getElementById(club.toLowerCase() + "logo");
+    logo.style.display = "initial";
+    
     // highlight all the right dates
     showDatesWithEvents();
 }
