@@ -16,11 +16,13 @@ var vanillaCalendar = {
 
   createListeners: function () {
     var _this = this
+    // clears the calendar and shows the next month
     this.next.addEventListener('click', function () {
       _this.clearCalendar()
       var nextMonth = _this.date.getMonth() + 1
       _this.date.setMonth(nextMonth)
       _this.createMonth()
+      showDatesWithEvents()
     })
     // Clears the calendar and shows the previous month
     this.previous.addEventListener('click', function () {
@@ -28,6 +30,7 @@ var vanillaCalendar = {
       var prevMonth = _this.date.getMonth() - 1
       _this.date.setMonth(prevMonth)
       _this.createMonth()
+      showDatesWithEvents()
     })
   },
 

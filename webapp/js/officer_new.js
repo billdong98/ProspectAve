@@ -127,7 +127,6 @@ function downloadSuccess(){
 }
 
 // Colors calendar if date has an event 
-// NEED to do this WHENEVER month changes!!!!!!
 function showDatesWithEvents() {
     console.log("Highlighting dates");
     for (var date in window.data) {
