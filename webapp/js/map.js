@@ -181,6 +181,9 @@ function showInfo(club) {
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
 
+    var out = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>';  
+
+    
     // data for TODAY
     var rows = window.data[window.date];
 
@@ -194,8 +197,8 @@ function showInfo(club) {
             var info = row["info"];
             var date = row["date"]; //redundant
 
-            out2 = out1 + "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
-            infobar.innerHTML = out2;
+            out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
+            infobar.innerHTML = out;
             if (club == "colonial" || club == "quadrangle") {
                 infobar.style.background="#000080";
                 infobar.style.color="white";
@@ -229,6 +232,7 @@ function showInfo(club) {
 
 // brings back the default sidebar
 function hideInfo() { 
+    return;
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
 

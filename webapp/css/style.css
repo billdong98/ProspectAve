@@ -498,6 +498,7 @@ input[type="time"]
         font-size: 2.5em;
         text-align: center;
         padding-left: 0;
+        margin-bottom: 15px;
     }
     
      .inner .info {

@@ -35,7 +35,8 @@ function isInjected($str) {
 
 // If we passed all tests, send the email.
 if (!isInjected($comments)) {
-
-	mail( "$webmaster_email", "Feedback Form Results", $comments );
+    if(isset($comments) && !empty($comments)){
+	   mail( "$webmaster_email", "Feedback Form Results", $comments);
+    }
 }
 ?>
