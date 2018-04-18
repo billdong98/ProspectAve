@@ -241,12 +241,12 @@ input[type="time"]
     left: 13%;
     top: 67%;
     z-index: 20;
-    width: 8%;
+    width: 9%;
     height: auto;
 }
 .terracetext {
     position: absolute; 
-    left: 14.8%; top: 71.7%; 
+    left: 15.2%; top: 72%; 
     z-index: 20; 
     color: black; 
     font-size:1.1vw;
@@ -610,10 +610,10 @@ body.is-loading #infobar nav ul li {
 }
 
 .boxed {
-    border: solid 1px rgba(255, 255, 255, 0.15);
+    border: solid 3px rgba(255, 255, 255, 0.15);
     padding: 10px;
-    border-radius:0em;
-    height:auto;
+    border-radius:0.5em;
+    box-sizing: border-box;
 }
 
 .blue {
