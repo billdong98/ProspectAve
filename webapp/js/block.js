@@ -3,14 +3,14 @@ var count;
 
 $(document).ready(function(){
     headers = $("#boxes").html();
-    count = 9;
+    count = 5;
     
     // initializing the date picker
     $("#schedule_date_picker").multiDatesPicker({
         maxPicks: 50 // no troll 
         // addDates: [today, tomorrow] PUT IN CURRENT CHOICES
     });
-    
+    downloadSuccess();
 });
 
 var radio_status = 0;
@@ -52,8 +52,10 @@ function downloadSuccess(){
     
     // dummy data
     var json = {"identity":{"netID":"mman","club":"Cap"},
-                "rows":[{"club_name":"Cap","date":"04/21/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""},{"club_name":"Cap","date":"04/28/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""}
-                       
+                "rows":[{"club_name":"Cap","date":"04/21/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":"What is life supposed to be. Blah blah blah blah blah blah blah blah blah blahancnpie djiapscabob iaofiajcknojd uebofuahoakcobdu joefieisjc anch"},{"club_name":"Cap","date":"04/28/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""}
+                       , {"club_name":"Cap","date":"04/28/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""}, {"club_name":"Cap","date":"04/28/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""}
+                       , {"club_name":"Cap","date":"04/28/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""}, {"club_name":"Cap","date":"04/28/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""}
+                       , {"club_name":"Cap","date":"04/28/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":""}
                        
                        ]}
     
@@ -82,6 +84,7 @@ function downloadSuccess(){
     var clr = "blue";
     // iterate over each JSON object
     var i = 0;
+    console.log(count);
     while (i < rows.length && i < count) {
         var data = rows[i++];
         console.log(data);
@@ -108,14 +111,35 @@ function downloadSuccess(){
         var expand = document.getElementById("expand");
         expand.style.display = "none";
     }
+
+    matchHeight();
 }
 
 //increases number of boxes shown at once
 function increase() {
-    count += 10;
-    download();
+    count += 3;
+    downloadSuccess();
 }
 
+function matchHeight() {
+    var blocks = document.getElementsByClassName("boxed");
+    var i;
+    var maxHeight = 0;
+    var h;
+    console.log("changing height");
+    for (i = 0; i < blocks.length; i++) {
+        h = blocks[i].clientHeight;
+        console.log(h);
+        if (h > maxHeight) {
+            maxHeight = h;
+        }
+    }
+    console.log(maxHeight);
+    for (i = 0; i < blocks.length; i++) {
+        console.log("height arrange");
+        blocks[i].style.height = maxHeight + "px";
+    }
+}
 // uploads 
 function upload(){
     console.log("Uploading");
