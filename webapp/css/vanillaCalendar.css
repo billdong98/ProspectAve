@@ -135,7 +135,9 @@
 }
 
 #v-cal .vcal-date--selected {
-  border: solid black 2px;
+/*  border: solid black 4px;
+  border-color: #B4D7FF;  */
+  background-color: #B4D7FF 
 }
 
 #v-cal .vcal-date--disabled {
