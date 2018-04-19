@@ -53,7 +53,8 @@ const mapping = {
     "junep" : "Ivy",
     "yangt" : "Cap",
     "bliang" : "Cannon",
-    "smirza" : "Charter"
+    "smirza" : "Charter",
+    "akling": "Quadrangle"
 }
 
 function getClub(netID){
