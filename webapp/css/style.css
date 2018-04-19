@@ -93,6 +93,11 @@
     font-size: 6.5vw;
 }
 
+#m-main-title {
+    margin-bottom: 30px !important;
+    font-size: 12vw;
+}
+
 /* Date Button */
 .datebutton {
     position:absolute;
@@ -107,6 +112,13 @@
     padding-right:0.3em;
 }
 
+#m-leftdate{
+    float:left; 
+    top: 50%;
+    left: 0.15em;
+    padding-left:0.1em;
+}
+
 /* Date text */
 .datetext{
     float: left;
@@ -114,10 +126,31 @@
     width: 8em;
 }
 
+.m-datetext{
+    margin-left: auto;
+    margin-right:auto;
+    top: .3em;
+    text-align: center;
+}
+
 /* right date arrow */
 #rightdate{
     float:right; 
     top: -0.35em; 
+}
+
+#m-rightdate {
+    float: right;
+    top: 50%;
+    right: 0.15em;
+}
+
+.date_container{
+    margin: auto;
+    width: 70%;
+    height: 20%;
+    border-radius: 3em;
+    border: solid 2px #77AAE3;
 }
 
 #top-inner {
