@@ -3384,7 +3384,7 @@ body.is-ie .wrapper.fullscreen {
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
-    background-color: #5e42a6;
+    background-color: #272838;
     cursor: default;
     padding: 1.75em 2em;
 }
@@ -3393,8 +3393,7 @@ body.is-ie .wrapper.fullscreen {
     border: 0;
     color: #ffffff;
     display: block;
-    font-size: 1.25em;
-    font-weight: bold;
+    font-size: 6.5vw;
 }
 
 #header > nav {
