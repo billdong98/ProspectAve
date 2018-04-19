@@ -24,7 +24,6 @@ var corsOptions = {
       
       //TESTING CORS OVERRIDES ONLY.
     if(origin == null){
-        console.log("override for null");
         callback(null, true);
         return;
     }
@@ -92,7 +91,7 @@ let db = new sqlite3.Database('./clubs.db', (err) => {
 
 // insert a new row into the database
 // [(club_name, date, poster, post_date, status, info)]
-let post = 'INSERT INTO club_status VALUES ';
+let postQuery = 'INSERT INTO club_status VALUES ';
 let placeholders = '(?,?,?,?,?,?)';
 // part of a query
 let afterToday = "DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) >= date('now')";
@@ -100,6 +99,8 @@ let afterToday = "DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date
 let selectAll = 'SELECT * FROM club_status WHERE ' + afterToday + ' ORDER BY date';
 // get records from club_status for a particular club (after today)
 let selectByClub = 'SELECT * FROM club_status WHERE club_name = ? and ' + afterToday + ' ORDER BY date';
+// delete a given event (club and date needed)
+let deleteEventsQuery = 'DELETE from club_status WHERE date = ? and club_name = ?';
 
 
 
@@ -118,21 +119,10 @@ app.get('/status', cors(), (request, response) => {
     });
 })
 
-
-/* clears the DB */
-app.get('/clear', (request, response) => { 
-    console.log('CLEARING DB');
-
-    db.run("DELETE from club_status", [], (err, result) => {
-        if(err){
-            throw err;
-        }
-
-        console.log(result);
-        response.send(result);
-    });
-})
-
+// logs the user in. 
+// if the user is already logged in (has session cookie), then redirect to the officer page
+// else if 
+// if not, then redirect to CAS 
 app.get('/login', (request, response) => { 
     console.log('Login');
     
@@ -189,26 +179,20 @@ app.get('/userinfo', (request, response) => {
 app.get('/officer_download', (request, response) => { 
     response.setHeader('Content-Type', 'application/json');
         
-    var identity = {netID: null, club: null};
+    var identity = auth.identity(request);
     
-    if(!request.session.isPopulated) {
+    if(identity == null) {
         console.log("Failed attempt to get club data");
         response.json({"identity": null, "rows": null});
         return;
-    } else {
-        // return club data
-        identity.netID = request.session.id;
-        identity.club = auth.getClub(identity.netID);
-        
+    } else { 
         var data = {"identity": identity, "rows" : null};
-        
-        console.log("Sending data for (" + identity.netID + ", club: " + identity.club) + ")";
-        
+        console.log("Sending data for (" + identity.netID + ", club: " + identity.club + ")");
         // get row for this club
         db.all(selectByClub, [identity.club], (err, rows) => {
-        if(err){
-            throw err;
-        }
+            if(err){
+                throw err;
+            }
             console.log("For: " + identity.club + " found " + rows.length + " rows.");
             data.rows = rows;
             response.json(data);
@@ -216,23 +200,37 @@ app.get('/officer_download', (request, response) => {
     }  
 });
 
-
-
 /* handles a post request of club data */
 app.post('/officer_post', (request, response) => {
+    
+    // TODO delete rows if they already exist 
+    
+    // authenticate 
+    var identity = auth.identity(request);
+    if(identity == null) {
+        console.log("Failed attempt to add events!");
+        response.end("You need to be logged in to add events!");
+        return;
+    }
+
+    // json object input 
     var obj = request.body;
-    // IMPLEMENT THIS FOR JSON ARRAY LATER
-    console.log(obj);
-    var club = obj.c;
+    var club = identity.club;
+    // array of date strings
     var dates = obj.d;
-    var netID = obj.p;
+    var netID = identity.netID;
     var status = obj.s;
     var post_date = currentDate();
     var info = obj.i;
 
     var data = [];
-    var query = post;
-
+    var query = postQuery;
+    
+    if(!(dates instanceof Array)){
+        console.log("Bad input!");
+        response.end("Bad input!");
+        return;
+    }
     // construct query and input for each element in dates
     for(var i=0; i<dates.length;i++){
         if(i != 0){
@@ -245,21 +243,108 @@ app.post('/officer_post', (request, response) => {
 
     console.log(query);
     console.log(data);
+    var add = addEvent(response, query, data);
+    if(add != -1){
+        response.end("Successfully added data!");
+    } else {
+        response.end("Failed to add data to database!");
+    }
+})
 
-    db.run(query, data, (err)=>{
-        if(err){ 
-            response.status(500);
-            response.send("ERROR");
-            console.log(err);
-        } else {
-            console.log("CHANGED: " + this.changes);
-            response.send("Ok.");
-        }
-    });
+/* deletes a given date */
+app.post('/delete', (request, response) => {
+    // authenticate 
+    var identity = auth.identity(request);
+    if(identity == null) {
+        console.log("Failed attempt to delete events!");
+        response.end("You need to be logged in to delete!");
+        return;
+    }
+    
+    // TODO: WORK WITH AUTHENTICATION
+    var obj = request.body;
+    // data for the sql query
+    var data = [obj.d, obj.c];
+
+    // if somehow you're trying to delete another club's data
+    if(identity.club != obj.c){
+        console.log("Club: " + identity.club + ", Input: " + obj.c + " mismatch!");
+        response.end("You're not authorized to delete that club's event.");
+        return;
+    }
+    var out = deleteEvent(response, obj.d, obj.c);
+    response.end(out);
 })
 
 
-// returns the current time in 
+app.post('/edit', (request, response) => {
+    // authenticate 
+    var identity = auth.identity(request);
+    if(identity == null) {
+        console.log("Failed attempt to delete events!");
+        response.end("You need to be logged in to delete!");
+        return;
+    }
+    
+    var obj = request.body;
+    var club = identity.club;
+    // a SINGLE date string (important!)
+    var date = obj.d;
+    var netID = identity.netID;
+    var status = obj.s;
+    var post_date = currentDate();
+    var info = obj.i;
+
+    var newRow = [club, date, netID, post_date, status, info];
+    var query = postQuery + placeholders;
+    
+    var del = deleteEvent(response, date, club);
+    if(del == -1){ //failed to delete
+        response.send("Failed to delete row");
+        return;
+    }
+    
+    var add = addEvent(response, query, newRow);
+    if(add == -1){ //failed to delete
+        response.send("Failed to add row");
+        return;
+    }
+    response.end("Successfully edited row");
+})
+
+// deletes an event given a date and a club
+function deleteEvent(response, date, club){
+    db.run(deleteEventsQuery, [date, club], function(err){
+        if(err){ 
+            response.status(500);
+            response.send("Error querying the database");
+            console.log(err);
+            return -1;
+        } else {
+            console.log("Deleted: " + this.changes);
+            return("Deleted " + this.changes + " rows(s).");
+        }
+    });
+}
+
+// adds events, called by /officer_post and /edit
+// query is the base add event query but with many placeholders
+// data being an array of 'data' for the placeholders
+function addEvent(response, query, data){
+    db.run(query, data, function(err){
+        if(err){ 
+            response.status(500);
+            response.send("Error editing the database");
+            console.log(err);
+            return -1;
+        } else {
+            console.log("Added: " + this.changes);
+            return("Added " + this.changes + " rows(s).");
+        }
+    });
+}
+
+// returns the current time in our format
 function currentDate(){
     var dt = dateTime.create();
     return dt.format('m/d/Y');

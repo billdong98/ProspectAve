@@ -44,11 +44,11 @@ function redirectOfficer(response){
 
 const mapping = {
     "mman" : "Cap",
-    "ssjoberg" : "Lame",
     "wzdong" : "Tower",
     "junep" : "Ivy",
     "yangt" : "Cap",
     "bliang" : "Cannon",
+    "smirza" : "Charter"
 }
 
 function getClub(netID){
@@ -56,11 +56,23 @@ function getClub(netID){
 }
 
 
+// returns an identity object
+// if the user is not logged in, return a null identity
+function identity(request){
+    if (!request.session.isPopulated){
+        return null;
+    }
+    var identity = {netID: request.session.id, club: getClub(request.session.id)};
+    return identity;
+}
+
+
 module.exports = {
     redirect : function(res){ redirect(res)},
     verify: function(ticketID, callback){verify(ticketID, callback)},
     redirectOfficer: function(res){ redirectOfficer(res)},
-    getClub: function(netID){return getClub(netID)}
+    getClub: function(netID){return getClub(netID)},
+    identity: function(request){return identity(request)}
 }
 
 

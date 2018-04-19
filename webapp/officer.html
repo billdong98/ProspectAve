@@ -14,6 +14,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="css/jquery-ui.multidatespicker.css">
+        <link rel="stylesheet"  href="css/vanillaCalendar.css">
+        <link rel="stylesheet"  href="css/officer.css">
+
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
@@ -29,23 +32,25 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
         <!-- Sidebar -->
         <section id="sidebar">
-            <img id="terracelogo" src="images/Logos/terrace.png"/>
-            <img id="towerlogo" src="images/Logos/tower.png"/>
-            <img id="cannonlogo" src="images/Logos/cannon.png"/>
-            <img id="quadlogo" src="images/Logos/quad.png"/>
-            <img id="ivylogo" src="images/Logos/ivy.png"/>
-            <img id="cottagelogo" src="images/Logos/cottage.png"/>
-            <img id="caplogo" src="images/Logos/cap.png"/>
-            <img id="cloisterlogo" src="images/Logos/cloister.png"/>
-            <img id="charterlogo" src="images/Logos/charter.png"/>
-            <img id="coloniallogo" src="images/Logos/colonial.png"/>
-            <img id="tilogo" src="images/Logos/ti.png"/>
+            <!--
+<img id="terracelogo" src="images/Logos/terrace.png"/>
+<img id="towerlogo" src="images/Logos/tower.png"/>
+<img id="cannonlogo" src="images/Logos/cannon.png"/>
+<img id="quadlogo" src="images/Logos/quad.png"/>
+<img id="ivylogo" src="images/Logos/ivy.png"/>
+<img id="cottagelogo" src="images/Logos/cottage.png"/>
+<img id="caplogo" src="images/Logos/cap.png"/>
+<img id="cloisterlogo" src="images/Logos/cloister.png"/>
+<img id="charterlogo" src="images/Logos/charter.png"/>
+<img id="coloniallogo" src="images/Logos/colonial.png"/>
+<img id="tilogo" src="images/Logos/ti.png"/>
+-->
             <div class="inner">
                 <nav>
                     <ul>
                         <li><a href="#events">Events</a></li>
                         <li><a href="#add_schedule">Add Events</a></li>
-                        <li><a href="index.html">Back</a></li>
+                        <li><a href="index.html">Exit Panel</a></li>
                     </ul>
                 </nav>
             </div>	
@@ -56,65 +61,135 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
             <!-- Events -->
             <section id="events" class="wrapper style1 fullscreen fade-up">
-                <div class="inner" id="top-inner"> 						
-                    <section>
-                        <h2 id="title">Registered Events</h2>
-                        <div class="table-wrapper">
-                            <table id="table">		
-                                <thead>
-                                    <tr>									
-                                        <th>Club</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Poster</th>
-                                        <th>Post Date</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                            </table>							
-                        </div>
-                    </section>
+                <div class="inner" style="padding-top: 2em">
+                    <h2 id="title">Welcome to the Club Control Panel — netID</h2>
+                    <p id="hereswhere">Here's where you can add/edit/delete events</p>
+                    <div class="split style1">
+                        <section>
+                            <div class="container">
+                                <div id = "v-cal">
+                                    <!--HEADER-->
+                                    <div class="vcal-header">
+                                        <button class="vcal-btn" data-calendar-toggle="previous">
+                                            <svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+                                            </svg>
+                                        </button>
 
-                </div> 
+                                        <div class="vcal-header__label" data-calendar-label="month">
+                                            March 2017
+                                        </div>
+
+
+                                        <button class="vcal-btn" data-calendar-toggle="next">
+                                            <svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <!--WEEKS-->
+                                    <div class="vcal-week">
+                                        <span>Mon</span>
+                                        <span>Tue</span>
+                                        <span>Wed</span>
+                                        <span>Thu</span>
+                                        <span>Fri</span>
+                                        <span>Sat</span>
+                                        <span>Sun</span>
+                                    </div>
+                                    <div class="vcal-body" data-calendar-area="month"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+
+                            <div id="register_panel">
+                                <h2 id="reg_date_info">Sat, May 5th</h2>
+                                <h3>There's no event registered for this date. <br><br>Would you like to add one?</h3>
+                                <button id="add_button">Add event</button>
+                            </div>
+
+                            <div id="event_panel">
+                                <ul class="contact" id="club_info">
+                                    <li>
+                                        <h2 id="date_info">Sat, May 5th</h2>
+                                    </li>
+                                    <li style="margin-top: -.7em">
+                                        <h3 id="status_info" >Status: Pass</h3>
+
+                                        <div id="edit_status" class="row uniform" style="display:none;">
+                                            <div class="4u 12u$(small)">
+                                                <input type="radio" id="radio-edit-puid" name="radio-edit-in" value="PUID" style="display: none;">
+                                                <label for="radio-edit-puid" value="PUID">PUID</label>
+                                            </div>
+                                            <div class="4u 12u$(small)">
+                                                <input type="radio" id="radio-edit-pass" name="radio-edit-in" value="Pass">
+                                                <label for="radio-edit-pass" value="Pass">Pass</label>
+                                            </div>
+                                            <div class="4u$ 12u$(small)">
+                                                <input type="radio" id="radio-edit-list" name="radio-edit-in" value="List">
+                                                <label for="radio-edit-list" value="List">List</label>
+                                            </div> <br>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h3>Description:</h3>
+                                        <span id="description_info">You should never be able to see this.</span>
+                                        <textarea id="edit_description" placeholder="Editing" rows="4" maxlength="150" style="display:none"></textarea>
+                                    </li>
+                                    <li id="poster_info_li">
+                                        <h3>Posted by</h3>
+                                        <span id="poster_info">mman</span>
+                                    </li>
+                                    <li id="post_date_info_li">
+                                        <h3>Post date</h3>
+                                        <span id="postdate_info">04/04/18</span>
+                                    </li>
+                                    <li>
+                                        <div id="edit_buttons" style="display:none">
+                                            <button id='submit_edit'>Submit Edit</button>
+                                            <button id='cancel_edit'>Cancel edit</button>
+                                        </div>
+                                        <div id="normal_buttons">
+                                        <button id='edit_info'>EDIT</button><br><button id="delete_info">DELETE</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </div>
             </section>
 
             <section id="add_schedule" style="background: #295DA5" class="wrapper style1 spotlights fade-up">
                 <div class="inner">
-                    <h2 id="form2">Uploading [Your Eating Club's] Schedule</h2>
+                    <h2 id="post_form_title">Uploading [Your Eating Club's] Schedule</h2>
                     <ul class="actions">
-                        <li><a onclick="getForm2()" class="button" id="show_form2">Create</a></li>
+                        <li><a onclick="toggleForm()" class="button" id="show_form">Create</a></li>
                     </ul>
-                    <div id ="myForm2"  style="display:none;">
-                        <h2>Event Information Form</h2>
-                        <p>Fill out the form below:</p>
-                        <form method="post" action="#" id="hi">
-                            <h3>Club name: </h3>
-                            <div class="12u$">
-                                <div class="select-wrapper">
-                                    <select name="demo-category" id="club_selector">
-                                        <option value="">- Eating Club -</option>
-                                        <option value="Cannon">Cannon</option>
-                                        <option value="Cap">Cap &amp; Gown</option>
-                                        <option value="Charter">Charter</option>
-                                        <option value="Cloister">Cloister</option>
-                                        <option value="Colonial">Colonial</option>
-                                        <option value="Cottage">Cottage</option>
-                                        <option value="Ivy">Ivy</option>
-                                        <option value="Quadrangle">Quadrange</option>
-                                        <option value="Terrace">Terrace</option>
-                                        <option value="Tiger Inn">Tiger Inn</option>
-                                        <option value="Tower">Tower</option>
-                                    </select>
-                                </div>
+                    <div id ="post_form_container"  style="display:none;">
+                        <form method="post" action="#" id="post_form">
+                            <h3 id="club_display"></h3>
+                            <h3>Event date(s): </h3>
+
+
+                            <div class="split style1">
+                                <section id="datepicker_section">
+                                    <div type="datepicker" id="schedule_date_picker"></div><br>
+
+                                </section>
+                                <section id="desc_section">
+                                    <div class="field">
+                                        <h3>Description (optional):</h3>
+                                        <textarea name="message" id="schedule_message" placeholder="Enter Description" rows="4" maxlength="150"></textarea>
+                                    </div>
+                                </section>
                             </div>
+
                             <br>
-                            <h3>Event date: </h3>
-                            <!--<input type="date" name="eventdate" value="2018-04-09" style="color: black;"> <br> <br> -->
-                            <div type="datepicker" id="schedule_date_picker"></div><br>
-                            <!--<h3>Start Time:</h3> 
-<input type="time" name="start" value="23:00"> <br> 
-<h3>End Time:</h3>
-<input type="time" name="end" value="02:00"> <br> -->
+
+
                             <h3>What do you need to get in?</h3>
                             <div class="row uniform">
                                 <div class="4u 12u$(small)">
@@ -129,18 +204,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     <input type="radio" id="radio-list" name="radio-get-in" value="List">
                                     <label for="radio-list" value="List">List</label>
                                 </div> <br>
-                            </div> <br>
-                            <div class="field">
-                                <h3>Description (optional):</h3>
-                                <textarea name="message" id="schedule_message" placeholder="Enter Description" rows="3"></textarea>
                             </div>
-                            <h3> Attachment (optional): </h3>
-                            <div class="attachment">
-                                <input type="file" name="Attachment">
-                            </div>
+
                             <ul class="actions">
-                                <li><input type="submit" onclick="getForm2(); return upload();" class="special" /></li>
-                                <li><input type="reset" value="Reset"/></li>
+                                <li><input type="submit" onclick="toggleForm(); return upload();" class="special" /></li>
+                                <li><input type="reset" value="Reset" onclick="clearDatePicker()"/></li>
                             </ul>
                         </form> 
                     </div>    
@@ -168,6 +236,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <script src="js/main.js"></script>
             <script src="js/officer.js"></script>
             <script src="js/jquery-ui.multidatespicker.js"></script>
+            <script src="js/vanillaCalendar.js"></script>   
+            <script src="js/moment.js"></script>
 
             <style>
                 .loader {
