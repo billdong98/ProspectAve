@@ -183,8 +183,29 @@ body {
 
     #sidebar {
         width: 12em;
+        overflow-y: hidden;
+    }
+
+    #sidebar img {
+        position: absolute;
+        left: 12%; 
+        height: 20%;
+        width: auto;
+        display: none;
     }
 }
+
+@media screen and (max-width: 1280px) {
+    #sidebar img {
+        position: absolute;
+        left: 2%;
+        top: 5%;
+        height: 80%;
+        width: auto;
+        display: none;
+    }
+}
+
 
 /* Datepicker */
 input[type="datepicker"],

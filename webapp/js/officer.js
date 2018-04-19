@@ -106,10 +106,9 @@ function officerDownloaded(json){
     // SET THE VALUES INSIDE TABLE
     table.html(headers + out);
 
-    var sidebar = document.getElementById("sidebar");
-    var sidebarhtml = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>';
-    sidebar.innerHTML = sidebarhtml + sidebar.innerHTML;
-
+    // add logo to sidebar
+    var logo = document.getElementById(club.toLowerCase() + "logo");
+    logo.style.display = "initial";
 }
 
 

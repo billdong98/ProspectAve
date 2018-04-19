@@ -163,6 +163,14 @@ function shiftDate(val){
     var currentDay = document.getElementById(window.date);
     currentDay.classList.remove('vcal-date--selected');
 
+    var today = moment(Date.now()).format('MM/DD/YYYY');
+    var mapdate = moment(Date.parse(window.date)).format('MM/DD/YYYY');
+
+    /* Don't let users go to past days */
+    if (today == mapdate && val == -1) {
+        return;
+    }
+
     var dateString = moment(Date.parse(window.date)).add(val, 'd').format('MM/DD/YYYY');
     window.date = dateString;
     console.log("New date: " + dateString);
@@ -226,7 +234,6 @@ function showInfo(club) {
 
 // brings back the default sidebar
 function hideInfo() { 
-    return;
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
 

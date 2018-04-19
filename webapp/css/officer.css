@@ -1,7 +1,45 @@
-#club_info .date_info {
+#date_info {
+    font-size: 45px;
+}
+
+#reg_date_info {
+    font-size: 45px;
+}
+
+#club_info #status_info {
     font-size: 30px;
 }
 
-#club_info .status_info {
-    font-size: 30px;
+#v-cal .vcal-date--selected {
+    background-color: #B4D7FF;
+}
+
+#register_panel {
+    display: none;
+}
+
+#datepicker_section{
+    width: calc(34%)
+}
+
+#desc_section {
+    margin-left: 10px;
+}
+
+#schedule_message{
+    width: 330px;
+    height:150px;
+    resize: none;
+}
+
+#club_display {
+    font-size: 2.5em;
+}
+
+#post_form_container{
+    min-height: 90vh;
+}
+
+#club_info {
+    transition: ease 5s;
 }
