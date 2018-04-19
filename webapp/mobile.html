@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<!--
+Hyperspace by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>ProspectAve &mdash; Street Guide</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet"  href="css/vanillaCalendar.css">
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+
+        <!-- REMOVE ON PRODUCTION, TESTING ONLY -->
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    </head>
+    <body>
+
+        <!-- Info bar -->
+        <section id="infobar">
+        </section>
+
+		<!-- Sidebar -->
+		<section id="sidebar">
+			<div class="inner">
+				<nav>
+					<ul>
+						<li><a href="#intro">Map</a></li>
+						<li><a href="#one">Calendar</a></li>
+						<li><a href="#two">About</a></li>
+                        <li><a href="#three">The Team</a></li>
+						<li><a href="officer.html">Officer Login</a></li>
+					</ul>
+				</nav>
+			</div>	
+		</section>
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Intro -->
+            <section id="intro" class="wrapper style1 fullscreen fade-up">
+                <div class="inner" id="top-inner">
+                    <h1 class="major" id="main-title">P<span style="font-size:4.5vw">ROSPECT</span>A<span style="font-size:4.5vw">VE</span></h1>
+                    <!-- Date Button -->
+                    <div class="datebutton">
+                        <a class="icon fa-chevron-circle-left fa-2x" onclick="shiftDate(-1);" id="leftdate"></a>
+                        <p class="datetext" id="date_display"> Date: </p>
+                        <a class="icon fa-chevron-circle-right fa-2x" onclick="shiftDate(1);" id="rightdate"></a>
+                    </div>
+                    <!-- Map -->
+                    <div class="containerdiv">
+                        <img class="map" src="images/map.png" width="100%" height="100%" align="middle">
+                        <!-- Terrace -->
+                        <a href="http://terracefuture.org/" target="_blank" id="terrace_wrap"><img class="terrace" id="terrace_overlay" src="images/terrace.png"/>
+                            <div class="terracetext"> Terrace </div></a>
+                        <!-- Tower -->
+                        <a href="http://www.princetontowerclub.com/" target="_blank" id="tower_wrap"><img class="tower" id="tower_overlay" src="images/tower.png"/>
+                            <div class="towertext"> Tower </div> </a>
+                        <!-- Cannon -->
+                        <a href="https://cannonclub.com/" target="_blank" id="cannon_wrap"><img class="cannon" id="cannon_overlay" src="images/cannon.png"/>
+                            <div class="cannontext"> Cannon </div></a>
+                        <!-- Quad -->
+                        <a href="http://quadrangleclub.org/" target="_blank" id="quadrangle_wrap"><img class="quadrangle" id="quadrangle_overlay" src="images/quad.png"/>
+                            <div class="quadrangletext"> Quad </div></a>
+                        <!-- Ivy -->
+                        <a href="http://theivyclub.net/" target="_blank" id="ivy_wrap"><img class="ivy" id="ivy_overlay" src="images/ivy.png"/>
+                            <div class="ivytext"> Ivy </div></a>
+                        <!-- Cottage -->
+                        <a href="http://www.cottageclub.net/" target="_blank" id="cottage_wrap"><img class="cottage" id="cottage_overlay" src="images/cottage.png" width="70" />
+                            <div class="cottagetext"> Cottage </div></a>
+                        <!-- Cap -->
+                        <a href="https://www.capandgownclub.org/" target="_blank" id="cap_wrap"><img class="cap" id="cap_overlay" src="images/cap.png"/>
+                            <div class="captext"> Cap </div></a>
+                        <!-- Cloister -->
+                        <a href="http://cloisterinn.com/" target="_blank" id="cloister_wrap"><img class="cloister" id="cloister_overlay" src="images/cloister.png"/>
+                            <div class="cloistertext"> Cloister </div></a>
+                        <!-- Charter -->
+                        <a href="http://alumni.charterclub.org/" target="_blank" id="charter_wrap"><img class="charter" id="charter_overlay" src="images/charter.png"/>
+                            <div class="chartertext"> Charter </div></a>
+                        <!-- Colonial -->
+                        <a href="http://colonialclub.com/" target="_blank" id="colonial_wrap"><img class="colonial" id="colonial_overlay" src="images/colonial.png"/>
+                            <div class="colonialtext"> Colonial </div></a>
+                        <!-- TI -->
+                        <a href="http://www.tigerinn.net/" target="_blank" id="ti_wrap"><img class="ti" id="ti_overlay" src="images/ti.png"/>
+                            <div class="titext"> TI </div></a> 
+                        <p style="left: 69.5%; top: 77.3%; position: absolute; z-index: 20; color: black; font-size:1.2vw;"> PUID </p>
+                        <p style="left: 78%; top: 77.1%; position: absolute; z-index: 20; color: black; font-size:1.3vw;"> Pass </p>
+                        <p style="left: 86.3%; top: 77.1%; position: absolute; z-index: 20; color: black; font-size:1.3vw;"> List </p>
+                        <p style="left:40%; top:77.3%; position:absolute; z-index: 20; color: black; font-size:1vw;">
+                        Mouse-over colored clubs for more info! </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- One -->
+            <section id="one" class="wrapper style3-alt fade-up">
+                <div class="inner">
+                    <h2>CALENDAR</h2>
+                    <p style="color:black;"> Dates with open clubs are highlighted. Click on a date to view that day's map! </p>		
+                    <div class="container">
+                        <div id = "v-cal">
+                            <!--HEADER-->
+                            <div class="vcal-header">
+                                <button class="vcal-btn" data-calendar-toggle="previous">
+                                    <svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+                                    </svg>
+                                </button>
+
+                                <div class="vcal-header__label" data-calendar-label="month">
+                                    March 2017
+                                </div>
+
+
+                                <button class="vcal-btn" data-calendar-toggle="next">
+                                    <svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!--WEEKS-->
+                            <div class="vcal-week">
+                                <span>Mon</span>
+                                <span>Tue</span>
+                                <span>Wed</span>
+                                <span>Thu</span>
+                                <span>Fri</span>
+                                <span>Sat</span>
+                                <span>Sun</span>
+                            </div>
+                            <div class="vcal-body" data-calendar-area="month"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>	
+
+            <!-- Two -->
+            <section id="two" class="wrapper style3 spotlights">
+                <section>	
+                    <div class="content">
+                        <div class="inner">			
+                            <h2>ABOUT</h2>
+                            <p><b>ProspectAve</b> was designed and 	developed for <i>COS 333: Advanced Programming Techniques</i> during the Spring '18 semester. </p>
+                            <p><b>ProspectAve</b> is a centralized platform for students to efficiently find information on eating clubs. Use the map to view which clubs are open and what is required for entry.  Mouse-over colored clubs to see more information on the event.  Use the buttons or calendar to change the date and update the map!</p>
+                            <!-- Feedback -->
+                            <h3 id="feedback">Feedback</h3>
+                            <form method="post" action="send_mail.php">
+                                <div class="field">
+                                    <textarea name="feedback" placeholder="Have any feedback? Let us know!" rows="3"></textarea>
+                                </div>
+                                <ul class="actions">
+                                    <li><button>Submit</button></li>
+                                </ul>  
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </section>    
+
+            <!-- Three -->
+            <section id="three" class="wrapper style2 spotlights">
+                <section>   
+                    <div class="content">
+                        <div class="inner">         
+                            <h2>THE TEAM</h2>
+                            <div class="row">
+                                <!-- Bill -->
+                                <div class="column">
+                                    <div class="card">
+                                        <img src="images/wzdong.jpg" alt="Bill" style="width:100%">
+                                        <div class="container">
+                                            <h4>Bill Dong</h4>
+                                            <p>ORFE '20</p>
+                                            <div id="member">
+                                                <a href="mailto:wzdong@princeton.edu" id="emailicon" class="icon fa-envelope fa-lg"><span class="label">Email</span></a>
+                                                <a href="https://www.linkedin.com/in/william-dong-11032712b/" target="_blank" id="linkedinicon" class="icon fa-linkedin-square fa-lg"><span class="label">LinkedIn</span></a> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Ben -->
+                                <div class="column">
+                                    <div class="card">
+                                        <img src="images/bliang.jpg" alt="Ben" style="width:100%">
+                                        <div class="container">
+                                            <h4>Ben Liang</h4>
+                                            <p>ORFE '20</p>
+                                            <div id="member"> 								 
+                                                <a href="mailto:bliang@princeton.edu" id="emailicon" class="icon fa-envelope fa-lg"><span class="label">Email</span></a>
+                                                <a href="https://www.linkedin.com/in/benjamin-liang-3a426b131/" target="_blank" id="linkedinicon" class="icon fa-linkedin-square fa-lg"><span class="label">LinkedIn</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Michael -->
+                                <div class="column">
+                                    <div class="card">
+                                        <img src="images/mman.jpg" alt="Michael" style="width:100%">
+                                        <div class="container">
+                                            <h4>Michael Man</h4>
+                                            <p>COS '21</p>
+                                            <div id="member"> <a href="mailto:mman@princeton.edu" id="emailicon" class="icon fa-envelope fa-lg"><span class="label">Email</span></a>
+                                                <a href="https://www.linkedin.com/in/michael99man/" target="_blank" id="linkedinicon" class="icon fa-linkedin-square fa-lg"><span class="label">LinkedIn</span></a> 
+                                            </div>
+                                        </div>
+                                    </div>		
+                                </div>
+                                <!-- June-ho -->
+                                <div class="column">
+                                    <div class="card">
+                                        <img src="images/junep.jpg" alt="June-ho" style="width:100%">
+                                        <div class="container">
+                                            <h4>June-Ho Park</h4>
+                                            <p>COS '20</p>
+                                            <div id="member"> <a href="mailto:junep@princeton.edu" id="emailicon" class="icon fa-envelope fa-lg"><span class="label">Email</span></a>
+                                                <a href="https://www.linkedin.com/in/june-ho-park-a968b8137/" target="_blank" id="linkedinicon" class="icon fa-linkedin-square fa-lg"><span class="label">LinkedIn</span></a> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>	
+                                <!-- Yang -->
+                                <div class="column">
+                                    <div class="card">
+                                        <img src="images/yangt.jpg" alt="Yang" style="width:100%">
+                                        <div class="container">
+                                            <h4>Yang Tu</h4>
+                                            <p>ORFE '20</p>
+                                            <div id="member"> <a href="mailto:yangt@princeton.edu" id="emailicon" class="icon fa-envelope fa-lg"><span class="label">Email</span></a>
+                                                <a href="https://www.linkedin.com/in/yang-tu-500904115/" target="_blank" id="linkedinicon" class="icon fa-linkedin-square fa-lg"><span class="label">LinkedIn</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <h3> Acknowledgements</h3>
+                            <p>Thanks to course instructors Brian Kernighan and J&eacuter&eacutemie Lumbroso. Special thanks to project mentor Ashley Kling.</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer" class="wrapper style1-alt">
+            <div class="inner">
+                <ul class="menu">
+                    <li><b>ProspectAve</b>, by Bill Dong, Ben Liang,  Michael Man, June Ho Park, Yang Tu</li>
+                    <li>COS 333 Spring 2018</li>
+                </ul>
+            </div>
+        </footer>
+       
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.scrollex.min.js"></script>
+        <script src="js/jquery.scrolly.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="js/main.js"></script>
+        <script src="js/moment.js"></script>
+        <script src="js/mobile.js"></script>
+        <script src="js/vanillaCalendar.js"></script>       
+
+        <style>
+            .loader {
+                border: 16px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 16px solid #3498db;
+                width: 120px;
+                height: 120px;
+                -webkit-animation: spin 2s linear infinite; /* Safari */
+                animation: spin 2s linear infinite;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                display: none;
+            }
+
+            /* Safari */
+            @-webkit-keyframes spin {
+                0% { -webkit-transform: rotate(0deg); }
+                100% { -webkit-transform: rotate(360deg); }
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    </body>
+</html>
