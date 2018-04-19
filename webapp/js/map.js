@@ -37,7 +37,7 @@ $(document).ready(function(){
                 showInfo(c);
             });
 
-            
+
             $("#" + c + "_wrap").mouseout(function() {
                 hideInfo();
             });
@@ -160,18 +160,34 @@ function changeDate(d){
 // triggered by the two buttons on either side of the date display
 function shiftDate(val){
     // change colored date on calendar
-    var currentDay = document.getElementById(window.date);
-    currentDay.classList.remove('vcal-date--selected');
+
+    var date_moment = moment(Date.parse(window.date));
+    var mapdate = date_moment.format('MM/DD/YYYY');
+
+    console.log("Day: " +date_moment.date());
 
     var today = moment(Date.now()).format('MM/DD/YYYY');
-    var mapdate = moment(Date.parse(window.date)).format('MM/DD/YYYY');
 
     /* Don't let users go to past days */
     if (today == mapdate && val == -1) {
         return;
     }
 
-    var dateString = moment(Date.parse(window.date)).add(val, 'd').format('MM/DD/YYYY');
+    var currentDay = document.getElementById(window.date);
+    currentDay.classList.remove('vcal-date--selected');
+
+    var next_moment = moment(Date.parse(window.date)).add(val, 'd');
+    var dateString = next_moment.format('MM/DD/YYYY');
+
+    // next to change month data first
+    if(next_moment.month() != date_moment.month()){
+        if(val == -1){ //move back a month
+            $("#cal-prev").click();
+        } else { //move forward a month
+            $("#cal-next").click();
+        }
+    }
+
     window.date = dateString;
     console.log("New date: " + dateString);
     var tempdate = new Date(window.date);
@@ -189,7 +205,7 @@ function showInfo(club) {
     var sidebar = document.getElementById("sidebar");
 
     var out = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>';  
-    
+
     // data for TODAY
     var rows = window.data[window.date];
 
