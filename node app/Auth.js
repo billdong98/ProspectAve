@@ -41,6 +41,11 @@ function redirectOfficer(response){
     response.end();
 }
 
+function redirectFailedAttempt(response){
+    response.writeHead(301,
+                       {Location: `https://prospectave.io/failed_login.html`});
+    response.end();
+}
 
 const mapping = {
     "mman" : "Cap",
@@ -72,7 +77,8 @@ module.exports = {
     verify: function(ticketID, callback){verify(ticketID, callback)},
     redirectOfficer: function(res){ redirectOfficer(res)},
     getClub: function(netID){return getClub(netID)},
-    identity: function(request){return identity(request)}
+    identity: function(request){return identity(request)},
+    redirectFailedAttempt: function(res){redirectFailedAttempt(res)}
 }
 
 

@@ -121,22 +121,10 @@ app.get('/status', cors(), (request, response) => {
 
 // logs the user in. 
 // if the user is already logged in (has session cookie), then redirect to the officer page
-// else if 
+// else if the user
 // if not, then redirect to CAS 
 app.get('/login', (request, response) => { 
     console.log('Login');
-    
-    var callback = function(result){
-            if(result != false){
-                request.session.id = result;
-                console.log("Created cookie for: " + request.session.id);
-                auth.redirectOfficer(response);
-                return;
-            } else {
-                response.status(500);
-                response.send("Bad auth token.");
-            }
-        }.bind({request: request, response: response});
     
     if(request.session.isPopulated) {
         console.log("Already logged in");
@@ -145,6 +133,24 @@ app.get('/login', (request, response) => {
         // redirect to officer page
         return;
     }
+    
+    var callback = function(result){
+            if(result != false){
+                // logged in, but not an officer
+                if(auth.getClub(result) == null){
+                    console.log("Attempted login by: " + result);
+                    auth.redirectFailedAttempt(response);
+                } else {
+                    request.session.id = result;
+                    console.log("Created cookie for: " + request.session.id);
+                    auth.redirectOfficer(response);
+                    return;
+                }
+            } else {
+                response.status(500);
+                response.send("Bad auth token.");
+            }
+        }.bind({request: request, response: response});
     
     // no ticket, need to authenticate
     if(!request.query.ticket){
@@ -277,6 +283,8 @@ app.post('/delete', (request, response) => {
 })
 
 
+// handles an edit request from an authenticated user
+// body has two fields: date and club
 app.post('/edit', (request, response) => {
     // authenticate 
     var identity = auth.identity(request);
