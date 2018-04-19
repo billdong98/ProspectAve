@@ -12,7 +12,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link rel="stylesheet" href="css/main.css" />
         <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="css/jquery-ui.multidatespicker.css">
         <link rel="stylesheet"  href="css/vanillaCalendar.css">
         <link rel="stylesheet"  href="css/officer.css">
@@ -93,7 +93,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                             <div id="register_panel">
                                 <h2 id="reg_date_info">Sat, May 5th</h2>
-                                <h3>There's no event registered for this date. <br><br>Would you like to add one?</h3>
+                                <h3 id="no_event">There's no event registered for this date. <br><br>Would you like to add one?</h3>
                                 <br>
                                 <button class="button special" id="add_button">Add event</button>
                             </div>
@@ -104,7 +104,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                         <h2 id="date_info">Sat, May 5th</h2>
                                     </li>
                                     <li style="margin-top: -.7em">
-                                        <h3 id="status_info" >Status: Pass</h3>
+                                        <h3 id="status_info" >Status: UNDEFINED</h3>
 
                                         <div id="edit_status" class="row uniform" style="display:none;">
                                             <div class="4u 12u$(small)">
@@ -124,7 +124,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     <li>
                                         <h3>Description:</h3>
                                         <span id="description_info">You should never be able to see this.</span>
-                                        <textarea id="edit_description" placeholder="Editing" rows="4" maxlength="150" style="display:none"></textarea>
+                                        <textarea id="edit_description" placeholder="Enter a description here" rows="4" maxlength="150" style="display:none"></textarea>
                                     </li>
                                     <li id="poster_info_li">
                                         <h3>Posted by</h3>
@@ -137,7 +137,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     <li>
                                         <div id="edit_buttons" style="display:none">
                                             <button class="button special" id='submit_edit'>Submit Edit</button><br><br>
-                                            <button class="button special" id='cancel_edit'>Cancel edit</button>
+                                            <button class="button special" id='cancel_edit'>Cancel Edit</button>
                                         </div>
                                         <div id="normal_buttons">
                                             <button class="button special" id='edit_info'>EDIT</button><br><br>
@@ -224,6 +224,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
             <script src="js/main.js"></script>
             <script src="js/officer.js"></script>
+            <script src="js/officer-ui.js"></script>
             <script src="js/jquery-ui.multidatespicker.js"></script>
             <script src="js/vanillaCalendar.js"></script>   
             <script src="js/moment.js"></script>
