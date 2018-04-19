@@ -108,8 +108,10 @@
 }
 
 #v-cal .vcal-date--today {
-  background-color: var(--vcal-today-bg-color);
-  color: var(--vcal-today-color);
+  outline: 5px solid;
+  outline-color: #B4D7FF;
+ /* background-color: var(--vcal-today-bg-color);
+  color: var(--vcal-today-color); */
 }
 
 #v-cal .vcal-date--hasEvent {
@@ -133,8 +135,7 @@
 }
 
 #v-cal .vcal-date--selected {
-  background-color: var(--vcal-selected-bg-color);
-  color: var(--vcal-selected-color);
+  border: solid black 2px;
 }
 
 #v-cal .vcal-date--disabled {
