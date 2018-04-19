@@ -106,7 +106,7 @@ function update(date){
     for(var i=0; i<clubs.length;i++){
         var c = clubs[i];
         $("#" + c + "_overlay").removeClass();
-        $("#" + c + "_overlay").addClass(c + " closed");
+        $("#" + c + "_overlay").addClass("closed");
     }
 
     if(status == undefined){
@@ -128,13 +128,13 @@ function update(date){
 
         if(s === "PUID"){
             overlay.removeClass();
-            overlay.addClass(club.toLowerCase() + " puid");
+            overlay.addClass("puid");
         } else if (s === "Pass"){
             overlay.removeClass();
-            overlay.addClass(club.toLowerCase() + " pass");
+            overlay.addClass("pass");
         } else if(s === "List"){
             overlay.removeClass();
-            overlay.addClass(club.toLowerCase() + " list");
+            overlay.addClass("list");
         } else {
             console.log("Update error:");
             console.log(row);
