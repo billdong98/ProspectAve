@@ -4,7 +4,7 @@ This first bit sets the email address that you want the form to be submitted to.
 You will need to change this value to a valid email address that you can access.
 */
 $webmaster_email = "prospectaveio@gmail.com";
-
+$feedback_page = "index.html";
 /*
 This next bit loads the form field data into variables.
 */
@@ -37,6 +37,7 @@ function isInjected($str) {
 if (!isInjected($comments)) {
     if(isset($comments) && !empty($comments)){
 	   mail( "$webmaster_email", "Feedback Form Results", $comments);
+	   header( "Location: $feedback_page" );
     }
 }
 ?>
