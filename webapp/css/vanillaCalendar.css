@@ -108,10 +108,9 @@
 }
 
 #v-cal .vcal-date--today {
-  outline: 5px solid;
-  outline-color: #B4D7FF;
- /* background-color: var(--vcal-today-bg-color);
-  color: var(--vcal-today-color); */
+  -webkit-box-shadow:inset 0px 0px 0px 2px grey;
+  -moz-box-shadow:inset 0px 0px 0px 2px grey;
+  box-shadow:inset 0px 0px 0px 2px grey;
 }
 
 #v-cal .vcal-date--hasEvent {
@@ -135,9 +134,9 @@
 }
 
 #v-cal .vcal-date--selected {
-/*  border: solid black 4px;
-  border-color: #B4D7FF;  */
-  background-color: #B4D7FF 
+  -webkit-box-shadow:inset 0px 0px 0px 5px #9AB7E4;
+  -moz-box-shadow:inset 0px 0px 0px 5px #9AB7E4;
+  box-shadow:inset 0px 0px 0px 5px #9AB7E4;
 }
 
 #v-cal .vcal-date--disabled {
