@@ -10,10 +10,6 @@
     font-size: 30px;
 }
 
-#v-cal .vcal-date--selected {
-    background-color: #B4D7FF;
-}
-
 #register_panel {
     display: none;
 }
