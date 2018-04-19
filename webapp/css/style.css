@@ -658,7 +658,8 @@ body.is-loading #infobar nav ul li {
 /*panel stuff*/
 .paneltext {
     position: absolute; 
-    left: 30%; top: 35%; 
+    text-align: center;
+    left: 25%; top: 35%; 
     z-index: 0; 
     color: black; 
     font-size:5.5vw;
