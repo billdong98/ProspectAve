@@ -149,6 +149,7 @@ function downloadSuccess(json){
     // add logo to sidebar
     var c = club.toLowerCase();
     if(c == "tiger inn") c = "ti";
+    c += "-w";
     $("#sidebar").prepend('<img id="sidebarlogo" class="fade-up" src="images/Logos/' + c + '.png"/>');
     
     // highlight all the right dates
