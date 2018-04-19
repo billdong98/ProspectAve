@@ -50,11 +50,10 @@ function redirectFailedAttempt(response){
 const mapping = {
     "mman" : "Cap",
     "wzdong" : "Tower",
-    "junep" : "Ivy",
+    "junep" : "Charter",
     "yangt" : "Cap",
     "bliang" : "Cannon",
-    "smirza" : "Charter",
-    "akling": "Quadrangle"
+    "smirza" : "Charter"
 }
 
 function getClub(netID){
