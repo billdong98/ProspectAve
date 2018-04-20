@@ -1,0 +1,9 @@
+/*panel stuff*/
+.paneltext {
+    position: absolute; 
+    text-align: center;
+    left: 25%; top: 35%; 
+    z-index: 0; 
+    color: black; 
+    font-size:5.5vw;
+}

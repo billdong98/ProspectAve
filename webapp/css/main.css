@@ -1876,6 +1876,12 @@ hr.major {
     padding: 0;
 }
 
+.box.alt {
+    border: 0;
+    border-radius: 0;
+    padding: 1.5em;
+}
+
 /* Button */
 
 input[type="submit"],

@@ -1,0 +1,49 @@
+/* Main title */
+#m-main-title {
+    margin-bottom: 30px !important;
+    font-size: 12vw;
+}
+
+.mobiledate{
+    margin: auto; 
+    width: 70%; 
+    height: 20%; 
+    border-radius: 3em; 
+    border: solid 2px #77AAE3; 
+}
+
+/* Left date arrow */
+#m-leftdate{
+    float:left; 
+    top: 50%;
+    left: 0.15em;
+    padding-left:0.1em;
+}
+
+/* Date text */
+.m-datetext{
+    margin-left: auto;
+    margin-right:auto;
+    top: .3em;
+    text-align: center;
+}
+
+/* Right date arrow */
+#m-rightdate {
+    float: right;
+    top: 50%;
+    right: 0.15em;
+}
+
+/*panel stuff*/
+.paneltext { 
+	position: relative;
+    text-align: center;
+    z-index: 0; 
+    color: black; 
+    font-size:5.5vw;
+}
+
+.panel {
+	position: relative;
+}

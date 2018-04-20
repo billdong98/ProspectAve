@@ -14,6 +14,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet"  href="css/vanillaCalendar.css">
+        <link rel="stylesheet" href="css/mobile.css" />
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
@@ -41,56 +42,56 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <div class="inner" id="top-inner">
                         <h1 class="major" id="m-main-title">P<span style="font-size:8.3vw">ROSPECT</span>A<span style="font-size:8.3vw">VE</span></h1> 
                         <!-- Date Button -->
-                        <div class = "date_container">
+                        <div class="mobiledate">
                             <a class="icon fa-chevron-circle-left fa-2x" onclick="shiftDate(-1);" id="m-leftdate"></a>
-                            <a class="icon fa-chevron-circle-right fa-2x" onclick="shiftDate(1);" id="m-rightdate"></a>
                             <p class="m-datetext" id="date_display"> Date: </p>
+                            <a class="icon fa-chevron-circle-right fa-2x" onclick="shiftDate(1);" id="m-rightdate"></a>
                         </div>
-                        <!-- Map -->
+                        <!-- Panels -->
                         <div class="box alt">
                             <div class="row uniform">
                                 <!-- Terrace -->
-                                <div class = "6u" id="terrace_wrap"><span class="image fit"><img id="terrace_overlay" src="images/terrace-p.png" alt="" />
+                                <div class = "4u panel" id="terrace_wrap"><span class="image fit"><img id="terrace_overlay" src="images/terrace-p.png" alt="" />
                                     <div class="paneltext">Terrace</div></span>
                                 </div>
                                 <!-- Tower -->
-                                <div class = "6u" id="tower_wrap"><span class="image fit"><img id="tower_overlay" src="images/tower-p.png" alt="" />
+                                <div class = "4u panel" id="tower_wrap"><span class="image fit"><img id="tower_overlay" src="images/tower-p.png" alt="" />
                                     <div class="paneltext">Tower</div></span>
                                 </div>
                                 <!-- Cannon -->
-                                <div class = "6u" id="cannon_wrap"><span class="image fit"><img id="cannon_overlay" src="images/cannon-p.png" alt="" />
+                                <div class = "4u panel" id="cannon_wrap"><span class="image fit"><img id="cannon_overlay" src="images/cannon-p.png" alt="" />
                                     <div class="paneltext">Cannon</div></span>
                                 </div>
                                 <!-- Quad -->
-                                <div class = "6u" id="quadrangle_wrap"><span class="image fit"><img id="quadrangle_overlay" src="images/quad-p.png" alt="" />
+                                <div class = "4u panel" id="quadrangle_wrap"><span class="image fit"><img id="quadrangle_overlay" src="images/quad-p.png" alt="" />
                                     <div class="paneltext">Quad</div></span>
                                 </div>
                                 <!-- Ivy -->
-                                <div class = "6u" id="ivy_wrap"><span class="image fit"><img id="ivy_overlay" src="images/ivy-p.png" alt="" />
+                                <div class = "4u panel" id="ivy_wrap"><span class="image fit"><img id="ivy_overlay" src="images/ivy-p.png" alt="" />
                                     <div class="paneltext">Ivy</div></span>
                                 </div>
                                 <!-- Cottage -->
-                                <div class = "6u" id="cottage_wrap"><span class="image fit"><img id="cottage_overlay" src="images/cottage-p.png" alt="" />
+                                <div class = "4u panel" id="cottage_wrap"><span class="image fit"><img id="cottage_overlay" src="images/cottage-p.png" alt="" />
                                     <div class="paneltext">Cottage</div></span>
                                 </div>
                                 <!-- Cap -->
-                                <div class = "6u" id="cap_wrap"><span class="image fit"><img id="cap_overlay" src="images/cap-p.png" alt="" />
+                                <div class = "4u panel" id="cap_wrap"><span class="image fit"><img id="cap_overlay" src="images/cap-p.png" alt="" />
                                     <div class="paneltext">Cap</div></span>
                                 </div>
                                 <!-- Cloister -->
-                                <div class = "6u" id="cloister_wrap"><span class="image fit"><img id="cloister_overlay" src="images/cloister-p.png" alt="" />
+                                <div class = "4u panel" id="cloister_wrap"><span class="image fit"><img id="cloister_overlay" src="images/cloister-p.png" alt="" />
                                     <div class="paneltext">Cloister</div></span>
                                 </div>
                                 <!-- Charter -->
-                                <div class = "6u" id="charter_wrap"><span class="image fit"><img id="charter_overlay" src="images/charter-p.png" alt="" />
+                                <div class = "4u panel" id="charter_wrap"><span class="image fit"><img id="charter_overlay" src="images/charter-p.png" alt="" />
                                     <div class="paneltext">Charter</div></span>
                                 </div>
                                 <!-- Colonial -->
-                                <div class = "6u" id="colonial_wrap"><span class="image fit"><img id="colonial_overlay" src="images/colonial-p.png" alt="" />
+                                <div class = "4u panel" id="colonial_wrap"><span class="image fit"><img id="colonial_overlay" src="images/colonial-p.png" alt="" />
                                     <div class="paneltext">Colonial</div></span>
                                 </div>
                                 <!-- TI -->
-                                <div class = "6u" id="ti_wrap"><span class="image fit"><img id="ti_overlay" src="images/ti-p.png" alt="" />
+                                <div class = "4u panel" id="ti_wrap"><span class="image fit"><img id="ti_overlay" src="images/ti-p.png" alt="" />
                                     <div class="paneltext">TI</div></span>
                                 </div>
                             </div>    
@@ -115,7 +116,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 </button>
 
                                 <div class="vcal-header__label" data-calendar-label="month">
-                                    March 2017
+                                    March 2018
                                 </div>
 
 
@@ -140,7 +141,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         </div>
                     </div>
                 </div>
-            </section>	
+            </section>
 
             <!-- Two -->
             <section id="two" class="wrapper style3 spotlights">

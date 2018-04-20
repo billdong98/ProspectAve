@@ -85,17 +85,10 @@
     background: #19273F;
 }
 
-/*#586BA4*/
-
 /* Main title */
 #main-title {
     margin-bottom: 30px !important; 
     font-size: 6.5vw;
-}
-
-#m-main-title {
-    margin-bottom: 30px !important;
-    font-size: 12vw;
 }
 
 /* Date Button */
@@ -112,13 +105,6 @@
     padding-right:0.3em;
 }
 
-#m-leftdate{
-    float:left; 
-    top: 50%;
-    left: 0.15em;
-    padding-left:0.1em;
-}
-
 /* Date text */
 .datetext{
     float: left;
@@ -126,155 +112,10 @@
     width: 8em;
 }
 
-.m-datetext{
-    margin-left: auto;
-    margin-right:auto;
-    top: .3em;
-    text-align: center;
-}
-
 /* right date arrow */
 #rightdate{
     float:right; 
     top: -0.35em; 
-}
-
-#m-rightdate {
-    float: right;
-    top: 50%;
-    right: 0.15em;
-}
-
-.date_container{
-    margin: auto;
-    width: 70%;
-    height: 20%;
-    border-radius: 3em;
-    border: solid 2px #77AAE3;
-}
-
-#top-inner {
-    padding-top: 1em;
-}
-
-@media screen and (min-width: 1281px) {
-    #sidebar nav > ul > li {
-        margin-top: 1em;
-    }
-}
-
-.spotlights > section > .content {
-    width: 100%;
-}
-
-/* Three columns side by side */
-.column {
-    float: left;
-    width: 20%;
-    margin-bottom: 16px;
-    padding: 0 8px;
-}
-
-/* Display the columns below each other instead of side by side on small screens */
-@media screen and (max-width: 650px) {
-    .column {
-        width: 100%;
-        display: block;
-    }
-}
-
-body {
-    background-color: #19273F;
-}
-
-/* Add some shadows to create a card effect */
-.card {
-    background-color: #729bda;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-/* Some left and right padding inside the container */
-.container {
-    padding: 0 16px;
-}
-
-/* Clear floats */
-.container::after, .row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-@media screen and (min-width: 1281px) {
-    #sidebar + #wrapper {
-        margin-left: 12em;
-    }
-
-    #sidebar + #wrapper + #footer {
-        margin-left: 12em;
-    }
-
-    #sidebar {
-        width: 12em;
-        overflow-y: hidden;
-    }
-
-    #sidebar img {
-        position: absolute;
-        left: 12%; 
-        height: 20%;
-        width: auto;
-        display: none;
-    }
-}
-
-@media screen and (max-width: 1280px) {
-    #sidebar img {
-        position: absolute;
-        left: 2%;
-        top: 5%;
-        height: 80%;
-        width: auto;
-        display: none;
-    }
-}
-
-
-/* Datepicker */
-input[type="datepicker"],
-input[type="time"]
-{
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 0.25em;
-    border: none;
-    border: solid 1px rgba(255, 255, 255, 0.15);
-    color: inherit;
-    display: block;
-    outline: 0;
-    padding: 0 1em;
-    text-decoration: none;
-    width: auto;
-}
-
-/* Member */
-#member {
-    text-align: center;
-}
-
-/* Email icon */
-#emailicon {
-    top: -2vw; 
-    right: 0.5vw;
-}
-
-/* Linked-in icon */
-#linkedinicon {
-    top: -2vw; 
-    left: 0.5vw;
 }
 
 /* Map */
@@ -512,8 +353,110 @@ input[type="time"]
     /* with old photo filter: sepia(51%) saturate(1070%) hue-rotate(-18deg) brightness(115%); */
 } 
 
-/* infobar */
+#top-inner {
+    padding-top: 1em;
+}
 
+@media screen and (min-width: 1281px) {
+    #sidebar nav > ul > li {
+        margin-top: 1em;
+    }
+}
+
+.spotlights > section > .content {
+    width: 100%;
+}
+
+@media screen and (min-width: 1281px) {
+    #sidebar + #wrapper {
+        margin-left: 12em;
+    }
+
+    #sidebar + #wrapper + #footer {
+        margin-left: 12em;
+    }
+
+    #sidebar {
+        width: 12em;
+        overflow-y: hidden;
+    }
+
+    #sidebar img {
+        position: absolute;
+        left: 12%; 
+        height: 20%;
+        width: auto;
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    #sidebar img {
+        position: absolute;
+        left: 2%;
+        top: 5%;
+        height: 80%;
+        width: auto;
+        display: none;
+    }
+}
+
+/* Three columns side by side */
+.column {
+    float: left;
+    width: 20%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+}
+
+body {
+    background-color: #19273F;
+}
+
+/* Add some shadows to create a card effect */
+.card {
+    background-color: #729bda;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Some left and right padding inside the container */
+.container {
+    padding: 0 16px;
+}
+
+/* Clear floats */
+.container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Member */
+#member {
+    text-align: center;
+}
+
+/* Email icon */
+#emailicon {
+    top: -2vw; 
+    right: 0.5vw;
+}
+
+/* Linked-in icon */
+#linkedinicon {
+    top: -2vw; 
+    left: 0.5vw;
+}
+
+/* infobar */
 #infobar {
     padding: 1.5em 1.5em 0.5em 1.5em ;
     background: #ffd347;
@@ -671,29 +614,4 @@ body.is-loading #infobar nav ul li {
         line-height: inherit;
         padding: 0;
     }
-}
-
-.boxed {
-    border: solid 3px rgba(255, 255, 255, 0.15);
-    padding: 10px;
-    border-radius:0.5em;
-    box-sizing: border-box;
-}
-
-.blue {
-    background: #295DA5;
-}
-
-.orange {
-    background: #d4a26d;
-}
-
-/*panel stuff*/
-.paneltext {
-    position: absolute; 
-    text-align: center;
-    left: 25%; top: 35%; 
-    z-index: 0; 
-    color: black; 
-    font-size:5.5vw;
 }
