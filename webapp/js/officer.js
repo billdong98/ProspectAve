@@ -73,7 +73,8 @@ function downloadSuccess(json){
 
     var club_name = club;
     if(club == "Cap") club_name = "Cap & Gown";
-    if(club != "Tiger Inn") club_name += " Club";
+    if(club != "Tiger Inn" && club != "Cloister") club_name += " Club";
+    if(club == "Cloister") club_name += " Inn";
     
     $("#title").html(club_name + " Control Panel");
     $("#hereswhere").html("Welcome, " + name + "! Select a date to add, edit, or delete events for your club!");
@@ -83,7 +84,9 @@ function downloadSuccess(json){
     var c = club.toLowerCase();
     if(c == "tiger inn") c = "ti";
     c += "-w";
-    $("#sidebar").prepend('<img id="sidebarlogo" class="fade-up" src="images/Logos/' + c + '.png"/>');
+
+    $("#sidebar").prepend('<img id="sidebarlogo" class="fade-up" style="align:center" src="images/Logos/' + c + '.png"/>');
+
     
     // highlight all the right dates
     showDatesWithEvents();
