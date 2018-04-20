@@ -65,6 +65,7 @@ input[type="submit"], input[type="reset"] {
 }
 
 #hereswhere{
-    margin-bottom: 1em;
-    
+    margin-bottom: 1em;  
+    color: black;
+    font-size: 1em; 
 }

@@ -76,7 +76,7 @@ function downloadSuccess(json){
     if(club != "Tiger Inn") club_name += " Club";
     
     $("#title").html(club_name + " Control Panel");
-    $("#hereswhere").html("Welcome, " + name + ". Here's where you can add/edit/delete events.");
+    $("#hereswhere").html("Welcome, " + name + "! Select a date to add, edit, or delete events for your club!");
     $("#post_form_title").html("Upload " + club + "'s Schedule");
 
     // add logo to sidebar

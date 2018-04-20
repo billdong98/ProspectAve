@@ -50,7 +50,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <section id="events" class="wrapper style1 fullscreen fade-up">
                 <div class="inner" style="padding-top: 2em">
                     <h2 id="title">Welcome to the Club Control Panel — netID</h2>
-                    <p id="hereswhere">Here's where you can add/edit/delete events</p>
+                    <p id="hereswhere"> Select a date to add, edit, or delete events for your club!</p>
                     <div class="split style1">
                         <section>
                             <div class="container">
@@ -136,12 +136,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     </li>
                                     <li>
                                         <div id="edit_buttons" style="display:none">
-                                            <button class="button special" id='submit_edit'>Submit</button>
-                                            <button class="button special" id='cancel_edit'>Cancel</button>
+                                            <button class="button special buttonspace" id='submit_edit'>Submit</button>
+                                            <button class="button special buttonspace" id='cancel_edit'>Cancel</button>
                                         </div>
                                         <div id="normal_buttons">
-                                            <button class="button special" id='edit_info'>Edit</button>
-                                            <button class="button special" id="delete_info">Delete</button>
+                                            <button class="button special buttonspace" id='edit_info'>Edit</button>
+                                            <button class="button special buttonspace" id="delete_info">Delete</button>
                                         </div>
                                     </li>
                                 </ul>
@@ -166,7 +166,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <div class="split style1">
                                 <section id="datepicker_section">
                                     <div type="datepicker" id="schedule_date_picker"></div><br>
-
                                 </section>
                                 <section id="desc_section">
                                     <div class="field">
@@ -178,25 +177,28 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                             <br>
 
-
-                            <h3>What do you need to get in?</h3>
-                            <div class="row uniform">
-                                <div class="4u 12u$(small)">
-                                    <input type="radio" id="radio-puid" name="radio-get-in" value="PUID">
-                                    <label for="radio-puid" value="PUID">PUID</label>
-                                </div>
-                                <div class="4u 12u$(small)">
-                                    <input type="radio" id="radio-pass" name="radio-get-in" value="Pass">
-                                    <label for="radio-pass" value="Pass">Pass</label>
-                                </div>
-                                <div class="4u$ 12u$(small)">
-                                    <input type="radio" id="radio-list" name="radio-get-in" value="List">
-                                    <label for="radio-list" value="List">List</label>
-                                </div> <br>
+                            <div class="split style1">
+                                <section>
+                                    <h3>What do you need to get in?</h3>
+                                    <div class="row uniform">
+                                        <div class="3u 12u$(small)">
+                                            <input type="radio" id="radio-puid" name="radio-get-in" value="PUID">
+                                            <label for="radio-puid" value="PUID">PUID</label>
+                                        </div>
+                                        <div class="3u 12u$(small)">
+                                            <input type="radio" id="radio-pass" name="radio-get-in" value="Pass">
+                                            <label for="radio-pass" value="Pass">Pass</label>
+                                        </div>
+                                        <div class="2u$ 12u$(small)">
+                                            <input type="radio" id="radio-list" name="radio-get-in" value="List">
+                                            <label for="radio-list" value="List">List</label>
+                                        </div> <br>
+                                    </div>
+                                </section>
                             </div>
 
                             <ul class="actions">
-                                <li><input type="submit" value="Submit"onclick="toggleForm(); return upload();" class="special" /></li>
+                                <li><input type="submit" value="Submit"onclick="toggleForm(); return upload();" class="special"/></li>
                                 <li><input type="reset" value="Reset" onclick="clearDatePicker()"/></li>
                             </ul>
                         </form> 

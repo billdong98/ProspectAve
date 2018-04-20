@@ -223,13 +223,13 @@ function loadEditing(date, status, description){
     edit_status = status;
     
     $('#cancel_edit').unbind('click');
-    $('#cancel_edit').html('Cancel Edit');
+    $('#cancel_edit').html('Cancel');
     $('#cancel_edit').click(function() {
         closeEditing();
     });
 
     $('#submit_edit').unbind('click');
-    $('#submit_edit').html('Submit Edit');
+    $('#submit_edit').html('Submit');
     $('#submit_edit').click(function() {
         var s = edit_status;
         var i = $("#edit_description").val();
