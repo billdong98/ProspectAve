@@ -174,7 +174,7 @@ function addEvent(date){
                                      
 
     $('#cancel_edit').unbind('click');
-    $('#submit_edit').unbind('Cancel Draft');
+    $('#submit_edit').html('Cancel');
     $('#cancel_edit').click(function() {
         closeAdd();
     });
