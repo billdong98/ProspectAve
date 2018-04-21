@@ -262,4 +262,5 @@ function closeEditing(){
     $("#edit_description").val("");
     $("#edit_status").css('display', 'none');
     edit_status = 0;
+    clearEditRadios();
 }

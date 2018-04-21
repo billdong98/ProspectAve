@@ -13,6 +13,10 @@ $(document).ready(function(){
         disablePastDays: true
     });
 
+    // Clears radio buttons (Eliminates caching)
+    clearEditRadios();
+    clearGetRadios();
+
     // initialize date picker
     $("#schedule_date_picker").multiDatesPicker({
         maxPicks: 40 // no troll 
@@ -221,4 +225,14 @@ function deleteEvent(date, club){
             location.reload(); //DONT HAVE TO DO THIS. SIMPLE SOLUTION FOR NOW.
         }
     });   
+}
+
+// Make no edit radio buttons checked (Eliminates caching bug)
+function clearEditRadios(){ 
+    $('input:radio[name=radio-edit-in]').each(function() { $(this).prop('checked', false)});
+}
+
+// Make no get radio buttons checked (Eliminates caching bug)
+function clearGetRadios(){ 
+    $('input:radio[name=radio-get-in]').each(function() { $(this).prop('checked', false)});
 }
