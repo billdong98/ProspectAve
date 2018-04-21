@@ -49,10 +49,14 @@
 }
 
 input[type="submit"], input[type="reset"] {
-    font-size: .8em;
+    font-size: .7em;
     padding: 0px 1.75em;
     line-height: 3.75em;
     height: calc(3.75em + 2px);
+}
+
+.form-but{
+    margin-top: 1em;
 }
 
 #sidebar > .inner {

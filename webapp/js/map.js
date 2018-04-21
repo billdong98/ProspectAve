@@ -53,10 +53,8 @@ $(document).ready(function(){
     for(var i=0; i<clubs.length;i++){
         !function set(c){
             $("#" + c + "_wrap").mouseover(function() {
-                console.log(c);
                 showInfo(c);
             });
-
 
             $("#" + c + "_wrap").mouseout(function() {
                 hideInfo();
@@ -269,6 +267,8 @@ function showInfo(club) {
     // data for TODAY
     var rows = window.data[window.date];
 
+    if(typeof rows == "undefined") return;
+    
     for(var i=0; i<rows.length; i++){
         var row = rows[i];
         var name = row["club_name"].toLowerCase();

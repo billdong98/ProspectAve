@@ -43,7 +43,7 @@ function downloadSuccess(json){
 
     var name = json["identity"]["netID"];
     var club = json["identity"]["club"];
-    $("#club_display").html(club + " Event Form");
+    $("#club_display").html(club + " Mass Upload Form");
 
     var rows = json["rows"];
     // iterate over each JSON object
@@ -78,7 +78,7 @@ function downloadSuccess(json){
     
     $("#title").html(club_name + " Control Panel");
     $("#hereswhere").html("Welcome, " + name + "! Select a date to add, edit, or delete events for your club!");
-    $("#post_form_title").html("Upload " + club + "'s Schedule");
+    $("#post_form_title").html("Bulk Upload " + club + "'s Schedule");
 
     // add logo to sidebar
     var c = club.toLowerCase();
