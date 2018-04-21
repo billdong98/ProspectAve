@@ -41,6 +41,11 @@ $(document).ready(function(){
         showPassListEvents();
     });
     
+    /* Set all as default filter */  
+    var $radios = $('input:radio[name=radio-filter]');  
+    $radios.filter('[value=All]').prop('checked', true);  
+
+    
     // prep the info bar
     hideInfo();
 
