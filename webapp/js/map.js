@@ -39,7 +39,7 @@ $(document).ready(function(){
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
     
-    
+    // set up filter radio button listeners
     $("#radio-all").click(function(){
         showDatesWithEvents();
     });
@@ -114,9 +114,7 @@ function showDatesWithEvents() {
         if(currentDay != null){
             currentDay.classList.remove('vcal-date--PUID');
             currentDay.classList.remove('vcal-date--pass');
-            if (new Date(date) >= new Date() && currentDay != null){
-                currentDay.classList.add('vcal-date--hasEvent');
-            }
+            currentDay.classList.add('vcal-date--hasEvent');
         }
     }
 }
