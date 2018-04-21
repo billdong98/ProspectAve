@@ -429,7 +429,7 @@ body {
 
 /* Some left and right padding inside the container */
 .container {
-    padding: 0 16px;
+    padding: 0 35px;
 }
 
 /* Clear floats */
@@ -614,4 +614,12 @@ body.is-loading #infobar nav ul li {
         line-height: inherit;
         padding: 0;
     }
+}
+
+.obj{
+    display: inline;
+}
+
+.disp_radio{
+    display: inline;
 }

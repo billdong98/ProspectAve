@@ -31,16 +31,29 @@ $(document).ready(function(){
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
     download(); // Download THIS week's data
 
+    // initialize the calendar object
     vanillaCalendar.init({
         disablePastDays: true
     });
 
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
-    //infobar.style.display="none";
+    
+    
+    $("#radio-all").click(function(){
+        showDatesWithEvents();
+    });
+    
+     $("#radio-puid").click(function(){
+        showPUIDEvents();
+    });
+    $("#radio-pass").click(function(){
+        showPassListEvents();
+    });
+    
     hideInfo();
 
-    /* set up the listeners for each club */
+    /* set up the listeners for each club image */
     for(var i=0; i<clubs.length;i++){
         !function set(c){
             $("#" + c + "_wrap").mouseover(function() {
@@ -60,18 +73,18 @@ $(document).ready(function(){
 function showPUIDEvents() {
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
+        if(currentDay != null){
         currentDay.classList.remove('vcal-date--hasEvent');
         currentDay.classList.remove('vcal-date--pass');
         var status = window.data[date];
         for(var j=0; j< status.length; j++){
             var row = status[j];
             if (row["status"] == "PUID") {
-                if (new Date(date) >= new Date()){
-                    currentDay.classList.add('vcal-date--PUID');
-                    break;
-                }
+                currentDay.classList.add('vcal-date--PUID');
+                break;
             }
         }
+    }
     }
 }
 
@@ -79,13 +92,13 @@ function showPUIDEvents() {
 function showPassListEvents() {
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
-        currentDay.classList.remove('vcal-date--hasEvent');
-        currentDay.classList.remove('vcal-date--PUID');
-        var status = window.data[date];
-        for(var j=0; j< status.length; j++){
-            var row = status[j];
-            if (row["status"] == "Pass") {
-                if (new Date(date) >= new Date()){
+        if(currentDay != null){
+            currentDay.classList.remove('vcal-date--hasEvent');
+            currentDay.classList.remove('vcal-date--PUID');
+            var status = window.data[date];
+            for(var j=0; j< status.length; j++){
+                var row = status[j];
+                if (row["status"] == "Pass") {
                     currentDay.classList.add('vcal-date--pass');
                     break;
                 }
@@ -98,10 +111,12 @@ function showPassListEvents() {
 function showDatesWithEvents() {
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
-        currentDay.classList.remove('vcal-date--PUID');
-        currentDay.classList.remove('vcal-date--pass');
-        if (new Date(date) >= new Date() && currentDay != null){
-            currentDay.classList.add('vcal-date--hasEvent');
+        if(currentDay != null){
+            currentDay.classList.remove('vcal-date--PUID');
+            currentDay.classList.remove('vcal-date--pass');
+            if (new Date(date) >= new Date() && currentDay != null){
+                currentDay.classList.add('vcal-date--hasEvent');
+            }
         }
     }
 }

@@ -174,13 +174,13 @@ function addEvent(date){
                                      
 
     $('#cancel_edit').unbind('click');
-    $('#submit_edit').html('Cancel');
+    $('#submit_edit').html('<i class="fas fa-ban"></i>&nbsp;Cancel');
     $('#cancel_edit').click(function() {
         closeAdd();
     });
 
     $('#submit_edit').unbind('click');
-    $('#submit_edit').html('Add Event');
+    $('#submit_edit').html('<i class="far fa-calendar-plus"></i>&nbsp;Submit');
     $('#submit_edit').click(function() {
         var s = edit_status;
         var i = $("#edit_description").val();
@@ -223,13 +223,13 @@ function loadEditing(date, status, description){
     edit_status = status;
     
     $('#cancel_edit').unbind('click');
-    $('#cancel_edit').html('Cancel');
+    $('#cancel_edit').html('<i class="fas fa-ban"></i>&nbsp;Cancel');
     $('#cancel_edit').click(function() {
         closeEditing();
     });
 
     $('#submit_edit').unbind('click');
-    $('#submit_edit').html('Submit');
+    $('#submit_edit').html('<i class="far fa-calendar-plus"></i>&nbsp;Submit');
     $('#submit_edit').click(function() {
         var s = edit_status;
         var i = $("#edit_description").val();

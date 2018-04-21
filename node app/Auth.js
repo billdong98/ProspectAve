@@ -52,8 +52,7 @@ const mapping = {
     "wzdong" : "Tower",
     "junep" : "Charter",
     "yangt" : "Cap",
-    "bliang" : "Cannon",
-    "smirza" : "Charter"
+    "bliang" : "Cloister"
 }
 
 function getClub(netID){

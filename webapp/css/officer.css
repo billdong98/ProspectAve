@@ -66,6 +66,11 @@ input[type="submit"], input[type="reset"] {
 
 #hereswhere{
     margin-bottom: 1em;  
-    color: black;
     font-size: 1em; 
+}
+
+
+.officerbutton{
+    padding: 0 2.4em;
+    margin-right: 1em;
 }
