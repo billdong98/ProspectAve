@@ -13,17 +13,7 @@ weekdays[6] = "Sat";
 
 let clubs = ["terrace", "tower", "colonial", "cannon", "quadrangle", "ti", "ivy","cottage", "cap", "cloister", "charter"];
 
-// show types of events selected on map
-$('#puid_button').click(function() {
-    showPUIDEvents();
-});
-$('#passlist_button').click(function() {
-    showPassListEvents();
-});
-$('#default_button').click(function() {
-    showDatesWithEvents();
-});
-
+// initialize code after the DOM has loaded
 $(document).ready(function(){
     dateDisplay = $("#date_display");
     window.date = moment(Date.now()).format('MM/DD/YYYY'); // set date to today's date
@@ -51,11 +41,8 @@ $(document).ready(function(){
         showPassListEvents();
     });
     
+    // prep the info bar
     hideInfo();
-
-    /* Set all as default filter */ 
-    var $radios = $('input:radio[name=radio-filter]'); 
-    $radios.filter('[value=All]').prop('checked', true); 
 
     /* set up the listeners for each club image */
     for(var i=0; i<clubs.length;i++){
