@@ -108,9 +108,9 @@
 }
 
 #v-cal .vcal-date--today {
-    -webkit-box-shadow:inset 0px 0px 0px 1px #C5C5C5;
-    -moz-box-shadow:inset 0px 0px 0px 1px #C5C5C5;
-    box-shadow:inset 0px 0px 0px 1px #C5C5C5;
+    -webkit-box-shadow:inset 0px 0px 0px 2px #C5C5C5;
+    -moz-box-shadow:inset 0px 0px 0px 2px #C5C5C5;
+    box-shadow:inset 0px 0px 0px 2px #C5C5C5;
 }
 
 #v-cal .vcal-date--hasEvent {
