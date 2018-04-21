@@ -13,6 +13,17 @@ weekdays[6] = "Sat";
 
 let clubs = ["terrace", "tower", "colonial", "cannon", "quadrangle", "ti", "ivy","cottage", "cap", "cloister", "charter"];
 
+// show types of events selected on map
+$('#puid_button').click(function() {
+    showPUIDEvents();
+});
+$('#passlist_button').click(function() {
+    showPassListEvents();
+});
+$('#default_button').click(function() {
+    showDatesWithEvents();
+});
+
 $(document).ready(function(){
     dateDisplay = $("#date_display");
     window.date = moment(Date.now()).format('MM/DD/YYYY'); // set date to today's date
@@ -45,10 +56,50 @@ $(document).ready(function(){
     }
 });
 
+// Colors calendar if date has a PUID event
+function showPUIDEvents() {
+    for (var date in window.data) {
+        var currentDay = document.getElementById(date);
+        currentDay.classList.remove('vcal-date--hasEvent');
+        currentDay.classList.remove('vcal-date--pass');
+        var status = window.data[date];
+        for(var j=0; j< status.length; j++){
+            var row = status[j];
+            if (row["status"] == "PUID") {
+                if (new Date(date) >= new Date()){
+                    currentDay.classList.add('vcal-date--PUID');
+                    break;
+                }
+            }
+        }
+    }
+}
+
+// Colors calendar if date has a PUID event
+function showPassListEvents() {
+    for (var date in window.data) {
+        var currentDay = document.getElementById(date);
+        currentDay.classList.remove('vcal-date--hasEvent');
+        currentDay.classList.remove('vcal-date--PUID');
+        var status = window.data[date];
+        for(var j=0; j< status.length; j++){
+            var row = status[j];
+            if (row["status"] == "Pass") {
+                if (new Date(date) >= new Date()){
+                    currentDay.classList.add('vcal-date--pass');
+                    break;
+                }
+            }
+        }
+    }
+}
+
 // Colors calendar if date has an event 
 function showDatesWithEvents() {
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
+        currentDay.classList.remove('vcal-date--PUID');
+        currentDay.classList.remove('vcal-date--pass');
         if (new Date(date) >= new Date() && currentDay != null){
             currentDay.classList.add('vcal-date--hasEvent');
         }

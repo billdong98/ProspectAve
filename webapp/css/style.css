@@ -458,7 +458,7 @@ body {
 
 /* infobar */
 #infobar {
-    padding: 1.5em 1.5em 0.5em 1.5em ;
+    padding: 1.5em 1em 0.5em 1em ;
     background: #ffd347;
     cursor: default;
     height: 100vh;
@@ -492,7 +492,7 @@ body {
     }
     
     #infobar .club_name {
-        font-size: 2.5em;
+        font-size: 2em;
         text-align: center;
         padding-left: 0;
         margin-bottom: 15px;
