@@ -89,8 +89,7 @@ function downloadSuccess(json){
     if(c == "tiger inn") c = "ti";
     c += "-w";
 
-    $("#sidebar").prepend('<img id="sidebarlogo" class="fade-up" style="align:center" src="images/Logos/' + c + '.png"/>');
-
+    $("#sidebar").prepend('<img id="sidebarlogo" class="fade-up" style="align:center;" src="images/Logos/' + c + '.png"/> <span id="clubname">' + club + '</span>');
     
     // highlight all the right dates
     showDatesWithEvents();
