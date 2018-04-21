@@ -5,7 +5,7 @@ function showDatesWithEvents() {
     console.log("Highlighting dates");
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
-        if (new Date(date) >= new Date() && currentDay != null){
+        if (currentDay != null){
             var status = window.data[date].status;
             if(status === "PUID"){
                 currentDay.classList.add('vcal-date--PUID');

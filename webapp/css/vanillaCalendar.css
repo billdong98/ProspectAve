@@ -1,147 +1,152 @@
 :root {
-  --vcal-bg-color: #fff;
-  --vcal-border-radius: 0;
-  --vcal-border-color: #e7e9ed;
-  --vcal-today-bg-color: #E7E9ED;
-  --vcal-today-color: #000;
-  --vcal-selected-bg-color: #FF9E2D;
-  --vcal-selected-color: #333;
-  --vcal-hasEvent-bg-color: #9AD2E4;
-  --vcal-hasEvent-color: #333;
-  --vcal-title-bg-color: #E7E9ED;
-  --vcal-title-color: #333;
-  
-  --vcal-hasEvent-PUID: #7CD089; 
-  --vcal-hasEvent-pass: #FCB249; 
-  --vcal-hasEvent-list: #FEE83C; 
+    --vcal-bg-color: #fff;
+    --vcal-border-radius: 0;
+    --vcal-border-color: #e7e9ed;
+    --vcal-today-bg-color: #E7E9ED;
+    --vcal-today-color: #000;
+    --vcal-selected-bg-color: #FF9E2D;
+    --vcal-selected-color: #333;
+    --vcal-hasEvent-bg-color: #9AD2E4;
+    --vcal-hasEvent-color: #333;
+    --vcal-title-bg-color: #E7E9ED;
+    --vcal-title-color: #333;
+
+    --vcal-hasEvent-PUID: #7CD089; 
+    --vcal-hasEvent-pass: #FCB249; 
+    --vcal-hasEvent-list: #FEE83C; 
 }
 
 /* #E4923C*/
 #v-cal *, #v-cal *:before, #v-cal *:after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #v-cal {
-  background-color: var(--vcal-bg-color);
-  border-radius: var(--vcal-border-radius);
-  border: solid 1px var(--vcal-border-color);
-  box-shadow: 0 4px 22px 0 rgba(0, 0, 0, 0.05);
-  margin: 0 auto;
-  overflow: hidden;
-  width: 100%;
+    background-color: var(--vcal-bg-color);
+    border-radius: var(--vcal-border-radius);
+    border: solid 1px var(--vcal-border-color);
+    box-shadow: 0 4px 22px 0 rgba(0, 0, 0, 0.05);
+    margin: 0 auto;
+    overflow: hidden;
+    width: 100%;
 }
 
 #v-cal .vcal-btn {
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-appearance: button;
-  background: none;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  line-height: normal;
-  min-width: 27px;
-  outline: none;
-  overflow: visible;
-  padding: 0;
-  text-align: center;
-  &:active {
-    border-radius: var(--vcal-border-radius);
-    box-shadow: 0 0 0 2px rgba(var(--vcal-today-bg-color), 0.1)
-  }
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-appearance: button;
+    background: none;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    line-height: normal;
+    min-width: 27px;
+    outline: none;
+    overflow: visible;
+    padding: 0;
+    text-align: center;
+    &:active {
+        border-radius: var(--vcal-border-radius);
+        box-shadow: 0 0 0 2px rgba(var(--vcal-today-bg-color), 0.1)
+    }
 }
 
 #v-cal .vcal-header {
-  align-items: center;
-  display: flex;
-  padding: .4rem 1.4rem;
+    align-items: center;
+    display: flex;
+    padding: .4rem 1.4rem;
 }
 
 #v-cal .vcal-header svg {
-  fill: var(--vcal-today-bg-color);
+    fill: var(--vcal-today-bg-color);
 }
 
 #v-cal .vcal-header__label {
-  font-weight: 500;
-  font-size: 18pt;
-  text-align: center;
-  width: 100%;
+    font-weight: 500;
+    font-size: 18pt;
+    text-align: center;
+    width: 100%;
 }
 
 #v-cal .vcal-week {
-  background-color: var(--vcal-title-bg-color);
-  display: flex;
-  flex-wrap: wrap;
+    background-color: var(--vcal-title-bg-color);
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #v-cal .vcal-week span {
-  flex-direction: column;
-  flex: 0 0 14.28%;
-  font-size: 1.2rem;
-  font-weight: bold;
-  max-width: 14.28%;
-  padding: 1.2rem 1.4rem;
-  text-align: center;
-  text-transform: uppercase;
+    flex-direction: column;
+    flex: 0 0 14.28%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    max-width: 14.28%;
+    padding: 1.2rem 1.4rem;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 #v-cal .vcal-body {
-  background-color: rgba(var(--vcal-selected-bg-color), 0.3);
-  display: flex;
-  flex-wrap: wrap;
+    background-color: rgba(var(--vcal-selected-bg-color), 0.3);
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #v-cal .vcal-date {
-  align-items: center;
-  background-color: #fff;
-  border-radius: var(--vcal-border-radius);
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 14.28%;
-  max-width: 14.28%;
-  padding: 1.2rem 0;
+    align-items: center;
+    background-color: #fff;
+    border-radius: var(--vcal-border-radius);
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 14.28%;
+    max-width: 14.28%;
+    padding: 1.2rem 0;
 }
 
 #v-cal .vcal-date--active {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #v-cal .vcal-date--today {
-  -webkit-box-shadow:inset 0px 0px 0px 1px #C5C5C5;
-  -moz-box-shadow:inset 0px 0px 0px 1px #C5C5C5;
-  box-shadow:inset 0px 0px 0px 1px #C5C5C5;
+    -webkit-box-shadow:inset 0px 0px 0px 1px #C5C5C5;
+    -moz-box-shadow:inset 0px 0px 0px 1px #C5C5C5;
+    box-shadow:inset 0px 0px 0px 1px #C5C5C5;
 }
 
 #v-cal .vcal-date--hasEvent {
-  background-color: rgba(154, 210, 228, 0.5);
-  color: var(--vcal-hasEvent-color);
+    background-color: rgba(154, 210, 228, 0.5);
+    color: var(--vcal-hasEvent-color);
+    transition: ease 1s;
 }
 
 #v-cal .vcal-date--pass {
-  background-color: var(--vcal-hasEvent-pass);
-  color: var(--vcal-hasEvent-color);
+    background-color: var(--vcal-hasEvent-pass);
+    color: var(--vcal-hasEvent-color);
+    transition: ease 1s;
 }
 
 #v-cal .vcal-date--list {
-  background-color: var(--vcal-hasEvent-list);
-  color: var(--vcal-hasEvent-color);
+    background-color: var(--vcal-hasEvent-list);
+    color: var(--vcal-hasEvent-color);
+    transition: ease 1s;
 }
 
 #v-cal .vcal-date--PUID {
-  background-color: var(--vcal-hasEvent-PUID);
-  color: var(--vcal-hasEvent-color);
+    background-color: var(--vcal-hasEvent-PUID);
+    color: var(--vcal-hasEvent-color);
+    transition: ease 1s;
 }
 
 #v-cal .vcal-date--selected {
-  -webkit-box-shadow:inset 0px 0px 0px 2px #677DAB;
-  -moz-box-shadow:inset 0px 0px 0px 2px #677DAB;
-  box-shadow:inset 0px 0px 0px 2px #677DAB;
+    -webkit-box-shadow:inset 0px 0px 0px 2px #677DAB;
+    -moz-box-shadow:inset 0px 0px 0px 2px #677DAB;
+    box-shadow:inset 0px 0px 0px 2px #677DAB;
+    transition: ease 1s;
 }
 
 #v-cal .vcal-date--disabled {
-  border-radius: 0;
-  cursor: not-allowed;
-  opacity: 0.5;
+    border-radius: 0;
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
