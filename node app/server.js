@@ -215,7 +215,7 @@ app.post('/officer_post', (request, response) => {
     var identity = auth.identity(request);
     if(identity == null) {
         console.log("Failed attempt to add events!");
-        response.end("You need to be logged in to add events!");
+        response.send("You need to be logged in to add events!");
         return;
     }
 
@@ -234,7 +234,7 @@ app.post('/officer_post', (request, response) => {
     
     if(!(dates instanceof Array)){
         console.log("Bad input!");
-        response.end("Bad input!");
+        response.send("Bad input!");
         return;
     }
     // construct query and input for each element in dates
@@ -250,10 +250,10 @@ app.post('/officer_post', (request, response) => {
     console.log(query);
     console.log(data);
     var add = addEvent(response, query, data);
-    if(add != -1){
-        response.end("Successfully added data!");
+    if(add == 1){
+        response.send("Successfully added data!");
     } else {
-        response.end("Failed to add data to database!");
+        response.send("Failed to add data to database!");
     }
 })
 
@@ -263,7 +263,7 @@ app.post('/delete', (request, response) => {
     var identity = auth.identity(request);
     if(identity == null) {
         console.log("Failed attempt to delete events!");
-        response.end("You need to be logged in to delete!");
+        response.send("You need to be logged in to delete!");
         return;
     }
     
@@ -275,11 +275,11 @@ app.post('/delete', (request, response) => {
     // if somehow you're trying to delete another club's data
     if(identity.club != obj.c){
         console.log("Club: " + identity.club + ", Input: " + obj.c + " mismatch!");
-        response.end("You're not authorized to delete that club's event.");
+        response.send("You're not authorized to delete that club's event.");
         return;
     }
-    var out = deleteEvent(response, obj.d, obj.c);
-    response.end(out);
+    deleteEvent(response, obj.d, obj.c);
+    response.send("Successfully deleted.");
 })
 
 
@@ -290,7 +290,7 @@ app.post('/edit', (request, response) => {
     var identity = auth.identity(request);
     if(identity == null) {
         console.log("Failed attempt to delete events!");
-        response.end("You need to be logged in to delete!");
+        response.send("You need to be logged in to delete!");
         return;
     }
     
@@ -307,17 +307,12 @@ app.post('/edit', (request, response) => {
     var query = postQuery + placeholders;
     
     var del = deleteEvent(response, date, club);
-    if(del == -1){ //failed to delete
-        response.send("Failed to delete row");
-        return;
-    }
-    
-    var add = addEvent(response, query, newRow);
-    if(add == -1){ //failed to delete
+    if(del == 1){
+        addEvent(response, query, newRow);
+        response.send("Successfully edited row");
+    } else {
         response.send("Failed to add row");
-        return;
     }
-    response.end("Successfully edited row");
 })
 
 // deletes an event given a date and a club
@@ -327,12 +322,13 @@ function deleteEvent(response, date, club){
             response.status(500);
             response.send("Error querying the database");
             console.log(err);
-            return -1;
+            //return -1;
         } else {
             console.log("Deleted: " + this.changes);
-            return("Deleted " + this.changes + " rows(s).");
+            //return("Deleted " + this.changes + " rows(s).");
         }
     });
+    return 1;
 }
 
 // adds events, called by /officer_post and /edit
@@ -344,12 +340,11 @@ function addEvent(response, query, data){
             response.status(500);
             response.send("Error editing the database");
             console.log(err);
-            return -1;
         } else {
             console.log("Added: " + this.changes);
-            return("Added " + this.changes + " rows(s).");
         }
     });
+    return 1;
 }
 
 // returns the current time in our format
