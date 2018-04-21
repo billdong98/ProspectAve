@@ -24,7 +24,6 @@ function changeDate(d){
     updateDisp(date);
 }
 
-
 /* ------------------ MULTIDAY FORM FUNCTIONS ------------------ */
 
 // clear the dates on the multi-day date picker
@@ -72,12 +71,16 @@ function toggleForm() {
     var x = document.getElementById("post_form_container");
     var button = document.getElementById("show_form");
     if (x.style.display === "none") {
-        x.style.display = "block";
-        button.text = "Hide";
-
-        $('html, body').animate({
-            scrollTop: $('#post_form_container').offset().top - 30
-        }, 500);
+        
+        $("#post_form_container").animate({'opacity': 0}, 250, function () {  
+            x.style.display = "block";
+            button.text = "Hide";
+            $('html, body').animate({
+                scrollTop: $('#post_form_container').offset().top - 30
+            }, 250);
+        }).animate({'opacity': 1}, 250); 
+        
+        
     }
     else {
         x.style.display = "none";
