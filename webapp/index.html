@@ -109,11 +109,23 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <div class="inner">
                     <h2>CALENDAR</h2>
                     <p style="color:black;"> Dates with open clubs are highlighted. Click on a date to view that day's map!  </p>
-                    <span style="color: black;"> Filter by: 
-                    <button class="button special" id='puid_button'>PUID</button>
-                    <button class="button special" id="passlist_button">Pass/List</button>
-                    <button class="button special" id="default_button">Default</button></span> <br>
-                    <br>
+                    <span style="color: black;"> Filter by: </span> 
+                       <div id="edit_status" class="row uniform">
+                            <div class="2u 12u$(small)">
+                              <input type="radio" id="default_button" name="radio-filter" value="Default">
+                              <label for="default_button" value="PUID" style="color:black;">Default</label>
+                            </div>
+                            <div class="2u 12u$(small)">
+                                <input type="radio" id="puid_button" name="radio-filter" value="PUID">
+                                <label for="puid_button" value="PUID" style="color:black;">PUID</label>
+                            </div>
+                            <div class="2u$ 12u$(small)">
+                                <input type="radio" id="passlist_button" name="radio-filter" value="PASS/LISt">
+                                <label for="passlist_button" value="PASS/LIST" style="color:black;">PASS/LIST</label>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
                     <div class="container">
                         <div id = "v-cal">
                             <!--HEADER-->
@@ -255,7 +267,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             </div>
                             <br>
                             <h3> Acknowledgements</h3>
-                            <p style="color:grey">Thanks to course instructors Brian Kernighan and J&eacuter&eacutemie Lumbroso. Special thanks to project mentor Ashley Kling.</p>
+                            <p style="color:black">Thanks to course instructors Brian Kernighan and J&eacuter&eacutemie Lumbroso. Special thanks to project mentor Ashley Kling.</p>
                         </div>
                     </div>
                 </section>
