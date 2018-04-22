@@ -31,7 +31,7 @@ $(document).ready(function(){
     /* set up the listeners for each club */
     for(var i=0; i<clubs.length;i++){
         !function set(c){
-            $("#" + c + "_wrap").click(function() {
+            $("#" + c + "_overlay").click(function() {
                 console.log(c);
                 showInfo(c);
             });
@@ -207,13 +207,10 @@ function showInfo(club) {
 
             infobar_mobile.style.display="";
 
-            if(w > 1280){
-                infobar_mobile.style.top = "0";
-            } else {
-                infobar_mobile.style.left = "0";
-                out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png" style="display: block; margin-left: auto; margin-right: auto; width: 25%;"/>'; 
-                out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
-            }
+            infobar_mobile.style.left = "0";
+            out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png" style="display: block; margin-left: auto; margin-right: auto; width: 25%;"/>'; 
+            out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
+            
             infobar_mobile.innerHTML = out;
             infobar_mobile.style.display="";
 
@@ -232,14 +229,8 @@ function showInfo(club) {
 function hideInfo() { 
     var infobar_mobile = document.getElementById("infobar_mobile");
 
-    var w = $(window).width();
-    if(w > 1280){
-        infobar_mobile.style.left = "0";
-        infobar_mobile.style.top="100vh";
-    } else {
-        infobar_mobile.style.top = "0";
-        infobar_mobile.style.left="-100vw";
-    }
+    infobar_mobile.style.top = "0";
+    infobar_mobile.style.left="-100vw";
 
     infobar_mobile.style.background="#19273F";
 }
