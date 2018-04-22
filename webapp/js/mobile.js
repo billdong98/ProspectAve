@@ -24,21 +24,20 @@ $(document).ready(function(){
         disablePastDays: true
     });
 
-    var infobar = document.getElementById("infobar");
-    var sidebar = document.getElementById("sidebar");
-    //infobar.style.display="none";
+    var infobar_mobile = document.getElementById("infobar_mobile");
+    //infobar_mobile.style.display="none";
     hideInfo();
 
     /* set up the listeners for each club */
     for(var i=0; i<clubs.length;i++){
         !function set(c){
-            $("#" + c + "_wrap").mouseover(function() {
+            $("#" + c + "_wrap").click(function() {
                 console.log(c);
                 showInfo(c);
             });
 
             
-            $("#" + c + "_wrap").mouseout(function() {
+            $("#infobar_mobile").click(function() {
                 hideInfo();
             });
         }(clubs[i]);
@@ -183,10 +182,9 @@ function shiftDate(val){
     update(window.date);
 }
 
-// changes the sidebar to display info about this club
+// display info about this club
 function showInfo(club) { 
-    var infobar = document.getElementById("infobar");
-    var sidebar = document.getElementById("sidebar");
+    var infobar_mobile = document.getElementById("infobar_mobile");
 
     var out = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>';  
     
@@ -196,36 +194,34 @@ function showInfo(club) {
     for(var i=0; i<rows.length; i++){
         var row = rows[i];
         var name = row["club_name"].toLowerCase();
-        infobar.style.background="#ffd347";
-        infobar.style.color="black";
+        infobar_mobile.style.background="#ffd347";
+        infobar_mobile.style.color="black";
         if(name === club || (club === "ti" && name === "tiger inn")){
             var status = row["status"];
             var info = row["info"];
             var date = row["date"]; //redundant
 
             out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
-            infobar.innerHTML = out;
+            infobar_mobile.innerHTML = out;
             var w = $(window).width();
 
-            sidebar.style.display="none";
-            infobar.style.display="";
+            infobar_mobile.style.display="";
 
             if(w > 1280){
-                infobar.style.top = "0";
+                infobar_mobile.style.top = "0";
             } else {
-                infobar.style.left = "0";
-                out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png" style="height: 80%; width: auto;"/>'; 
+                infobar_mobile.style.left = "0";
+                out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png" style="display: block; margin-left: auto; margin-right: auto; width: 25%;"/>'; 
                 out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
             }
-            infobar.innerHTML = out;
-            sidebar.style.display="none";
-            infobar.style.display="";
+            infobar_mobile.innerHTML = out;
+            infobar_mobile.style.display="";
 
             var w = $(window).width();
             if(w > 1280){
-                infobar.style.top = "0";
+                infobar_mobile.style.top = "0";
             } else {
-                infobar.style.left = "0";
+                infobar_mobile.style.left = "0";
             }
             break;
         }
@@ -234,18 +230,16 @@ function showInfo(club) {
 
 // brings back the default sidebar
 function hideInfo() { 
-    var infobar = document.getElementById("infobar");
-    var sidebar = document.getElementById("sidebar");
+    var infobar_mobile = document.getElementById("infobar_mobile");
 
     var w = $(window).width();
     if(w > 1280){
-        infobar.style.left = "0";
-        infobar.style.top="100vh";
+        infobar_mobile.style.left = "0";
+        infobar_mobile.style.top="100vh";
     } else {
-        infobar.style.top = "0";
-        infobar.style.left="-100vw";
+        infobar_mobile.style.top = "0";
+        infobar_mobile.style.left="-100vw";
     }
 
-    sidebar.style.display="";
-    infobar.style.background="#19273F";
+    infobar_mobile.style.background="#19273F";
 }
