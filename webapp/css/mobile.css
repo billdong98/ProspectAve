@@ -44,3 +44,80 @@
 .panel {
 	position: relative;
 }
+
+/* infobar_mobile */
+#infobar_mobile {
+    padding: 1.5em 1em 0.5em 1em ;
+    background: #ffd347;
+    cursor: default;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: fixed;
+    text-align: center;
+    word-wrap: break-word;
+    line-height: 3em;
+    z-index: 10001;
+    color: black;
+    top: 100vh;
+    
+    transition: .6s ease;
+}
+
+#infobar_mobile .club_name {
+    font-size: 2em;
+    text-align: center;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+
+ .inner .info {
+    font-size: 18px;
+}
+
+/* unknown if needed */
+#infobar_mobile > .inner {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -moz-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    -moz-transition: opacity 1s ease;
+    -webkit-transition: opacity 1s ease;
+    -ms-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    min-height: 100%;
+    opacity: 1;
+    width: 100%;
+}
+
+body.is-ie #infobar_mobile > .inner {
+    height: 100%;
+}
+
+#infobar_mobile nav > ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+body.is-loading #infobar_mobile > .inner {
+    opacity: 0;
+}
+
+body.is-loading #infobar_mobile nav ul li {
+    -moz-transform: translateY(2em);
+    -webkit-transform: translateY(2em);
+    -ms-transform: translateY(2em);
+    transform: translateY(2em);
+    opacity: 0;
+}
