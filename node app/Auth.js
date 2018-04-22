@@ -48,7 +48,7 @@ function redirectFailedAttempt(response){
 }
 
 const mapping = {
-    "mman" : "Cap",
+    "mman" : "Tiger Inn",
     "wzdong" : "Tower",
     "junep" : "Charter",
     "yangt" : "Cap",
@@ -66,7 +66,7 @@ function identity(request){
     if (!request.session.isPopulated){
         return null;
     }
-    var identity = {netID: request.session.id, club: getClub(request.session.id)};
+    var identity = {netID: request.session.id, club: mapping[request.session.id]};
     return identity;
 }
 

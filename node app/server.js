@@ -44,17 +44,12 @@ var corsOptions = {
   credentials: true
 }
 
+// setting up middleware options
 app.use(cors(corsOptions));
-
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Credentials", true);
     next();
 });
-
-
-//let corsCred = cors({credentials:true, origin: 'https://prospectave.io'});
- 
-//app.options('/officer_download', corsCred);
 
 app.use(cookieSession({
     name: 'prospectave_session',
@@ -94,7 +89,7 @@ let db = new sqlite3.Database('./clubs.db', (err) => {
 let postQuery = 'INSERT INTO club_status VALUES ';
 let placeholders = '(?,?,?,?,?,?)';
 // part of a query
-let afterToday = "DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) >= date('now')";
+let afterToday = "DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) >= date('now','localtime')";
 // gets all records from club_status after today
 let selectAll = 'SELECT * FROM club_status WHERE ' + afterToday + ' ORDER BY date';
 // get records from club_status for a particular club (after today)

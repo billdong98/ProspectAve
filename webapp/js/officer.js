@@ -23,7 +23,7 @@ $(document).ready(function(){
         // addDates: [today, tomorrow] PUT IN CURRENT CHOICES
     });
     download();
-    
+
     updateDisp(new Date());
 });
 
@@ -31,19 +31,13 @@ $(document).ready(function(){
 // Parameter: rows is a JSON object array
 function downloadSuccess(json){
     console.log(json);
-    
+
     var identity = json["identity"];
     if(identity == null){
         alert("You need to be logged in to access this page.");
         $(location).attr('href', "https://prospectave.io:1738/login");
         return;
     }
-    // dummy data
-    /*
-    var json = {"identity":{"netID":"mman","club":"Cap"},
-                "rows":[{"club_name":"Cap","date":"04/21/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":"What is life supposed to be. Blah blah blah blah blah blah blah blah blah blahancnpie djiapscabob iaofiajcknojd uebofuahoakcobdu joefieisjc anch"}, {"club_name":"Cap","date":"04/28/2018","poster":"Officer page","post_date":"04-12-2018","status":"PUID","info":""},  {"club_name":"Cap","date":"04/23/2018","poster":"Officer page","post_date":"04-12-2018","status":"List","info":"Hi"}, {"club_name":"Cap","date":"04/25/2018","poster":"Officer page","post_date":"04-12-2018","status":"Pass","info":"Last"}
-
-                       ]};*/
 
     var name = json["identity"]["netID"];
     var club = json["identity"]["club"];
@@ -67,31 +61,32 @@ function downloadSuccess(json){
         }
     }
 
-    /*
-    var identity = json["identity"];
-    if(identity == null){
-        alert("You are NOT logged in! Bye!");
-        window.location("https://prospectave.io:1738/login");
-        return;
-    }*/
-
+    // set club data
     var club_name = club;
-    if(club == "Cap") club_name = "Cap & Gown";
-    if(club != "Tiger Inn" && club != "Cloister") club_name += " Club";
-    if(club == "Cloister") club_name += " Inn";
+    var dispVal = club;
+    if(club == "Cap") {
+        club_name = "Cap & Gown";
+        dispVal = "Cap & Gown";
+    }
     
+    if(club != "Tiger Inn" && club != "Cloister")      club_name += " Club";
+    if(club == "Cloister") club_name += " Inn";
+
+    // personalizing interface
     $("#title").html(club_name + " Control Panel");
     $("#hereswhere").html("Welcome, " + name + "! Select a date to add, edit, or delete events for your club!");
     $("#post_form_title").html("Bulk Upload " + club + "'s Schedule");
 
-    // add logo to sidebar
+    // add logo to sidebar and title
     var c = club.toLowerCase();
     if(c == "tiger inn") c = "ti";
-    c += "-w";
 
-    $("#sidebar").prepend('<img id="sidebarlogo" class="fade-up" style="align:center" src="images/Logos/' + c + '.png"/>');
-
+    // add title
+    $("#sidebar").prepend("<p class='clubtext'>" + dispVal + "</p>");
     
+    $("#sidebar").prepend('<img id="sidebarlogo" class="fade-up" style="align:center" src="images/Logos/' + c + '-w.png"/>');
+
+
     // highlight all the right dates
     showDatesWithEvents();
 }
@@ -105,13 +100,13 @@ function submitEdit(date, status, desc){
     }
     var json = {"c": window.club, "d": date, "s": status, "i": desc};
     console.log(json);
- 
+
     $.ajax({
         url: "https://www.prospectave.io:1738/edit",
         type: 'POST',   
         contentType: 'application/json',  
         xhrFields: {
-          withCredentials: true //send cookies
+            withCredentials: true //send cookies
         },
         crossDomain: true,
         data: JSON.stringify(json),
@@ -136,8 +131,8 @@ function download(){
     $.ajax({
         url: "https://www.prospectave.io:1738/officer_download/",
         xhrFields: {
-          withCredentials: true
-       },
+            withCredentials: true
+        },
         type: 'GET', 
         crossDomain: true,
         contentType: 'json',    
@@ -166,19 +161,19 @@ function upload(){
     var obj = {"c": window.club, "d": dates, "s": status, "i": info};
     console.log(obj); 
     postEvents(obj);
-   
+
     alert("Form submitted!");   
     return false;
 }
 
 // post an event given the defined JSON format
 function postEvents(obj){
-     $.ajax({
+    $.ajax({
         url: "https://www.prospectave.io:1738/officer_post",
         type: 'POST',   
         contentType: 'application/json',  
         xhrFields: {
-          withCredentials: true //send cookies
+            withCredentials: true //send cookies
         },
         crossDomain: true,
         data: JSON.stringify(obj), //stringify is important
@@ -202,15 +197,15 @@ function deleteEvent(date, club){
         console.log("User canceled delete");
         return;
     } 
-    
+
     var obj = {"d": date, "c" : club};
-    
+
     $.ajax({
         url: "https://www.prospectave.io:1738/delete",
         type: 'POST',   
         contentType: 'application/json',  
         xhrFields: {
-          withCredentials: true //send cookies
+            withCredentials: true //send cookies
         },
         crossDomain: true,
         data: JSON.stringify(obj), //stringify is important

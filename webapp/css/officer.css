@@ -78,3 +78,11 @@ input[type="submit"], input[type="reset"] {
     padding: 0 2.4em;
     margin-right: 1em;
 }
+
+.clubtext {
+    text-align: center;
+    margin-top 18px;
+    width: 100%;
+    font-size: 1.3em;
+    color: white;
+}
