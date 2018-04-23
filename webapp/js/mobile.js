@@ -20,6 +20,7 @@ $(document).ready(function(){
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
     download(); // Download THIS week's data
 
+
     vanillaCalendar.init({
         disablePastDays: true
     });
@@ -36,7 +37,7 @@ $(document).ready(function(){
                 showInfo(c);
             });
 
-            
+
             $("#infobar_mobile").click(function() {
                 hideInfo();
             });
@@ -160,25 +161,27 @@ function changeDate(d){
 function shiftDate(val){
     // change colored date on calendar
     var currentDay = document.getElementById(window.date);
-    currentDay.classList.remove('vcal-date--selected');
 
-    var today = moment(Date.now()).format('MM/DD/YYYY');
-    var mapdate = moment(Date.parse(window.date)).format('MM/DD/YYYY');
+    if(currentDay != null){
+        currentDay.classList.remove('vcal-date--selected');
 
-    /* Don't let users go to past days */
-    if (today == mapdate && val == -1) {
-        return;
+        var today = moment(Date.now()).format('MM/DD/YYYY');
+        var mapdate = moment(Date.parse(window.date)).format('MM/DD/YYYY');
+
+        /* Don't let users go to past days */
+        if (today == mapdate && val == -1) {
+            return;
+        }
+
+        var dateString = moment(Date.parse(window.date)).add(val, 'd').format('MM/DD/YYYY');
+        window.date = dateString;
+        console.log("New date: " + dateString);
+        var tempdate = new Date(window.date);
+        dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
+
+        currentDay = document.getElementById(window.date);
+        if(currentDay != null) currentDay.classList.add('vcal-date--selected');
     }
-
-    var dateString = moment(Date.parse(window.date)).add(val, 'd').format('MM/DD/YYYY');
-    window.date = dateString;
-    console.log("New date: " + dateString);
-    var tempdate = new Date(window.date);
-    dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
-
-    currentDay = document.getElementById(window.date);
-    currentDay.classList.add('vcal-date--selected');
-
     update(window.date);
 }
 
@@ -187,7 +190,7 @@ function showInfo(club) {
     var infobar_mobile = document.getElementById("infobar_mobile");
 
     var out = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>';  
-    
+
     // data for TODAY
     var rows = window.data[window.date];
 
@@ -210,7 +213,7 @@ function showInfo(club) {
             infobar_mobile.style.left = "0";
             out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png" style="display: block; margin-left: auto; margin-right: auto; width: 25%;"/>'; 
             out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
-            
+
             infobar_mobile.innerHTML = out;
             infobar_mobile.style.display="";
 

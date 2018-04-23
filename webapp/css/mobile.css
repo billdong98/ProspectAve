@@ -127,3 +127,16 @@ body.is-loading #infobar_mobile nav ul li {
     transform: translateY(2em);
     opacity: 0;
 }
+
+/* Calendar style */
+.container{
+    padding: 0;
+}
+
+#v-cal .vcal-week span {
+    font-size: .9em;
+    text-align: center;
+    padding-top: .8em;
+    padding-bottom: .8em;
+}
+

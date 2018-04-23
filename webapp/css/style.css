@@ -1,63 +1,71 @@
 /* Import fonts */
 @font-face {
     font-family: 'Brandon Grotesque';
-    src: url('../fonts/BrandonGrotesque-ThinItalic.woff') format('woff');
+    src: url('../fonts/BrandonGrotesque-ThinItalic.woff') format('woff'),
+        url('../fonts/BrandonGrotesque-ThinItalic.tff') format('truetype');
     font-weight: 100;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Brandon Grotesque';
-    src: url('../fonts/BrandonGrotesque-LightItalic.woff') format('woff');
+    src: url('../fonts/BrandonGrotesque-LightItalic.woff') format('woff'),
+        url('../fonts/BrandonGrotesque-LightItalic.tff') format('truetype');
     font-weight: 300;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Brandon Grotesque';
-    src: url('../fonts/BrandonGrotesque-Regular.woff') format('woff');
+    src: url('../fonts/BrandonGrotesque-Regular.woff') format('woff'),
+        url('../fonts/BrandonGrotesque-Regular.tff') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Brandon Grotesque';
-    src: url('../fonts/BrandonGrotesque-Light.woff') format('woff');
+    src: url('../fonts/BrandonGrotesque-Light.woff') format('woff'),
+        url('../fonts/BrandonGrotesque-Light.tff') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Brandon Grotesque';
-    src: url('../fonts/BrandonGrotesque-RegularItalic.woff') format('woff');
+    src: url('../fonts/BrandonGrotesque-RegularItalic.woff') format('woff'),
+        url('../fonts/BrandonGrotesque-RegularItalic.tff') format('truetype');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Brandon Grotesque';
-    src: url('../fonts/BrandonGrotesque-Thin.woff') format('woff');
+    src: url('../fonts/BrandonGrotesque-Thin.woff') format('woff'),
+        url('../fonts/BrandonGrotesque-Thin.tff') format('truetype');
     font-weight: 100;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Brandon Grotesque';
-    src: url('../fonts/BrandonGrotesque-Black.woff') format('woff');
+    src: url('../fonts/BrandonGrotesque-Black.woff') format('woff'),
+        url('../fonts/BrandonGrotesque-Black.tff') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Brandon Grotesque';
-    src: url('../fonts/BrandonGrotesque-BlackItalic.woff') format('woff');
+    src: url('../fonts/BrandonGrotesque-BlackItalic.woff') format('woff'),
+        url('../fonts/BrandonGrotesque-BlackItalic.tff') format('truetype');
     font-weight: 500;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Brandon Grotesque';
-    src: url('../fonts/BrandonGrotesque-Medium.woff') format('woff');
+    src: url('../fonts/BrandonGrotesque-Medium.woff') format('woff'),        url('../fonts/BrandonGrotesque-Medium.tff') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
@@ -331,18 +339,18 @@
 .puid{
     filter: sepia(10%) saturate(1575%) hue-rotate(82deg) brightness(85%);
     /*filter: sepia(10%) saturate(1500%) hue-rotate(80deg); */
-     transition: filter .5s; 
+    transition: filter .5s; 
 } 
 
 /* Closed */ 
 .closed { 
     /*filter: sepia(30%) saturate(2500%) hue-rotate(315deg); */
-     transition: filter .5s; 
-    } 
+    transition: filter .5s; 
+} 
 
 .pass {
     filter: sepia(40%) saturate(917%) hue-rotate(-26deg) brightness(106%);
-     transition: filter .5s; 
+    transition: filter .5s; 
 }
 
 /* Pass/List */ 
@@ -469,7 +477,7 @@ body {
     word-wrap: break-word;
     z-index: 10001;
     color: black;
-    
+
     transition: .6s ease;
 }
 
@@ -477,26 +485,26 @@ body {
     #infobar {
         top: 100vh;
     }
-    
+
     #intro {
         min-height: 100vh;
     } 
-    
+
     #one {
         min-height: 100vh;
     }
     #three {
         min-height: 100vh;
     }
-    
+
     #infobar .club_name {
         font-size: 2em;
         text-align: center;
         padding-left: 0;
         margin-bottom: 15px;
     }
-    
-     .inner .info {
+
+    .inner .info {
         font-size: 18px;
     }
 }
