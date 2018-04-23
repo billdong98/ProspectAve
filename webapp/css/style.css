@@ -382,10 +382,8 @@
     }
 
     #sidebar img {
-        position: absolute;
-        left: 12%; 
-        height: 20%;
-        width: auto;
+        height: auto;
+        width: 100%;
         display: none;
     }
 }

@@ -1,7 +1,8 @@
 /* Main title */
 #m-main-title {
-    margin-bottom: 30px !important;
+    margin-bottom: 2vh !important;
     font-size: 12vw;
+    text-align: center;
 }
 
 .mobiledate{
@@ -13,23 +14,28 @@
     /*border: solid 2px #77AAE3; */
 }
 
+h1.major:after{
+    height: .1em;
+}
+
 /* Left date arrow */
 #m-leftdate{ 
     float: left;
-
+    padding-left: 5vw;
 }
 
 /* Date text */
 .m-datetext{
-    padding-top: 0.7em;
-    font-size: 4vw;
+    padding-top: 1.8vh;
+    font-size: 5vw;
     text-align: center;
-
+    width: auto;
+    padding-left: 0;
 }
 
 /* Right date arrow */
 #m-rightdate {
-
+    padding-left: 8vw;
 }
 
 /*panel stuff*/

@@ -5,7 +5,14 @@
 */
 
 (function($) {
-
+    var pagePathName= window.location.pathname;
+    var curr = pagePathName.substring(pagePathName.lastIndexOf("/") + 1);
+    
+    if(     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        // redirect if mobile AND not on mobile page
+        if(curr != "mobile.html") window.location.href = "mobile.html";
+    }
+    
 	skel.breakpoints({
 		xlarge:	'(max-width: 1680px)',
 		large:	'(max-width: 1280px)',

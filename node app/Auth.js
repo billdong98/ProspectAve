@@ -48,11 +48,13 @@ function redirectFailedAttempt(response){
 }
 
 const mapping = {
-    "mman" : "Tiger Inn",
+    "mman" : "Charter",
     "wzdong" : "Tower",
     "junep" : "Charter",
     "yangt" : "Cap",
-    "bliang" : "Cloister"
+    "bliang" : "Cloister",
+    // actual officers
+    "sbelt": "Charter"
 }
 
 function getClub(netID){

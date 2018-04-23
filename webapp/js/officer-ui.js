@@ -177,7 +177,7 @@ function addEvent(date){
                                      
 
     $('#cancel_edit').unbind('click');
-    $('#submit_edit').html('<i class="fas fa-ban"></i>&nbsp;Cancel');
+    $('#cancel_edit').html('<i class="fas fa-ban"></i>&nbsp;Cancel');
     $('#cancel_edit').click(function() {
         closeAdd();
     });
