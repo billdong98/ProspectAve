@@ -56,6 +56,8 @@ const mapping = {
     // actual officers
     "sbelt": "Charter"
     "eaguas": "Cap"
+    "rjh3": "Cap"
+    "jpinnock": "Cap"
 }
 
 function getClub(netID){
