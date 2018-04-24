@@ -55,7 +55,7 @@
 #v-cal .vcal-header {
     align-items: center;
     display: flex;
-    padding: .4rem 1.4rem;
+    padding: 0 1.4rem;
 }
 
 #v-cal .vcal-header svg {
@@ -81,7 +81,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     max-width: 14.28%;
-    padding: 1.2rem 1.4rem;
+    padding: .8rem 1.4rem;
     text-align: center;
     text-transform: uppercase;
 }

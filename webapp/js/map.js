@@ -133,7 +133,7 @@ function download(){
 // handles the results from the node server
 // Parameter: rows is a JSON object array
 function downloadSuccess(rows){
-
+    console.log("Successfully downloaded data");
     console.log(rows);
     // iterate over each JSON object
     for (i = 0; i < rows.length; i++) {
@@ -168,7 +168,7 @@ function update(date){
     }
 
     if(status == undefined){
-        console.log("No values for: " + date);
+        //console.log("No values for: " + date);
         return;
     }
 
@@ -204,7 +204,6 @@ function update(date){
 function changeDate(d){
     var date = $(d).attr("data-calendar-date");
     var dateString = moment(Date.parse(date)).format('MM/DD/YYYY');
-    console.log(dateString);
     window.date = dateString;
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
@@ -221,8 +220,6 @@ function shiftDate(val){
 
     var date_moment = moment(Date.parse(window.date));
     var mapdate = date_moment.format('MM/DD/YYYY');
-
-    console.log("Day: " +date_moment.date());
 
     var today = moment(Date.now()).format('MM/DD/YYYY');
 
@@ -247,7 +244,7 @@ function shiftDate(val){
     }
 
     window.date = dateString;
-    console.log("New date: " + dateString);
+    //console.log("New date: " + dateString);
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
 

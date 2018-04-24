@@ -28,15 +28,14 @@ function changeDate(d){
 
 // clear the dates on the multi-day date picker
 function clearDatePicker(){
-    console.log("Clearing dates");
     $('#schedule_date_picker').multiDatesPicker('resetDates', 'picked');
 }
 
 // populate the post form with data
 function populateForm(row, date){
-    console.log("Populating form");
-    console.log(row);
-    console.log(date);
+    //console.log("Populating form");
+    //console.log(row);
+    //console.log(date);
 
     // reset the post form
     document.getElementById("post_form").reset();
