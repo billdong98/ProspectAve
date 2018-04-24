@@ -106,5 +106,6 @@ input[type="submit"], input[type="reset"] {
     margin-top 18px;
     width: 100%;
     font-size: 1.3em;
+    margin-bottom: 2vh;
     color: white;
 }

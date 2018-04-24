@@ -117,6 +117,7 @@ function updateDisp(date){
         $("#register_panel").animate({'opacity': 0}, 130, function () {  
             $("#register_panel").css('display', 'block');    
             $("#reg_date_info").html(formattedDate);
+            $("#date_info").html(formattedDate);
             $("#date_var").html(dateString);
             // show the button that populates the field with the picked date
             $('#add_button').unbind('click');

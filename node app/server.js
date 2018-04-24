@@ -102,14 +102,12 @@ let deleteEventsQuery = 'DELETE from club_status WHERE date = ? and club_name = 
 /* gets the current clubs from the DB */
 /* allow ALL domains */
 app.get('/status', cors(), (request, response) => { 
-    console.log('Hello getter! Current date: ' + currentDate());
-
+    //console.log('Hello getter! Current date: ' + currentDate());
     db.all(selectAll, [], (err, rows) => {
         if(err){
             throw err;
         }
-
-        console.log("GET: sent " + rows.length + " rows.");
+        //console.log("GET: sent " + rows.length + " rows.");
         response.send(rows);
     });
 })
@@ -119,10 +117,7 @@ app.get('/status', cors(), (request, response) => {
 // else if the user
 // if not, then redirect to CAS 
 app.get('/login', (request, response) => { 
-    console.log('Login');
-    
     if(request.session.isPopulated) {
-        console.log("Already logged in");
         console.log(`Redirecting: ${request.session.id}`);
         auth.redirectOfficer(response);
         // redirect to officer page
@@ -194,7 +189,7 @@ app.get('/officer_download', (request, response) => {
             if(err){
                 throw err;
             }
-            console.log("For: " + identity.club + " found " + rows.length + " rows.");
+            // console.log("For: " + identity.club + " found " + rows.length + " rows.");
             data.rows = rows;
             response.json(data);
         });
@@ -241,11 +236,10 @@ app.post('/officer_post', (request, response) => {
         var date = dates[i];
         data.push(club, date, netID, post_date, status, info);
     }
-
-    console.log(query);
-    console.log(data);
+    
     var add = addEvent(response, query, data);
     if(add == 1){
+        console.log(netID + " (" + club + ") added data");
         response.send("Successfully added data!");
     } else {
         response.send("Failed to add data to database!");
@@ -304,6 +298,7 @@ app.post('/edit', (request, response) => {
     var del = deleteEvent(response, date, club);
     if(del == 1){
         addEvent(response, query, newRow);
+        console.log("Edited row(s) by " + netID);
         response.send("Successfully edited row");
     } else {
         response.send("Failed to add row");

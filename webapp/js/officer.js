@@ -19,7 +19,8 @@ $(document).ready(function(){
 
     // initialize date picker
     $("#schedule_date_picker").multiDatesPicker({
-        maxPicks: 40 // no troll 
+        maxPicks: 30, // no troll 
+        minDate: 0
         // addDates: [today, tomorrow] PUT IN CURRENT CHOICES
     });
     download();
