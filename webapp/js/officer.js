@@ -147,26 +147,6 @@ function download(){
     }); 
 }
 
-// uploads new row(s) to the backend
-// called by multi-date form
-function upload(){
-    console.log("Uploading");
-    var dates = $("#schedule_date_picker").val().split(", ");
-    var poster = "Officer page";
-    var status = radio_status;
-    var info = $("#schedule_message").val();
-    if (club == "" || status == 0 || dates == "") {
-        alert("Form is incomplete!");
-        return false;
-    }
-    var obj = {"c": window.club, "d": dates, "s": status, "i": info};
-    console.log(obj); 
-    postEvents(obj);
-
-    alert("Form submitted!");   
-    return false;
-}
-
 // post an event given the defined JSON format
 function postEvents(obj){
     $.ajax({

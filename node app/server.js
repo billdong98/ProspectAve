@@ -198,9 +198,6 @@ app.get('/officer_download', (request, response) => {
 
 /* handles a post request of club data */
 app.post('/officer_post', (request, response) => {
-    
-    // TODO delete rows if they already exist 
-    
     // authenticate 
     var identity = auth.identity(request);
     if(identity == null) {
@@ -227,6 +224,9 @@ app.post('/officer_post', (request, response) => {
         response.send("Bad input!");
         return;
     }
+    
+    // TODO delete rows if they already exist 
+    
     // construct query and input for each element in dates
     for(var i=0; i<dates.length;i++){
         if(i != 0){
@@ -245,6 +245,7 @@ app.post('/officer_post', (request, response) => {
         response.send("Failed to add data to database!");
     }
 })
+
 
 /* deletes a given date */
 app.post('/delete', (request, response) => {

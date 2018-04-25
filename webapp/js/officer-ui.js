@@ -43,16 +43,16 @@ function populateForm(row, date){
 
     // add the date onto the calendar
     $('#schedule_date_picker').multiDatesPicker('addDates', [date]);
-    
+
     // add a new event (blank date on calendar)
     if(jQuery.isEmptyObject(row)){
-        
+
     } else { // there is row data
         $("#schedule_message").val(row['info']);
         var status = row['status'].toLowerCase();
         $("#radio-" + status).click();
     }
-    
+
     // open if needed, or scroll
     if ($("#post_form_container").css("display") === "none"){
         // open the form and scroll to it
@@ -70,7 +70,7 @@ function toggleForm() {
     var x = document.getElementById("post_form_container");
     var button = document.getElementById("show_form");
     if (x.style.display === "none") {
-        
+
         $("#post_form_container").animate({'opacity': 0}, 250, function () {  
             x.style.display = "block";
             button.text = "Hide";
@@ -78,8 +78,8 @@ function toggleForm() {
                 scrollTop: $('#post_form_container').offset().top - 30
             }, 250);
         }).animate({'opacity': 1}, 250); 
-        
-        
+
+
     }
     else {
         x.style.display = "none";
@@ -87,6 +87,34 @@ function toggleForm() {
     }
 }
 
+// uploads new row(s) to the backend
+// called by multi-date form
+function upload(){
+    console.log("Uploading");
+    var dates = $("#schedule_date_picker").val().split(", ");
+    var poster = "Officer page";
+    var status = radio_status;
+    var info = $("#schedule_message").val();
+    if (club == "" || status == 0 || dates == "") {
+        alert("Form is incomplete!");
+        return false;
+    }
+
+    // fixes case where there is already data for a date
+    for (var key in window.data) {
+        if (window.data.hasOwnProperty(key) && dates.contains(key)) {
+            alert("You've selected a date that already has an event. Please delete that event or unselect it.");
+            return;
+        }
+    }
+    
+    var obj = {"c": window.club, "d": dates, "s": status, "i": info};
+    console.log(obj); 
+    postEvents(obj);
+
+    alert("Form submitted!");   
+    return false;
+}
 
 /* ---------------- CALENDAR IO PANEL FUNCTIONS ------------------ */
 
@@ -102,12 +130,12 @@ function updateDisp(date){
     // format the date in two different ways
     var dateString = moment(date).format('MM/DD/YYYY');
     var formattedDate = moment(date).format("ddd, MMM Do");
-    
+
     closeEditing();
-    
+
     $('#edit_info').unbind('click');
     $('#delete_info').unbind('click');
-    
+
     var row = window.data[dateString];
     if(row === undefined){ 
         // if there's no event, display the "no data" text
@@ -145,7 +173,7 @@ function updateDisp(date){
             $("#poster_info").html(poster);
             $("#postdate_info").html(post_date);  
         }).animate({'opacity': 1}, 130); 
-        
+
         // set event listeners for these buttons
         $('#edit_info').click(function() {
             loadEditing(dateString, status, info);
@@ -160,7 +188,7 @@ function updateDisp(date){
 function addEvent(date){
     $("#register_panel").css('display','none');
     edit_status = 0; //default
-    
+
     $("#event_panel").animate({'opacity': 0}, 130, function () {  
         $("#club_info").css('display', 'block'); 
         $("#event_panel").css('display', 'block');
@@ -174,7 +202,7 @@ function addEvent(date){
         $("#edit_description").css('display', 'block');
         $("#edit_status").css('display', 'block');
     }).animate({'opacity': 1}, 130); 
-                                     
+
 
     $('#cancel_edit').unbind('click');
     $('#cancel_edit').html('<i class="fas fa-ban"></i>&nbsp;Cancel');
@@ -200,7 +228,7 @@ function addEvent(date){
 // close the add event panel
 function closeAdd(){
     $("#register_panel").css('display','none');
-    
+
     $("#register_panel").animate({'opacity': 0}, 130, function () {  
         $("#register_panel").css('display','block');
         $("#club_info").css('display', 'none');
@@ -216,15 +244,15 @@ function loadEditing(date, status, description){
     $("#normal_buttons").css('display', 'none');
     $("#poster_info_li").css('display', 'none');
     $("#post_date_info_li").css('display', 'none');
-    
+
     $("#edit_buttons").css('display', 'block');
     $("#edit_description").css('display', 'block');
     $("#edit_description").val(description);
     $("#edit_status").css('display', 'block');
-   
+
     $("#radio-edit-" + status.toLowerCase()).click();
     edit_status = status;
-    
+
     $('#cancel_edit').unbind('click');
     $('#cancel_edit').html('<i class="fas fa-ban"></i>&nbsp;Cancel');
     $('#cancel_edit').click(function() {
