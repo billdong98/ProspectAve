@@ -55,6 +55,9 @@ const mapping = {
     "bliang" : "Cloister",
     // actual officers
     "sbelt": "Charter"
+    "eaguas": "Cap"
+    "rjh3": "Cap"
+    "jpinnock": "Cap"
 }
 
 function getClub(netID){
