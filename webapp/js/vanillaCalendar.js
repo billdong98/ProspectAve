@@ -14,9 +14,9 @@ var vanillaCalendar = {
     this.createListeners()
   },
 
-  changeMonth : function(){
+  changeMonth : function(diff){
       this.clearCalendar()
-      var nextMonth = this.date.getMonth() + 1
+      var nextMonth = this.date.getMonth() + diff
       this.date.setMonth(nextMonth)
       this.createMonth()
       showDatesWithEvents()

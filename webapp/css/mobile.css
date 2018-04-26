@@ -1,3 +1,7 @@
+.wrapper.fullscreen {
+    padding: 0.5em 0;
+}
+
 /* Main title */
 #m-main-title {
     margin-bottom: 2vh !important;
