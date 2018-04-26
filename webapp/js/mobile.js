@@ -109,7 +109,7 @@ function update(date){
     }
 
     if(status == undefined){
-        console.log("No values for: " + date);
+        //console.log("No values for: " + date);
         return;
     }
 
@@ -158,28 +158,41 @@ function changeDate(d){
 // triggered by the two buttons on either side of the date display
 function shiftDate(val){
     // change colored date on calendar
-    var currentDay = document.getElementById(window.date);
 
-    if(currentDay != null){
-        currentDay.classList.remove('vcal-date--selected');
+    var date_moment = moment(Date.parse(window.date));
+    var mapdate = date_moment.format('MM/DD/YYYY');
 
-        var today = moment(Date.now()).format('MM/DD/YYYY');
-        var mapdate = moment(Date.parse(window.date)).format('MM/DD/YYYY');
+    var today = moment(Date.now()).format('MM/DD/YYYY');
 
-        /* Don't let users go to past days */
-        if (today == mapdate && val == -1) {
-            return;
-        }
-
-        var dateString = moment(Date.parse(window.date)).add(val, 'd').format('MM/DD/YYYY');
-        window.date = dateString;
-        console.log("New date: " + dateString);
-        var tempdate = new Date(window.date);
-        dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
-
-        currentDay = document.getElementById(window.date);
-        if(currentDay != null) currentDay.classList.add('vcal-date--selected');
+    /* Don't let users go to past days */
+    if (today == mapdate && val == -1) {
+        return;
     }
+
+    var currentDay = document.getElementById(window.date);
+    currentDay.classList.remove('vcal-date--selected');
+
+    var next_moment = moment(Date.parse(window.date)).add(val, 'd');
+    var dateString = next_moment.format('MM/DD/YYYY');
+
+    // next to change month data first
+    if(next_moment.month() != date_moment.month()){
+        var event = new Event("mobile_tap");
+        if(val == -1){ //move back a month
+            vanillaCalendar.changeMonth(-1)
+        } else { //move forward a month
+            vanillaCalendar.changeMonth(1);
+        }
+    }
+
+    window.date = dateString;
+    //console.log("New date: " + dateString);
+    var tempdate = new Date(window.date);
+    dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
+
+    currentDay = document.getElementById(window.date);
+    currentDay.classList.add('vcal-date--selected');
+
     update(window.date);
 }
 

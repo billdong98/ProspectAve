@@ -14,6 +14,14 @@ var vanillaCalendar = {
     this.createListeners()
   },
 
+  changeMonth : function(){
+      this.clearCalendar()
+      var nextMonth = this.date.getMonth() + 1
+      this.date.setMonth(nextMonth)
+      this.createMonth()
+      showDatesWithEvents()
+  },
+    
   createListeners: function () {
     var _this = this
     // clears the calendar and shows the next month
@@ -23,7 +31,7 @@ var vanillaCalendar = {
       _this.date.setMonth(nextMonth)
       _this.createMonth()
       showDatesWithEvents()
-    })
+    })    
     // Clears the calendar and shows the previous month
     this.previous.addEventListener('click', function () {
       _this.clearCalendar()
