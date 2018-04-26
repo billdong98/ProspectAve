@@ -3491,7 +3491,7 @@ body.is-ie .wrapper.fullscreen {
 
     #sidebar + #wrapper {
         margin-left: 0;
-        padding-top: 3.5em;
+        padding-top: 4.5em;
     }
 
 }
@@ -3826,9 +3826,9 @@ body.is-loading #sidebar nav ul li {
 @media screen and (max-width: 1280px) {
 
     #sidebar {
-        height: 3.5em;
+        height: 4.5em;
         left: 0;
-        line-height: 3.5em;
+        line-height: 4.5em;
         overflow: hidden;
         padding: 0;
         text-align: center;

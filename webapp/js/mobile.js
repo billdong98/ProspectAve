@@ -33,7 +33,6 @@ $(document).ready(function(){
     for(var i=0; i<clubs.length;i++){
         !function set(c){
             $("#" + c + "_overlay").click(function() {
-                console.log(c);
                 showInfo(c);
             });
 
@@ -110,7 +109,7 @@ function update(date){
     }
 
     if(status == undefined){
-        console.log("No values for: " + date);
+        //console.log("No values for: " + date);
         return;
     }
 
@@ -146,7 +145,6 @@ function update(date){
 function changeDate(d){
     var date = $(d).attr("data-calendar-date");
     var dateString = moment(Date.parse(date)).format('MM/DD/YYYY');
-    console.log(dateString);
     window.date = dateString;
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
@@ -160,28 +158,41 @@ function changeDate(d){
 // triggered by the two buttons on either side of the date display
 function shiftDate(val){
     // change colored date on calendar
-    var currentDay = document.getElementById(window.date);
 
-    if(currentDay != null){
-        currentDay.classList.remove('vcal-date--selected');
+    var date_moment = moment(Date.parse(window.date));
+    var mapdate = date_moment.format('MM/DD/YYYY');
 
-        var today = moment(Date.now()).format('MM/DD/YYYY');
-        var mapdate = moment(Date.parse(window.date)).format('MM/DD/YYYY');
+    var today = moment(Date.now()).format('MM/DD/YYYY');
 
-        /* Don't let users go to past days */
-        if (today == mapdate && val == -1) {
-            return;
-        }
-
-        var dateString = moment(Date.parse(window.date)).add(val, 'd').format('MM/DD/YYYY');
-        window.date = dateString;
-        console.log("New date: " + dateString);
-        var tempdate = new Date(window.date);
-        dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
-
-        currentDay = document.getElementById(window.date);
-        if(currentDay != null) currentDay.classList.add('vcal-date--selected');
+    /* Don't let users go to past days */
+    if (today == mapdate && val == -1) {
+        return;
     }
+
+    var currentDay = document.getElementById(window.date);
+    currentDay.classList.remove('vcal-date--selected');
+
+    var next_moment = moment(Date.parse(window.date)).add(val, 'd');
+    var dateString = next_moment.format('MM/DD/YYYY');
+
+    // next to change month data first
+    if(next_moment.month() != date_moment.month()){
+        var event = new Event("mobile_tap");
+        if(val == -1){ //move back a month
+            vanillaCalendar.changeMonth(-1)
+        } else { //move forward a month
+            vanillaCalendar.changeMonth(1);
+        }
+    }
+
+    window.date = dateString;
+    //console.log("New date: " + dateString);
+    var tempdate = new Date(window.date);
+    dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
+
+    currentDay = document.getElementById(window.date);
+    currentDay.classList.add('vcal-date--selected');
+
     update(window.date);
 }
 
@@ -204,16 +215,22 @@ function showInfo(club) {
             var info = row["info"];
             var date = row["date"]; //redundant
 
-            out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
-            infobar_mobile.innerHTML = out;
+            var c = row["club_name"];
+            if(c == "Cap") {
+                c = "Cap & Gown"
+            }
+            
             var w = $(window).width();
 
             infobar_mobile.style.display="";
-
             infobar_mobile.style.left = "0";
-            out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png" style="display: block; margin-left: auto; margin-right: auto; width: 25%;"/>'; 
-            out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
-
+            out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png"/>'; 
+            out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ c + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li>";
+            
+            if(info != ""){
+                out += "<li class='info'>More Info: <span style='font-style:italic'>" + info + "</span></li> </ul> </nav> </div>"
+            }
+            
             infobar_mobile.innerHTML = out;
             infobar_mobile.style.display="";
 
