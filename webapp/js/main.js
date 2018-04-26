@@ -16,7 +16,7 @@
     /*
     if(!(     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )) {
         // option to redirect if desktop AND not on index.html page
-        if(curr != "index.html") {
+        if(curr == "mobile.html") {
         	if (confirm("You are on the mobile page.  Would you like to visit the desktop site?"))
         		window.location.href = "index.html";
         }
