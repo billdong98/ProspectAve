@@ -33,7 +33,6 @@ $(document).ready(function(){
     for(var i=0; i<clubs.length;i++){
         !function set(c){
             $("#" + c + "_overlay").click(function() {
-                console.log(c);
                 showInfo(c);
             });
 
@@ -146,7 +145,6 @@ function update(date){
 function changeDate(d){
     var date = $(d).attr("data-calendar-date");
     var dateString = moment(Date.parse(date)).format('MM/DD/YYYY');
-    console.log(dateString);
     window.date = dateString;
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
@@ -204,16 +202,22 @@ function showInfo(club) {
             var info = row["info"];
             var date = row["date"]; //redundant
 
-            out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
-            infobar_mobile.innerHTML = out;
+            var c = row["club_name"];
+            if(c == "Cap") {
+                c = "Cap & Gown"
+            }
+            
             var w = $(window).width();
 
             infobar_mobile.style.display="";
-
             infobar_mobile.style.left = "0";
-            out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png" style="display: block; margin-left: auto; margin-right: auto; width: 25%;"/>'; 
-            out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
-
+            out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png"/>'; 
+            out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ c + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li>";
+            
+            if(info != ""){
+                out += "<li class='info'>More Info: <span style='font-style:italic'>" + info + "</span></li> </ul> </nav> </div>"
+            }
+            
             infobar_mobile.innerHTML = out;
             infobar_mobile.style.display="";
 

@@ -54,10 +54,12 @@ const mapping = {
     "yangt" : "Cap",
     "bliang" : "Cloister",
     // actual officers
-    "sbelt": "Charter"
-    "eaguas": "Cap"
-    "rjh3": "Cap"
-    "jpinnock": "Cap"
+    "sbelt": "Charter",
+    "eaguas": "Cap",
+    "rjh3": "Cap",
+    "jpinnock": "Cap",
+    "tdatta": "Quadrangle",
+    "nwedel": "Quadrangle"
 }
 
 function getClub(netID){

@@ -557,9 +557,9 @@ body.is-loading #infobar nav ul li {
 @media screen and (max-width: 1280px) {
 
     #infobar {
-        height: 3.5em;
+        height: 4.5em;
         left: -100vw; /* move in from left to right */
-        line-height: 3.5em;
+        line-height: 4.5em;
         padding: 0;
         top: 0;
         width: 100%;
@@ -567,15 +567,20 @@ body.is-loading #infobar nav ul li {
 
     #infobar #clublogo {
         float: left;
-        top: 20%;
+        margin-left: 3vw;
+        height: 3.6em;
+        margin-top: .43em;
+        margin-right: 0;
     }
 
     #infobar .club_name {
-        font-size: 1.5em;
+        font-size: 1.7em;
+        
+        margin-left: 2vw;
     }
 
     .inner .info {
-        font-size: 15px;
+        font-size: 1.1em;
     }
 
     #infobar > .inner {

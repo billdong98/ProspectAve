@@ -102,12 +102,12 @@ function upload(){
 
     // fixes case where there is already data for a date
     for (var key in window.data) {
-        if (window.data.hasOwnProperty(key) && dates.contains(key)) {
-            alert("You've selected a date that already has an event. Please delete that event or unselect it.");
+        if (window.data.hasOwnProperty(key) && dates.includes(key)) {
+            alert("You've selected a date that already has an event. Please delete that event or unselect that date.");
             return;
         }
     }
-    
+
     var obj = {"c": window.club, "d": dates, "s": status, "i": info};
     console.log(obj); 
     postEvents(obj);

@@ -28,24 +28,24 @@ $(document).ready(function(){
 
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
-    
+
     // set up filter radio button listeners
     $("#radio-all").click(function(){
         showDatesWithEvents();
     });
-    
-     $("#radio-puid").click(function(){
+
+    $("#radio-puid").click(function(){
         showPUIDEvents();
     });
     $("#radio-pass").click(function(){
         showPassListEvents();
     });
-    
+
     /* Set all as default filter */  
     var $radios = $('input:radio[name=radio-filter]');  
     $radios.filter('[value=All]').prop('checked', true);  
 
-    
+
     // prep the info bar
     hideInfo();
 
@@ -265,7 +265,7 @@ function showInfo(club) {
     var rows = window.data[window.date];
 
     if(typeof rows == "undefined") return;
-    
+
     for(var i=0; i<rows.length; i++){
         var row = rows[i];
         var name = row["club_name"].toLowerCase();
@@ -276,20 +276,35 @@ function showInfo(club) {
             var info = row["info"];
             var date = row["date"]; //redundant
 
-            out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
+            // prep sidebar and infobar for show
             infobar.innerHTML = out;
             var w = $(window).width();
-
             sidebar.style.display="none";
             infobar.style.display="";
 
             if(w > 1280){
                 infobar.style.top = "0";
-            } else {
+            } else { // TOP info bar view
                 infobar.style.left = "0";
-                out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png" style="height: 80%; width: auto;"/>'; 
-                out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ row["club_name"] + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li> <li class='info'>Information: " + info + "</li> </ul> </nav> </div>";
+                out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png"/>'; 
             }
+            
+            
+            var c = row["club_name"];
+            if(c == "Cap") {
+                c = "Cap & Gown"
+            }
+            
+            // generate HTML output
+             out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ c + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li>";
+            
+            if(info != ""){ //only add Info section if there is info
+                    out += "<li class='info'>More Info: <span style='font-style:italic'>" + info + "</span></li>"
+            }
+            out += "</ul> </nav> </div>";
+            
+            
+            
             infobar.innerHTML = out;
             sidebar.style.display="none";
             infobar.style.display="";

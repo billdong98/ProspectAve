@@ -51,6 +51,15 @@ h1.major:after{
 	position: relative;
 }
 
+#clublogo {
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 30%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
 /* infobar_mobile */
 #infobar_mobile {
     padding: 1.5em 1em 0.5em 1em ;
@@ -73,14 +82,14 @@ h1.major:after{
 }
 
 #infobar_mobile .club_name {
-    font-size: 2em;
+    font-size: 3em;
     text-align: center;
     padding-left: 0;
     margin-bottom: 15px;
 }
 
  .inner .info {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 /* unknown if needed */
@@ -138,5 +147,22 @@ body.is-loading #infobar_mobile nav ul li {
     text-align: center;
     padding-top: .8em;
     padding-bottom: .8em;
+    padding-left:6.1vw;
+    padding-right: 6.1vw;
+}
+
+#mon_span {
+margin-left: -3.3vw
+}
+
+@media screen and (min-width: 768px){
+    #mon_span {
+        margin-left: -1.4vw;
+    }
+    
+    #v-cal .vcal-week span {
+    padding-left:6.0vw;
+    padding-right: 6.0vw;
+    }
 }
 
