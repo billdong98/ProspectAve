@@ -59,7 +59,10 @@ const mapping = {
     "rjh3": "Cap",
     "jpinnock": "Cap",
     "tdatta": "Quadrangle",
-    "nwedel": "Quadrangle"
+    "nwedel": "Quadrangle",
+    "ad15": "Cannon"
+    "eberbari": "Cannon"
+    "declerck": "Cannon"
 }
 
 function getClub(netID){
