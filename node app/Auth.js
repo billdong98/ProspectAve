@@ -52,7 +52,7 @@ const mapping = {
     "wzdong" : "Tower",
     "junep" : "Charter",
     "yangt" : "Cap",
-    "bliang" : "Cloister",
+    "bliang" : "Terrace",
     // actual officers
     "sbelt": "Charter",
     "eaguas": "Cap",
