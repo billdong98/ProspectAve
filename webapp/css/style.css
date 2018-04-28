@@ -399,7 +399,6 @@
         display: block !important;
         position: absolute !important;
         left: 14%;
-        transition: ease 2s;
         height: auto !important;
         width: 70% !important;
     }
@@ -408,7 +407,7 @@
 @media screen and (max-width: 1280px) {
     #sidebar img {
         position: absolute;
-        left: 2%;
+        left: 2vw;
         top: 5%;
         height: 80%;
         width: auto;
@@ -513,13 +512,19 @@ body {
     }
 
     #infobar .club_name {
-        font-size: 2em;
+        font-size: 1.8em;
         text-align: center;
         padding-left: 0;
         margin-bottom: 15px;
     }
 
-    .inner .info {
+    .inner .info-date {
+        font-size: 18px;
+    }
+    .inner .info-status {
+        font-size: 18px;
+    }
+    .inner .info-moreinfo {
         font-size: 18px;
     }
 }
@@ -582,20 +587,41 @@ body.is-loading #infobar nav ul li {
 
     #infobar #clublogo {
         float: left;
-        margin-left: 3vw;
+        margin-left: 2vw;
         height: 3.6em;
         margin-top: .43em;
         margin-right: 0;
     }
 
     #infobar .club_name {
-        font-size: 1.7em;
-        
+        font-size: 2.5vw;
         margin-left: 2vw;
     }
 
-    .inner .info {
-        font-size: 1.1em;
+    .inner .info-date {
+        height: inherit;
+        line-height: inherit;
+        font-size: 1.5vw;
+        min-width: 11.4vw;
+    }
+
+    .inner .info-status {
+        height: inherit;
+        line-height: inherit;
+        font-size: 1.5vw;
+        min-width: 8.2vw;
+    }
+
+    .inner .info-moreinfo {
+        height: inherit;
+        line-height: inherit;
+        font-size: 1.5vw;
+    }
+
+    .inner .info-moreinfo #moreinfo-span {
+        display: inline-block;
+        line-height: normal;
+        vertical-align: middle;
     }
 
     #infobar > .inner {
@@ -629,9 +655,7 @@ body.is-loading #infobar nav ul li {
     }
     #infobar nav > ul > li {
         display: block;
-        height: inherit;
-        line-height: inherit;
-        margin: 0 0 0 2em;
+        margin: 0 0 0 2.8vw;
         padding: 0;
     }
 

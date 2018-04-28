@@ -32,11 +32,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <link rel="icon" href="images/favicon/android-chrome-512x512.png" sizes="512x512">
         <!-- iOS -->
         <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" sizes="180x180">
+
     </head>
     <body>
 
         <!-- Info bar -->
-        <section id="infobar_mobile">
+        <section id="infobar_mobile" ontouchstart="touchStart(event,'infobar_mobile');" ontouchend="touchEnd(event);" ontouchmove="touchMove(event);" ontouchcancel="touchCancel(event);">
         </section>
 
 
@@ -52,7 +53,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         </h1> 
                     <!-- Date Button -->
                     <div class="mobiledate row">
-                            <a class="3u icon fa-chevron-circle-left fa-2x" onclick="shiftDate(-1);" id="m-leftdate"></a>
+                            <a class="3u icon fa-chevron-circle-left fa-2x" onclick="shiftDate(-1);" id="m-leftdate" ></a>
                             <div class="6u m-datetext" id="date_display"> Date: </div>
                             <a class="3u icon fa-chevron-circle-right fa-2x" onclick="shiftDate(1);" id="m-rightdate"></a>
                     </div>
@@ -282,7 +283,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <script src="js/main.js"></script>
         <script src="js/moment.js"></script>
         <script src="js/mobile.js"></script>
-        <script src="js/vanillaCalendar.js"></script>       
+        <script src="js/vanillaCalendar.js"></script>
+        <script src="js/swipe.js"></script>       
 
         <style>
             .loader {

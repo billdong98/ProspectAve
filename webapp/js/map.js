@@ -322,10 +322,10 @@ function showInfo(club) {
             }
             
             // generate HTML output
-             out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ c + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li>";
+             out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ c + "</li> <li class='info-date'>Date: " + date + "</li> <li class='info-status'>Status: " + status + "</li>";
             
             if(info != ""){ //only add Info section if there is info
-                    out += "<li class='info'>More Info: <span style='font-style:italic'>" + info + "</span></li>"
+                    out += "<li class='info-moreinfo'> <span id='moreinfo-span'>More Info: <span style='font-style:italic'>" + info + "</span></span></li>"
             }
             out += "</ul> </nav> </div>";
             
