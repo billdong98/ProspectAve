@@ -6,6 +6,7 @@ var vanillaCalendar = {
   activeDates: null,
   date: new Date(),
   todaysDate: new Date(),
+  monthChange: 0,
 
   init: function (options) {
     this.options = options
@@ -30,6 +31,7 @@ var vanillaCalendar = {
       var nextMonth = _this.date.getMonth() + 1
       _this.date.setMonth(nextMonth)
       _this.createMonth()
+      _this.monthChange--;
       showDatesWithEvents()
     })    
     // Clears the calendar and shows the previous month
@@ -38,6 +40,7 @@ var vanillaCalendar = {
       var prevMonth = _this.date.getMonth() - 1
       _this.date.setMonth(prevMonth)
       _this.createMonth()
+      _this.monthChange++;
       showDatesWithEvents()
     })
   },
@@ -98,6 +101,7 @@ var vanillaCalendar = {
         changeDate(this);
         _this.removeActiveClass()
         this.classList.add('vcal-date--selected')
+        _this.monthChange = 0;
       })
     }
   },
@@ -146,5 +150,21 @@ var vanillaCalendar = {
     for (var i = 0; i < this.activeDates.length; i++) {
       this.activeDates[i].classList.remove('vcal-date--selected')
     }
+  },
+
+  monthDiff: function () {
+    var _this = this;
+    return _this.monthChange;
+  },
+
+  returnDate: function () {
+    var _this = this;
+    return _this.date;
+  },
+
+  resetMonth: function () {
+    var _this = this;
+    _this.monthChange = 0;
   }
+
 }
