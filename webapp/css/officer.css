@@ -51,7 +51,7 @@
     #clubname {
         display: block;
         text-align: center;
-        font-size: 2em;
+        font-size: 1.5em;
         color: white;
     }
 }
@@ -65,7 +65,7 @@
 
     #clubname {
         position: absolute;
-        left: 8% !important;
+        left: 10% !important;
         font-size: 1.5em;
         color: white;
     }
@@ -101,13 +101,4 @@ input[type="submit"], input[type="reset"] {
 .officerbutton{
     padding: 0 2.4em;
     margin-right: 1em;
-}
-
-.clubtext {
-    text-align: center;
-    margin-top 18px;
-    width: 100%;
-    font-size: 1.3em;
-    margin-bottom: 2vh;
-    color: white;
 }
