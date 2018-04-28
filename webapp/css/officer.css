@@ -44,10 +44,10 @@
     #sidebarlogo {
         display: block !important;
         position: absolute !important;
-        left: 14% !important;
-        top: 3% !important;
-        height: 20% !important;
-        width: auto !important;
+        left: 2em !important;
+        top: 3.5% !important;
+        height: auto !important;
+        width: 8em !important;
     }
 
     #clubname {
@@ -56,8 +56,9 @@
         text-align: center;
         font-size: 1.5em;
         color: white;
-        top: 22%;
-        left: 35%;
+        top: 21.5vh;
+        left: 0;
+        width: 100%
     }
 }
 

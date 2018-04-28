@@ -83,7 +83,7 @@ function downloadSuccess(json){
     if(c == "tiger inn") c = "ti";
 
     // add title
-    $("#sidebar").prepend('<img id="sidebarlogo" class="fade-up" style="align:center" src="images/Logos/' + c + '-w.png"/>');
+    $("#sidebar").prepend('<img id="sidebarlogo" class="logo-fade" style="align:center" src="images/Logos/' + c + '-w.png"/>');
 
     $("#sidebar").prepend("<p id='clubname'>" + dispVal + "</p>");
 
