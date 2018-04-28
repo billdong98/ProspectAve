@@ -618,7 +618,7 @@ body.is-loading #infobar nav ul li {
         font-size: 1.5vw;
     }
 
-    .inner .info-moreinfo #moreinfo-span {
+    .inner #info-span {
         display: inline-block;
         line-height: normal;
         vertical-align: middle;
