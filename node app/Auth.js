@@ -60,9 +60,14 @@ const mapping = {
     "jpinnock": "Cap",
     "tdatta": "Quadrangle",
     "nwedel": "Quadrangle",
-    "ad15": "Cannon"
-    "eberbari": "Cannon"
-    "declerck": "Cannon"
+    "kevin.finch":"Quadrangle",
+    "ad15": "Cannon",
+    "eberbari": "Cannon",
+    "declerck": "Cannon",
+    "wdkelly": "Colonial",
+    "kap3": "Colonial",
+    "mm40": "Tiger Inn",
+    "crv2": "Tiger Inn"
 }
 
 function getClub(netID){
