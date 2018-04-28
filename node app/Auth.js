@@ -48,13 +48,14 @@ function redirectFailedAttempt(response){
 }
 
 const mapping = {
+    // Test
     "mman" : "Charter",
     "wzdong" : "Tower",
     "junep" : "Charter",
     "yangt" : "Cap",
     "bliang" : "Cloister",
     
-    // actual officers
+    // ACTUAL OFFICERS
     "sbelt": "Charter",
     "cbobrien": "Charter",
     
@@ -62,40 +63,38 @@ const mapping = {
     "rjh3": "Cap",
     "jpinnock": "Cap",
     
-    "sspergel": "Quadrangle",
-    // Quad
-    "tdatta": "Quadrangle",
-    "nwedel": "Quadrangle",
-    "kevin.finch":"Quadrangle",
     // Cannon
+    "jahaney": "Cannon",
     "ad15": "Cannon",
     "eberbari": "Cannon",
     "declerck": "Cannon",
-    // Colonial
-    "wdkelly": "Colonial",
-    "kap3": "Colonial",
-    // Tiger Inn
-    "mm40": "Tiger Inn",
-    "crv2": "Tiger Inn"
-    "nwedel": "Quadrangle",
-    
-    "kap3": "Colonial",
-    "wdkelly": "Colonial",
-    "gkwon": "Colonial",
     
     "hpaynter": "Cloister",
     "rswanton": "Cloister",
     
+    // Colonial
+    "wdkelly": "Colonial",
+    "kap3": "Colonial",
+    "gkwon": "Colonial",
+    
+    // Quad
+    "sspergel": "Quadrangle",
+    "tdatta": "Quadrangle",
+    "nwedel": "Quadrangle",
+    "kevin.finch":"Quadrangle",
+
+    // Tiger Inn
     "mm40": "Tiger Inn",
+    "crv2": "Tiger Inn",
+
     // who else?
     
-    "jahaney": "Cannon",
-    "declerck": "Cannon",
-    
+    // Tower
     "rachellm": "Tower",
     "eans": "Tower",
     "tthong": "Tower",
     
+    // Terrace
     "ecyu": "Terrace",
     "mlecesne": "Terrace",
     
@@ -104,8 +103,7 @@ const mapping = {
     "cswezey": "Cottage"
     
     // Ivy
-    
-    
+    // unknown
 }
 
 function getClub(netID){
