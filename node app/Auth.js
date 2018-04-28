@@ -48,12 +48,13 @@ function redirectFailedAttempt(response){
 }
 
 const mapping = {
+    // DEVS
     "mman" : "Charter",
     "wzdong" : "Tower",
     "junep" : "Charter",
     "yangt" : "Cap",
     "bliang" : "Terrace",
-    // actual officers
+    // ACTUAL OFFICERS
     // Charter
     "sbelt": "Charter",
     // Cap
@@ -64,11 +65,14 @@ const mapping = {
     "tdatta": "Quadrangle",
     "nwedel": "Quadrangle",
     "kevin.finch":"Quadrangle",
+    // Cannon
     "ad15": "Cannon",
     "eberbari": "Cannon",
     "declerck": "Cannon",
+    // Colonial
     "wdkelly": "Colonial",
     "kap3": "Colonial",
+    // Tiger Inn
     "mm40": "Tiger Inn",
     "crv2": "Tiger Inn"
 }
