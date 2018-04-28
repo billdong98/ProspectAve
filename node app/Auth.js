@@ -48,33 +48,62 @@ function redirectFailedAttempt(response){
 }
 
 const mapping = {
-    // DEVS
+    // Test
     "mman" : "Charter",
     "wzdong" : "Tower",
     "junep" : "Charter",
     "yangt" : "Cap",
-    "bliang" : "Terrace",
+    "bliang" : "Cloister",
+    
     // ACTUAL OFFICERS
-    // Charter
     "sbelt": "Charter",
-    // Cap
+    "cbobrien": "Charter",
+    
     "eaguas": "Cap",
     "rjh3": "Cap",
     "jpinnock": "Cap",
-    // Quad
-    "tdatta": "Quadrangle",
-    "nwedel": "Quadrangle",
-    "kevin.finch":"Quadrangle",
+    
     // Cannon
+    "jahaney": "Cannon",
     "ad15": "Cannon",
     "eberbari": "Cannon",
     "declerck": "Cannon",
+    
+    "hpaynter": "Cloister",
+    "rswanton": "Cloister",
+    
     // Colonial
     "wdkelly": "Colonial",
     "kap3": "Colonial",
+    "gkwon": "Colonial",
+    
+    // Quad
+    "sspergel": "Quadrangle",
+    "tdatta": "Quadrangle",
+    "nwedel": "Quadrangle",
+    "kevin.finch":"Quadrangle",
+
     // Tiger Inn
     "mm40": "Tiger Inn",
-    "crv2": "Tiger Inn"
+    "crv2": "Tiger Inn",
+
+    // who else?
+    
+    // Tower
+    "rachellm": "Tower",
+    "eans": "Tower",
+    "tthong": "Tower",
+    
+    // Terrace
+    "ecyu": "Terrace",
+    "mlecesne": "Terrace",
+    
+    //WHO ELSE?
+    // Cottage
+    "cswezey": "Cottage"
+    
+    // Ivy
+    // unknown
 }
 
 function getClub(netID){

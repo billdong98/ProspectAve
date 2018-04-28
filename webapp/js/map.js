@@ -1,6 +1,7 @@
 /* GLOBAL date->array store */
 window.data = {};
 window.date;
+window.filter;
 var dateDisplay;
 var mapDate;
 var weekdays = new Array(7);
@@ -37,13 +38,16 @@ $(document).ready(function(){
 
     // set up filter radio button listeners
     $("#radio-all").click(function(){
+        window.filter = "all";
         showDatesWithEvents();
     });
 
     $("#radio-puid").click(function(){
+        window.filter = "PUID";
         showPUIDEvents();
     });
     $("#radio-pass").click(function(){
+        window.filter = "PassList";
         showPassListEvents();
     });
 
@@ -109,6 +113,15 @@ function showPassListEvents() {
 
 // Colors calendar if date has an event 
 function showDatesWithEvents() {
+    // Handles case when month is changed but filters need to preserved
+    if(window.filter == "PUID"){
+        showPUIDEvents();
+        return;
+    } else if(window.filter == "PassList"){
+        showPassListEvents();
+        return;
+    }
+    
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
         if(currentDay != null){
