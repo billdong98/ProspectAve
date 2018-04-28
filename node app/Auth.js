@@ -48,18 +48,51 @@ function redirectFailedAttempt(response){
 }
 
 const mapping = {
-    "mman" : "Charter",
+    "mman" : "Colonial",
     "wzdong" : "Tower",
     "junep" : "Charter",
     "yangt" : "Cap",
     "bliang" : "Cloister",
+    
     // actual officers
     "sbelt": "Charter",
+    "cbobrien": "Charter",
+    
     "eaguas": "Cap",
     "rjh3": "Cap",
     "jpinnock": "Cap",
+    
+    "sspergel": "Quadrangle",
     "tdatta": "Quadrangle",
-    "nwedel": "Quadrangle"
+    "nwedel": "Quadrangle",
+    
+    "kap3": "Colonial",
+    "wdkelly": "Colonial",
+    "gkwon": "Colonial",
+    
+    "hpaynter": "Cloister",
+    "rswanton": "Cloister",
+    
+    "mm40": "Tiger Inn",
+    // who else?
+    
+    "jahaney": "Cannon",
+    "declerck": "Cannon",
+    
+    "rachellm": "Tower",
+    "eans": "Tower",
+    "tthong": "Tower",
+    
+    "ecyu": "Terrace",
+    "mlecesne": "Terrace",
+    
+    //WHO ELSE?
+    // Cottage
+    "cswezey": "Cottage"
+    
+    // Ivy
+    
+    
 }
 
 function getClub(netID){
