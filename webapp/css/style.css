@@ -614,14 +614,14 @@ body.is-loading #infobar nav ul li {
 
     .inner .info-moreinfo {
         height: inherit;
-        line-height: 3.9em;
+        line-height: inherit;
         font-size: 1.5vw;
     }
 
     .inner .info-moreinfo #moreinfo-span {
         display: inline-block;
-        vertical-align: middle;
         line-height: normal;
+        vertical-align: middle;
     }
 
     #infobar > .inner {
