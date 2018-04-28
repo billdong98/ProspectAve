@@ -54,10 +54,13 @@ const mapping = {
     "yangt" : "Cap",
     "bliang" : "Terrace",
     // actual officers
+    // Charter
     "sbelt": "Charter",
+    // Cap
     "eaguas": "Cap",
     "rjh3": "Cap",
     "jpinnock": "Cap",
+    // Quad
     "tdatta": "Quadrangle",
     "nwedel": "Quadrangle",
     "kevin.finch":"Quadrangle",
