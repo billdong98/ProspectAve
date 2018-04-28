@@ -261,7 +261,6 @@ function shiftDate(val){
 
     if(next_moment.month() != calMonth.month()){
         var monthChange = vanillaCalendar.monthDiff();
-        console.log(monthChange);
         if (monthChange == 0)
             monthChange += val;
     

@@ -2,6 +2,7 @@
 window.data = {};
 window.date;
 var dateDisplay;
+var mapDate;
 var weekdays = new Array(7);
 weekdays[0] = "Sun";
 weekdays[1] = "Mon";
@@ -16,6 +17,7 @@ let clubs = ["terrace", "tower", "colonial", "cannon", "quadrangle", "ti", "ivy"
 $(document).ready(function(){
     dateDisplay = $("#date_display");
     window.date = moment(Date.now()).format('MM/DD/YYYY'); // set date to today's date
+    mapDate = window.date;
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
     download(); // Download THIS week's data
@@ -28,6 +30,10 @@ $(document).ready(function(){
     var infobar_mobile = document.getElementById("infobar_mobile");
     //infobar_mobile.style.display="none";
     hideInfo();
+
+    // Set today as selected 
+    currentDay = document.getElementById(window.date); 
+    currentDay.classList.add('vcal-date--selected'); 
 
     /* set up the listeners for each club */
     for(var i=0; i<clubs.length;i++){
@@ -149,6 +155,7 @@ function changeDate(d){
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
     update(window.date);
+    mapDate = window.date; 
 
     $('html, body').animate({
         scrollTop: $("#intro").height() - $( window ).height()
@@ -159,7 +166,7 @@ function changeDate(d){
 function shiftDate(val){
     // change colored date on calendar
 
-    var date_moment = moment(Date.parse(window.date));
+    var date_moment = moment(Date.parse(mapDate));
     var mapdate = date_moment.format('MM/DD/YYYY');
 
     var today = moment(Date.now()).format('MM/DD/YYYY');
@@ -170,22 +177,26 @@ function shiftDate(val){
     }
 
     var currentDay = document.getElementById(window.date);
-    currentDay.classList.remove('vcal-date--selected');
+    if (currentDay != null)
+        currentDay.classList.remove('vcal-date--selected');
 
-    var next_moment = moment(Date.parse(window.date)).add(val, 'd');
+    var next_moment = moment(Date.parse(mapDate)).add(val, 'd');
     var dateString = next_moment.format('MM/DD/YYYY');
 
+    var monthChange = vanillaCalendar.monthDiff(); 
+    var calMonth = moment(Date.parse(vanillaCalendar.returnDate())); 
+
     // next to change month data first
-    if(next_moment.month() != date_moment.month()){
-        var event = new Event("mobile_tap");
-        if(val == -1){ //move back a month
-            vanillaCalendar.changeMonth(-1)
-        } else { //move forward a month
-            vanillaCalendar.changeMonth(1);
-        }
+    if(next_moment.month() != calMonth.month()){
+        var monthChange = vanillaCalendar.monthDiff();
+        if (monthChange == 0)
+            monthChange += val;
+    
+        vanillaCalendar.changeMonth(monthChange);
     }
 
     window.date = dateString;
+    mapDate = window.date;
     //console.log("New date: " + dateString);
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
@@ -193,6 +204,7 @@ function shiftDate(val){
     currentDay = document.getElementById(window.date);
     currentDay.classList.add('vcal-date--selected');
 
+    vanillaCalendar.resetMonth();
     update(window.date);
 }
 
