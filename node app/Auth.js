@@ -48,7 +48,7 @@ function redirectFailedAttempt(response){
 }
 
 const mapping = {
-    "mman" : "Colonial",
+    "mman" : "Charter",
     "wzdong" : "Tower",
     "junep" : "Charter",
     "yangt" : "Cap",
@@ -63,7 +63,20 @@ const mapping = {
     "jpinnock": "Cap",
     
     "sspergel": "Quadrangle",
+    // Quad
     "tdatta": "Quadrangle",
+    "nwedel": "Quadrangle",
+    "kevin.finch":"Quadrangle",
+    // Cannon
+    "ad15": "Cannon",
+    "eberbari": "Cannon",
+    "declerck": "Cannon",
+    // Colonial
+    "wdkelly": "Colonial",
+    "kap3": "Colonial",
+    // Tiger Inn
+    "mm40": "Tiger Inn",
+    "crv2": "Tiger Inn"
     "nwedel": "Quadrangle",
     
     "kap3": "Colonial",

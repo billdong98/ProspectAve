@@ -394,6 +394,15 @@
         width: 100%;
         display: none;
     }
+
+    #prospectavelogo {
+        display: block !important;
+        position: absolute !important;
+        left: 14%;
+        transition: ease 2s;
+        height: auto !important;
+        width: 70% !important;
+    }
 }
 
 @media screen and (max-width: 1280px) {
@@ -404,6 +413,12 @@
         height: 80%;
         width: auto;
         display: none;
+    }
+
+    #prospectavelogo {
+        display: block !important;
+        position: absolute !important;
+        left: 3% !important;
     }
 }
 

@@ -12,14 +12,15 @@
         // redirect if mobile AND not on mobile page
         if(curr != "mobile.html") window.location.href = "mobile.html";
     }
-    // for desktop/laptop browser
+    // for desktop/laptop browser: uncomment if we decide to implement
+    /*
     if(!(     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )) {
         // option to redirect if desktop AND not on index.html page
         if(curr == "mobile.html") {
         	if (confirm("You are on the mobile page.  Would you like to visit the desktop site?"))
         		window.location.href = "index.html";
         }
-    }
+    }*/
     
 	skel.breakpoints({
 		xlarge:	'(max-width: 1680px)',
