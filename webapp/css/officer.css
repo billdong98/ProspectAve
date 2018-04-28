@@ -43,16 +43,21 @@
 @media screen and (min-width: 1281px){
     #sidebarlogo {
         display: block !important;
-        position: relative !important;
-        left: 0 !important;
-        transition: ease 2s;
+        position: absolute !important;
+        left: 14% !important;
+        top: 3% !important;
+        height: 20% !important;
+        width: auto !important;
     }
 
     #clubname {
-        display: block;
+        display: block !important;
+        position: absolute !important;
         text-align: center;
         font-size: 1.5em;
         color: white;
+        top: 22%;
+        left: 35%;
     }
 }
 
@@ -82,9 +87,6 @@ input[type="submit"], input[type="reset"] {
     margin-top: 1em;
 }
 
-#sidebar > .inner {
-    min-height: 63% !important;
-}
 
 #title{
     font-size: 2.75em;
