@@ -40,12 +40,7 @@ $(document).ready(function(){
         !function set(c){
             $("#" + c + "_overlay").click(function() {
                 showInfo(c);
-            });
-
-
-            $("#infobar_mobile").click(function() {
-                hideInfo();
-            });
+            });   
         }(clubs[i]);
     }
 });
@@ -246,12 +241,7 @@ function showInfo(club) {
             infobar_mobile.innerHTML = out;
             infobar_mobile.style.display="";
 
-            var w = $(window).width();
-            if(w > 1280){
-                infobar_mobile.style.top = "0";
-            } else {
-                infobar_mobile.style.left = "0";
-            }
+            infobar_mobile.style.left = "0";
             break;
         }
     }
