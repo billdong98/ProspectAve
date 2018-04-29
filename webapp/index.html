@@ -54,7 +54,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <!-- Intro -->
             <section id="intro" class="wrapper style1 fullscreen fade-up">
                 <div class="inner" id="top-inner">
-                    <h1 class="major" id="main-title">P<span style="font-size:4.5vw">ROSPECT</span>A<span style="font-size:4.5vw">VE</span></h1>
+                    <h1 class="major" id="main-title">P<span class="titleFirst">ROSPECT</span>A<span class="titleFirst">VE</span></h1>
                     <!-- Date Button -->
                     <div class="datebutton">
                         <a class="icon fa-chevron-circle-left fa-2x" onclick="shiftDate(-1);" id="leftdate"></a>
@@ -97,10 +97,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <!-- TI -->
                         <a href="http://www.tigerinn.net/" target="_blank" id="ti_wrap"><img class="ti" id="ti_overlay" src="images/ti.png"/>
                             <div class="titext"> TI </div></a> 
-                        <p style="left: 69.5%; top: 77.3%; position: absolute; z-index: 20; color: black; font-size:1.2vw;"> PUID </p>
-                        <p style="left: 78%; top: 77.1%; position: absolute; z-index: 20; color: black; font-size:1.3vw;"> Pass </p>
-                        <p style="left: 86.3%; top: 77.1%; position: absolute; z-index: 20; color: black; font-size:1.3vw;"> List </p>
-                        <p style="left:40%; top:77.3%; position:absolute; z-index: 20; color: black; font-size:1vw;">
+                        <p id="puidLegend"> PUID </p>
+                        <p id="passLegend"> Pass </p>
+                        <p id="listLegend"> List </p>
+                        <p id="mapDescription">
                             Mouse-over colored clubs for more info! </p>
                     </div>
                 </div>
@@ -113,14 +113,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
                     <div class="row uniform">
-                        <p style="color:white; margin-bottom: 1.3em;"> Dates with open clubs are highlighted. Click on a date to view that day's map!</p>
+                        <p id="calDescription"> Dates with open clubs are highlighted. Click on a date to view that day's map!</p>
 
-                        <span style="obj"><p style="margin-left: 4vw; margin-right: 1vw; display:inline"> Filter events by: </p>
+                        <span class="obj"><p id="filter"> Filter events by: </p>
                             <div class="1u 12u$(small) disp_radio">
                                 <input type="radio" id="radio-all" name="radio-filter" value="All" checked="checked">
                                 <label for="radio-all" value="Pass">All</label>
                             </div>
-                            <div class="1u 12u$(small) disp_radio" style="margin-right: 14px;">
+                            <div class="1u 12u$(small) disp_radio" id="puidRadio">
                                 <input type="radio" id="radio-puid" name="radio-filter" value="PUID">
                                 <label for="radio-puid" value="PUID">PUID</label>
                             </div>
@@ -205,7 +205,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 <!-- Bill -->
                                 <div class="column">
                                     <div class="card">
-                                        <img src="images/wzdong.jpg" alt="Bill" style="width:100%">
+                                        <img src="images/wzdong.jpg" alt="Bill" class="memberPortrait">
                                         <div class="container">
                                             <h4>Bill Dong</h4>
                                             <p>ORFE '20</p>
@@ -219,7 +219,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 <!-- Ben -->
                                 <div class="column">
                                     <div class="card">
-                                        <img src="images/bliang.jpg" alt="Ben" style="width:100%">
+                                        <img src="images/bliang.jpg" alt="Ben" class="memberPortrait">
                                         <div class="container">
                                             <h4>Ben Liang</h4>
                                             <p>ORFE '20</p>
@@ -233,7 +233,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 <!-- Michael -->
                                 <div class="column">
                                     <div class="card">
-                                        <img src="images/mman.jpg" alt="Michael" style="width:100%">
+                                        <img src="images/mman.jpg" alt="Michael" class="memberPortrait">
                                         <div class="container">
                                             <h4>Michael Man</h4>
                                             <p>COS '21</p>
@@ -246,7 +246,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 <!-- June-ho -->
                                 <div class="column">
                                     <div class="card">
-                                        <img src="images/junep.jpg" alt="June-ho" style="width:100%">
+                                        <img src="images/junep.jpg" alt="June-ho" class="memberPortrait">
                                         <div class="container">
                                             <h4>June-Ho Park</h4>
                                             <p>COS '20</p>
@@ -259,7 +259,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 <!-- Yang -->
                                 <div class="column">
                                     <div class="card">
-                                        <img src="images/yangt.jpg" alt="Yang" style="width:100%">
+                                        <img src="images/yangt.jpg" alt="Yang" class="memberPortrait">
                                         <div class="container">
                                             <h4>Yang Tu</h4>
                                             <p>ORFE '20</p>

@@ -99,6 +99,11 @@
     font-size: 6.5vw;
 }
 
+/* Title First Letter */
+.titleFirst {
+    font-size:4.5vw;
+}
+
 /* Date Button */
 .datebutton {
     position:absolute;
@@ -124,6 +129,46 @@
 #rightdate{
     float:right; 
     top: -0.35em; 
+}
+
+/* PUID Legend */
+#puidLegend{
+    left: 69.5%; 
+    top: 77.3%; 
+    position: absolute; 
+    z-index: 20; 
+    color: black; 
+    font-size:1.2vw !important;
+}
+
+/* Pass Legend */
+#passLegend{
+    left: 78%; 
+    top: 77.1%; 
+    position: absolute; 
+    z-index: 20; 
+    color: black; 
+    font-size:1.3vw !important;
+}
+
+/* List Legend */
+#listLegend{
+    left: 86.3%; 
+    top: 77.1%; 
+    position: absolute; 
+    z-index: 20; 
+    color: black; 
+    font-size:1.3vw !important;
+}
+
+/* Map Description */
+#mapDescription {
+    left:40%; 
+    top:77.3%; 
+    position:absolute; 
+    z-index: 20; 
+    color: black; 
+    font-size:1vw !important;
 }
 
 /* Map */
@@ -361,6 +406,24 @@
     /* with old photo filter: sepia(51%) saturate(1070%) hue-rotate(-18deg) brightness(115%); */
 } 
 
+/* Calendar Description */
+#calDescription{
+    color:white; 
+    margin-bottom: 1.3em;
+}
+
+/* Filter styles */
+#filter{
+    margin-left: 4vw; 
+    margin-right: 1vw; 
+    display:inline;
+}
+
+/* PUID radio style */
+#puidRadio{
+    margin-right: 14px;
+}
+
 #top-inner {
     padding-top: 1em;
 }
@@ -462,6 +525,11 @@ body {
 /* Member */
 #member {
     text-align: center;
+}
+
+/* Member Portraits */
+.memberPortrait{
+    width: 100%;
 }
 
 /* Email icon */
