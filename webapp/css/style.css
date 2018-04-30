@@ -511,7 +511,7 @@ body {
 }
 
 /* Some left and right padding inside the container */
-.container {
+.cardContainer {
     padding: 0 35px;
 }
 
