@@ -513,6 +513,7 @@ body {
 /* Some left and right padding inside the container */
 .cardContainer {
     padding: 0 35px;
+    text-align: center;
 }
 
 /* Clear floats */
