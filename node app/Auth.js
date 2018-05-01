@@ -51,14 +51,16 @@ const mapping = {
     // Test
     "mman" : "Charter",
     "wzdong" : "Tower",
-    "junep" : "Charter",
+    "junep" : "Cloister",
     "yangt" : "Cap",
-    "bliang" : "Cloister",
+    "bliang" : "Terrace",
     
     // ACTUAL OFFICERS
+    // Charter
     "sbelt": "Charter",
     "cbobrien": "Charter",
     
+    // Cap
     "eaguas": "Cap",
     "rjh3": "Cap",
     "jpinnock": "Cap",
@@ -69,8 +71,8 @@ const mapping = {
     "eberbari": "Cannon",
     "declerck": "Cannon",
     
-    "hpaynter": "Cloister",
-    "rswanton": "Cloister",
+    // Cloister
+    "gmiles": "Cloister",
     
     // Colonial
     "wdkelly": "Colonial",
@@ -86,8 +88,6 @@ const mapping = {
     // Tiger Inn
     "mm40": "Tiger Inn",
     "crv2": "Tiger Inn",
-
-    // who else?
     
     // Tower
     "rachellm": "Tower",
