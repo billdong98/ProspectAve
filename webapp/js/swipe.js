@@ -123,13 +123,13 @@ function determineSwipeDirection() {
 // swipe left to hide sidebar
 function processingRoutine() {
     var swipedElement = document.getElementById(triggerElementID);
-    if ( swipeDirection == 'left' && triggerElementID == 'infobar_mobile') {
+    if ( swipeDirection == 'left') {
         hideInfo();
-    }
+    } /*
     else if (swipeDirection == 'left' && triggerElementID == 'boxes') {
     	shiftDate(1);
     }
     else if (swipeDirection == 'right' && triggerElementID == 'boxes') {
     	shiftDate(-1);
-    }
+    } */
 }
