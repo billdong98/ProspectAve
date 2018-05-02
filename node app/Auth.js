@@ -53,7 +53,7 @@ const mapping = {
     "wzdong" : "Tower",
     "junep" : "Cloister",
     "yangt" : "Cap",
-    "bliang" : "Terrace",
+    "bliang" : "Cloister",
     
     // ACTUAL OFFICERS
     // Charter
@@ -97,6 +97,10 @@ const mapping = {
     // Terrace
     "ecyu": "Terrace",
     "mlecesne": "Terrace",
+    "jhileman": "Terrace",
+    "alexusf": "Terrace",
+    "bdm2": "Terrace",
+    "ltw2": "Terrace",
     
     //WHO ELSE?
     // Cottage
