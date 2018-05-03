@@ -146,6 +146,17 @@ body.is-loading #infobar_mobile nav ul li {
     padding: 0;
 }
 
+/* TEAM SECTION */
+.cardContainer {
+    padding: 0;
+}
+
+.column .card {
+    width: 28vw;
+    float: left;
+    margin-left: 4vw;
+}
+
 #v-cal .vcal-week span {
     font-size: .9em;
     text-align: center;
