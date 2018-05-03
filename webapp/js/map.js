@@ -51,6 +51,17 @@ $(document).ready(function(){
         showPassListEvents();
     });
 
+    document.body.onkeyup = function(e){
+    	if ($('#intro').visible(true)) {
+		    if(e.keyCode == 37){
+		        shiftDate(-1);
+		    }
+		    if(e.keyCode == 39){
+		        shiftDate(1);
+		    }
+		}
+	}
+
     /* Set all as default filter */  
     var $radios = $('input:radio[name=radio-filter]');  
     $radios.filter('[value=All]').prop('checked', true);  

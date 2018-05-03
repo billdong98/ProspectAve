@@ -412,6 +412,14 @@
     margin-bottom: 1.3em;
 }
 
+/* Map Caption */
+#mapCaption{
+    color:white; 
+    top:21%; 
+    position:absolute; 
+    font-size:1.2vw !important;
+}
+
 /* Filter styles */
 #filter{
     margin-left: 4vw; 
