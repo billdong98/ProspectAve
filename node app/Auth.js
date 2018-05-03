@@ -106,9 +106,12 @@ const mapping = {
     "bdm2": "Terrace",
     "ltw2": "Terrace",
     
-    //WHO ELSE?
     // Cottage
     "cswezey": "Cottage"
+    "jnyquist": "Cottage",
+    "brookekh": "Cottage",
+    "jgcolvin": "Cottage",
+    "ryancw": "Cottage"
     
     // Ivy
     // unknown
