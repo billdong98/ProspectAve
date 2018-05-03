@@ -73,6 +73,10 @@ const mapping = {
     
     // Cloister
     "gmiles": "Cloister",
+    "raglenn": "Cloister",
+    "rswanton": "Cloister",
+    "hpaynter": "Cloister",
+    "jspiezio": "Cloister",
     
     // Colonial
     "wdkelly": "Colonial",
