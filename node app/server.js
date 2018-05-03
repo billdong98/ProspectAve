@@ -29,7 +29,7 @@ var corsOptions = {
     }
       
     if(origin.includes("http://127.0.0.1:")){
-        console.log("override for testing");
+        //console.log("override for testing");
         callback(null, true);
         return;
     }
@@ -70,7 +70,8 @@ const options = {
 };
 
 https.createServer(options, app).listen(1738);
-console.log("Server listening on port: " + 1738);
+console.log("------------------------------");
+console.log("Relaunched server on port 1738.");
 console.log("Current date: " + currentDate());
 
 // connect to the db file
@@ -80,7 +81,6 @@ let db = new sqlite3.Database('./clubs.db', (err) => {
     }
     console.log('Connected to the SQLite DB.');
 });
-
 
 /* SQLITE QUERIES */
 
@@ -118,7 +118,7 @@ app.get('/status', cors(), (request, response) => {
 // if not, then redirect to CAS 
 app.get('/login', (request, response) => { 
     if(request.session.isPopulated) {
-        console.log(`Redirecting: ${request.session.id}`);
+        //console.log(`Redirecting: ${request.session.id}`);
         auth.redirectOfficer(response);
         // redirect to officer page
         return;
@@ -128,7 +128,7 @@ app.get('/login', (request, response) => {
             if(result != false){
                 // logged in, but not an officer
                 if(auth.getClub(result) == null){
-                    console.log("Attempted login by: " + result);
+                    console.log("Failed login by: " + result);
                     auth.redirectFailedAttempt(response);
                 } else {
                     request.session.id = result;
@@ -144,7 +144,7 @@ app.get('/login', (request, response) => {
     
     // no ticket, need to authenticate
     if(!request.query.ticket){
-        console.log("Redirecting to CAS");
+        //console.log("Redirecting to CAS");
         auth.redirect(response);
     } else {
         // we have just been redirected back here by CAS
@@ -152,7 +152,7 @@ app.get('/login', (request, response) => {
     }
 })
 
-
+/*
 // sends netID and club information as JSON to officer.html
 app.get('/userinfo', (request, response) => { 
     response.setHeader('Content-Type', 'application/json');
@@ -168,8 +168,7 @@ app.get('/userinfo', (request, response) => {
         data.club = auth.getClub(data.netID); 
     }
     response.json(data);
-});
-
+});*/
 
 // sends netID and club events as JSON to officer.html
 app.get('/officer_download', (request, response) => { 
@@ -183,7 +182,7 @@ app.get('/officer_download', (request, response) => {
         return;
     } else { 
         var data = {"identity": identity, "rows" : null};
-        console.log("Sending data for (" + identity.netID + ", club: " + identity.club + ")");
+        //console.log("Sending data for (" + identity.netID + ", club: " + identity.club + ")");
         // get row for this club
         db.all(selectByClub, [identity.club], (err, rows) => {
             if(err){
@@ -315,7 +314,7 @@ function deleteEvent(response, date, club){
             console.log(err);
             //return -1;
         } else {
-            console.log("Deleted: " + this.changes);
+            //console.log("Deleted: " + this.changes);
             //return("Deleted " + this.changes + " rows(s).");
         }
     });
@@ -332,7 +331,7 @@ function addEvent(response, query, data){
             response.send("Error editing the database");
             console.log(err);
         } else {
-            console.log("Added: " + this.changes);
+            //console.log("Added: " + this.changes);
         }
     });
     return 1;

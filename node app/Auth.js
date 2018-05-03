@@ -49,7 +49,7 @@ function redirectFailedAttempt(response){
 
 const mapping = {
     // Test
-    "mman" : "Charter",
+    "mman" : "Cap",
     "wzdong" : "Tower",
     "junep" : "Cloister",
     "yangt" : "Cap",
@@ -107,7 +107,7 @@ const mapping = {
     "ltw2": "Terrace",
     
     // Cottage
-    "cswezey": "Cottage"
+    "cswezey": "Cottage",
     "jnyquist": "Cottage",
     "brookekh": "Cottage",
     "jgcolvin": "Cottage",

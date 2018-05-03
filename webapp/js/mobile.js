@@ -49,7 +49,7 @@ $(document).ready(function(){
 function showDatesWithEvents() {
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
-        if (new Date(date) >= new Date() && currentDay != null){
+        if (currentDay != null){
             currentDay.classList.add('vcal-date--hasEvent');
         }
     }
