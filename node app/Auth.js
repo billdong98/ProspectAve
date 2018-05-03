@@ -87,7 +87,7 @@ const mapping = {
     "sspergel": "Quadrangle",
     "tdatta": "Quadrangle",
     "nwedel": "Quadrangle",
-    "kevin.finch":"Quadrangle",
+    "kfinch":"Quadrangle",
 
     // Tiger Inn
     "mm40": "Tiger Inn",
