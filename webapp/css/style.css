@@ -393,7 +393,6 @@
 /* PUID */ 
 .puid{
     filter: sepia(10%) saturate(1575%) hue-rotate(82deg) brightness(85%);
-    /*filter: sepia(10%) saturate(1500%) hue-rotate(80deg); */
     transition: filter .5s; 
 } 
 
@@ -412,8 +411,6 @@
 .list{ 
     filter: sepia(30%) saturate(1016%) hue-rotate(10deg) brightness(115%);
     transition: filter 0.5s; 
-    /*filter: sepia(100%) saturate(250%) hue-rotate(10deg) brightness(125%); */
-    /* with old photo filter: sepia(51%) saturate(1070%) hue-rotate(-18deg) brightness(115%); */
 } 
 
 /* Calendar Description */
