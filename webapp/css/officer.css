@@ -1,9 +1,9 @@
 #date_info {
-    font-size: 45px;
+    font-size: 3vw;
 }
 
 #reg_date_info {
-    font-size: 45px;
+    font-size: 3vw;
 }
 
 #club_info #status_info {
@@ -40,29 +40,33 @@
     transition: ease 5s;
 }
 
-@media screen and (min-width: 1281px){
+@media screen and (min-width: 1101px){
     #sidebarlogo {
         display: block !important;
-        position: absolute !important;
-        left: 2em !important;
+        position: relative !important;
         top: 3.5% !important;
         height: auto !important;
-        width: 8em !important;
+        width: 9.4vw !important;
     }
-
+    
     #clubname {
         display: block !important;
         position: absolute !important;
         text-align: center;
-        font-size: 1.5em;
+        font-size: 1.7vw;
         color: white;
         top: 21.5vh;
         left: 0;
         width: 100%
     }
+    
+    .club_container{
+        position: absolute;
+        width: 9.4vw;
+    }
 }
 
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 1100px){
     #sidebarlogo {
         display: block !important;
         position: absolute !important;

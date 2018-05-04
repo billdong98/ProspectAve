@@ -49,7 +49,7 @@ function redirectFailedAttempt(response){
 
 const mapping = {
     // Test
-    "mman" : "Charter",
+    "mman" : "Cap",
     "wzdong" : "Tower",
     "junep" : "Cloister",
     "yangt" : "Cap",
@@ -87,7 +87,7 @@ const mapping = {
     "sspergel": "Quadrangle",
     "tdatta": "Quadrangle",
     "nwedel": "Quadrangle",
-    "kevin.finch":"Quadrangle",
+    "kfinch":"Quadrangle",
 
     // Tiger Inn
     "mm40": "Tiger Inn",
