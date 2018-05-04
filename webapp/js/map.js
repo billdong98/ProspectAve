@@ -319,7 +319,7 @@ function showInfo(club) {
             sidebar.style.display="none";
             infobar.style.display="";
 
-            if(w > 1280){
+            if(w > 1100){
                 infobar.style.top = "0";
             } else { // TOP info bar view
                 infobar.style.left = "0";
@@ -347,7 +347,7 @@ function showInfo(club) {
             infobar.style.display="";
 
             var w = $(window).width();
-            if(w > 1280){
+            if(w > 1100){
                 infobar.style.top = "0";
             } else {
                 infobar.style.left = "0";
@@ -363,7 +363,7 @@ function hideInfo() {
     var sidebar = document.getElementById("sidebar");
 
     var w = $(window).width();
-    if(w > 1280){
+    if(w > 1100){
         infobar.style.left = "0";
         infobar.style.top="100vh";
     } else {
