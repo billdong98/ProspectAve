@@ -64,7 +64,6 @@ function touchMoveDate(event) {
         curX = event.touches[0].pageX;
         curY = event.touches[0].pageY;
         deltaX = curX - startX;
-        var mobile_bar = document.getElementById("mobile_bar");
         
         // DO NOTHING?
     } else {
@@ -111,8 +110,6 @@ function touchCancel(event) {
     swipeAngle = null;
     swipeDirection = null;
     triggerElementID = null;
-    var mobile_bar = document.getElementById("mobile_bar");
-    mobile_bar.style.backgroundColor = "#9AD2E4";
 }
 
 function caluculateAngle() {
@@ -152,13 +149,6 @@ function processingRoutine() {
     } else if (swipeDirection == 'right')
         if (triggerElementID=='mobile_bar') 
             trigger(-1);
-    /*
-    else if (swipeDirection == 'left' && triggerElementID == 'boxes') {
-    	shiftDate(1);
-    }
-    else if (swipeDirection == 'right' && triggerElementID == 'boxes') {
-    	shiftDate(-1);
-    } */
 }
 
 function trigger(val){
