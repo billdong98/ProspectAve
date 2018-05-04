@@ -558,7 +558,7 @@ body {
     overflow-y: hidden;
     position: fixed;
     text-align: center;
-    width: 12em;
+    width: 14vw;
     word-wrap: break-word;
     z-index: 10001;
     color: black;
