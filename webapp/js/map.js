@@ -315,7 +315,7 @@ function showInfo(club) {
 
             // prep sidebar and infobar for show
             infobar.innerHTML = out;
-            var w = $(window).width();
+            var w = $(window).width() +15;
             sidebar.style.display="none";
             infobar.style.display="";
 
@@ -346,7 +346,7 @@ function showInfo(club) {
             sidebar.style.display="none";
             infobar.style.display="";
 
-            var w = $(window).width();
+            var w = $(window).width() + 15;
             if(w > 1100){
                 infobar.style.top = "0";
             } else {
@@ -362,7 +362,7 @@ function hideInfo() {
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
 
-    var w = $(window).width();
+    var w = $(window).width() + 15;
     if(w > 1100){
         infobar.style.left = "0";
         infobar.style.top="100vh";

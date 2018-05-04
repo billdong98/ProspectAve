@@ -1651,11 +1651,9 @@ body.is-loading *, body.is-loading *:before, body.is-loading *:after {
 	}
 
 @media screen and (max-width: 1680px) {
-
     body, input, select, textarea {
         font-size: 13pt;
     }
-
 }
 
 @media screen and (max-width: 1100px) {
