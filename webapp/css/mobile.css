@@ -9,31 +9,53 @@
     text-align: center;
 }
 
+/* CONTAINER */
 .mobiledate{
     border: 0;
     margin: auto;
     width: 100%;
     height: 18vw;
-    background-color: #9AD2E4;
+    background-color: #9AB7E4;
     border: solid;
+    text-align: center;
 }
 
-h1.major:after{
-    height: .1em;
-}
-
-/* Date text */
+/* Date text *//*
 .m-datetext{
     padding-top: 1.5vh;
     font-size: 5vw;
     text-align: center;
     width: auto;
     float:none;
+}*/
+
+.m-datetext{
+    padding-top: 1.5vh;
+    padding-left:0;
+    margin-left: 0;
+    width: auto;
+    display: inline-block;
+    font-size: 5vw;
+    text-align: center;
+    width: auto;
+    float:none;
+    height: 2em;
+    line-height: 2em;
+    overflow: hidden;
 }
 
 #date_description{
     float:none;
     text-align:center;
+}
+
+#date_display_prev{
+    display: none;
+}
+
+#date_display_next{
+    display: none;
+    margin-left: 150vw;
 }
 
 /*panel stuff*/
@@ -143,6 +165,10 @@ body.is-loading #infobar_mobile nav ul li {
 /* TEAM SECTION */
 .cardContainer {
     padding: 0;
+}
+
+.column {
+    width: 100%;
 }
 
 .column .card {
