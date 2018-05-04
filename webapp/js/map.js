@@ -78,10 +78,20 @@ $(document).ready(function(){
             });
 
             $("#" + c + "_wrap").mouseout(function() {
-                hideInfo();
+               hideInfo();
             });
         }(clubs[i]);
     }
+});
+
+// Adjust the starting locations of the side/top bar
+$(window).resize(function(){
+    
+    $("#infobar").addClass('notransition');
+    $("#sidebarinner").addClass('notransition');
+    hideInfo();
+    $("#infobar").removeClass('notransition');
+    $("#sidebarinner").removeClass('notransition');
 });
 
 // Colors calendar if date has a PUID event
@@ -296,7 +306,7 @@ function showInfo(club) {
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
 
-    var out = '<img src="images/Logos/' + club.toLowerCase() + '.png" style="left: 10%; top: 10%; height: 20%; width: auto;"/>';  
+    var out = ''; 
 
     // data for TODAY
     var rows = window.data[window.date];
@@ -315,38 +325,34 @@ function showInfo(club) {
 
             // prep sidebar and infobar for show
             infobar.innerHTML = out;
-            var w = $(window).width() +15;
+            var w = window.innerWidth;
             sidebar.style.display="none";
             infobar.style.display="";
 
-            if(w > 1100){
-                infobar.style.top = "0";
-            } else { // TOP info bar view
-                infobar.style.left = "0";
-                out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png"/>'; 
-            }
-            
-            
             var c = row["club_name"];
             if(c == "Cap") {
                 c = "Cap & Gown"
             }
-            
-            // generate HTML output
-             out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ c + "</li> <li class='info-date'><span id='info-span'>Date: " + date + "</span></li> <li class='info-status'><span id='info-span'>Status: " + status + "</span></li>";
-            
+            if(w > 1100){ // SIDE BAR
+                infobar.style.top = "0";
+                out = '<div class="info_container"><img src="images/Logos/' + club.toLowerCase() + '.png"/><p id="infobar_name">' + c + "</p></div>";
+                out+="<div class='inner' id='sidebarinner'> <nav> <ul> <li class='info-date'><span id='info-span'>Date: " + date + "</span></li> <li class='info-status'><span id='info-span'>Status: " + status + "</span></li>"
+            } else { // TOP info bar view
+                infobar.style.left = "0";
+                out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png"/>';
+                out += "<div class='inner' id='sidebarinner'> <nav> <ul> <li class='club_name'>"+ c + "</li> <li class='info-date'><span id='info-span'>Date: " + date + "</span></li> <li class='info-status'><span id='info-span'>Status: " + status + "</span></li>";
+            }
+        
             if(info != ""){ //only add Info section if there is info
-                    out += "<li class='info-moreinfo'> <span id='info-span'>More Info: <span style='font-style:italic'>" + info + "</span></span></li>"
+                out += "<li class='info-moreinfo'> <span id='info-span'>More Info: <span style='font-style:italic'>" + info + "</span></span></li>"
             }
             out += "</ul> </nav> </div>";
-            
-            
             
             infobar.innerHTML = out;
             sidebar.style.display="none";
             infobar.style.display="";
 
-            var w = $(window).width() + 15;
+            var w = window.innerWidth;
             if(w > 1100){
                 infobar.style.top = "0";
             } else {
@@ -361,12 +367,13 @@ function showInfo(club) {
 function hideInfo() { 
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
-
-    var w = $(window).width() + 15;
-    if(w > 1100){
+    infobar.style.display = "none";
+    
+    var w = window.innerWidth;
+    if(w > 1100){ // side bar
         infobar.style.left = "0";
         infobar.style.top="100vh";
-    } else {
+    } else { // top bar
         infobar.style.top = "0";
         infobar.style.left="-100vw";
     }

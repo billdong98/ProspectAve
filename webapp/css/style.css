@@ -562,10 +562,11 @@ body {
     word-wrap: break-word;
     z-index: 10001;
     color: black;
-
+    
     transition: .6s ease;
 }
 
+/* SIDE BAR FORMATTING */
 @media screen and (min-width: 1101px) {
     #infobar {
         top: 100vh;
@@ -581,22 +582,25 @@ body {
     #three {
         min-height: 100vh;
     }
+    
+    .info_container{
+        position: block;
+        width: 12vw;
+    }
 
-    #infobar .club_name {
-        font-size: 1.8em;
+    #infobar img {
+        width: 80%;
+    }
+    
+    #infobar #infobar_name {
+        font-size: 2.2vw;
         text-align: center;
         padding-left: 0;
         margin-bottom: 15px;
     }
 
-    .inner .info-date {
-        font-size: 18px;
-    }
-    .inner .info-status {
-        font-size: 18px;
-    }
-    .inner .info-moreinfo {
-        font-size: 18px;
+    .inner .info-date, .info-status, .info-moreinfo {
+        font-size: 1.2vw;
     }
 }
 
@@ -646,7 +650,7 @@ body.is-loading #infobar nav ul li {
 }
 
 @media screen and (max-width: 1100px) {
-
+/* TOP BAR FORMATTING */
     #infobar {
         height: 4.5em;
         left: -100vw; /* move in from left to right */
@@ -765,3 +769,9 @@ body.is-loading .logo-fade {
     transform: translateY(1em);
 }
 
+.notransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
