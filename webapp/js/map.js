@@ -86,12 +86,8 @@ $(document).ready(function(){
 
 // Adjust the starting locations of the side/top bar
 $(window).resize(function(){
-    
-    $("#infobar").addClass('notransition');
-    $("#sidebarinner").addClass('notransition');
+    var info = document.getElementById("infobar");
     hideInfo();
-    $("#infobar").removeClass('notransition');
-    $("#sidebarinner").removeClass('notransition');
 });
 
 // Colors calendar if date has a PUID event
@@ -336,11 +332,11 @@ function showInfo(club) {
             if(w > 1100){ // SIDE BAR
                 infobar.style.top = "0";
                 out = '<div class="info_container"><img src="images/Logos/' + club.toLowerCase() + '.png"/><p id="infobar_name">' + c + "</p></div>";
-                out+="<div class='inner' id='sidebarinner'> <nav> <ul> <li class='info-date'><span id='info-span'>Date: " + date + "</span></li> <li class='info-status'><span id='info-span'>Status: " + status + "</span></li>"
+                out+="<div class='inner' id='infobarinner'> <nav> <ul> <li class='info-date'><span id='info-span'>Date: " + date + "</span></li> <li class='info-status'><span id='info-span'>Status: " + status + "</span></li>"
             } else { // TOP info bar view
                 infobar.style.left = "0";
                 out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png"/>';
-                out += "<div class='inner' id='sidebarinner'> <nav> <ul> <li class='club_name'>"+ c + "</li> <li class='info-date'><span id='info-span'>Date: " + date + "</span></li> <li class='info-status'><span id='info-span'>Status: " + status + "</span></li>";
+                out += "<div class='inner' id='infobarinner'> <nav> <ul> <li class='club_name'>"+ c + "</li> <li class='info-date'><span id='info-span'>Date: " + date + "</span></li> <li class='info-status'><span id='info-span'>Status: " + status + "</span></li>";
             }
         
             if(info != ""){ //only add Info section if there is info
@@ -364,10 +360,11 @@ function showInfo(club) {
 }
 
 // brings back the default sidebar
-function hideInfo() { 
+function hideInfo() {
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
-    infobar.style.display = "none";
+    
+    infobar.innerHTML = "";
     
     var w = window.innerWidth;
     if(w > 1100){ // side bar
