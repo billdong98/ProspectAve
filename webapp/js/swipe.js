@@ -50,14 +50,27 @@ function touchMove(event) {
 		curY = event.touches[0].pageY;
 		deltaX = curX - startX;
 		if (deltaX < 0 && -1 * deltaX < minLength) {
-			var infobar_mobile = document.getElementById("infobar_mobile");
-			infobar_mobile.style.left= deltaX*0.2 + "vw";
+				var infobar_mobile = document.getElementById("infobar_mobile");
+				infobar_mobile.style.left= deltaX*0.2 + "vw";
 		}
 	} else {
 		touchCancel(event);
 	}
 }
 	
+function touchMoveDate(event) {
+	event.preventDefault();
+	if ( event.touches.length == 1 ) {
+		curX = event.touches[0].pageX;
+		curY = event.touches[0].pageY;
+		deltaX = curX - startX;
+		var mobile_bar = document.getElementById("mobile_bar");
+		mobile_bar.style.backgroundColor = "#c3e4ef";
+	} else {
+		touchCancel(event);
+	}
+}	
+
 function touchEnd(event) {
 	event.preventDefault();
 	// check to see if more than one finger was used and that there is an ending coordinate
@@ -71,8 +84,10 @@ function touchEnd(event) {
 			processingRoutine();
 			touchCancel(event); // reset the variables
 		} else {
-			var infobar_mobile = document.getElementById("infobar_mobile");
-			infobar_mobile.style.left="0vw";
+			if (triggerElementID=='infobar_mobile') {
+				var infobar_mobile = document.getElementById("infobar_mobile");
+				infobar_mobile.style.left="0vw"; 
+			}
 			touchCancel(event);
 		}	
 	} else {
@@ -95,6 +110,8 @@ function touchCancel(event) {
 	swipeAngle = null;
 	swipeDirection = null;
 	triggerElementID = null;
+	var mobile_bar = document.getElementById("mobile_bar");
+	mobile_bar.style.backgroundColor = "#9AD2E4";
 }
 	
 function caluculateAngle() {
@@ -120,12 +137,21 @@ function determineSwipeDirection() {
 	}
 }
 	
+
+
 // swipe left to hide sidebar
 function processingRoutine() {
     var swipedElement = document.getElementById(triggerElementID);
-    if ( swipeDirection == 'left') {
-        hideInfo();
-    } /*
+    if (swipeDirection == 'left') {
+        if (triggerElementID=='infobar_mobile') {
+        	hideInfo();
+        	}
+        else if (triggerElementID=='mobile_bar') 
+        	shiftDate(1);
+    } else if (swipeDirection == 'right')
+    	if (triggerElementID=='mobile_bar') 
+    		shiftDate(-1);
+    /*
     else if (swipeDirection == 'left' && triggerElementID == 'boxes') {
     	shiftDate(1);
     }

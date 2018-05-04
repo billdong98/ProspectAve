@@ -107,14 +107,14 @@ const mapping = {
     "ltw2": "Terrace",
     
     // Cottage
-    "cswezey": "Cottage"
+    "cswezey": "Cottage",
     "jnyquist": "Cottage",
     "brookekh": "Cottage",
     "jgcolvin": "Cottage",
-    "ryancw": "Cottage"
+    "ryancw": "Cottage",
     
     // Ivy
-    // unknown
+    "masom": "Ivy"
 }
 
 function getClub(netID){

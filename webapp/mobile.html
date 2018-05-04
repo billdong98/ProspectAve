@@ -60,13 +60,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <section>
                     <div class="inner" id="top-inner">
                         <h1 class="major" id="m-main-title">P<span style="font-size:8.3vw">ROSPECT</span>A<span style="font-size:8.3vw">VE</span>
-                            <p style="margin:0; font-size: 4.3vw;">Mobile Interface</p>
+                            <!--
+                            <p style="margin:0; font-size: 4.3vw;">Mobile Interface</p> -->
                         </h1> 
                         <!-- Date Button -->
-                        <div class="mobiledate row">
-                            <a class="3u icon fa-chevron-circle-left fa-2x" onclick="shiftDate(-1);" id="m-leftdate" ></a>
+                        <div class="mobiledate row" id="mobile_bar" ontouchstart="touchStart(event,'mobile_bar');" ontouchend="touchEnd(event);" ontouchmove="touchMoveDate(event);" ontouchcancel="touchCancel(event);">
                             <div class="6u m-datetext" id="date_display"> Date: </div>
-                            <a class="3u icon fa-chevron-circle-right fa-2x" onclick="shiftDate(1);" id="m-rightdate"></a>
                         </div>
 
                         <!-- Panels -->

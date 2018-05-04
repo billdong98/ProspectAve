@@ -12,10 +12,10 @@
 .mobiledate{
     border: 0;
     margin: auto;
-    width: 80%;
-    height: 10vw;
-    border-radius: 3em; 
-    /*border: solid 2px #77AAE3; */
+    width: 100%;
+    height: 16vw;
+    background-color: #9AD2E4;
+    border: solid;
 }
 
 h1.major:after{
@@ -30,11 +30,11 @@ h1.major:after{
 
 /* Date text */
 .m-datetext{
-    padding-top: 1.8vh;
+    padding-top: 1.5vh;
     font-size: 5vw;
     text-align: center;
     width: auto;
-    padding-left: 0;
+    float:none;
 }
 
 /* Right date arrow */
