@@ -18,8 +18,7 @@ $(document).ready(function(){
     dateDisplay = $("#date_display");
     window.date = moment(Date.now()).format('MM/DD/YYYY'); // set date to today's date
     mapDate = window.date;
-    var tempdate = new Date(window.date);
-    dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
+    displayDate();
     download(); // Download THIS week's data
 
 
@@ -147,8 +146,7 @@ function changeDate(d){
     var date = $(d).attr("data-calendar-date");
     var dateString = moment(Date.parse(date)).format('MM/DD/YYYY');
     window.date = dateString;
-    var tempdate = new Date(window.date);
-    dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
+    displayDate();
     update(window.date);
     mapDate = window.date; 
 
@@ -168,7 +166,7 @@ function shiftDate(val){
 
     /* Don't let users go to past days */
     if (today == mapdate && val == -1) {
-        return;
+        return false;
     }
 
     var currentDay = document.getElementById(window.date);
@@ -192,15 +190,19 @@ function shiftDate(val){
 
     window.date = dateString;
     mapDate = window.date;
-    //console.log("New date: " + dateString);
-    var tempdate = new Date(window.date);
-    dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
 
     currentDay = document.getElementById(window.date);
     currentDay.classList.add('vcal-date--selected');
 
     vanillaCalendar.resetMonth();
     update(window.date);
+    return true;
+}
+
+// display the new date
+function displayDate() {
+    var tempdate = new Date(window.date);
+    dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
 }
 
 // display info about this club

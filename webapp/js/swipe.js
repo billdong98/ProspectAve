@@ -63,7 +63,6 @@ function touchMoveDate(event) {
     if ( event.touches.length == 1 ) {
         curX = event.touches[0].pageX;
         curY = event.touches[0].pageY;
-        deltaX = curX - startX;
         
         // DO NOTHING?
     } else {
@@ -161,7 +160,7 @@ function trigger(val){
         var firstPos = window.innerWidth * 1.5;
         var offScreen = "-150vw";
     }
-            
+       /*     
     $( "#mobile_bar" ).animate({
         backgroundColor: "#7E95BA"
         }, 250, function(){
@@ -169,15 +168,39 @@ function trigger(val){
             $( "#mobile_bar" ).animate({
                 backgroundColor: "#9AB7E4"
             }, 250, null);
-        });
+        }); */
     
+    var today = shiftDate(val);
+        /* Change color */
+        if (!today) {
+            $( "#mobile_bar" ).animate({
+                    backgroundColor: "#ff4d4d"
+            }, 250, function(){
+                // SET back to original color
+                $( "#mobile_bar" ).animate({
+                    backgroundColor: "#9AB7E4"
+                }, 250, null);
+            });
+        } else {
+            $( "#mobile_bar" ).animate({
+                backgroundColor: "#7E95BA"
+            }, 250, function(){
+                // SET back to original color
+                $( "#mobile_bar" ).animate({
+                    backgroundColor: "#9AB7E4"
+                }, 250, null);
+            }); 
+        }
+
     // TWO ANIMATIONS HAPPEN AT THE SAME TIME
     $( "#date_display" ).animate({
         marginLeft: firstPos
     }, 250, function() {
-        // Animation complete.
+        // Animation complete.   
         $( "#date_display" ).css("margin-left", offScreen);
-        shiftDate(val)
+
+        displayDate();
+
         $( "#date_display" ).animate({
             marginLeft: 0
         }, 250, function(){
