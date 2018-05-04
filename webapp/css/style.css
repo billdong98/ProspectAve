@@ -108,7 +108,7 @@
 .datebutton {
     position:absolute;
     top: 5.5vw;
-    left: 57vw;
+    left: 55vw;
 }
 
 /* left date arrow  */
@@ -164,7 +164,17 @@
 /* Map Description */
 #mapDescription {
     left:40%; 
-    top:77.3%; 
+    top:75.9%; 
+    position:absolute; 
+    z-index: 20; 
+    color: black; 
+    font-size:1vw !important;
+}
+
+/* Map Caption */
+#shiftCaption{
+    left:40%; 
+    top:79.9%; 
     position:absolute; 
     z-index: 20; 
     color: black; 
@@ -412,14 +422,6 @@
     margin-bottom: 1.3em;
 }
 
-/* Map Caption */
-#mapCaption{
-    color:white; 
-    top:21%; 
-    position:absolute; 
-    font-size:1.2vw !important;
-}
-
 /* Filter styles */
 #filter{
     margin-left: 4vw; 
@@ -436,7 +438,7 @@
     padding-top: 1em;
 }
 
-@media screen and (min-width: 1281px) {
+@media screen and (min-width: 1101px) {
     #sidebar nav > ul > li {
         margin-top: 1em;
     }
@@ -446,17 +448,17 @@
     width: 100%;
 }
 
-@media screen and (min-width: 1281px) {
+@media screen and (min-width: 1101px) {
     #sidebar + #wrapper {
-        margin-left: 12em;
+        margin-left: 14vw;
     }
 
     #sidebar + #wrapper + #footer {
-        margin-left: 12em;
+        margin-left: 14vw;
     }
 
     #sidebar {
-        width: 12em;
+        width: 14vw;
         overflow-y: hidden;
     }
 
@@ -475,7 +477,7 @@
     }
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1100px) {
     #sidebar img {
         position: absolute;
         left: 2vw;
@@ -498,14 +500,6 @@
     width: 20%;
     margin-bottom: 16px;
     padding: 0 8px;
-}
-
-/* Display the columns below each other instead of side by side on small screens */
-@media screen and (max-width: 650px) {
-    .column {
-        width: 100%;
-        display: block;
-    }
 }
 
 body {
@@ -572,7 +566,7 @@ body {
     transition: .6s ease;
 }
 
-@media screen and (min-width: 1281px) {
+@media screen and (min-width: 1101px) {
     #infobar {
         top: 100vh;
     }
@@ -651,7 +645,7 @@ body.is-loading #infobar nav ul li {
     opacity: 0;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1100px) {
 
     #infobar {
         height: 4.5em;
