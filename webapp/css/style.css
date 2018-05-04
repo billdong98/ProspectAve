@@ -448,7 +448,7 @@
     width: 100%;
 }
 
-@media screen and (min-width: 1101px) {
+@media screen and (min-width: 1100px) {
     #sidebar + #wrapper {
         margin-left: 14vw;
     }
@@ -566,8 +566,8 @@ body {
     transition: .6s ease;
 }
 
-/* SIDE BAR FORMATTING */
-@media screen and (min-width: 1101px) {
+/* INFO BAR FORMATTING */
+@media screen and (min-width: 1100px) {
     #infobar {
         top: 100vh;
     }

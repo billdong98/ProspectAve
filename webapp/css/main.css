@@ -3482,7 +3482,7 @@ body.is-ie .wrapper.fullscreen {
 /* Wrapper (main) */
 
 #sidebar + #wrapper {
-    margin-left: 18em;
+    margin-left: 14vw;
 }
 
 @media screen and (max-width: 1100px) {
@@ -3550,7 +3550,7 @@ body.is-ie .wrapper.fullscreen {
     position: fixed;
     text-align: right;
     top: 0;
-    width: 18em;
+    width: 14vw;
     z-index: 10000;
 }
 
