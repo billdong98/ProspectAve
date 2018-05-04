@@ -192,19 +192,21 @@ function trigger(val){
             }); 
         }
 
-    // TWO ANIMATIONS HAPPEN AT THE SAME TIME
-    $( "#date_display" ).animate({
-        marginLeft: firstPos
-    }, 250, function() {
-        // Animation complete.   
-        $( "#date_display" ).css("margin-left", offScreen);
-
-        displayDate();
-
+    if (today) {
+        // TWO ANIMATIONS HAPPEN AT THE SAME TIME
         $( "#date_display" ).animate({
-            marginLeft: 0
-        }, 250, function(){
-            //MOVE back into center
+            marginLeft: firstPos
+        }, 250, function() {
+            // Animation complete.   
+            $( "#date_display" ).css("margin-left", offScreen);
+
+            displayDate();
+
+            $( "#date_display" ).animate({
+                marginLeft: 0
+            }, 250, function(){
+                //MOVE back into center
+            });
         });
-    });
+    }
 }
