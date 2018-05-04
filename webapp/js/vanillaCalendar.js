@@ -36,12 +36,14 @@ var vanillaCalendar = {
     })    
     // Clears the calendar and shows the previous month
     this.previous.addEventListener('click', function () {
-      _this.clearCalendar()
-      var prevMonth = _this.date.getMonth() - 1
-      _this.date.setMonth(prevMonth)
-      _this.createMonth()
-      _this.monthChange++;
-      showDatesWithEvents()
+      if (_this.date.getMonth() + 1 > parseInt(window.date.substring(0,2))) {
+        _this.clearCalendar()
+        var prevMonth = _this.date.getMonth() - 1
+        _this.date.setMonth(prevMonth)
+        _this.createMonth()
+        _this.monthChange++;
+        showDatesWithEvents()
+      }
     })
   },
 
@@ -82,6 +84,10 @@ var vanillaCalendar = {
     
     var currentDate =  m + '/' + d + '/' + y
     newDay.id = currentDate
+
+    if (window.date == currentDate) {
+      newDay.classList.add('vcal-date--selected')
+    }
 
     newDay.appendChild(dateEl)
     this.month.appendChild(newDay)
