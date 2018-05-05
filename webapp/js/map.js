@@ -119,7 +119,7 @@ function showPassListEvents() {
             var status = window.data[date];
             for(var j=0; j< status.length; j++){
                 var row = status[j];
-                if (row["status"] == "Pass") {
+                if (row["status"] == "Pass" || row["status"] == "List") {
                     currentDay.classList.add('vcal-date--pass');
                     break;
                 }
@@ -286,7 +286,7 @@ function shiftDate(val){
 
     window.date = dateString;
     mapDate = window.date;
-    // console.log("New date: " + dateString);
+
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
 
@@ -318,7 +318,6 @@ function showInfo(club) {
             var info = row["info"];
             var date = row["date"]; //redundant
 
-            console.log(status);
             if (status == "List")
                 infobar.style.background="#FFEE18";
             else if (status == "PUID")

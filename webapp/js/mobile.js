@@ -114,7 +114,6 @@ function update(date){
     }
 
     if(status == undefined){
-        //console.log("No values for: " + date);
         return;
     }
 
