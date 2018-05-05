@@ -9,15 +9,23 @@
     text-align: center;
 }
 
-/* CONTAINER */
+/* CONTAINER FOR DATE INFO AND SWIPE*/
 .mobiledate{
     border: 0;
     margin: auto;
     width: 100%;
-    height: 18vw;
-    background-color: #9AB7E4;
-    border: solid;
+    height: 10vw;
+    background: linear-gradient(to right, #295EA6 , #77AAE3);
+    border: none;
     text-align: center;
+    position: relative;
+}
+h1.major{
+    padding-bottom: 0;
+}
+
+h1.major:after{
+    display: none;
 }
 
 /* Date text *//*
@@ -30,7 +38,7 @@
 }*/
 
 .m-datetext{
-    padding-top: 1.5vh;
+    padding-top: 0vh;
     padding-left:0;
     margin-left: 0;
     width: auto;
@@ -49,17 +57,28 @@
     text-align:center;
 }
 
-.arrow {
-  width: 1vw;
-  height: 1vw;
-  border: 1vw solid;
-  border-color: black transparent transparent black;
-  transform: rotate(-45deg);
-    padding: 2vh 0 0 2vh;
+#arrow-left {
+    width: 1vw;
+    height: 1vw;
+    border: 1vw solid;
+    border-color: rgba(255, 255, 255, 0.55) transparent transparent rgba(255, 255, 255, 0.55);
+    transform: rotate(-45deg);
+    padding: 1vh 0 0 1vh;
     position: absolute;
-    left: 8vw;
-    top: 21.5vh;
-    
+    left: 7vw;
+    top: 3vw; /* Height of container: 10vw */
+}
+
+#arrow-right {
+    width: 1vw;
+    height: 1vw;
+    border: 1vw solid;
+    border-color: rgba(255, 255, 255, 0.55) transparent transparent rgba(255, 255, 255, 0.55);
+    transform: rotate(135deg);
+    padding: 1vh 0 0 1vh;
+    position: absolute;
+    left: 88vw;
+    top: 3vw;
 }
 
 

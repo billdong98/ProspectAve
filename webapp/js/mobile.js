@@ -42,6 +42,11 @@ $(document).ready(function(){
             });   
         }(clubs[i]);
     }
+    
+    
+    if (isToday()) {
+        $("#arrow-left").css("display", "none");
+    }
 });
 
 // Colors calendar if date has an event 
@@ -151,9 +156,10 @@ function changeDate(d){
     mapDate = window.date; 
 
     $('html, body').animate({
-        scrollTop: $("#intro").height() - $( window ).height()
+        scrollTop: $("#intro").height() - $( window ).height() - 100
     }, 500);
 }
+
 
 // triggered by the two buttons on either side of the date display
 function shiftDate(val){

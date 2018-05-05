@@ -96,6 +96,7 @@ function touchEnd(event) {
     }
 }
 
+// event, 1 means that we should reset the position of the date display 
 function touchCancel(event, resetPos) {
     // reset the variables back to default values
     fingerCount = 0;
@@ -113,7 +114,7 @@ function touchCancel(event, resetPos) {
     triggerElementID = null;
     var mobile_bar = document.getElementById("mobile_bar");
     mobile_bar.style.backgroundColor = "#9AB7E4";
-     var date_disp = document.getElementById("date_display");
+    var date_disp = document.getElementById("date_display");
     if(resetPos == 1){
         date_disp.style.marginLeft = 0;
     }
@@ -158,52 +159,56 @@ function processingRoutine() {
             trigger(-1);
 }
 
+// triggers a shift in date in the date bar
 function trigger(val){
+    if(isToday() && val == -1){ //trying to go into past
+        touchCancel(event, 1);
+        return;
+    }
+    
+    var canShift = shiftDate(val);
     if(val == 1) { // swipe left, go to next day
         var firstPos = window.innerWidth * -1.5;
-        var offScreen = "150vw";
+        var offScreen = "120vw";
     } else if(val == -1){
         //TODO: HANDLE CASE WHEN ITS TODAY
         // i.e. cant move back
         var firstPos = window.innerWidth * 1.5;
-        var offScreen = "-150vw";
+        var offScreen = "-120vw";
     }
-       /*     
-    $( "#mobile_bar" ).animate({
-        backgroundColor: "#7E95BA"
-        }, 250, function(){
-            // SET back to original color
-            $( "#mobile_bar" ).animate({
-                backgroundColor: "#9AB7E4"
-            }, 250, null);
-        }); */
-    
-    var today = shiftDate(val);
-        /* Change color */
-        if (!today) {
-            $( "#mobile_bar" ).animate({
-                    backgroundColor: "#ff4d4d"
-            }, 250, function(){
-                // SET back to original color
-                $( "#mobile_bar" ).animate({
-                    backgroundColor: "#9AB7E4"
-                }, 250, null);
-            });
-        } else {
-            $( "#mobile_bar" ).animate({
-                backgroundColor: "#7E95BA"
-            }, 250, function(){
-                // SET back to original color
-                $( "#mobile_bar" ).animate({
-                    backgroundColor: "#9AB7E4"
-                }, 250, null);
-            }); 
-        }
 
-    // TWO ANIMATIONS HAPPEN AT THE SAME TIME
+    // 200 miliseconds to complete half the animation
+    var halfTime = 200;
+
+    if(val == 1){ // swipe left, move right
+        var hide = "#arrow-left";
+        var flash = "#arrow-right";
+    } else if (val == -1){
+        var hide = "#arrow-right";
+        var flash = "#arrow-left";   
+    }
+
+    $(hide).css("opacity", 0);
+
+    // hiding the arrow
+    $(hide).animate({
+        opacity: 1
+    }, halfTime*2, null);
+
+    // flashing the arrow we are moving in the direction of 
+    $(flash).css("borderTopColor", "#fff");
+    $(flash).css("borderLeftColor", "#fff");
+
+    // SET back to original color
+    $(flash).animate({
+        borderTopColor: "rgba(255, 255, 255, 0.55)",
+        borderLeftColor: "rgba(255, 255, 255, 0.55)"
+    }, halfTime, null);
+
+    // Moving the actual date display
     $( "#date_display" ).animate({
         marginLeft: firstPos
-    }, 250, function() {
+    }, halfTime, function() {
         // Animation complete.   
         $( "#date_display" ).css("margin-left", offScreen);
 
@@ -211,8 +216,24 @@ function trigger(val){
 
         $( "#date_display" ).animate({
             marginLeft: 0
-        }, 250, function(){
+        }, halfTime, function(){
             //MOVE back into center
         });
     });
+
+    /* Don't let users go to past days */
+    if (isToday()) {
+        $("#arrow-left").css("display", "none");
+    } else { // show the arrow left
+         $("#arrow-left").css("display", "");
+    }
+}
+
+
+function isToday(){
+    var date_moment = moment(Date.parse(mapDate));
+    var mapdate = date_moment.format('MM/DD/YYYY');
+    var today = moment(Date.now()).format('MM/DD/YYYY');
+
+    return (today == mapdate);
 }
