@@ -1,6 +1,7 @@
 /* GLOBAL date->array store */
 window.data = {};
 window.date;
+window.filter;
 var dateDisplay;
 var mapDate;
 var weekdays = new Array(7);
@@ -42,18 +43,85 @@ $(document).ready(function(){
             });   
         }(clubs[i]);
     }
-    
+
+    // set up filter radio button listeners
+    $("#radio-all-mobile").click(function(){
+        window.filter = "all";
+        showDatesWithEvents();
+    });
+
+    $("#radio-puid-mobile").click(function(){
+        window.filter = "PUID";
+        showPUIDEventsMobile();
+    });
+    $("#radio-pass-mobile").click(function(){
+        window.filter = "PassList";
+        showPassListEventsMobile();
+    });
+
+    /* Set all as default filter */  
+    var $radios = $('input:radio[name=radio-filter]');  
+    $radios.filter('[value=All]').prop('checked', true);
     
     if (isToday()) {
         $("#arrow-left").css("display", "none");
     }
 });
 
-// Colors calendar if date has an event 
-function showDatesWithEvents() {
+// Colors calendar if date has a PUID event
+function showPUIDEventsMobile() {
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
-        if (currentDay != null){
+        if(currentDay != null){
+            currentDay.classList.remove('vcal-date--hasEvent');
+            currentDay.classList.remove('vcal-date--pass');
+            var status = window.data[date];
+            for(var j=0; j< status.length; j++){
+                var row = status[j];
+                if (row["status"] == "PUID") {
+                    currentDay.classList.add('vcal-date--PUID');
+                    break;
+                }
+            }
+        }
+    }
+}
+
+// Colors calendar if date has a PUID event
+function showPassListEventsMobile() {
+    for (var date in window.data) {
+        var currentDay = document.getElementById(date);
+        if(currentDay != null){
+            currentDay.classList.remove('vcal-date--hasEvent');
+            currentDay.classList.remove('vcal-date--PUID');
+            var status = window.data[date];
+            for(var j=0; j< status.length; j++){
+                var row = status[j];
+                if (row["status"] == "Pass" || row["status"] == "List") {
+                    currentDay.classList.add('vcal-date--pass');
+                    break;
+                }
+            }
+        }
+    }
+}
+
+// Colors calendar if date has an event 
+function showDatesWithEvents() {
+    // Handles case when month is changed but filters need to preserved
+    if(window.filter == "PUID"){
+        showPUIDEvents();
+        return;
+    } else if(window.filter == "PassList"){
+        showPassListEvents();
+        return;
+    }
+    
+    for (var date in window.data) {
+        var currentDay = document.getElementById(date);
+        if(currentDay != null){
+            currentDay.classList.remove('vcal-date--PUID');
+            currentDay.classList.remove('vcal-date--pass');
             currentDay.classList.add('vcal-date--hasEvent');
         }
     }

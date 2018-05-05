@@ -129,7 +129,21 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <section id="one" class="wrapper style3-alt fade-up">
                 <div class="inner" style="padding: 3em 1em 1em 1em !important">
                     <h2 style="padding: 0 1em 0 1em">CALENDAR</h2>
-                    <p style="color:black;padding: 0 1em 0 1em;"> Dates with open clubs are highlighted. Click on a date to view that day's events! </p>		
+                    <p id="mobileCalDescription"> Dates with open clubs are highlighted. Click on a date to view that day's events! </p>	
+                    <span class="obj" id="filter-mobile-span"><p id="filter-mobile"> Filter events by: </p>
+                            <div class="1u 12u$(small) disp_radio">
+                                <input type="radio" id="radio-all-mobile" name="radio-filter" value="All" checked="checked">
+                                <label for="radio-all-mobile" value="Pass">All</label>
+                            </div>
+                            <div class="1u 12u$(small) disp_radio" id="puidRadio">
+                                <input type="radio" id="radio-puid-mobile" name="radio-filter" value="PUID">
+                                <label for="radio-puid-mobile" value="PUID">PUID</label>
+                            </div>
+                            <div class="1u 12u$(small) disp_radio">
+                                <input type="radio" id="radio-pass-mobile" name="radio-filter" value="Pass">
+                                <label for="radio-pass-mobile" value="Pass">Pass/List</label>
+                            </div>
+                        </span>	
                     <div class="container">
                         <div id = "v-cal">
                             <div class="vcal-header" style="max-height: 8vh">
