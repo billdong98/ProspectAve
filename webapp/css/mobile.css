@@ -14,7 +14,7 @@
     border: 0;
     margin: auto;
     width: 100%;
-    height: 10vw;
+    height: 11.5vw;
     background: linear-gradient(to right, #295EA6 , #77AAE3);
     border: none;
     text-align: center;
@@ -38,7 +38,7 @@ h1.major:after{
 }*/
 
 .m-datetext{
-    padding-top: 0vh;
+    padding-top: .42vh;
     padding-left:0;
     margin-left: 0;
     width: auto;
@@ -66,7 +66,7 @@ h1.major:after{
     padding: 1vh 0 0 1vh;
     position: absolute;
     left: 7vw;
-    top: 3vw; /* Height of container: 10vw */
+    top: 3.8vw; /* Height of container: 10vw */
 }
 
 #arrow-right {
@@ -78,7 +78,7 @@ h1.major:after{
     padding: 1vh 0 0 1vh;
     position: absolute;
     left: 88vw;
-    top: 3vw;
+    top: 3.8vw;
 }
 
 
