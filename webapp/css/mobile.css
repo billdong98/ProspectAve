@@ -49,14 +49,19 @@
     text-align:center;
 }
 
-#date_display_prev{
-    display: none;
+.arrow {
+  width: 1vw;
+  height: 1vw;
+  border: 1vw solid;
+  border-color: black transparent transparent black;
+  transform: rotate(-45deg);
+    padding: 2vh 0 0 2vh;
+    position: absolute;
+    left: 8vw;
+    top: 21.5vh;
+    
 }
 
-#date_display_next{
-    display: none;
-    margin-left: 150vw;
-}
 
 /*panel stuff*/
 .paneltext { 

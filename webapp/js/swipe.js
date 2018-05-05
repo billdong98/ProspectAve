@@ -39,7 +39,7 @@ function touchStart(event,passedName) {
         triggerElementID = passedName;
     } else {
         // more than one finger touched so cancel
-        touchCancel(event);
+        touchCancel(event, 1);
     }
 }
 
@@ -54,7 +54,7 @@ function touchMove(event) {
             infobar_mobile.style.left= deltaX*0.2 + "vw";   
         }
     } else {
-        touchCancel(event);
+        touchCancel(event, 1);
     }
 }
 
@@ -63,10 +63,12 @@ function touchMoveDate(event) {
     if ( event.touches.length == 1 ) {
         curX = event.touches[0].pageX;
         curY = event.touches[0].pageY;
-        
+        deltaX = curX - startX;
+        var date_disp = document.getElementById("date_display");
+        date_disp.style.marginLeft = deltaX*0.25 + "vw";   
         // DO NOTHING?
     } else {
-        touchCancel(event);
+        touchCancel(event, 1);
     }
 }	
 
@@ -81,20 +83,20 @@ function touchEnd(event) {
             caluculateAngle();
             determineSwipeDirection();
             processingRoutine();
-            touchCancel(event); // reset the variables
+            touchCancel(event, 0); // reset the variables
         } else {
             if (triggerElementID=='infobar_mobile') {
                 var infobar_mobile = document.getElementById("infobar_mobile");
                 infobar_mobile.style.left="0vw"; 
             }
-            touchCancel(event);
+            touchCancel(event, 1);
         }	
     } else {
-        touchCancel(event);
+        touchCancel(event,1 );
     }
 }
 
-function touchCancel(event) {
+function touchCancel(event, resetPos) {
     // reset the variables back to default values
     fingerCount = 0;
     startX = 0;
@@ -109,6 +111,12 @@ function touchCancel(event) {
     swipeAngle = null;
     swipeDirection = null;
     triggerElementID = null;
+    var mobile_bar = document.getElementById("mobile_bar");
+    mobile_bar.style.backgroundColor = "#9AB7E4";
+     var date_disp = document.getElementById("date_display");
+    if(resetPos == 1){
+        date_disp.style.marginLeft = 0;
+    }
 }
 
 function caluculateAngle() {
