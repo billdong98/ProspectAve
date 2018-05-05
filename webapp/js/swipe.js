@@ -160,25 +160,16 @@ function trigger(val){
         var firstPos = window.innerWidth * 1.5;
         var offScreen = "-150vw";
     }
-       /*     
-    $( "#mobile_bar" ).animate({
-        backgroundColor: "#7E95BA"
-        }, 250, function(){
-            // SET back to original color
-            $( "#mobile_bar" ).animate({
-                backgroundColor: "#9AB7E4"
-            }, 250, null);
-        }); */
     
     var today = shiftDate(val);
         /* Change color */
         if (!today) {
             $( "#mobile_bar" ).animate({
-                    backgroundColor: "#ff4d4d"
+                    backgroundColor: "#ff6666"
             }, 250, function(){
                 // SET back to original color
                 $( "#mobile_bar" ).animate({
-                    backgroundColor: "#9AB7E4"
+                    backgroundColor: "#9AD2E4"
                 }, 250, null);
             });
         } else {
@@ -187,7 +178,7 @@ function trigger(val){
             }, 250, function(){
                 // SET back to original color
                 $( "#mobile_bar" ).animate({
-                    backgroundColor: "#9AB7E4"
+                    backgroundColor: "#9AD2E4"
                 }, 250, null);
             }); 
         }
