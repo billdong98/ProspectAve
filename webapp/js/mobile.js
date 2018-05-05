@@ -224,6 +224,13 @@ function showInfo(club) {
             var info = row["info"];
             var date = row["date"]; //redundant
 
+            if (status == "List")
+                infobar_mobile.style.background="#FFEE18";
+            else if (status == "PUID")
+                infobar_mobile.style.background="#62BB77";
+            else if (status == "Pass")
+                infobar_mobile.style.background="#FCAF3D";
+
             var c = row["club_name"];
             if(c == "Cap") {
                 c = "Cap & Gown"

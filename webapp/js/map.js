@@ -338,7 +338,7 @@ function showInfo(club) {
             }
             if(w >= 1100){ // SIDE BAR
                 infobar.style.top = "0";
-                out = '<div class="info_container"><img src="images/Logos/' + club.toLowerCase() + '-w.png"/><p id="infobar_name">' + c + "</p></div>";
+                out = '<div class="info_container"><img src="images/Logos/' + club.toLowerCase() + '.png"/><p id="infobar_name">' + c + "</p></div>";
                 out+="<div class='inner' id='infobarinner'> <nav> <ul> <li class='info-date'><span id='info-span'>Date: " + date + "</span></li> <li class='info-status'><span id='info-span'>Status: " + status + "</span></li>"
             } else { // TOP info bar view
                 infobar.style.left = "0";
