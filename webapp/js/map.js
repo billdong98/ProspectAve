@@ -312,12 +312,19 @@ function showInfo(club) {
     for(var i=0; i<rows.length; i++){
         var row = rows[i];
         var name = row["club_name"].toLowerCase();
-        infobar.style.background="#ffd347";
         infobar.style.color="black";
         if(name === club || (club === "ti" && name === "tiger inn")){
             var status = row["status"];
             var info = row["info"];
             var date = row["date"]; //redundant
+
+            console.log(status);
+            if (status == "List")
+                infobar.style.background="#FFEE18";
+            else if (status == "PUID")
+                infobar.style.background="#62BB77";
+            else if (status == "Pass")
+                infobar.style.background="#FCAF3D";
 
             // prep sidebar and infobar for show
             infobar.innerHTML = out;

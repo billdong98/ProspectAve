@@ -212,7 +212,7 @@ function trigger(val){
         // Animation complete.   
         $( "#date_display" ).css("margin-left", offScreen);
 
-        displayDate();
+            displayDate();
 
         $( "#date_display" ).animate({
             marginLeft: 0
