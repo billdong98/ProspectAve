@@ -87,7 +87,7 @@ function showPUIDEventsMobile() {
     }
 }
 
-// Colors calendar if date has a PUID event
+// Colors calendar if date has a Pass/List event
 function showPassListEventsMobile() {
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
