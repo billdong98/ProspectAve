@@ -32,15 +32,6 @@ h1.major:after{
     padding: .5em 0 0 .5em;
 }
 
-/* Date text *//*
-.m-datetext{
-    padding-top: 1.5vh;
-    font-size: 5vw;
-    text-align: center;
-    width: auto;
-    float:none;
-}*/
-
 .m-datetext{
     padding-top: .42vh;
     padding-left:0;
