@@ -85,6 +85,7 @@ const mapping = {
     
     // Quad
     "sspergel": "Quadrangle",
+    "reg4": "Quadrangle",
     "tdatta": "Quadrangle",
     "nwedel": "Quadrangle",
     "kfinch":"Quadrangle",
