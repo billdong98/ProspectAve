@@ -53,7 +53,7 @@ const mapping = {
     "wzdong" : "Tower",
     "junep" : "Cloister",
     "yangt" : "Cap",
-    "bliang" : "Cloister",
+    "bliang" : "Ivy",
     
     // ACTUAL OFFICERS
     // Charter
