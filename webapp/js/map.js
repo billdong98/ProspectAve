@@ -82,6 +82,7 @@ $(document).ready(function(){
             });
         }(clubs[i]);
     }
+    //setInitListener();
 });
 
 // Adjust the starting locations of the side/top bar

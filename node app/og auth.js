@@ -4,7 +4,7 @@ const https = require('https');
 // verifies the ticketID passed back to /login via CAS
 const serviceURL = 'https://prospectave.io/redirect/';
 function verify(ticketID, callback){
-    //console.log("Verifying");
+    console.log("Verifying");
     //console.log(`https://fed.princeton.edu/cas/validate?service=${serviceURL}&ticket=${ticketID}`);
     let validateURL = `https://fed.princeton.edu/cas/validate?service=${serviceURL}&ticket=${ticketID}`
     https.get(validateURL,
@@ -49,7 +49,7 @@ function redirectFailedAttempt(response){
 
 const mapping = {
     // Test
-    "mman" : "Terrace",
+    "mman" : "Cap",
     "wzdong" : "Tower",
     "junep" : "Cloister",
     "yangt" : "Cap",

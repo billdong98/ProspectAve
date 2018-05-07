@@ -123,7 +123,7 @@ app.get('/login', (request, response) => {
         // redirect to officer page
         return;
     }
-    
+
     var callback = function(result){
             if(result != false){
                 // logged in, but not an officer
