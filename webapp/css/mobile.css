@@ -28,6 +28,10 @@ h1.major:after{
     display: none;
 }
 
+.row.uniform > * {
+    padding: .5em 0 0 .5em;
+}
+
 /* Date text *//*
 .m-datetext{
     padding-top: 1.5vh;
