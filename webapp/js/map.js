@@ -23,6 +23,7 @@ $(document).ready(function(){
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
     download(); // Download THIS week's data
+    console.log(window.innerWidth);
 
     // initialize the calendar object
     vanillaCalendar.init({
@@ -336,7 +337,7 @@ function showInfo(club) {
             if(c == "Cap") {
                 c = "Cap & Gown"
             }
-            if(w >= 1100){ // SIDE BAR
+            if(w >= 1101){ // SIDE BAR
                 infobar.style.top = "0";
                 out = '<div class="info_container"><img src="images/Logos/' + club.toLowerCase() + '.png"/><p id="infobar_name">' + c + "</p></div>";
                 out+="<div class='inner' id='infobarinner'> <nav> <ul> <li class='info-date'><span id='info-span'>Date: " + date + "</span></li> <li class='info-status'><span id='info-span'>Status: " + status + "</span></li>"
@@ -356,7 +357,7 @@ function showInfo(club) {
             infobar.style.display="";
 
             var w = window.innerWidth;
-            if(w >= 1100){
+            if(w >= 1101){
                 infobar.style.top = "0";
             } else {
                 infobar.style.left = "0";
