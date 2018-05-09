@@ -59,6 +59,7 @@ const mapping = {
     // Charter
     "sbelt": "Charter",
     "cbobrien": "Charter",
+    "jpuryear": "Charter",
     
     // Cap
     "eaguas": "Cap",
