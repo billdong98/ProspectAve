@@ -45,24 +45,27 @@
         display: block !important;
         position: relative !important;
         top: 3.5% !important;
-        height: auto !important;
-        width: 9.4vw !important;
+        height: 17vh !important;
+        width: auto;
     }
     
     #clubname {
         display: block !important;
-        position: absolute !important;
         text-align: center;
         font-size: 1.7vw;
         color: white;
-        top: 20vh;
-        left: 0;
+        margin-top: 2vh;
+        line-height: 5vh;
+        margin-bottom: 0;
         width: 100%
     }
     
     .club_container{
-        position: absolute;
-        width: 9.4vw;
+        margin: auto;
+    }
+
+    #sidebar > .inner {
+        margin-top: -24vh;
     }
 }
 
