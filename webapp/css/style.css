@@ -458,7 +458,7 @@
     width: 100%;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1101px) {
     #sidebar + #wrapper {
         margin-left: 14vw;
     }
@@ -473,17 +473,18 @@
     }
 
     #sidebar img {
-        height: auto;
-        width: 100%;
-        display: none;
+        height: 17vh;
+        margin: auto;
+        width: auto;
+        align-self: center;
+    }
+
+    #sidebar > .inner {
+        margin-top: -17vh;
     }
 
     #prospectavelogo {
         display: block !important;
-        position: absolute !important;
-        left: 14%;
-        height: auto !important;
-        width: 70% !important;
     }
 }
 
@@ -576,7 +577,7 @@ body {
 }
 
 /* INFO BAR FORMATTING */
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1101px) {
     #infobar {
         top: 100vh;
     }
