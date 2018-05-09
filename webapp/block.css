@@ -1,0 +1,24 @@
+/*panel stuff*/
+.paneltext {
+    position: absolute; 
+    text-align: center;
+    left: 25%; top: 35%; 
+    z-index: 0; 
+    color: black; 
+    font-size:5.5vw;
+}
+
+.boxed {
+    border: solid 1px rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius:2em;
+    height: auto;
+}
+
+.orange {
+    background: rgb(248, 186, 92);
+}
+
+.blue {
+    background: rgb(64, 89, 247);
+}
