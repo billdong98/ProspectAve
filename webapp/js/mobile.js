@@ -295,6 +295,7 @@ function showInfo(club) {
         if(name === club || (club === "ti" && name === "tiger inn")){
             var status = row["status"];
             var info = row["info"];
+            info = info.replace(/</g, "&lt;").replace(/>/g, "&gt;");
             var date = row["date"]; //redundant
 
             if (status == "List")

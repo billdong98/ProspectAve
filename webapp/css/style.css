@@ -448,7 +448,7 @@
     padding-top: 1em;
 }
 
-@media screen and (min-width: 1101px) {
+@media screen and (min-width: 1100.1px) {
     #sidebar nav > ul > li {
         margin-top: 1em;
     }
@@ -458,7 +458,7 @@
     width: 100%;
 }
 
-@media screen and (min-width: 1101px) {
+@media screen and (min-width: 1100.1px) {
     #sidebar + #wrapper {
         margin-left: 14vw;
     }
@@ -577,7 +577,7 @@ body {
 }
 
 /* INFO BAR FORMATTING */
-@media screen and (min-width: 1101px) {
+@media screen and (min-width: 1100.1px) {
     #infobar {
         top: 100vh;
     }

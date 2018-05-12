@@ -40,7 +40,7 @@
     transition: ease 5s;
 }
 
-@media screen and (min-width: 1101px){
+@media screen and (min-width: 1100.1px){
     #sidebarlogo {
         display: block !important;
         position: relative !important;
@@ -78,7 +78,7 @@
 
     #clubname {
         position: absolute;
-        left: 10% !important;
+        left: 12% !important;
         font-size: 1.5em;
         color: white;
     }
@@ -109,6 +109,6 @@ input[type="submit"], input[type="reset"] {
 
 
 .officerbutton{
-    padding: 0 2.4em;
+    padding: 0 1.5em;
     margin-right: 1em;
 }
