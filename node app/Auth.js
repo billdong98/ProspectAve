@@ -34,7 +34,6 @@ function redirect(response){
 
 
 function redirectOfficer(response){
-    console.log("Redirecting to officer page.");
     response.writeHead(301,
                        {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/officer.html`}
                       );
