@@ -122,7 +122,8 @@ const mapping = {
     "ryancw": "Cottage",
     
     // Ivy
-    "masom": "Ivy"
+    "masom": "Ivy",
+    "ccb4": "Ivy"
 }
 
 function getClub(netID){
