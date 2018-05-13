@@ -54,6 +54,13 @@ const mapping = {
     "yangt" : "Cap",
     "bliang" : "Ivy",
     
+    // COS 333 Staff
+    "bwk": "Tower",
+    "lumbroso": "Ivy",
+    "akling": "Cap",
+    "jywei": "Terrace",
+    "lanceg": "Cloister",
+
     // ACTUAL OFFICERS
     // Charter
     "sbelt": "Charter",
