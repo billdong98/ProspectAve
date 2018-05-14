@@ -34,7 +34,6 @@ function redirect(response){
 
 
 function redirectOfficer(response){
-    console.log("Redirecting to officer page.");
     response.writeHead(301,
                        {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/officer.html`}
                       );
@@ -48,13 +47,27 @@ function redirectFailedAttempt(response){
 }
 
 const mapping = {
-    // Test
+    // Developers
     "mman" : "Terrace",
     "wzdong" : "Tower",
     "junep" : "Cloister",
     "yangt" : "Cap",
     "bliang" : "Ivy",
+
+    // IMPORTANT PEOPLE
+    "bwk" : "Charter",
+    "lumbroso" : "Colonial",
+    "akling" : "Cap",
+    "jywei" : "Tower",
+    "lanceg" : "Cloister",
     
+    // COS 333 Staff
+    "bwk": "Tower",
+    "lumbroso": "Ivy",
+    "akling": "Cap",
+    "jywei": "Terrace",
+    "lanceg": "Cloister",
+
     // ACTUAL OFFICERS
     // Charter
     "sbelt": "Charter",
@@ -116,7 +129,8 @@ const mapping = {
     "ryancw": "Cottage",
     
     // Ivy
-    "masom": "Ivy"
+    "masom": "Ivy",
+    "ccb4": "Ivy"
 }
 
 function getClub(netID){

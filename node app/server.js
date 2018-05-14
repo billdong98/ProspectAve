@@ -17,13 +17,13 @@ var cookieSession = require('cookie-session');
 // setup Express server
 app.use(bodyParser.json());
 
-var whitelist = ['https://prospectave.io', 'http://localhost', 'https://prospectave.io:1738', 'http://127.0.0.1', 'null', 'https://www.prospectave.io'];
+var whitelist = ['https://prospectave.io', 'https://prospectave.io:1738', 'https://www.prospectave.io', 'undefined', undefined];
 
 var corsOptions = {
   origin: function (origin, callback) {
       
       //TESTING CORS OVERRIDES ONLY.
-    if(origin == null){
+    /*if(origin == null){
         callback(null, true);
         return;
     }
@@ -32,7 +32,7 @@ var corsOptions = {
         //console.log("override for testing");
         callback(null, true);
         return;
-    }
+    }*/
       
     if (whitelist.indexOf(origin) !== -1) {
         callback(null, true);
@@ -118,7 +118,7 @@ app.get('/status', cors(), (request, response) => {
 // if not, then redirect to CAS 
 app.get('/login', (request, response) => { 
     if(request.session.isPopulated) {
-        //console.log(`Redirecting: ${request.session.id}`);
+        console.log(`Logged in: ${request.session.id}`);
         auth.redirectOfficer(response);
         // redirect to officer page
         return;
@@ -133,10 +133,12 @@ app.get('/login', (request, response) => {
                 } else {
                     request.session.id = result;
                     console.log("Created cookie for: " + request.session.id);
+                    console.log(`Logged in: ${request.session.id}`);
                     auth.redirectOfficer(response);
                     return;
                 }
             } else {
+                console.log("Bad auth token");
                 response.status(500);
                 response.send("Bad auth token.");
             }
@@ -151,24 +153,6 @@ app.get('/login', (request, response) => {
         auth.verify(request.query.ticket, callback); 
     }
 })
-
-/*
-// sends netID and club information as JSON to officer.html
-app.get('/userinfo', (request, response) => { 
-    response.setHeader('Content-Type', 'application/json');
-        
-    var data = {netID: null, club: null};
-    if(!request.session.isPopulated) {
-        data.club(null);
-        console.log("Not logged in.");
-    } else {
-        console.log("Welcoming, " + request.session.id);
-        data.netID = request.session.id;
-        // get club from auth
-        data.club = auth.getClub(data.netID); 
-    }
-    response.json(data);
-});*/
 
 // sends netID and club events as JSON to officer.html
 app.get('/officer_download', (request, response) => { 
@@ -314,7 +298,7 @@ function deleteEvent(response, date, club){
             console.log(err);
             //return -1;
         } else {
-            //console.log("Deleted: " + this.changes);
+            console.log("Deleted: " + this.changes + " rows for: " + club);
             //return("Deleted " + this.changes + " rows(s).");
         }
     });
