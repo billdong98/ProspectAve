@@ -1,13 +1,10 @@
-<title> ProspectAve </title>
-</head>
-
 <h1> ProspectAve </h1>
 
-Michael Man, mman<br>
+<i>Michael Man, mman<br>
 Bill Dong, wzdong<br>
 Ben Liang, bliang<br>
 June Ho Park, junep<br>
-Yang Tu, yangt<br>
+Yang Tu, yangt<br></i>
 
 <P> Have you and your friends ever wanted to enjoy a night out at the Street, but weren't sure which clubs were open? We've all been in your shoes--that's why we created ProspectAve. ProspectAve is a web application that allows Princeton students to see which eating clubs are open on a given night, as well as on dates in the future. We work closely with all of Princeton’s eating clubs to provide accurate information, and ProspectAve is the only resource where students can view all 11 clubs’ events in one place.
 
