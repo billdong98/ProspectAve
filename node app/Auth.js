@@ -48,12 +48,19 @@ function redirectFailedAttempt(response){
 }
 
 const mapping = {
-    // Test
+    // Developers
     "mman" : "Terrace",
     "wzdong" : "Tower",
     "junep" : "Cloister",
     "yangt" : "Cap",
     "bliang" : "Ivy",
+
+    // IMPORTANT PEOPLE
+    "bwk" : "Charter",
+    "lumbroso" : "Colonial",
+    "akling" : "Cap",
+    "jywei" : "Tower",
+    "lanceg" : "Cloister",
     
     // ACTUAL OFFICERS
     // Charter
