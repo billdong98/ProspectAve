@@ -47,13 +47,13 @@ function redirectFailedAttempt(response){
 }
 
 const mapping = {
-    // Developers
-    "mman" : "Terrace",
+    // Test
+    "mman" : "Cap",
     "wzdong" : "Tower",
-    "junep" : "Cloister",
+    "junep" : "Colonial",
     "yangt" : "Cap",
-    "bliang" : "Ivy",
-
+    "bliang" : "Cannon",
+    
     // IMPORTANT PEOPLE
     "bwk" : "Charter",
     "lumbroso" : "Colonial",
@@ -130,7 +130,8 @@ const mapping = {
     
     // Ivy
     "masom": "Ivy",
-    "ccb4": "Ivy"
+    "ccb4": "Ivy",
+    "helenz": "Ivy"
 }
 
 function getClub(netID){
