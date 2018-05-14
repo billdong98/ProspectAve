@@ -223,15 +223,16 @@ margin-left: -3.3vw
 
 #mobileCalDescription {
     color: white;
-    padding: 0 0 0 1em;
+    padding: 0 0 0 3vw;
+    margin-bottom: 1em;
 }
 
 #filter-mobile-span {
-    font-size: 3vw;
+    font-size: 3.4vw;
 }
 
 #filter-mobile {
     display:inline;
-    padding: 0 0 0 1em;
+    padding: 0 0 0 3vw;
 }
 

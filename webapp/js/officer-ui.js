@@ -162,6 +162,7 @@ function updateDisp(date){
         var post_date = row["post_date"];
         var status = row["status"];
         var info = row["info"];
+        info = info.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
         $("#event_panel").animate({'opacity': 0}, 130, function () {  
             $("#club_info").css('display', 'block'); 
