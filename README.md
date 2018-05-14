@@ -1,11 +1,5 @@
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> ProspectAve </title>
 </head>
-
-<body bgcolor="ffffff">
 
 <h1> ProspectAve </h1>
 
@@ -35,6 +29,3 @@ Yang Tu, yangt<br>
 <P> <a href="https://prospectave.io/mobile.html" target="_blank"> Link to mobile page</a>
 
 </blockquote>
-
-</body>
-</html>
