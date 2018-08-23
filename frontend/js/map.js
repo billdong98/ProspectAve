@@ -2,8 +2,6 @@
 window.data = {};
 window.date;
 
-window.downloadedPast = false;
-
 window.filter;
 var dateDisplay;
 var mapDate;
@@ -25,11 +23,11 @@ $(document).ready(function(){
     mapDate = window.date;
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
-    download("status"); // Download THIS week's data
+    download(); // Download ALL data
 
     // initialize the calendar object
     vanillaCalendar.init({
-        disablePastDays: true
+        disablePastDays: false
     });
 
     var infobar = document.getElementById("infobar");
@@ -61,10 +59,6 @@ $(document).ready(function(){
             }
             if(e.keyCode == 39){
                 shiftDate(1);
-            }
-            // TESTING ONLY
-             if(e.keyCode == 68){
-                downloadPast();
             }
         }
     }
@@ -158,23 +152,14 @@ function showDatesWithEvents() {
 }
 
 //downloads ALL data from the Node server
-function download(when){
+function download(){
     console.log("Downloading");
     $.ajax({
-        url: "https://www.prospectave.io:1738/" + when,
+        url: "https://www.prospectave.io:1738/status",
         type: 'GET',   
         contentType: 'json',    
         success: function(res) {
             downloadSuccess(res);
-            if(when == "paststatus"){
-                for (var date in window.data) {
-                    var currentDay = document.getElementById(date);
-                    if(currentDay != null){
-                        currentDay.classList.remove('vcal-date--disabled');
-                        currentDay.classList.add('vcal-date--active');
-                    }
-                }
-            }
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -276,12 +261,6 @@ function shiftDate(val){
     var mapdate = date_moment.format('MM/DD/YYYY');
 
     var today = getToday();
-
-    /* Don't let users go to past days */
-    if (today == mapdate && val == -1 && !window.downloadedPast) {
-        downloadPast();
-        return;
-    }
 
     var currentDay = document.getElementById(window.date);
     if (currentDay != null)
@@ -409,11 +388,8 @@ function getToday(){
     return moment().subtract(4, "hours").format('MM/DD/YYYY');
 }
 
-// triggered when clicking on the cloud download button
-function downloadPast(){
-    if(window.downloadedPast) return;
-    window.downloadedPast = true;
-    
+// setups past calendar clicks
+function setupPast(){
     // Add click listeners to all past dates
     this.pastDates = document.querySelectorAll(
       '[data-calendar-status="past"]'
@@ -430,6 +406,4 @@ function downloadPast(){
         vanillaCalendar.monthChange = 0;
       })
     }
-    
-    download("paststatus");
 }

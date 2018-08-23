@@ -36,14 +36,12 @@ var vanillaCalendar = {
         })    
         // Clears the calendar and shows the previous month
         this.previous.addEventListener('click', function () {
-            if (_this.date.getMonth() + 1 > parseInt(window.date.substring(0,2))) {
-                _this.clearCalendar()
-                var prevMonth = _this.date.getMonth() - 1
-                _this.date.setMonth(prevMonth)
-                _this.createMonth()
-                _this.monthChange++;
-                showDatesWithEvents()
-            }
+            _this.clearCalendar()
+            var prevMonth = _this.date.getMonth() - 1
+            _this.date.setMonth(prevMonth)
+            _this.createMonth()
+            _this.monthChange++;
+            showDatesWithEvents()
         })
     },
 
@@ -71,7 +69,9 @@ var vanillaCalendar = {
             newDay.setAttribute('data-calendar-status', 'active')
         }
 
-        if (this.date.toString() === this.todaysDate.toString()) {
+        // apply offset
+        var td = new Date(this.todaysDate * 1 - 1000 * 3600 * 4);
+        if (this.date.toDateString() === td.toDateString()) {
             newDay.classList.add('vcal-date--today')
         }
         // convert date to MM/DD/YYYY format
@@ -98,13 +98,13 @@ var vanillaCalendar = {
         var _this = this
         this.activeDates = document.querySelectorAll(
             '[data-calendar-status="active"]'
-        )
+            )
 
         for (var i = 0; i < this.activeDates.length; i++) {
             this.activeDates[i].addEventListener('click', function (event) {
                 var picked = document.querySelectorAll(
                     '[data-calendar-label="picked"]'
-                )[0]
+                    )[0]
                 //picked.innerHTML = this.dataset.calendarDate;
                 changeDate(this);
                 _this.removeActiveClass()
@@ -121,7 +121,7 @@ var vanillaCalendar = {
                 this.date.getDate(),
                 this.date.getDay(),
                 this.date.getFullYear()
-            )
+                )
             this.date.setDate(this.date.getDate() + 1)
         }
         // while loop trips over and day is at 30/31, bring it back
@@ -129,24 +129,24 @@ var vanillaCalendar = {
         this.date.setMonth(this.date.getMonth() - 1)
 
         this.label.innerHTML =
-            this.monthsAsString(this.date.getMonth()) + ' ' + this.date.getFullYear()
+        this.monthsAsString(this.date.getMonth()) + ' ' + this.date.getFullYear()
         this.dateClicked()
     },
 
     monthsAsString: function (monthIndex) {
         return [
-            'January',
-            'Febuary',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December'
+        'January',
+        'Febuary',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
         ][monthIndex]
     },
 

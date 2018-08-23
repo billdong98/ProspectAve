@@ -89,14 +89,16 @@ let db = new sqlite3.Database('./clubs.db', (err) => {
 let postQuery = 'INSERT INTO club_status VALUES ';
 let placeholders = '(?,?,?,?,?,?)';
 // part of a query
-let afterToday = "DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) >= date('now','localtime', '-4 hours')";
+
+//let afterToday = "DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) >= date('now','localtime', '-4 hours')";
+//let selectPast = "SELECT * FROM club_status WHERE DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) < date('now','localtime', '-4 hours') ORDER BY date";
+
 // gets all records from club_status after today
-let selectAll = 'SELECT * FROM club_status WHERE ' + afterToday + ' ORDER BY date';
+let selectAll = 'SELECT * FROM club_status ORDER BY date';
 // get records from club_status for a particular club (after today)
-let selectByClub = 'SELECT * FROM club_status WHERE club_name = ? and ' + afterToday + ' ORDER BY date';
+let selectByClub = 'SELECT * FROM club_status WHERE club_name = ? ORDER BY date';
 // delete a given event (club and date needed) 
 let deleteEventsQuery = 'DELETE from club_status WHERE date = ? and club_name = ?';
-let selectPast = "SELECT * FROM club_status WHERE DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) < date('now','localtime', '-4 hours') ORDER BY date";
 
 /* gets the current clubs from the DB */
 /* allow ALL domains */
@@ -107,18 +109,6 @@ app.get('/status', cors(), (request, response) => {
             throw err;
         }
         //console.log("GET: sent " + rows.length + " rows.");
-        response.send(rows);
-    });
-})
-
-/* downloads all PAST data */
-app.get('/paststatus', cors(), (request, response) => { 
-    //console.log('Hello getter! Current date: ' + currentDate());
-    db.all(selectPast, [], (err, rows) => {
-        if(err){
-            throw err;
-        }
-        console.log("Past data: sent " + rows.length + " rows.");
         response.send(rows);
     });
 })

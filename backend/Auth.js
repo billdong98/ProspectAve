@@ -53,20 +53,6 @@ const mapping = {
     "junep" : "Colonial",
     "yangt" : "Cap",
     "bliang" : "Cannon",
-    
-    // IMPORTANT PEOPLE
-    "bwk" : "Charter",
-    "lumbroso" : "Colonial",
-    "akling" : "Cap",
-    "jywei" : "Terrace",
-    "lanceg" : "Tower",
-    
-    // COS 333 Staff
-    "bwk": "Tower",
-    "lumbroso": "Ivy",
-    "akling": "Cap",
-    "jywei": "Terrace",
-    "lanceg": "Cloister",
 
     // ACTUAL OFFICERS
     // Charter

@@ -27,13 +27,16 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     </head>
     <body>
 
+        <!-- Info bar -->
+        <section id="infobar">
+        </section>
+
 		<!-- Sidebar -->
 		<section id="sidebar">
             <img id="prospectavelogo" class="logo-fade" src="images/logo4.png"/>
 			<div class="inner">
 				<nav>
 					<ul>
-                        <li><a href="index.html">Return to Homepage</a></li>
 					</ul>
 				</nav>
 			</div>	
@@ -45,11 +48,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <!-- Intro -->
             <section id="intro" class="wrapper style1 fullscreen fade-up">
                 <div class="inner" id="top-inner">
-                    <h1 class="major" id="main-title">P<span style="font-size:4.5vw">ROSPECT</span>A<span style="font-size:4.5vw">VE</span></h1>
+                    <h1 class="major" id="main-title">P<span style="font-size:4.5vw">ROSPECT</span>A<span style="font-size:4.5vw">VE</span> - 404</h1>
                     
-                     <h3>Sorry, but it appears that you aren't an officer. You'll be redirected to the main page shortly. If you believe this is an error, please contact the ProspectAve team immediately at prospectaveio@gmail.com</h3>
+                     <h3>Sorry, but it appears that the requested resource does not exist. If something went horribly wrong, please contact the ProspectAve team immediately.</h3>
+                     <button style="margin-top: 30px" onclick="window.location.href='https://prospectave.io'">Return me to the homepage</button>
                 </div>
-               
             </section>
         </div>
 
@@ -65,21 +68,13 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
        
         <!-- Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
-        <script src="js/jquery.scrollex.min.js"></script>
-        <script src="js/jquery.scrolly.min.js"></script>
-        <script src="js/skel.min.js"></script>
-        <script src="js/util.js"></script>
+        <script src="js/lib/jquery-ui.min.js"></script>
+        <script src="js/lib/jquery.scrollex.min.js"></script>
+        <script src="js/lib/jquery.scrolly.min.js"></script>
+        <script src="js/lib/skel.min.js"></script>
+        <script src="js/lib/util.js"></script>
         <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-        <script src="js/main.js"></script> 
-        <script>
-            $(document).ready(function(){
-                setTimeout(function () {
-                    window.location.href = "https://prospectave.io"; 
-                }, 7000); //will call the function after 7 secs. 
-            });
-        
-        </script>
+        <script src="js/lib/main.js"></script> 
         <style>
             .loader {
                 border: 16px solid #f3f3f3;
