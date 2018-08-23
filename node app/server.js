@@ -65,8 +65,8 @@ var https = require('https');
 
 /* handling HTTPS */
 const options = {
-    key: fs.readFileSync('./../../ssl/keys/9f016_d0a13_46664a744423c921776ce2dde252b120.key').toString(),
-    cert: fs.readFileSync('./../../ssl/certs/prospectave_io_9f016_d0a13_1530835199_f77b28e7908bb77ad4e6cbe0ea03205e.crt').toString()
+    key: fs.readFileSync('./../../ssl/keys/b18a6_58805_89cdb2608c1a3a3855eef88c1a65e5e4.key').toString(),
+    cert: fs.readFileSync('./../../ssl/certs/prospectave_io_b18a6_58805_1542239999_9f131f9c34a6ce7b49d995fc70855d12.crt').toString()
 };
 
 https.createServer(options, app).listen(1738);
@@ -89,15 +89,14 @@ let db = new sqlite3.Database('./clubs.db', (err) => {
 let postQuery = 'INSERT INTO club_status VALUES ';
 let placeholders = '(?,?,?,?,?,?)';
 // part of a query
-let afterToday = "DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) >= date('now','localtime')";
+let afterToday = "DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) >= date('now','localtime', '-4 hours')";
 // gets all records from club_status after today
 let selectAll = 'SELECT * FROM club_status WHERE ' + afterToday + ' ORDER BY date';
 // get records from club_status for a particular club (after today)
 let selectByClub = 'SELECT * FROM club_status WHERE club_name = ? and ' + afterToday + ' ORDER BY date';
-// delete a given event (club and date needed)
+// delete a given event (club and date needed) 
 let deleteEventsQuery = 'DELETE from club_status WHERE date = ? and club_name = ?';
-
-
+let selectPast = "SELECT * FROM club_status WHERE DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) < date('now','localtime', '-4 hours') ORDER BY date";
 
 /* gets the current clubs from the DB */
 /* allow ALL domains */
@@ -108,6 +107,18 @@ app.get('/status', cors(), (request, response) => {
             throw err;
         }
         //console.log("GET: sent " + rows.length + " rows.");
+        response.send(rows);
+    });
+})
+
+/* downloads all PAST data */
+app.get('/paststatus', cors(), (request, response) => { 
+    //console.log('Hello getter! Current date: ' + currentDate());
+    db.all(selectPast, [], (err, rows) => {
+        if(err){
+            throw err;
+        }
+        console.log("Past data: sent " + rows.length + " rows.");
         response.send(rows);
     });
 })

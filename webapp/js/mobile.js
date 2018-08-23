@@ -17,7 +17,7 @@ let clubs = ["terrace", "tower", "colonial", "cannon", "quadrangle", "ti", "ivy"
 
 $(document).ready(function(){
     dateDisplay = $("#date_display");
-    window.date = moment(Date.now()).format('MM/DD/YYYY'); // set date to today's date
+    window.date = getToday(); // set date to today's date
     mapDate = window.date;
     displayDate();
     download(); // Download THIS week's data
@@ -235,7 +235,7 @@ function shiftDate(val){
     var date_moment = moment(Date.parse(mapDate));
     var mapdate = date_moment.format('MM/DD/YYYY');
 
-    var today = moment(Date.now()).format('MM/DD/YYYY');
+    var today = getToday();
 
     /* Don't let users go to past days */
     if (today == mapdate && val == -1) {
@@ -338,4 +338,9 @@ function hideInfo() {
     infobar_mobile.style.left="-100vw";
 
     infobar_mobile.style.background="#19273F";
+}
+
+// returns today but shifted 4 hours back
+function getToday(){
+    return moment(Date.now()).subtract(4, "hours").format('MM/DD/YYYY');
 }

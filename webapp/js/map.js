@@ -1,6 +1,9 @@
 /* GLOBAL date->array store */
 window.data = {};
 window.date;
+
+window.downloadedPast = false;
+
 window.filter;
 var dateDisplay;
 var mapDate;
@@ -18,12 +21,11 @@ let clubs = ["terrace", "tower", "colonial", "cannon", "quadrangle", "ti", "ivy"
 // initialize code after the DOM has loaded
 $(document).ready(function(){
     dateDisplay = $("#date_display");
-    window.date = moment(Date.now()).format('MM/DD/YYYY'); // set date to today's date
+    window.date = getToday(); // set date to today's date
     mapDate = window.date;
     var tempdate = new Date(window.date);
     dateDisplay.html(window.date + " (" + weekdays[tempdate.getDay()] + ")");
-    download(); // Download THIS week's data
-    console.log(window.innerWidth);
+    download("status"); // Download THIS week's data
 
     // initialize the calendar object
     vanillaCalendar.init({
@@ -53,15 +55,19 @@ $(document).ready(function(){
     });
 
     document.body.onkeyup = function(e){
-    	if ($('#intro').visible(true)) {
-		    if(e.keyCode == 37){
-		        shiftDate(-1);
-		    }
-		    if(e.keyCode == 39){
-		        shiftDate(1);
-		    }
-		}
-	}
+        if ($('#intro').visible(true)) {
+            if(e.keyCode == 37){
+                shiftDate(-1);
+            }
+            if(e.keyCode == 39){
+                shiftDate(1);
+            }
+            // TESTING ONLY
+             if(e.keyCode == 68){
+                downloadPast();
+            }
+        }
+    }
 
     /* Set all as default filter */  
     var $radios = $('input:radio[name=radio-filter]');  
@@ -79,7 +85,7 @@ $(document).ready(function(){
             });
 
             $("#" + c + "_wrap").mouseout(function() {
-               hideInfo();
+                hideInfo();
             });
         }(clubs[i]);
     }
@@ -140,7 +146,7 @@ function showDatesWithEvents() {
         showPassListEvents();
         return;
     }
-    
+
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
         if(currentDay != null){
@@ -152,14 +158,23 @@ function showDatesWithEvents() {
 }
 
 //downloads ALL data from the Node server
-function download(){
+function download(when){
     console.log("Downloading");
     $.ajax({
-        url: "https://www.prospectave.io:1738/status",
+        url: "https://www.prospectave.io:1738/" + when,
         type: 'GET',   
         contentType: 'json',    
         success: function(res) {
             downloadSuccess(res);
+            if(when == "paststatus"){
+                for (var date in window.data) {
+                    var currentDay = document.getElementById(date);
+                    if(currentDay != null){
+                        currentDay.classList.remove('vcal-date--disabled');
+                        currentDay.classList.add('vcal-date--active');
+                    }
+                }
+            }
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -260,10 +275,11 @@ function shiftDate(val){
     var date_moment = moment(Date.parse(mapDate));
     var mapdate = date_moment.format('MM/DD/YYYY');
 
-    var today = moment(Date.now()).format('MM/DD/YYYY');
+    var today = getToday();
 
     /* Don't let users go to past days */
-    if (today == mapdate && val == -1) {
+    if (today == mapdate && val == -1 && !window.downloadedPast) {
+        downloadPast();
         return;
     }
 
@@ -282,7 +298,7 @@ function shiftDate(val){
         var monthChange = vanillaCalendar.monthDiff();
         if (monthChange == 0)
             monthChange += val;
-    
+
         vanillaCalendar.changeMonth(monthChange);
     }
 
@@ -347,12 +363,12 @@ function showInfo(club) {
                 out = '<img id="clublogo" src="images/Logos/' + club.toLowerCase() + '.png"/>';
                 out += "<div class='inner' id='infobarinner'> <nav> <ul> <li class='club_name'>"+ c + "</li> <li class='info-date'><span id='info-span'>Date: " + date + "</span></li> <li class='info-status'><span id='info-span'>Status: " + status + "</span></li>";
             }
-        
+
             if(info != ""){ //only add Info section if there is info
                 out += "<li class='info-moreinfo'> <span id='info-span'>More Info: <span style='font-style:italic'>" + info + "</span></span></li>"
             }
             out += "</ul> </nav> </div>";
-            
+
             infobar.innerHTML = out;
             sidebar.style.display="none";
             infobar.style.display="";
@@ -372,9 +388,9 @@ function showInfo(club) {
 function hideInfo() {
     var infobar = document.getElementById("infobar");
     var sidebar = document.getElementById("sidebar");
-    
+
     infobar.innerHTML = "";
-    
+
     var w = window.innerWidth;
     if(w >= 1100){ // side bar
         infobar.style.left = "0";
@@ -388,3 +404,32 @@ function hideInfo() {
     infobar.style.background="#19273F";
 }
 
+// returns today but shifted 4 hours back
+function getToday(){
+    return moment().subtract(4, "hours").format('MM/DD/YYYY');
+}
+
+// triggered when clicking on the cloud download button
+function downloadPast(){
+    if(window.downloadedPast) return;
+    window.downloadedPast = true;
+    
+    // Add click listeners to all past dates
+    this.pastDates = document.querySelectorAll(
+      '[data-calendar-status="past"]'
+    )
+    for (var i = 0; i < this.pastDates.length; i++) {
+      this.pastDates[i].addEventListener('click', function (event) {
+        var picked = document.querySelectorAll(
+          '[data-calendar-label="picked"]'
+        )[0]
+        console.log("Picked a past date!");
+        changeDate(this);
+        vanillaCalendar.removeActiveClass()
+        this.classList.add('vcal-date--selected')
+        vanillaCalendar.monthChange = 0;
+      })
+    }
+    
+    download("paststatus");
+}

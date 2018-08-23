@@ -58,8 +58,8 @@ const mapping = {
     "bwk" : "Charter",
     "lumbroso" : "Colonial",
     "akling" : "Cap",
-    "jywei" : "Tower",
-    "lanceg" : "Cloister",
+    "jywei" : "Terrace",
+    "lanceg" : "Tower",
     
     // COS 333 Staff
     "bwk": "Tower",
