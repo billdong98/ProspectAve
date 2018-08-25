@@ -20,12 +20,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
-
-        <!-- REMOVE ON PRODUCTION, TESTING ONLY -->
-        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-        <meta http-equiv="Pragma" content="no-cache" />
-        <meta http-equiv="Expires" content="0" />
-
         <!-- Favicons! -->
         <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
         <link rel="icon" href="images/favicon/favicon-16x16.png" sizes="16x16">
@@ -107,7 +101,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             </div>
                         </section>
                         <section>
-
+                            <!-- What is displayed when no event exists -->
                             <div id="register_panel">
                                 <h2 id="reg_date_info"></h2>
                                 <h3 id="no_event">There's no event registered for this date. <br><br>Would you like to add one?</h3>
@@ -115,6 +109,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 <button class="officerbutton button special" id="add_button"><i class="far fa-calendar-plus"></i>&nbsp;Add event</button>
                             </div>
 
+                            <!-- What is displayed when an event already exists, or when editing begins -->
                             <div id="event_panel">
                                 <ul class="contact" id="club_info">
                                     <li>
@@ -141,7 +136,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     <li>
                                         <h3>Description:</h3>
                                         <span id="description_info">You should never be able to see this.</span>
-                                        <textarea id="edit_description" placeholder="Enter a description (ie: theme) here" rows="4" maxlength="150" style="display:none"></textarea>
+                                        <textarea id="edit_description" placeholder="Enter a description (e.g.: theme) here" rows="4" maxlength="150" style="display:none"></textarea>
                                     </li>
                                     <li id="poster_info_li">
                                         <h3>Posted by</h3>
@@ -151,11 +146,22 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                         <h3>Post date</h3>
                                         <span id="postdate_info"></span>
                                     </li>
+                                    <li id="image_info_li">
+                                        <h3>Image</h3>
+                                        <span id="image_info">none</span>
+                                    </li>
                                     <li>
+                                        <!-- For editing/adding -->
                                         <div id="edit_buttons" style="display:none">
+                                            <div style="margin-bottom: 25px">
+                                            <input type="file" value="" id="image-upload" name="uploadedImage" accept="image/*"/>
+                                            <label for="image-upload" id="upload-label" class="icon fa-upload fa-lg">UPLOAD</label><p id="file-disp">No file uploaded</p>
+                                            </div>
+
                                             <button class="officerbutton button special buttonspace" id='submit_edit'><i class="far fa-calendar-plus"></i>&nbsp;Submit</button>
                                             <button class="officerbutton button special buttonspace" id='cancel_edit'><i class="far fa-ban"></i>&nbsp;Cancel</button>
                                         </div>
+                                        <!-- For normal display -->
                                         <div id="normal_buttons">
                                             <button class="officerbutton button special buttonspace" id='edit_info'><i class="far fa-edit" ></i>&nbsp;Edit</button>
                                             <button class="officerbutton button special buttonspace" id="delete_info"><i class="far fa-trash-alt"></i>&nbsp;Delete</button>

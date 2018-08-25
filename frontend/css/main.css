@@ -1898,7 +1898,7 @@ button,
     background-color: transparent;
     border: solid 1px !important;
     border-color: rgba(255, 255, 255, 0.15) !important;
-    border-radius: 3em;
+    border-radius: 1.5em;
     color: #ffffff !important;
     cursor: pointer;
     display: inline-block;
@@ -2832,7 +2832,7 @@ ul.contact {
 
 ul.contact > li {
     padding: 0;
-    margin: 1.5em 0 0 0;
+    margin: .7em 0 0 0;
 }
 
 ul.contact > li:first-child {

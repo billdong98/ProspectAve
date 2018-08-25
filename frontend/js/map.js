@@ -195,7 +195,7 @@ function downloadSuccess(rows){
     update(window.date);
 }
 
-/* Uses the mapping in window.data and applies it to each of the clubs */
+/* Uses the mapping in window.data and applies it to each of the clubs on the map */
 function update(date){
     var status = window.data[date];
 
@@ -210,6 +210,7 @@ function update(date){
         return;
     }
 
+    // iterate over all events for this date
     for(var j=0; j< status.length; j++){
         var row = status[j];
         var club = row["club_name"];
@@ -310,6 +311,7 @@ function showInfo(club) {
         var row = rows[i];
         var name = row["club_name"].toLowerCase();
         infobar.style.color="black";
+        // find the event entry 
         if(name === club || (club === "ti" && name === "tiger inn")){
             var status = row["status"];
             var info = row["info"];
@@ -335,7 +337,7 @@ function showInfo(club) {
             }
             if(w >= 1100.1){ // SIDE BAR
                 infobar.style.top = "0";
-                out = '<div class="info_container"><img src="images/Logos/' + club.toLowerCase() + '.png"/><p id="infobar_name">' + c + "</p></div>";
+                out = '<div class="info_container"><img class="info-logo" src="images/Logos/' + club.toLowerCase() + '.png"/><p id="infobar_name">' + c + "</p></div>";
                 out+="<div class='inner' id='infobarinner'> <nav> <ul> <li class='info-date'><span id='info-span'>Date: " + date + "</span></li> <li class='info-status'><span id='info-span'>Status: " + status + "</span></li>"
             } else { // TOP info bar view
                 infobar.style.left = "0";
@@ -346,6 +348,14 @@ function showInfo(club) {
             if(info != ""){ //only add Info section if there is info
                 out += "<li class='info-moreinfo'> <span id='info-span'>More Info: <span style='font-style:italic'>" + info + "</span></span></li>"
             }
+
+            // add image
+            if(row["image"] != undefined){
+                var src = "https://prospectave.io/uploads/" + row["image"];
+                out += "<li class='side-image-wrap'><img id='flyer-image' src='" + src + "'></li>";
+            }
+
+            // close
             out += "</ul> </nav> </div>";
 
             infobar.innerHTML = out;
@@ -358,6 +368,7 @@ function showInfo(club) {
             } else {
                 infobar.style.left = "0";
             }
+
             break;
         }
     }
@@ -381,6 +392,7 @@ function hideInfo() {
 
     sidebar.style.display="";
     infobar.style.background="#19273F";
+    $("#image-hover").remove();
 }
 
 // returns today but shifted 4 hours back
@@ -393,17 +405,17 @@ function setupPast(){
     // Add click listeners to all past dates
     this.pastDates = document.querySelectorAll(
       '[data-calendar-status="past"]'
-    )
+      )
     for (var i = 0; i < this.pastDates.length; i++) {
       this.pastDates[i].addEventListener('click', function (event) {
         var picked = document.querySelectorAll(
           '[data-calendar-label="picked"]'
-        )[0]
+          )[0]
         console.log("Picked a past date!");
         changeDate(this);
         vanillaCalendar.removeActiveClass()
         this.classList.add('vcal-date--selected')
         vanillaCalendar.monthChange = 0;
-      })
-    }
+    })
+  }
 }

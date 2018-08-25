@@ -23,10 +23,40 @@ $(document).ready(function(){
         minDate: 0
         // addDates: [today, tomorrow] PUT IN CURRENT CHOICES
     });
+    $("#image-upload").change(function (){
+     selectFile();
+    });
     download();
-
-    updateDisp(new Date());
+    
+    // counter 4 hour offset
+    $(".vcal-date--today").removeClass("vcal-date--today");
+    var td = moment().format('MM/DD/YYYY');
+    currentDay = document.getElementById(td);
+    currentDay.classList.add('vcal-date--today');
+    currentDay.classList.add('vcal-date--selected');
 });
+
+//downloads the data for THIS club as json
+function download(){
+    console.log("Downloading");
+
+    $.ajax({
+        url: "https://www.prospectave.io:1738/officer_download/",
+        xhrFields: {
+            withCredentials: true
+        },
+        type: 'GET', 
+        crossDomain: true,
+        contentType: 'json',    
+        success: function(res) {
+            downloadSuccess(res);
+        },
+        error: function (xhr, status, error) {
+            alert("Couldn't download data!");
+            console.log(xhr);
+        }
+    }); 
+}
 
 // handles the results from the node server
 // Parameter: rows is a JSON object array
@@ -42,6 +72,7 @@ function downloadSuccess(json){
 
     var name = json["identity"]["netID"];
     var club = json["identity"]["club"];
+    window.club = club;
     $("#club_display").html(club + " Mass Upload Form");
 
     var rows = json["rows"];
@@ -87,27 +118,37 @@ function downloadSuccess(json){
 
     // highlight all the right dates
     showDatesWithEvents();
+
+    // load today
+    updateDisp(new Date());
 }
 
 // submits an edited set of data for an existing event  
-function submitEdit(date, status, desc){
+function submitEdit(obj){
+    var form = new FormData();
+    for (var key in obj) {
+        if(!obj.hasOwnProperty(key)) continue;
+        form.append(key, obj[key]);
+    }
+
+    console.log(form);
     console.log("Submitting edit");
-    if (date == "" || status == 0) {
+
+    if (form.d == "" || form.s == 0) {
         alert("Edit is incomplete!");
         return false;
     }
-    var json = {"c": window.club, "d": date, "s": status, "i": desc};
-    console.log(json);
 
     $.ajax({
         url: "https://www.prospectave.io:1738/edit",
-        type: 'POST',   
-        contentType: 'application/json',  
+        method: 'POST',   
+        processData: false,
+        contentType: false,  
         xhrFields: {
             withCredentials: true //send cookies
         },
         crossDomain: true,
-        data: JSON.stringify(json),
+        data: form,
         error: function (xhr, status, error) {
             console.log(xhr);
             console.log(error);
@@ -120,41 +161,25 @@ function submitEdit(date, status, desc){
     })   
 }
 
-// TODO: CHECK if the upload is DIFFERENT from OG !!
-
-//downloads the data for THIS club as json
-function download(){
-    console.log("Downloading");
-
-    $.ajax({
-        url: "https://www.prospectave.io:1738/officer_download/",
-        xhrFields: {
-            withCredentials: true
-        },
-        type: 'GET', 
-        crossDomain: true,
-        contentType: 'json',    
-        success: function(res) {
-            downloadSuccess(res);
-        },
-        error: function (xhr, status, error) {
-            alert("Couldn't download data!");
-            console.log(xhr);
-        }
-    }); 
-}
-
 // post an event given the defined JSON format
 function postEvents(obj){
+    var form = new FormData();
+    for (var key in obj) {
+        if(!obj.hasOwnProperty(key)) continue;
+        form.append(key, obj[key]);
+    }
+
     $.ajax({
         url: "https://www.prospectave.io:1738/officer_post",
-        type: 'POST',   
-        contentType: 'application/json',  
+        method: 'POST',   
+        processData: false,
+        contentType: false,
+        cache: false,  
         xhrFields: {
             withCredentials: true //send cookies
         },
         crossDomain: true,
-        data: JSON.stringify(obj), //stringify is important
+        data: form,
         error: function (xhr, status, error) {
             console.log(xhr);
             console.log(error);
@@ -175,18 +200,21 @@ function deleteEvent(date, club){
         console.log("User canceled delete");
         return;
     } 
-
-    var obj = {"d": date, "c" : club};
+    var form = new FormData();
+    form.append("d", date);
+    form.append("c", club);
 
     $.ajax({
         url: "https://www.prospectave.io:1738/delete",
         type: 'POST',   
-        contentType: 'application/json',  
+        processData: false,
+        contentType: false,
+        cache: false,  
         xhrFields: {
             withCredentials: true //send cookies
         },
         crossDomain: true,
-        data: JSON.stringify(obj), //stringify is important
+        data: form,
         error: function (xhr, status, error) {
             console.log(xhr);
             console.log(error);

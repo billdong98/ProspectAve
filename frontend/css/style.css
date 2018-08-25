@@ -448,17 +448,15 @@
     padding-top: 1em;
 }
 
-@media screen and (min-width: 1100.1px) {
-    #sidebar nav > ul > li {
-        margin-top: 1em;
-    }
-}
-
 .spotlights > section > .content {
     width: 100%;
 }
 
 @media screen and (min-width: 1100.1px) {
+    #sidebar nav > ul > li {
+        margin-top: 1em;
+    }
+
     #sidebar + #wrapper {
         margin-left: 14vw;
     }
@@ -472,7 +470,7 @@
         overflow-y: hidden;
     }
 
-    #sidebar img {
+    #sidebar #prospectavelogo, #sidebarlogo {
         height: 17vh;
         margin: auto;
         width: auto;
@@ -598,7 +596,7 @@ body {
         width: 12vw;
     }
 
-    #infobar img {
+    #infobar .info-logo {
         width: 80%;
     }
     
@@ -611,6 +609,11 @@ body {
 
     .inner .info-date, .info-status, .info-moreinfo {
         font-size: 1.2vw;
+    }
+
+    #flyer-image {
+        width: 100%;
+        margin-top: 15%;
     }
 }
 

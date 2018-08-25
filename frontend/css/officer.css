@@ -112,3 +112,44 @@ input[type="submit"], input[type="reset"] {
     padding: 0 1.5em;
     margin-right: 1em;
 }
+
+
+#image-upload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+/* Upload button */
+#image-upload + label {
+    font-size: 0.7em;
+    font-weight: 400;
+    padding: 0.6em;
+    border-radius: .8em;
+    font-family: 'Brandon Grotesque'; 
+    color: black;
+    background-color: white;
+    display: inline-block;
+    transition: ease .15s;
+    border: 1px solid white;
+}
+
+#image-upload:focus + label,
+#image-upload + label:hover {
+    background-color: #8CACE4;
+    color: white;
+}
+
+#file-disp {
+    margin: 0;
+    font-size: 14px;
+    margin-left: 10px;
+    display:inline-block;
+}
+
+li h3 {
+    margin-bottom: .2em;
+}

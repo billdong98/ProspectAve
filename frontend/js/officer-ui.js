@@ -79,7 +79,6 @@ function toggleForm() {
             }, 250);
         }).animate({'opacity': 1}, 250); 
 
-
     }
     else {
         x.style.display = "none";
@@ -129,9 +128,11 @@ $("input:radio[name=radio-edit-in]").click(function() {
 function updateDisp(date){    
     // format the date in two different ways
     var dateString = moment(date).format('MM/DD/YYYY');
+    if(window.current == dateString) return;
+    window.current = dateString;
     var formattedDate = moment(date).format("ddd, MMM Do");
 
-    closeEditing();
+    if($("#description_info").css('display') == "block") closeEditing();
 
     $('#edit_info').unbind('click');
     $('#delete_info').unbind('click');
@@ -156,12 +157,13 @@ function updateDisp(date){
 
         $("#register_panel").css('display','none');
         var club = row["club_name"];
-        window.club = club;
         var date = row["date"];
         var poster = row["poster"];
         var post_date = row["post_date"];
         var status = row["status"];
         var info = row["info"];
+        var image = row["image"];
+        if(image == "") image = "None";
         info = info.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
         $("#event_panel").animate({'opacity': 0}, 130, function () {  
@@ -173,11 +175,12 @@ function updateDisp(date){
             $("#description_info").html(info);
             $("#poster_info").html(poster);
             $("#postdate_info").html(post_date);  
+            $("#image_info").html(image);
         }).animate({'opacity': 1}, 130); 
 
         // set event listeners for these buttons
         $('#edit_info').click(function() {
-            loadEditing(dateString, status, info);
+            loadEditing(dateString, status, info, image);
         });
         $('#delete_info').click(function() {
             deleteEvent(date, club);
@@ -197,6 +200,7 @@ function addEvent(date){
         $("#description_info").css('display','none');
         $("#poster_info_li").css('display','none');
         $("#post_date_info_li").css('display','none');
+        $("#image_info_li").css('display','none');
 
         $("#edit_buttons").css('display', 'block');
         $("#normal_buttons").css('display', 'none');
@@ -216,9 +220,11 @@ function addEvent(date){
     $('#submit_edit').click(function() {
         var s = edit_status;
         var i = $("#edit_description").val();
+        var files = $("#image-upload").prop("files");
         console.log("Adding new event! " + s + " " + i);
         if(s != 0){
-            var obj = {"c": window.club, "d": [date], "s": s, "i": i};
+            var obj = {"c": window.club, "d": date, "s": s, "i": i, "uploadedImage": ""};
+            if(files.length > 0) obj["uploadedImage"] = files[0];
             postEvents(obj);
         } else {
             alert("Please select a status!");
@@ -229,7 +235,7 @@ function addEvent(date){
 // close the add event panel
 function closeAdd(){
     $("#register_panel").css('display','none');
-
+    $("#file-disp").text("No file uploaded");
     $("#register_panel").animate({'opacity': 0}, 130, function () {  
         $("#register_panel").css('display','block');
         $("#club_info").css('display', 'none');
@@ -238,21 +244,31 @@ function closeAdd(){
 }
 
 
+// TODO: Add file support here
 // opens the editing tools with the given status and description
-function loadEditing(date, status, description){
-    $("#description_info").css('display', 'none');
-    $("#status_info").css('display', 'none');
-    $("#normal_buttons").css('display', 'none');
-    $("#poster_info_li").css('display', 'none');
-    $("#post_date_info_li").css('display', 'none');
+function loadEditing(date, status, description, fileName){
+    $("#event_panel").animate({'opacity': 0}, 130, function () {  
+        $("#description_info").css('display', 'none');
+        $("#status_info").css('display', 'none');
+        $("#normal_buttons").css('display', 'none');
+        $("#poster_info_li").css('display', 'none');
+        $("#image_info_li").css('display', 'none');
+        $("#post_date_info_li").css('display', 'none');
 
-    $("#edit_buttons").css('display', 'block');
-    $("#edit_description").css('display', 'block');
-    $("#edit_description").val(description);
-    $("#edit_status").css('display', 'block');
+        $("#edit_buttons").css('display', 'block');
+        $("#edit_description").css('display', 'block');
+        $("#edit_status").css('display', 'block');
+    }).animate({'opacity': 1}, 130); 
 
     $("#radio-edit-" + status.toLowerCase()).click();
+    $("#edit_description").val(description);
+    if(fileName === "")
+        $("#file-disp").text("No file uploaded");
+    else 
+        $("#file-disp").text("File: " + fileName); 
+
     edit_status = status;
+    var oldFile = fileName;
 
     $('#cancel_edit').unbind('click');
     $('#cancel_edit').html('<i class="fas fa-ban"></i>&nbsp;Cancel');
@@ -265,34 +281,54 @@ function loadEditing(date, status, description){
     $('#submit_edit').click(function() {
         var s = edit_status;
         var i = $("#edit_description").val();
-        if(s != status || i != description){
-            submitEdit(date, s, i);
+        var obj = {"c" : window.club, "d": date, "s": edit_status, "i": description};
+        var files = $("#image-upload").prop("files");
+        var fileName = oldFile;
+        if(files.length > 0){
+            obj["uploadedImage"] = files[0];
+            fileName = files[0].name;
+        } else {
+            obj["uploadedImage"] = oldFile; 
+        }
+        
+        if(s != status || i != description || oldFile != fileName){ 
+            submitEdit(obj);
         } else {
             alert("No information was changed.");
         }
     });
 }
 
-
-// on date change, hide them.
-// on cancel, (add cancel button), hide? idkkk!
-// TODO: A LOT
 function closeEditing(){
     edit_status = 0;
     $('#submit_edit').unbind('click');
     $('#cancel_edit').unbind('click');
-
     $("#description_info").css('display', 'block');
     $("#status_info").css('display', 'block');
     $("#normal_buttons").css('display', 'block');
     $("#poster_info_li").css('display', 'block');
+    $("#image_info_li").css('display', 'block');
     $("#post_date_info_li").css('display', 'block');
-
     $("#edit_buttons").css('display', 'none');
     $("#edit_description").css('display', 'none');
+
     $("#edit_description").attr("placeholder", "Enter a description here");
     $("#edit_description").val("");
+    $("#image-upload").val('');
+    $("#file-disp").text("No file uploaded");
+
     $("#edit_status").css('display', 'none');
     edit_status = 0;
     clearEditRadios();
+}
+
+
+function selectFile(){
+    var file = $("#image-upload").prop("files")[0];
+    if(file.size > 4194304){
+        alert("File size must be smaller than 4 MB");
+        $("#image-upload").val('');
+        return;
+    }
+    $("#file-disp").text("File: " + file.name); 
 }
