@@ -40,48 +40,32 @@
     transition: ease 5s;
 }
 
-@media screen and (min-width: 1100.1px){
-    #sidebarlogo {
-        display: block !important;
-        position: relative !important;
-        top: 3.5% !important;
-        height: 17vh !important;
-        width: auto;
-    }
-    
-    #clubname {
-        display: block !important;
-        text-align: center;
-        font-size: 1.7vw;
-        color: white;
-        margin-top: 2vh;
-        line-height: 5vh;
-        margin-bottom: 0;
-        width: 100%
-    }
-    
-    .club_container{
-        margin: auto;
-    }
-
-    #sidebar > .inner {
-        margin-top: -24vh;
-    }
+/* SIDEBAR FORMATTING */
+#sidebarlogo {
+    display: block !important;
+    position: relative !important;
+    top: 3.5% !important;
+    height: 17vh !important;
+    width: auto;
 }
 
-@media screen and (max-width: 1100px){
-    #sidebarlogo {
-        display: block !important;
-        position: absolute !important;
-        left: 3% !important;
-    }
+#clubname {
+    display: block !important;
+    text-align: center;
+    font-size: 1.7vw;
+    color: white;
+    margin-top: 2vh;
+    line-height: 5vh;
+    margin-bottom: 0;
+    width: 100%
+}
 
-    #clubname {
-        position: absolute;
-        left: 12% !important;
-        font-size: 1.5em;
-        color: white;
-    }
+.club_container{
+    margin: auto;
+}
+
+#sidebar > .inner {
+    margin-top: -24vh;
 }
 
 input[type="submit"], input[type="reset"] {

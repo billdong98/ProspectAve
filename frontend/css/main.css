@@ -1613,14 +1613,6 @@ body {
     -ms-overflow-style: scrollbar;
 }
 
-@media screen and (max-width: 480px) {
-
-    html, body {
-        min-width: 320px;
-    }
-
-}
-
 body {
     background: #312450;
 }
@@ -1660,14 +1652,6 @@ body.is-loading *, body.is-loading *:before, body.is-loading *:after {
 
     body, input, select, textarea {
         font-size: 12pt;
-    }
-
-}
-
-@media screen and (max-width: 360px) {
-
-    body, input, select, textarea {
-        font-size: 11pt;
     }
 
 }
@@ -2247,50 +2231,7 @@ button:hover:active:after,
     opacity: 0;
 }
 
-@media screen and (max-width: 980px) {
 
-    .features {
-        display: block;
-    }
-
-    .features section {
-        border-top-width: 1px !important;
-        border-left-width: 0 !important;
-        width: 100%;
-    }
-
-    .features section:first-child {
-        border-top-width: 0 !important;
-    }
-
-}
-
-@media screen and (max-width: 736px) {
-
-    .features section {
-        padding: 2.5em 1.5em 0.1em 5.5em ;
-    }
-
-    .features section .icon {
-        left: 1.5em;
-        top: 2em;
-    }
-
-}
-
-@media screen and (max-width: 480px) {
-
-    .features section {
-        padding: 2em 1.5em 0.1em 1.5em ;
-    }
-
-    .features section .icon {
-        left: 0;
-        position: relative;
-        top: 0;
-    }
-
-}
 
 /* Form */
 
@@ -3304,30 +3245,6 @@ body.is-ie .wrapper.fullscreen {
     height: 100vh;
 }
 
-@media screen and (max-width: 1100px) {
-
-    .wrapper.fullscreen {
-        min-height: calc(100vh - 2.5em);
-    }
-
-    body.is-ie .wrapper.fullscreen {
-        height: calc(100vh - 2.5em);
-    }
-
-}
-
-@media screen and (max-width: 736px) {
-
-    .wrapper.fullscreen {
-        padding: 2em 0;
-        min-height: 0;
-    }
-
-    body.is-ie .wrapper.fullscreen {
-        height: auto;
-    }
-
-}
 
 .wrapper.fade-up > .inner {
     -moz-transform: translateY(0);
@@ -3485,23 +3402,6 @@ body.is-ie .wrapper.fullscreen {
     margin-left: 14vw;
 }
 
-@media screen and (max-width: 1100px) {
-
-    #sidebar + #wrapper {
-        margin-left: 0;
-        padding-top: 4.5em;
-    }
-
-}
-
-@media screen and (max-width: 736px) {
-
-    #sidebar + #wrapper {
-        padding-top: 0;
-    }
-
-}
-
 #header + #wrapper > .wrapper > .inner {
     margin: 0 auto;
 }
@@ -3512,13 +3412,6 @@ body.is-ie .wrapper.fullscreen {
     margin-left: 18em;
 }
 
-@media screen and (max-width: 1100px) {
-
-    #sidebar + #wrapper + #footer {
-        margin-left: 0;
-    }
-
-}
 
 #footer > .inner a {
     border-bottom-color: rgba(255, 255, 255, 0.15);
@@ -3540,7 +3433,7 @@ body.is-ie .wrapper.fullscreen {
 /* Sidebar */
 
 #sidebar {
-    padding: 2.5em 2.3vw 0.5em 2.3vw ;
+    padding: 2.5em 30px 0.5em 30px ;
     background: #272838;
     cursor: default;
     height: 100vh;
@@ -3550,7 +3443,7 @@ body.is-ie .wrapper.fullscreen {
     position: fixed;
     text-align: right;
     top: 0;
-    width: 14vw;
+    width: 200px;
     z-index: 10000;
 }
 
@@ -3819,76 +3712,6 @@ body.is-loading #sidebar nav ul li {
     -ms-transform: translateY(2em);
     transform: translateY(2em);
     opacity: 0;
-}
-
-@media screen and (max-width: 1100px) {
-
-    #sidebar {
-        height: 4.5em;
-        left: 0;
-        line-height: 4.5em;
-        overflow: hidden;
-        padding: 0;
-        text-align: center;
-        top: 0;
-        width: 100%;
-    }
-
-    #sidebar > .inner {
-        -moz-flex-direction: row;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-        flex-direction: row;
-        -moz-align-items: stretch;
-        -webkit-align-items: stretch;
-        -ms-align-items: stretch;
-        align-items: stretch;
-        height: inherit;
-        line-height: inherit;
-    }
-
-    #sidebar nav {
-        height: inherit;
-        line-height: inherit;
-    }
-
-    #sidebar nav ul {
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: -ms-flex;
-        display: flex;
-        height: inherit;
-        line-height: inherit;
-        margin: 0;
-    }
-
-    #sidebar nav ul li {
-        display: block;
-        height: inherit;
-        line-height: inherit;
-        margin: 0 0 0 2em;
-        padding: 0;
-    }
-
-    #sidebar nav a {
-        height: inherit;
-        line-height: inherit;
-        padding: 0;
-    }
-
-    #sidebar nav a:after {
-        background-image: none;
-        background-color: #E4923C;
-    }
-
-}
-
-@media screen and (max-width: 736px) {
-
-    #sidebar {
-        display: none;
-    }
-
 }
 
 /* Progress Bar */
