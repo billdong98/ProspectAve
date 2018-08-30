@@ -128,7 +128,7 @@ h1.major:after{
     margin-bottom: 15px;
 }
 
- .inner .info {
+.inner .info {
     font-size: 20px;
 }
 
@@ -207,7 +207,7 @@ body.is-loading #infobar_mobile nav ul li {
 }
 
 #mon_span {
-margin-left: -3.3vw
+    margin-left: -3.3vw
 }
 
 @media screen and (min-width: 768px){
@@ -216,8 +216,8 @@ margin-left: -3.3vw
     }
     
     #v-cal .vcal-week span {
-    padding-left:6.0vw;
-    padding-right: 6.0vw;
+        padding-left:6.0vw;
+        padding-right: 6.0vw;
     }
 }
 
@@ -229,6 +229,14 @@ margin-left: -3.3vw
 
 #filter-mobile-span {
     font-size: 3.4vw;
+}
+
+#swipe-left {
+    position: absolute;
+    top: 91vh;
+    text-align: center;
+    left: 0;
+    right: 0;
 }
 
 #filter-mobile {

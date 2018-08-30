@@ -155,24 +155,19 @@ function processingRoutine() {
         else if (triggerElementID=='mobile_bar') 
             trigger(1);
     } else if (swipeDirection == 'right')
-        if (triggerElementID=='mobile_bar') 
-            trigger(-1);
+    if (triggerElementID=='mobile_bar') 
+        trigger(-1);
 }
 
 // triggers a shift in date in the date bar
 function trigger(val){
-    if(isToday() && val == -1){ //trying to go into past
-        touchCancel(event, 1);
-        return;
-    }
     
     var canShift = shiftDate(val);
     if(val == 1) { // swipe left, go to next day
         var firstPos = window.innerWidth * -1.5;
         var offScreen = "120vw";
     } else if(val == -1){
-        //TODO: HANDLE CASE WHEN ITS TODAY
-        // i.e. cant move back
+
         var firstPos = window.innerWidth * 1.5;
         var offScreen = "-120vw";
     }
@@ -212,7 +207,7 @@ function trigger(val){
         // Animation complete.   
         $( "#date_display" ).css("margin-left", offScreen);
 
-            displayDate();
+        displayDate();
 
         $( "#date_display" ).animate({
             marginLeft: 0
@@ -221,12 +216,7 @@ function trigger(val){
         });
     });
 
-    /* Don't let users go to past days */
-    if (isToday()) {
-        $("#arrow-left").css("display", "none");
-    } else { // show the arrow left
-         $("#arrow-left").css("display", "");
-    }
+    $("#arrow-left").css("display", "");
 }
 
 
