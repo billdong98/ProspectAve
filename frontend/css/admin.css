@@ -1,0 +1,81 @@
+td {
+	color: white;
+	font-weight: 300;
+}
+
+th {
+	padding: 0.75em 0.75em 0.75em 0.75em !important;
+	font-weight: 400 !important;
+	text-transform: uppercase;
+	text-decoration: underline;
+}
+
+#club-col{
+
+}
+#date-col{
+
+}
+#status-col{
+
+}
+
+#info-col{
+	width: 500px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* EVENT INPUT */
+#club-select {
+	width: 12%;
+	display: inline-block;
+	height: 2.5em;
+}
+#status-select {
+	margin-left: 2%;
+	width: 12%;
+	display: inline-block;
+	height: 2.5em;
+}
+#date-input {
+	margin-left: 2%;
+	width: 16%;
+	display: inline-block;
+	color: white;
+	background-color: transparent;
+	    border-radius: 0.25em;
+    border: solid 1px rgba(255, 255, 255, 0.15);
+    height: 2.5em;
+}
+
+#add-form {
+	margin-bottom: 2em;
+}
+#info-input {
+	margin-top: 10px;
+	margin-left: 0;
+	width: 50%;
+	display: inline-block;
+	color: white;
+	height: 2.5em;
+}
+
+#image-upload {
+	margin-left: 2%;
+	display: inline-block;
+	width: 20%;
+}
+
+#submit-button {
+	margin-left: .5%;
+	display: inline-block;
+	width: 15%; 
+	height: 3.5em;
+	border-radius: 10px;
+	font-size: 13px;
+	text-align: center;
+	padding: .3em 1em .3em 1em;
+	line-height: 1em;
+}

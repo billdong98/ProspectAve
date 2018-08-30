@@ -16,7 +16,7 @@ const asyncHandler = require('express-async-handler');
 const fileUpload = require('express-fileupload');
 const util = require('util');
 
-var whitelist = ['https://prospectave.io', 'https://prospectave.io:1738', 'https://www.prospectave.io', 'undefined', undefined];
+var whitelist = ['https://prospectave.io', 'https://prospectave.io:1738', 'https://www.prospectave.io', 'undefined', 'null', undefined];
 
 var corsOptions = {
   origin: function (origin, callback) {
@@ -145,9 +145,9 @@ let placeholders = '(?,?,?,?,?,?,?)';
 //let selectPast = "SELECT * FROM club_status WHERE DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) < date('now','localtime', '-4 hours') ORDER BY date";
 
 // gets all records from club_status after today
-let selectAll = 'SELECT * FROM club_status ORDER BY date';
+let selectAll = 'SELECT * FROM club_status ORDER BY DATE(substr(date,7,4)||"-"||substr(date,1,2)||"-"||substr(date,4,2))';
 // get records from club_status for a particular club (after today)
-let selectByClub = 'SELECT * FROM club_status WHERE club_name = ? ORDER BY date';
+let selectByClub = 'SELECT * FROM club_status WHERE club_name = ? ORDER BY DATE(substr(date,7,4)||"-"||substr(date,1,2)||"-"||substr(date,4,2))';
 // delete a given event (club and date needed) 
 let deleteEventsQuery = 'DELETE from club_status WHERE date = ? and club_name = ?';
 
@@ -166,7 +166,7 @@ app.get('/status', cors(), asyncHandler(async (request, response, next) => {
 app.get('/login', (request, response) => { 
     if(request.session.isPopulated) {
         console.log(`Logged in: ${request.session.id}`);
-        auth.redirectOfficer(response);
+        auth.redirectOfficer(response, request.session.id);
         // redirect to officer page
         return;
     }
@@ -181,13 +181,13 @@ app.get('/login', (request, response) => {
                     request.session.id = result;
                     console.log("Created cookie for: " + request.session.id);
                     console.log(`Logged in: ${request.session.id}`);
-                    auth.redirectOfficer(response);
+                    auth.redirectOfficer(response, request.session.id);
                     return;
                 }
             } else {
-                console.log("Bad auth token");
+                console.log("Invalid auth token");
                 response.status(500);
-                response.send("Bad auth token.");
+                response.send("Invalid auth token.");
             }
         }.bind({request: request, response: response});
     // no ticket, need to authenticate
@@ -207,14 +207,15 @@ app.get('/officer_download', asyncHandler(async (request, response, next) => {
     var identity = auth.identity(request);
     
     if(identity == null) {
-        console.log("Failed attempt to get club data");
+        console.log("Unauthorized attempt to get club data");
         response.json({"identity": null, "rows": null});
         return;
-    } else { 
+    } else { // officer, admin
         var data = {"identity": identity, "rows" : null};
-        //console.log("Sending data for (" + identity.netID + ", club: " + identity.club + ")");
-        // get row for this club
-        data.rows = await db.allParamsAsync(selectByClub, [identity.club]);
+        if(identity.club == "ADMIN")
+            data.rows = await db.allAsync(selectAll);
+        else // get row for this club
+            data.rows = await db.allParamsAsync(selectByClub, [identity.club]);
         response.json(data);
     }  
 }))
@@ -225,7 +226,8 @@ app.post('/officer_post', asyncHandler(async (request, response, next) => {
     // json object input 
     var obj = request.body;
     var club = identity.club;
-    // array of date strings
+    if(club == "ADMIN") club = obj.c;
+    // CSV of date strings
     var dates = obj.d;
     var netID = identity.netID;
     var status = obj.s;
@@ -238,7 +240,7 @@ app.post('/officer_post', asyncHandler(async (request, response, next) => {
     console.log(obj);
     console.log(request.files);
 
-    // split the array up
+    // split the array (or single date) up
     dates = dates.split(",");
 
     var filename = "";
@@ -248,7 +250,7 @@ app.post('/officer_post', asyncHandler(async (request, response, next) => {
         await f.mv('/home/kidstarter/public_html/prospectave/uploads/' + f.name);
     }
     
-    // TODO delete rows if they already exist 
+    // TODO: delete rows if they already exist 
     
     // construct query and input for each element in dates
     for(var i=0; i<dates.length;i++){
@@ -273,7 +275,7 @@ app.post('/delete', asyncHandler(async (request, response, next) => {
     var data = [obj.d, obj.c];
 
     // if somehow you're trying to delete another club's data
-    if(identity.club != obj.c){
+    if(identity.club != obj.c && identity.club != "ADMIN"){
         console.log("Club: " + identity.club + ", Input: " + obj.c + " mismatch!");
         response.send("You're not authorized to delete that club's event.");
         return;
@@ -302,7 +304,7 @@ app.post('/edit', asyncHandler(async (request, response, next) => {
 
     if (obj.uploadedImage != undefined) {
        filename = obj.uploadedImage;
-    }
+   }
 
     if(request.files){ // only called in the single upload case (no bulk)
         let f = request.files.uploadedImage;
