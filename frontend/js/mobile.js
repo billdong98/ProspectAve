@@ -24,7 +24,6 @@ $(document).ready(function(){
 
 
     vanillaCalendar.init({
-        disablePastDays: true
     });
 
     var infobar_mobile = document.getElementById("infobar_mobile");
@@ -52,24 +51,20 @@ $(document).ready(function(){
 
     $("#radio-puid-mobile").click(function(){
         window.filter = "PUID";
-        showPUIDEventsMobile();
+        showPUIDEvents();
     });
     $("#radio-pass-mobile").click(function(){
         window.filter = "PassList";
-        showPassListEventsMobile();
+        showPassListEvents();
     });
 
     /* Set all as default filter */  
     var $radios = $('input:radio[name=radio-filter]');  
     $radios.filter('[value=All]').prop('checked', true);
-    
-    if (isToday()) {
-        $("#arrow-left").css("display", "none");
-    }
 });
 
 // Colors calendar if date has a PUID event
-function showPUIDEventsMobile() {
+function showPUIDEvents() {
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
         if(currentDay != null){
@@ -88,7 +83,7 @@ function showPUIDEventsMobile() {
 }
 
 // Colors calendar if date has a Pass/List event
-function showPassListEventsMobile() {
+function showPassListEvents() {
     for (var date in window.data) {
         var currentDay = document.getElementById(date);
         if(currentDay != null){
@@ -237,11 +232,6 @@ function shiftDate(val){
 
     var today = getToday();
 
-    /* Don't let users go to past days */
-    if (today == mapdate && val == -1) {
-        return false;
-    }
-
     var currentDay = document.getElementById(window.date);
     if (currentDay != null)
         currentDay.classList.remove('vcal-date--selected');
@@ -286,7 +276,7 @@ function showInfo(club) {
 
     // data for TODAY
     var rows = window.data[window.date];
-
+    if(rows == undefined) return;
     for(var i=0; i<rows.length; i++){
         var row = rows[i];
         var name = row["club_name"].toLowerCase();
@@ -318,9 +308,10 @@ function showInfo(club) {
             out += "<div class='inner'> <nav> <ul> <li class='club_name'>"+ c + "</li> <li class='info'>Date: " + date + "</li> <li class='info'>Status: " + status + "</li>";
             
             if(info != ""){
-                out += "<li class='info'>More Info: <span style='font-style:italic'>" + info + "</span></li> </ul> </nav> </div>"
+                out += "<li class='info'>More Info: <span style='font-style:italic'>" + info + "</span></li>";
             }
             
+            out += "</ul></nav></div><div id='swipe-left'><span style='font-size: 1.7em'>&#8249;</span> Swipe to close</div>";
             infobar_mobile.innerHTML = out;
             infobar_mobile.style.display="";
 

@@ -8,8 +8,8 @@ function verify(ticketID, callback){
     //console.log(`https://fed.princeton.edu/cas/validate?service=${serviceURL}&ticket=${ticketID}`);
     let validateURL = `https://fed.princeton.edu/cas/validate?service=${serviceURL}&ticket=${ticketID}`
     https.get(validateURL,
-              (res,d)=>
-              {
+      (res,d)=>
+      {
         let body = "";
         res.setEncoding("utf8");
         res.on('data',(d) => {body+=d})
@@ -27,32 +27,35 @@ function verify(ticketID, callback){
 
 function redirect(response){
     response.writeHead(301,
-                       {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/redirect/`}
-                      );
+       {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/redirect/`}
+       );
     response.end();
 }
 
 
-function redirectOfficer(response){
-    response.writeHead(301,
-                       {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/officer.html`}
-                      );
+function redirectOfficer(response, netID){
+    if(getClub(netID) == "ADMIN"){
+        response.writeHead(301, {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/admin.html`});
+    } else {
+        response.writeHead(301, {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/officer.html`});
+    }
     response.end();
 }
+
 
 function redirectFailedAttempt(response){
     response.writeHead(301,
-                       {Location: `https://prospectave.io/failed_login.html`});
+       {Location: `https://prospectave.io/failed_login.html`});
     response.end();
 }
 
 const mapping = {
-    // Test
-    "mman" : "Cap",
-    "wzdong" : "Tower",
-    "junep" : "Colonial",
-    "yangt" : "Cap",
-    "bliang" : "Cannon",
+    // ProspectAve team
+    "mman" : "ADMIN",
+    "wzdong" : "ADMIN",
+    "junep" : "ADMIN",
+    "yangt" : "ADMIN",
+    "bliang" : "ADMIN",
 
     // ACTUAL OFFICERS
     // Charter
@@ -139,7 +142,7 @@ function identity(request){
 module.exports = {
     redirect : function(res){ redirect(res)},
     verify: function(ticketID, callback){verify(ticketID, callback)},
-    redirectOfficer: function(res){ redirectOfficer(res)},
+    redirectOfficer: function(res, id){ redirectOfficer(res, id)},
     getClub: function(netID){return getClub(netID)},
     identity: function(request){return identity(request)},
     redirectFailedAttempt: function(res){redirectFailedAttempt(res)}

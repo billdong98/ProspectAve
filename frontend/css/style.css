@@ -2,8 +2,8 @@
 @font-face {
     font-family: 'Brandon Grotesque';
     src: url('../fonts/BrandonGrotesque-ThinItalic.woff') format('woff'),
-        url('../fonts/BrandonGrotesque-ThinItalic.tff') format('truetype'),
-        url('../fonts/BrandonGrotesque-ThinItalic.woff2') format('woff2');
+    url('../fonts/BrandonGrotesque-ThinItalic.tff') format('truetype'),
+    url('../fonts/BrandonGrotesque-ThinItalic.woff2') format('woff2');
     font-weight: 100;
     font-style: italic;
 }
@@ -11,8 +11,8 @@
 @font-face {
     font-family: 'Brandon Grotesque';
     src: url('../fonts/BrandonGrotesque-LightItalic.woff') format('woff'),
-        url('../fonts/BrandonGrotesque-LightItalic.tff') format('truetype'),
-        url('../fonts/BrandonGrotesque-LightItalic.woff2') format('woff2');
+    url('../fonts/BrandonGrotesque-LightItalic.tff') format('truetype'),
+    url('../fonts/BrandonGrotesque-LightItalic.woff2') format('woff2');
     font-weight: 300;
     font-style: italic;
 }
@@ -20,8 +20,8 @@
 @font-face {
     font-family: 'Brandon Grotesque';
     src: url('../fonts/BrandonGrotesque-Regular.woff') format('woff'),
-        url('../fonts/BrandonGrotesque-Regular.tff') format('truetype'),
-        url('../fonts/BrandonGrotesque-Regular.woff2') format('woff2');
+    url('../fonts/BrandonGrotesque-Regular.tff') format('truetype'),
+    url('../fonts/BrandonGrotesque-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -29,8 +29,8 @@
 @font-face {
     font-family: 'Brandon Grotesque';
     src: url('../fonts/BrandonGrotesque-Light.woff') format('woff'),
-        url('../fonts/BrandonGrotesque-Light.tff') format('truetype'),
-        url('../fonts/BrandonGrotesque-Light.woff2') format('woff2');      
+    url('../fonts/BrandonGrotesque-Light.tff') format('truetype'),
+    url('../fonts/BrandonGrotesque-Light.woff2') format('woff2');      
     font-weight: 300;
     font-style: normal;
 }
@@ -38,8 +38,8 @@
 @font-face {
     font-family: 'Brandon Grotesque';
     src: url('../fonts/BrandonGrotesque-RegularItalic.woff') format('woff'),
-        url('../fonts/BrandonGrotesque-RegularItalic.tff') format('truetype'),
-        url('../fonts/BrandonGrotesque-RegularItalic.woff2') format('woff2');
+    url('../fonts/BrandonGrotesque-RegularItalic.tff') format('truetype'),
+    url('../fonts/BrandonGrotesque-RegularItalic.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;
 }
@@ -47,8 +47,8 @@
 @font-face {
     font-family: 'Brandon Grotesque';
     src: url('../fonts/BrandonGrotesque-Thin.woff') format('woff'),
-        url('../fonts/BrandonGrotesque-Thin.tff') format('truetype'),
-        url('../fonts/BrandonGrotesque-Thin.woff2') format('woff2');
+    url('../fonts/BrandonGrotesque-Thin.tff') format('truetype'),
+    url('../fonts/BrandonGrotesque-Thin.woff2') format('woff2');
     font-weight: 100;
     font-style: normal;
 }
@@ -56,8 +56,8 @@
 @font-face {
     font-family: 'Brandon Grotesque';
     src: url('../fonts/BrandonGrotesque-Black.woff') format('woff'),
-        url('../fonts/BrandonGrotesque-Black.tff') format('truetype'),
-        url('../fonts/BrandonGrotesque-Black.woff2') format('woff2');
+    url('../fonts/BrandonGrotesque-Black.tff') format('truetype'),
+    url('../fonts/BrandonGrotesque-Black.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
 }
@@ -65,8 +65,8 @@
 @font-face {
     font-family: 'Brandon Grotesque';
     src: url('../fonts/BrandonGrotesque-BlackItalic.woff') format('woff'),
-        url('../fonts/BrandonGrotesque-BlackItalic.tff') format('truetype'),
-        url('../fonts/BrandonGrotesque-BlackItalic.woff2') format('woff2');
+    url('../fonts/BrandonGrotesque-BlackItalic.tff') format('truetype'),
+    url('../fonts/BrandonGrotesque-BlackItalic.woff2') format('woff2');
     font-weight: 500;
     font-style: italic;
 }
@@ -74,7 +74,7 @@
 @font-face {
     font-family: 'Brandon Grotesque';
     src: url('../fonts/BrandonGrotesque-Medium.woff') format('woff'),                     url('../fonts/BrandonGrotesque-Medium.tff') format('truetype'),
-        url('../fonts/BrandonGrotesque-Medium.woff2') format('woff2');
+    url('../fonts/BrandonGrotesque-Medium.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
@@ -117,7 +117,7 @@
 .datebutton {
     position:absolute;
     top: 5.5vw;
-    left: 55vw;
+    right: 10%;
 }
 
 /* left date arrow  */
@@ -452,55 +452,38 @@
     width: 100%;
 }
 
-@media screen and (min-width: 1100.1px) {
-    #sidebar nav > ul > li {
-        margin-top: 1em;
-    }
+/* SIDEBAR FORMATTING */
 
-    #sidebar + #wrapper {
-        margin-left: 14vw;
-    }
-
-    #sidebar + #wrapper + #footer {
-        margin-left: 14vw;
-    }
-
-    #sidebar {
-        width: 14vw;
-        overflow-y: hidden;
-    }
-
-    #sidebar #prospectavelogo, #sidebarlogo {
-        height: 17vh;
-        margin: auto;
-        width: auto;
-        align-self: center;
-    }
-
-    #sidebar > .inner {
-        margin-top: -17vh;
-    }
-
-    #prospectavelogo {
-        display: block !important;
-    }
+#sidebar nav > ul > li {
+    margin-top: 1em;
 }
 
-@media screen and (max-width: 1100px) {
-    #sidebar img {
-        position: absolute;
-        left: 2vw;
-        top: 5%;
-        height: 80%;
-        width: auto;
-        display: none;
-    }
+#sidebar + #wrapper {
+    margin-left: 200px;
+}
 
-    #prospectavelogo {
-        display: block !important;
-        position: absolute !important;
-        left: 3% !important;
-    }
+#sidebar + #wrapper + #footer {
+    margin-left: 200px;
+}
+
+#sidebar {
+    width: 200px;
+    overflow-y: hidden;
+}
+
+#sidebar #prospectavelogo, #sidebarlogo {
+    height: 17vh;
+    margin: auto;
+    width: auto;
+    align-self: center;
+}
+
+#sidebar > .inner {
+    margin-top: -17vh;
+}
+
+#prospectavelogo {
+    display: block !important;
 }
 
 /* Three columns side by side */
@@ -566,55 +549,52 @@ body {
     overflow-y: hidden;
     position: fixed;
     text-align: center;
-    width: 14vw;
+    width: 200px;
     word-wrap: break-word;
     z-index: 10001;
     color: black;
-    
     transition: .6s ease;
 }
 
 /* INFO BAR FORMATTING */
-@media screen and (min-width: 1100.1px) {
-    #infobar {
-        top: 100vh;
-    }
+#infobar {
+    top: 100vh;
+}
 
-    #intro {
-        min-height: 100vh;
-    } 
+#intro {
+    min-height: 100vh;
+} 
 
-    #one {
-        min-height: 100vh;
-    }
-    #three {
-        min-height: 100vh;
-    }
-    
-    .info_container{
-        position: block;
-        width: 12vw;
-    }
+#one {
+    min-height: 100vh;
+}
+#three {
+    min-height: 100vh;
+}
 
-    #infobar .info-logo {
-        width: 80%;
-    }
-    
-    #infobar #infobar_name {
-        font-size: 2.2vw;
-        text-align: center;
-        padding-left: 0;
-        margin-bottom: 15px;
-    }
+.info_container{
+    position: block;
+    width: 12vw;
+}
 
-    .inner .info-date, .info-status, .info-moreinfo {
-        font-size: 1.2vw;
-    }
+#infobar .info-logo {
+    width: 80%;
+}
 
-    #flyer-image {
-        width: 100%;
-        margin-top: 15%;
-    }
+#infobar #infobar_name {
+    font-size: 2.2vw;
+    text-align: center;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+
+.inner .info-date, .info-status, .info-moreinfo {
+    font-size: 1.2vw;
+}
+
+#flyer-image {
+    width: 100%;
+    margin-top: 15%;
 }
 
 /* unknown if needed */
@@ -660,98 +640,6 @@ body.is-loading #infobar nav ul li {
     -ms-transform: translateY(2em);
     transform: translateY(2em);
     opacity: 0;
-}
-
-@media screen and (max-width: 1100px) {
-/* TOP BAR FORMATTING */
-    #infobar {
-        height: 4.5em;
-        left: -100vw; /* move in from left to right */
-        line-height: 4.5em;
-        padding: 0;
-        top: 0;
-        width: 100%;
-    }
-
-    #infobar #clublogo {
-        float: left;
-        margin-left: 2vw;
-        height: 3.6em;
-        margin-top: .43em;
-        margin-right: 0;
-    }
-
-    #infobar .club_name {
-        font-size: 2.5vw;
-        margin-left: 2vw;
-    }
-
-    .inner .info-date {
-        height: inherit;
-        line-height: inherit;
-        font-size: 1.5vw;
-        min-width: 11.4vw;
-    }
-
-    .inner .info-status {
-        height: inherit;
-        line-height: inherit;
-        font-size: 1.5vw;
-        min-width: 8.2vw;
-    }
-
-    .inner .info-moreinfo {
-        height: inherit;
-        line-height: inherit;
-        font-size: 1.5vw;
-    }
-
-    .inner #info-span {
-        display: inline-block;
-        line-height: normal;
-        vertical-align: middle;
-    }
-
-    #infobar > .inner {
-        -moz-flex-direction: row;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-        flex-direction: row;
-        -moz-align-items: stretch;
-        -webkit-align-items: stretch;
-        -ms-align-items: stretch;
-        align-items: stretch;
-        height: inherit;
-        line-height: inherit;
-        display: inline;
-    }
-
-
-    #infobar nav {
-        height: inherit;
-        line-height: inherit;
-    }
-
-    #infobar nav > ul {
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: -ms-flex;
-        display: flex;
-        height: inherit;
-        line-height: inherit;
-        margin: 0;
-    }
-    #infobar nav > ul > li {
-        display: block;
-        margin: 0 0 0 2.8vw;
-        padding: 0;
-    }
-
-    #infobar nav a {
-        height: inherit;
-        line-height: inherit;
-        padding: 0;
-    }
 }
 
 .obj{
