@@ -6,7 +6,7 @@ async function init(){
     var identity = res["identity"];
     if(identity.club != "ADMIN"){
         alert("You need to be logged in to access this page.");
-        $(location).attr('href', "https://prospectave.io:1738/officer_download");
+        $(location).attr('href', "http://prospectave.io/failed_login.html");
         return;
     }
 
@@ -18,8 +18,9 @@ async function init(){
     for(var i=0; i<window.data.length; i++){
         var row = window.data[i];
 
-        // TODO: if it is in the future
-        // if ()
+        // if it is in the past, don't add it
+        if (moment().subtract(1, "days").startOf('day') > moment(row.date, "MM/DD/YYYY")) continue;
+
         var tr = createRow(row, i);
 
         $('#status-table tr:last').after(tr);

@@ -218,6 +218,7 @@ function addEvent(date){
     $('#submit_edit').unbind('click');
     $('#submit_edit').html('<i class="far fa-calendar-plus"></i>&nbsp;Submit');
     $('#submit_edit').click(function() {
+        $('#submit_edit').unbind('click');
         var s = edit_status;
         var i = $("#edit_description").val();
         var files = $("#image-upload").prop("files");
@@ -279,6 +280,7 @@ function loadEditing(date, status, description, fileName){
     $('#submit_edit').unbind('click');
     $('#submit_edit').html('<i class="far fa-calendar-plus"></i>&nbsp;Submit');
     $('#submit_edit').click(function() {
+        $('#submit_edit').unbind('click');
         var s = edit_status;
         var i = $("#edit_description").val();
         var obj = {"c" : window.club, "d": date, "s": edit_status, "i": description};

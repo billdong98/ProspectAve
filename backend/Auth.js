@@ -51,7 +51,7 @@ function redirectFailedAttempt(response){
 
 const mapping = {
     // ProspectAve team
-    "mman" : "ADMIN",
+    "mman" : "Cloister",
     "wzdong" : "ADMIN",
     "junep" : "ADMIN",
     "yangt" : "ADMIN",

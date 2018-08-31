@@ -237,9 +237,6 @@ app.post('/officer_post', asyncHandler(async (request, response, next) => {
     var data = [];
     var query = postQuery;
 
-    console.log(obj);
-    console.log(request.files);
-
     // split the array (or single date) up
     dates = dates.split(",");
 
@@ -259,7 +256,8 @@ app.post('/officer_post', asyncHandler(async (request, response, next) => {
         var date = dates[i];
         data.push(club, date, netID, post_date, status, info, filename);
     }
-    
+        
+    console.log(data);
     await db.runAsync(query, data);
     console.log(netID + " (" + club + ") added data");
     response.send("Successfully added data!");

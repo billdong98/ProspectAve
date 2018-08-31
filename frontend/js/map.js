@@ -350,7 +350,7 @@ function showInfo(club) {
             }
 
             // add image
-            if(row["image"] != undefined){
+            if(row["image"] != undefined && row["image"] != ""){
                 var src = "https://prospectave.io/uploads/" + row["image"];
                 out += "<li class='side-image-wrap'><img id='flyer-image' src='" + src + "'></li>";
             }
