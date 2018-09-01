@@ -88,7 +88,8 @@ function toggleForm() {
 
 // uploads new row(s) to the backend
 // called by multi-date form
-function upload(){
+function upload(event){
+    event.preventDefault();
     console.log("Uploading");
     var dates = $("#schedule_date_picker").val().split(", ");
     var poster = "Officer page";
@@ -112,6 +113,7 @@ function upload(){
     postEvents(obj);
 
     alert("Form submitted!");   
+    toggleForm();
     return false;
 }
 
@@ -132,7 +134,7 @@ function updateDisp(date){
     window.current = dateString;
     var formattedDate = moment(date).format("ddd, MMM Do");
 
-    if($("#description_info").css('display') == "block") closeEditing();
+    if($("#edit_description").css('display') != "none") closeEditing();
 
     $('#edit_info').unbind('click');
     $('#delete_info').unbind('click');
@@ -154,7 +156,7 @@ function updateDisp(date){
             });
         }).animate({'opacity': 1}, 130);
     } else {
-
+        $("#event_panel").css('display','none');
         $("#register_panel").css('display','none');
         var club = row["club_name"];
         var date = row["date"];
