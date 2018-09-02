@@ -212,13 +212,13 @@ function addEvent(date){
 
 
     $('#cancel_edit').unbind('click');
-    $('#cancel_edit').html('<i class="fas fa-ban"></i>&nbsp;Cancel');
+    $('#cancel_edit').html('<i class="icon fa-ban"></i>&nbsp;Cancel');
     $('#cancel_edit').click(function() {
         closeAdd();
     });
 
     $('#submit_edit').unbind('click');
-    $('#submit_edit').html('<i class="far fa-calendar-plus"></i>&nbsp;Submit');
+    $('#submit_edit').html('<i class="icon fa-calendar-plus-o"></i>&nbsp;Submit');
     $('#submit_edit').click(function() {
         $('#submit_edit').unbind('click');
         var s = edit_status;
@@ -274,13 +274,13 @@ function loadEditing(date, status, description, fileName){
     var oldFile = fileName;
 
     $('#cancel_edit').unbind('click');
-    $('#cancel_edit').html('<i class="fas fa-ban"></i>&nbsp;Cancel');
+    $('#cancel_edit').html('<i class="icon fa-ban"></i>&nbsp;Cancel');
     $('#cancel_edit').click(function() {
         closeEditing();
     });
 
     $('#submit_edit').unbind('click');
-    $('#submit_edit').html('<i class="far fa-calendar-plus"></i>&nbsp;Submit');
+    $('#submit_edit').html('<i class="icon fa-calendar-plus-o"></i>&nbsp;Submit');
     $('#submit_edit').click(function() {
         $('#submit_edit').unbind('click');
         var s = edit_status;

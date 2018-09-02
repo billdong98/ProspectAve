@@ -247,7 +247,7 @@ function shiftDate(val){
         var monthChange = vanillaCalendar.monthDiff();
         if (monthChange == 0)
             monthChange += val;
-    
+
         vanillaCalendar.changeMonth(monthChange);
     }
 
@@ -287,6 +287,7 @@ function showInfo(club) {
             var info = row["info"];
             info = info.replace(/</g, "&lt;").replace(/>/g, "&gt;");
             var date = row["date"]; //redundant
+            const img = row["image"];
 
             if (status == "List")
                 infobar_mobile.style.background="#FFEE18";
@@ -311,7 +312,14 @@ function showInfo(club) {
                 out += "<li class='info'>More Info: <span style='font-style:italic'>" + info + "</span></li>";
             }
             
-            out += "</ul></nav></div><div id='swipe-left'><span style='font-size: 1.7em'>&#8249;</span> Swipe to close</div>";
+            if(img != "" && img != undefined){
+                var src = "https://prospectave.io/uploads/" + row["image"];
+                out += "<li class='mobile-image-wrap'><img id='mobile-flyer-image' src='" + src + "'></li>";
+            }
+            out += "</ul></nav></div>";
+
+            // swipe left 
+            out += "<div id='swipe-left'><span style='font-size: 1.7em'>&#8249;</span> Swipe to close</div>";
             infobar_mobile.innerHTML = out;
             infobar_mobile.style.display="";
 
