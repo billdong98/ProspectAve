@@ -154,11 +154,12 @@
 				speed: 1000,
 				offset: function() {
 
+					// Commented portion below for use with TOPBAR ONLY!
 					// If <=large, >small, and sidebar is present, use its height as the offset.
-						if (skel.breakpoint('large').active
-						&&	!skel.breakpoint('small').active
-						&&	$sidebar.length > 0)
-							return $sidebar.height();
+						// if (skel.breakpoint('large').active
+						// &&	!skel.breakpoint('small').active
+						// &&	$sidebar.length > 0)
+						// 	return $sidebar.height();
 
 					return 0;
 
