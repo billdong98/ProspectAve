@@ -99,6 +99,12 @@ function showPUIDEvents() {
         if(currentDay != null){
             currentDay.classList.remove('vcal-date--hasEvent');
             currentDay.classList.remove('vcal-date--pass');
+
+            // Fade past days
+            if (date < getToday()) {
+                currentDay.classList.add('vcal-date--past');
+            }
+
             var status = window.data[date];
             for(var j=0; j< status.length; j++){
                 var row = status[j];
@@ -118,6 +124,12 @@ function showPassListEvents() {
         if(currentDay != null){
             currentDay.classList.remove('vcal-date--hasEvent');
             currentDay.classList.remove('vcal-date--PUID');
+
+            // Fade past days
+            if (date < getToday()) {
+                currentDay.classList.add('vcal-date--past');
+            }
+
             var status = window.data[date];
             for(var j=0; j< status.length; j++){
                 var row = status[j];
@@ -147,6 +159,11 @@ function showDatesWithEvents() {
             currentDay.classList.remove('vcal-date--PUID');
             currentDay.classList.remove('vcal-date--pass');
             currentDay.classList.add('vcal-date--hasEvent');
+    
+            // Fade past days
+            if (date < getToday()) {
+                currentDay.classList.add('vcal-date--past');
+            }
         }
     }
 }

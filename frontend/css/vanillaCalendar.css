@@ -144,9 +144,7 @@
     transition: ease 1s;
 }
 
-#v-cal .vcal-date--disabled {
-    border-radius: 0;
-    cursor: not-allowed;
+#v-cal .vcal-date--past {
     opacity: 0.5;
 }
 
