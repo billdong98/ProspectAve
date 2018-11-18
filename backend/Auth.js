@@ -92,6 +92,8 @@ const mapping = {
     "tdatta": "Quadrangle",
     "nwedel": "Quadrangle",
     "kfinch":"Quadrangle",
+    "dpbello":"Quadrangle",
+    "esthomas":"Quadrangle",
 
     // Tiger Inn
     "mm40": "Tiger Inn",
