@@ -98,6 +98,7 @@ const mapping = {
     "tdatta": "Quadrangle",
     "nwedel": "Quadrangle",
     "kfinch":"Quadrangle",
+    // new officers
     "dpbello":"Quadrangle",
     "esthomas":"Quadrangle",
 
