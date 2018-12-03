@@ -80,6 +80,12 @@ const mapping = {
     "rswanton": "Cloister",
     "hpaynter": "Cloister",
     "jspiezio": "Cloister",
+    // new officers
+    "meghancs": "Cloister",
+    "thelgass": "Cloister",
+    "astucke": "Cloister",
+    "ekeim": "Cloister",
+    "kdehejia": "Cloister",
     
     // Colonial
     "wdkelly": "Colonial",
