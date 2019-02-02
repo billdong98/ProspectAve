@@ -91,6 +91,9 @@ const mapping = {
     "wdkelly": "Colonial",
     "kap3": "Colonial",
     "gkwon": "Colonial",
+    // new officers
+    "kywu": "Colonial",
+    "sepowell": "Colonial",
     
     // Quad
     "sspergel": "Quadrangle",
