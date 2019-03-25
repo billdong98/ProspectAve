@@ -63,10 +63,10 @@ app.use(cookieSession({
 var authenticationCheck = function (req, res, next) {
     var identity = auth.identity(req);
     if(identity == null) {
-            console.log("Failed attempt by: " + request.session.id);
-            res.status(401);
-            res.send("You need to be logged in to do this!");
-            return;
+        console.log("Failed attempt by: " + req.session.id);
+        res.status(401);
+        res.send("You need to be logged in to do this!");
+        return;
     }
     req.identity = identity;
     next();
@@ -119,7 +119,7 @@ app.get('/status', cors(), asyncHandler(async (request, response, next) => {
 // if not, then redirect to CAS 
 app.get('/login', (request, response) => { 
     if(request.session.isPopulated) {
-        console.log(`Already logged in: ${request.session.id}`);
+        console.log(`Already logged in: ${request.session.id} (${request.session.club})`);
         auth.redirectOfficer(response, request.session.id);
         // redirect to officer page
         return;
@@ -127,31 +127,33 @@ app.get('/login', (request, response) => {
 
     var callback = async function(result){
         if(result != false){
-                // logged in, but not an officer
-                var c = await auth.getClub(result);
-                if(c == null){
-                    console.log("Failed login by: " + result);
-                    auth.redirectFailedAttempt(response);
-                } else {
-                    // Only set cookies if valid officer login!
-                    request.session.id = result;
-                    request.session.club = c;
-                    console.log("Created cookie for: " + request.session.id);
-                    console.log(`Successful login: ${request.session.id} (${request.session.club})`);
-                    auth.redirectOfficer(response, request.session.id);
-                    return;
-                }
+            // logged in, but not an officer
+            var c = await auth.getClub(result);
+            if(c == null){
+                console.log("Failed login by: " + result + " (not an officer)");
+                auth.redirectFailedAttempt(response);
             } else {
-                console.log("Invalid auth token");
-                response.status(500);
-                response.send("Invalid auth token.");
+                // Only set cookies if valid officer login!
+                request.session.id = result;
+                request.session.club = c;
+                console.log("Created cookie for: " + request.session.id);
+                console.log(`Successful login: ${request.session.id} (${request.session.club})`);
+                auth.redirectOfficer(response, request.session.id);
+                return;
             }
-        }.bind({request: request, response: response});
+        } else {
+            console.log("Invalid auth token");
+            response.status(500);
+            response.send("Invalid auth token.");
+        }
+    }.bind({request: request, response: response});
+
     // no ticket, need to authenticate
     if(!request.query.ticket){
         //console.log("Redirecting to CAS");
         auth.redirect(response);
     } else {
+        //console.log("Returned from CAS... verifying netid")
         // we have just been redirected back here by CAS
         auth.verify(request.query.ticket, callback); 
     }

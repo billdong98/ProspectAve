@@ -4,6 +4,7 @@ const db = require('./db.js');
 
 // verifies the ticketID passed back to /login via CAS
 const serviceURL = 'https://prospectave.io/redirect/';
+
 function verify(ticketID, callback){
     //console.log("Verifying");
     //console.log(`https://fed.princeton.edu/cas/validate?service=${serviceURL}&ticket=${ticketID}`);
@@ -14,12 +15,12 @@ function verify(ticketID, callback){
         let body = "";
         res.setEncoding("utf8");
         res.on('data',(d) => {body+=d})
-        res.on('end', ()=>{
+        res.on('end', async ()=>{
             let answer = body.split('\n');
             if (answer[0] == 'no'){
-                callback(false);
+                await callback(false);
             }
-            callback(answer[1]); //return netID
+            await callback(answer[1]); //return netID
         })}).on('error',console.log);
 }
 
@@ -27,7 +28,7 @@ function verify(ticketID, callback){
 //const serviceURL = 'https://localhost:1738/login';
 
 function redirect(response){
-    response.writeHead(301,
+    response.writeHead(307,
        {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/redirect/`}
        );
     response.end();
@@ -37,16 +38,16 @@ function redirect(response){
 async function redirectOfficer(response, netID){
     var club = await getClub(netID);
     if(club == "ADMIN"){
-        response.writeHead(301, {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/admin.html`});
+        response.writeHead(307, {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/admin.html`});
     } else {
-        response.writeHead(301, {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/officer.html`});
+        response.writeHead(307, {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/officer.html`});
     }
     response.end();
 }
 
 
 function redirectFailedAttempt(response){
-    response.writeHead(301,
+    response.writeHead(307,
        {Location: `https://prospectave.io/failed_login.html`});
     response.end();
 }
