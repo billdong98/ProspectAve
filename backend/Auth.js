@@ -1,5 +1,6 @@
 const https = require('https');
-
+const sqlite3 = require('sqlite3');
+const db = require('./db.js');
 
 // verifies the ticketID passed back to /login via CAS
 const serviceURL = 'https://prospectave.io/redirect/';
@@ -33,8 +34,9 @@ function redirect(response){
 }
 
 
-function redirectOfficer(response, netID){
-    if(getClub(netID) == "ADMIN"){
+async function redirectOfficer(response, netID){
+    var club = await getClub(netID);
+    if(club == "ADMIN"){
         response.writeHead(301, {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/admin.html`});
     } else {
         response.writeHead(301, {Location: `https://fed.princeton.edu/cas/login?service=https://prospectave.io/officer.html`});
@@ -49,14 +51,44 @@ function redirectFailedAttempt(response){
     response.end();
 }
 
+/* Should only EVER be called on login (once per login)*/
+async function getClub(netID){
+    let rows = await db.allParamsAsync(db.checkQuery, netID);
+    if(rows.length == 0) return null;
+    var club = rows[0].club;
+    return club;
+}
+
+
+// returns an identity object
+// if the user is not logged in, return a null identity
+function identity(request){
+    if (!request.session.isPopulated){
+        return null;
+    }
+    var identity = {netID: request.session.id, club: request.session.club};
+    return identity;
+}
+
+
+module.exports = {
+    redirect : function(res){ redirect(res)},
+    verify: function(ticketID, callback){verify(ticketID, callback)},
+    redirectOfficer: function(res, id){ redirectOfficer(res, id)},
+    getClub: function(netID){return getClub(netID)},
+    identity: function(request){return identity(request)},
+    redirectFailedAttempt: function(res){redirectFailedAttempt(res)}
+}
+
+/* DEPRECATED MAPPING
 const mapping = {
     // ProspectAve team
-    "mman" : "Cloister",
+    "mman" : "ADMIN",
     "wzdong" : "ADMIN",
     "junep" : "ADMIN",
     "yangt" : "ADMIN",
     "bliang" : "ADMIN",
-
+    
     // ACTUAL OFFICERS
     // Charter
     "sbelt": "Charter",
@@ -80,18 +112,16 @@ const mapping = {
     "rswanton": "Cloister",
     "hpaynter": "Cloister",
     "jspiezio": "Cloister",
-    // new officers
     "meghancs": "Cloister",
-    "thelgass": "Cloister",
+    "thelgaas": "Cloister",
     "astucke": "Cloister",
     "ekeim": "Cloister",
     "kdehejia": "Cloister",
-    
+        
     // Colonial
     "wdkelly": "Colonial",
     "kap3": "Colonial",
     "gkwon": "Colonial",
-    // new officers
     "kywu": "Colonial",
     "sepowell": "Colonial",
     
@@ -101,10 +131,10 @@ const mapping = {
     "tdatta": "Quadrangle",
     "nwedel": "Quadrangle",
     "kfinch":"Quadrangle",
-    // new officers
-    "dpbello":"Quadrangle",
-    "esthomas":"Quadrangle",
-
+    "dpbell": "Quadrangle",
+    "esthomas": "Quadrangle",
+    "dpbello": "Quadrangle",
+     
     // Tiger Inn
     "mm40": "Tiger Inn",
     "crv2": "Tiger Inn",
@@ -134,31 +164,5 @@ const mapping = {
     "masom": "Ivy",
     "ccb4": "Ivy",
     "helenz": "Ivy"
-}
-
-function getClub(netID){
-    return mapping[netID];
-}
-
-
-// returns an identity object
-// if the user is not logged in, return a null identity
-function identity(request){
-    if (!request.session.isPopulated){
-        return null;
-    }
-    var identity = {netID: request.session.id, club: mapping[request.session.id]};
-    return identity;
-}
-
-
-module.exports = {
-    redirect : function(res){ redirect(res)},
-    verify: function(ticketID, callback){verify(ticketID, callback)},
-    redirectOfficer: function(res, id){ redirectOfficer(res, id)},
-    getClub: function(netID){return getClub(netID)},
-    identity: function(request){return identity(request)},
-    redirectFailedAttempt: function(res){redirectFailedAttempt(res)}
-}
-
+}*/
 

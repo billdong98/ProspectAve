@@ -98,6 +98,37 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <th>Delete?</th>
             </tr>
         </table>
+
+        <div id="add-auth-form" style="margin-bottom: 2%">
+                <h2>Add an officer</h2>
+                <div id="row-1">
+                    <select id="auth-club-select" style="width: 15%; display: inline-block">
+                       <option value="Cannon">Cannon</option>
+                       <option value="Cap">Cap & Gown</option>
+                       <option value="Charter">Charter</option>
+                       <option value="Cloister">Cloister</option>
+                       <option value="Colonial">Colonial</option>
+                       <option value="Cottage">Cottage</option>
+                       <option value="Ivy">Ivy</option>
+                       <option value="Terrace">Terrace</option>
+                       <option value="Tiger Inn">Tiger Inn</option>
+                       <option value="Tower">Tower</option>
+                       <option value="Quadrangle">Quadrangle</option>
+                   </select>
+                 <input type="text" id="netid-input" style="width: 20%; display:inline-block; margin-left: 2%; margin-right: 2%"/>
+                <button id="auth-submit-button">Submit</button>
+             </div>
+         </div>
+         <table id="officer-table">
+            <colgroup>
+                <col id="club-auth-col">
+                <col id="netid-auth-col">
+            </colgroup>
+            <tr>
+                <th>Club</th>
+                <th>netID</th>
+            </tr>
+        </table>
     </div>
 
 </section>

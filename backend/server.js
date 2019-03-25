@@ -3,18 +3,18 @@ const app = express();
 const fs = require('fs');
 const http = require("http");
 const cors = require('cors');
-// require the sqlite module
-const sqlite3 = require('sqlite3').verbose();
 // to read POST request bodies
 const formidable = require('express-formidable');
 const dateTime = require('node-datetime');
 const auth = require('./Auth.js');
+const db = require('./db.js');
 // for handling sessions
 var cookieSession = require('cookie-session');
 const asyncHandler = require('express-async-handler');
 // setup Express server
 const fileUpload = require('express-fileupload');
 const util = require('util');
+var bodyParser = require('body-parser');
 
 var whitelist = ['https://prospectave.io', 'https://prospectave.io:1738', 'https://www.prospectave.io', 'undefined', 'null', undefined];
 
@@ -59,28 +59,45 @@ app.use(cookieSession({
     // Cookie Options
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
-// set an authentication check
-app.post('*', (req, res, next) => {
+
+var authenticationCheck = function (req, res, next) {
     var identity = auth.identity(req);
     if(identity == null) {
-        console.log("Failed attempt POST data");
-        res.status(401);
-        res.send("You need to be logged in to do this!");
-        return;
+            console.log("Failed attempt by: " + request.session.id);
+            res.status(401);
+            res.send("You need to be logged in to do this!");
+            return;
     }
+    req.identity = identity;
     next();
-})
+}
+/*
+// set an authentication check
+app.post('*', (req, res, next) => {
+    console.log("Checking db...");
+    auth.identity(req).then(function(identity){
+        if(identity == null) {
+                console.log("Failed attempt POST data");
+                res.status(401);
+                res.send("You need to be logged in to do this!");
+                return;
+        }
+        next();
+    });
+})*/
+
 app.use('/officer_post', fileUpload());
 app.use('/edit', fileUpload());
 app.use('/delete', fileUpload());
-
+var jsonParser = bodyParser.json();
 
 var https = require('https');
 
 /* handling HTTPS */
+
 const options = {
-    key: fs.readFileSync('./../../ssl/keys/b18a6_58805_89cdb2608c1a3a3855eef88c1a65e5e4.key').toString(),
-    cert: fs.readFileSync('./../../ssl/certs/prospectave_io_b18a6_58805_1542239999_9f131f9c34a6ce7b49d995fc70855d12.crt').toString()
+    key: fs.readFileSync('./../../ssl/keys/c4484_aaef9_1da47e1c5b7f4854b3a7d65dde5853dc.key').toString(),
+    cert: fs.readFileSync('./../../ssl/certs/prospectave_io_c4484_aaef9_1555372799_5681f88409f7274ea3558f25615ee303.crt').toString()
 };
 
 https.createServer(options, app).listen(1738);
@@ -88,74 +105,11 @@ console.log("------------------------------");
 console.log("Relaunched server on port 1738.");
 console.log("Current date: " + currentDate());
 
-// connect to the db file
-let db = new sqlite3.Database('./clubs.db', (err) => {
-    if (err) {
-        return console.error(err.message);
-    }
-    console.log('Connected to the SQLite DB.');
-});
-
-db.allAsync = function (sql) {
-    var that = this;
-    return new Promise(function (resolve, reject) {
-        that.all(sql, function (err, rows) {
-            if (err)
-                reject(err);
-            else
-                resolve(rows);
-        });
-    });
-};
-
-db.allParamsAsync = function (sql, params) {
-    var that = this;
-    return new Promise(function (resolve, reject) {
-        that.all(sql, params, function (err, rows) {
-            if (err)
-                reject(err);
-            else
-                resolve(rows);
-        });
-    });
-};
-
-db.runAsync = function (sql, params) {
-    var that = this;
-    return new Promise(function (resolve, reject) {
-        that.run(sql, params, function(err) {
-            if (err)
-                reject(err);
-            else
-                resolve();
-        });
-    })
-};
-
-
-/* SQLITE QUERIES */
-
-// insert a new row into the database
-// [(club_name, date, poster, post_date, status, info)]
-let postQuery = 'INSERT INTO club_status VALUES ';
-let placeholders = '(?,?,?,?,?,?,?)';
-// part of a query
-
-//let afterToday = "DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) >= date('now','localtime', '-4 hours')";
-//let selectPast = "SELECT * FROM club_status WHERE DATE(substr(date,7,4)||'-'||substr(date,1,2)||'-'||substr(date,4,2)) < date('now','localtime', '-4 hours') ORDER BY date";
-
-// gets all records from club_status after today
-let selectAll = 'SELECT * FROM club_status ORDER BY DATE(substr(date,7,4)||"-"||substr(date,1,2)||"-"||substr(date,4,2))';
-// get records from club_status for a particular club (after today)
-let selectByClub = 'SELECT * FROM club_status WHERE club_name = ? ORDER BY DATE(substr(date,7,4)||"-"||substr(date,1,2)||"-"||substr(date,4,2))';
-// delete a given event (club and date needed) 
-let deleteEventsQuery = 'DELETE from club_status WHERE date = ? and club_name = ?';
-
 /* gets the current clubs from the DB */
 /* allow ALL domains */
 app.get('/status', cors(), asyncHandler(async (request, response, next) => {
     //console.log('Hello getter! Current date: ' + currentDate());
-    let rows = await db.allAsync(selectAll);
+    let rows = await db.allAsync(db.selectAll);
     response.send(rows);
 }))
 
@@ -165,22 +119,25 @@ app.get('/status', cors(), asyncHandler(async (request, response, next) => {
 // if not, then redirect to CAS 
 app.get('/login', (request, response) => { 
     if(request.session.isPopulated) {
-        console.log(`Logged in: ${request.session.id}`);
+        console.log(`Already logged in: ${request.session.id}`);
         auth.redirectOfficer(response, request.session.id);
         // redirect to officer page
         return;
     }
 
-    var callback = function(result){
+    var callback = async function(result){
         if(result != false){
                 // logged in, but not an officer
-                if(auth.getClub(result) == null){
+                var c = await auth.getClub(result);
+                if(c == null){
                     console.log("Failed login by: " + result);
                     auth.redirectFailedAttempt(response);
                 } else {
+                    // Only set cookies if valid officer login!
                     request.session.id = result;
+                    request.session.club = c;
                     console.log("Created cookie for: " + request.session.id);
-                    console.log(`Logged in: ${request.session.id}`);
+                    console.log(`Successful login: ${request.session.id} (${request.session.club})`);
                     auth.redirectOfficer(response, request.session.id);
                     return;
                 }
@@ -200,11 +157,67 @@ app.get('/login', (request, response) => {
     }
 })
 
+/* --------------------------- ADMIN USE ONLY --------------------------- */
+app.get('/auth_download', authenticationCheck, asyncHandler(async (request, response, next) => {
+    response.setHeader('Content-Type', 'application/json');
+    var identity = request.identity;
+
+    // officer, admin
+    if(identity.club != "ADMIN"){
+        console.log("Unauthorized attempt to get auth data by: " + identity.netID);
+        response.json({"identity": null, "rows": null});
+        return;
+    }
+    var data = {"identity": identity, "auth_list" : null};
+    data.auth_list = await db.allAsync(db.selectAllAuth);
+    response.json(data);
+}))
+
+/* deletes a given officer */
+app.post('/auth_delete', authenticationCheck, jsonParser, asyncHandler(async (request, response, next) => {
+    var identity = request.identity;
+
+    if(identity.club != "ADMIN"){
+        console.log(identity.netID + " tried to delete auth data!");
+        response.send("ILLEGAL ACCESS");
+        return;
+    }
+    var obj = request.body;
+    // data for the sql query
+    var data = [obj.netID];
+
+    await db.runAsync(db.deleteAuth, data);
+    console.log(identity.netID, "(" + identity.club + ")", "deleted access for", data);
+    response.send("Successfully deleted officer.");
+}))
+
+/* adding new officers */
+app.post('/auth_add', authenticationCheck, jsonParser, asyncHandler(async (request, response, next) => {
+    var identity = request.identity;
+
+    if(identity.club != "ADMIN"){
+        console.log(identity.netID + " tried to add auth data!");
+        response.send("ILLEGAL ACCESS");
+        return;
+    }
+    var obj = request.body;
+    console.log(request.body);
+    // data for the sql query
+    var data = [obj.netID, obj.club];
+
+    await db.runAsync(db.addAuth, data);
+    console.log(identity.netID, "(" + identity.club + ")", "added access for", data);
+    response.send("Successfully deleted officer.");
+}))
+
+
+
+/* --------------------------- OFFICER USE ONLY --------------------------- */
 // sends netID and club events as JSON to officer.html
-app.get('/officer_download', asyncHandler(async (request, response, next) => {
+app.get('/officer_download', authenticationCheck, asyncHandler(async (request, response, next) => {
     response.setHeader('Content-Type', 'application/json');
 
-    var identity = auth.identity(request);
+    var identity = request.identity;
     
     if(identity == null) {
         console.log("Unauthorized attempt to get club data");
@@ -213,16 +226,16 @@ app.get('/officer_download', asyncHandler(async (request, response, next) => {
     } else { // officer, admin
         var data = {"identity": identity, "rows" : null};
         if(identity.club == "ADMIN")
-            data.rows = await db.allAsync(selectAll);
+            data.rows = await db.allAsync(db.selectAll);
         else // get row for this club
-            data.rows = await db.allParamsAsync(selectByClub, [identity.club]);
+            data.rows = await db.allParamsAsync(db.selectByClub, [identity.club]);
         response.json(data);
     }  
 }))
 
 /* handles a post request of club data */
-app.post('/officer_post', asyncHandler(async (request, response, next) => {
-    var identity = auth.identity(request);
+app.post('/officer_post',authenticationCheck, asyncHandler(async (request, response, next) => {
+    var identity = request.identity;
     // json object input 
     var obj = request.body;
     var club = identity.club;
@@ -235,7 +248,7 @@ app.post('/officer_post', asyncHandler(async (request, response, next) => {
     var info = obj.i;
 
     var data = [];
-    var query = postQuery;
+    var query = db.postQuery;
 
     // split the array (or single date) up
     dates = dates.split(",");
@@ -252,7 +265,7 @@ app.post('/officer_post', asyncHandler(async (request, response, next) => {
     // construct query and input for each element in dates
     for(var i=0; i<dates.length;i++){
         if(i != 0) query += ", ";
-        query += placeholders;
+        query += db.placeholders;
         var date = dates[i];
         data.push(club, date, netID, post_date, status, info, filename);
     }
@@ -265,8 +278,8 @@ app.post('/officer_post', asyncHandler(async (request, response, next) => {
 
 
 /* deletes a given date */
-app.post('/delete', asyncHandler(async (request, response, next) => {
-    var identity = auth.identity(request);
+app.post('/delete', authenticationCheck, asyncHandler(async (request, response, next) => {
+    var identity = request.identity;
 
     var obj = request.body;
     // data for the sql query
@@ -279,7 +292,7 @@ app.post('/delete', asyncHandler(async (request, response, next) => {
         return;
     }
 
-    await db.runAsync(deleteEventsQuery, data);
+    await db.runAsync(db.deleteEventsQuery, data);
     console.log(identity.netID, "(" + identity.club + ")", "deleted event for", obj.d);
     response.send("Successfully deleted event.");
 }))
@@ -287,8 +300,8 @@ app.post('/delete', asyncHandler(async (request, response, next) => {
 
 // handles an edit request from an authenticated user
 // body has two fields: date and club
-app.post('/edit', asyncHandler(async (request, response, next) => {
-    var identity = auth.identity(request);
+app.post('/edit', authenticationCheck, asyncHandler(async (request, response, next) => {
+    var identity = await auth.identity(request);
     var obj = request.body;
     var club = identity.club;
     var netID = identity.netID;
@@ -314,8 +327,8 @@ app.post('/edit', asyncHandler(async (request, response, next) => {
     var addQuery = postQuery + placeholders;
 
     // delete the existing event
-    await db.runAsync(deleteEventsQuery, [date, club]);
-    await db.runAsync(addQuery, newRow);
+    await db.runAsync(db.deleteEventsQuery, [date, club]);
+    await db.runAsync(db.addQuery, newRow);
     console.log("Edited row(s) by " + netID);
     response.send("Successfully edited row");
 }))
