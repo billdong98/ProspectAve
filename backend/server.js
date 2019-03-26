@@ -203,7 +203,6 @@ app.post('/auth_add', authenticationCheck, jsonParser, asyncHandler(async (reque
         return;
     }
     var obj = request.body;
-    console.log(request.body);
     // data for the sql query
     var data = [obj.netID, obj.club];
 
@@ -303,7 +302,7 @@ app.post('/delete', authenticationCheck, asyncHandler(async (request, response, 
 // handles an edit request from an authenticated user
 // body has two fields: date and club
 app.post('/edit', authenticationCheck, asyncHandler(async (request, response, next) => {
-    var identity = await auth.identity(request);
+    var identity = request.identity;
     var obj = request.body;
     var club = identity.club;
     var netID = identity.netID;
