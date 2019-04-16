@@ -325,7 +325,7 @@ app.post('/edit', authenticationCheck, asyncHandler(async (request, response, ne
     }
 
     var newRow = [club, date, netID, post_date, status, info, filename];
-    var addQuery = postQuery + placeholders;
+    var addQuery = db.postQuery + placeholders;
 
     // delete the existing event
     await db.runAsync(db.deleteEventsQuery, [date, club]);
